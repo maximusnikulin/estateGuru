@@ -1,0 +1,120 @@
+.card-estate {      
+    background:#fff;
+    border:1px solid $border-color;
+    cursor:pointer;   
+    display: block;
+    transition: .5s ease;
+    // &:hover {
+    //     box-shadow: 0 7px 10px 0 rgba(0,0,0,.08);
+    //     transform: translateY(-5px)
+    // }
+    //head
+    &__head {
+        height:181px;
+        width:100%;
+        position: relative;
+        .photo {
+            position: absolute;
+            width:100%;
+            height:100%;
+            background-size: cover;
+            background-position: center center;
+            &:after {
+                position: absolute;
+                background-image:
+                linear-gradient(0deg, rgba(25, 25, 25, 0.7) 0%, transparent 100%);
+                width:100%;
+                height:100%;
+                content:''
+            }
+        }
+        .price {
+            position: absolute;
+            bottom:20px;
+            left:20px;
+            
+            &__title {
+                font:400 12px/21px "Roboto";
+                color:#fff;
+                display:block;
+            }   
+            &__val {
+                font:bold 18px/24px "Roboto";
+                color:#fff;
+                display:block;
+            }
+
+        }
+        .tags {
+            position: absolute;
+            top:20px;
+            left:20px;                        
+            display:flex;
+            align-items: flex-start;
+            flex-direction: column;            
+            justify-content: flex-start;
+            &__item {
+                font: 13px/21px "Roboto";
+                border-radius:12.5px; 
+                color:#fff;
+                width:auto;
+                padding:0 10px;
+                &:not(:last-child) {
+                    margin-bottom:10px;
+                }
+                &--sale {
+                    background:rgba(241,38,38,.9)
+                }
+                &--action {
+                    background:rgba(241,149,71,.9)
+                }
+            }
+        }
+    }
+    //NAME
+    &__name {
+        padding:20px;
+        min-height: 110px;
+        .address {
+            font:700 16px/21px "Roboto";
+            color:black;
+            margin-bottom:5px;
+            letter-spacing: .5px;
+        }
+        .type {
+            text-transform: uppercase;
+            font:400 12px/21px "Roboto";
+            color:#606060;
+        }
+    }
+    //INFO
+    &__info {
+        display:flex;
+        justify-content: space-between;
+        border-top:1px solid $border-color;
+        padding:10px 20px 10px;
+        .cell {
+            // flex-basis:calc(100% / 3);
+            // flex-grow:1;
+            // text-align: center;
+            &__title {
+                text-transform: uppercase;
+                font:300 12px/24px "Roboto"; 
+                color:#606060;
+            }
+            &__val {
+                 font:400 13px/24px "Roboto";
+            }
+        }
+    }
+}
+
+
+//HOVER 
+// .card-estate {
+//     transition:all .5s ease;
+// }
+// .card-estate:hover {
+//     transform: translateY(-20px);
+//     box-shadow: 0px 5px 10px 0 rgba(0, 0, 0, 0.15)
+// }

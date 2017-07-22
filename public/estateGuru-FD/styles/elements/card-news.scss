@@ -1,0 +1,46 @@
+.card-news {
+    @extend .card-estate;
+    // border:none;
+    &__head {
+        @extend .card-estate__head;
+    }
+    &__name {
+        padding:20px;
+        .title {
+            font:bold 15px/18px "Open Sans";
+            color:black;
+            margin-bottom:20px;
+        }
+        .preview {
+            font:14px/18px "Open Sans";
+            color:#767676;
+        }
+    }
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding:10px 20px 10px;
+       .views {
+           position: relative;
+           padding-left:20px;
+           font:12px/21px "Roboto";
+           color:#959595;
+           &:after {
+                position:absolute;
+                top:2px;                
+                left:0;
+                content:'';
+                width:20px;
+                height:15px;
+                background: url(/svg-icons/eye.svg) no-repeat;
+                background-size: contain;
+            }
+       } 
+       .date {
+         font:12px/21px "Roboto";
+         color:#959595;
+       }
+    }
+
+}

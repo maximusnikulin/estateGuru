@@ -1,0 +1,102 @@
+.link-to-map {
+    height:250px;
+    width:100%;
+    background-image: url("/images/map.png");
+    background-size: cover;
+    position: relative;
+    display:block;
+    cursor:pointer;
+
+    &:after {
+        content:'';
+        position: absolute;
+        width:100%;
+        height:100%;
+        background-color:#a54686;
+        opacity:.65;
+    }
+    &__title {
+        position:absolute;
+        z-index:2;
+        top:50%;
+        transform: translateY(-50%);
+        left:100px;
+        @include tablet-vl {
+            top:20%;
+            max-width:300px;
+            width:100%;
+            text-align: center;
+            transform: translateX(-50%);
+            left:50%;
+            
+        }
+        @include mobile {
+            width:90%;
+            max-width:100%;
+        }
+        .name { 
+            color:#fff;
+            display: inline-block;
+            font: bold 32px/32px "Roboto";
+            max-width:130px;
+            margin-right:20px;
+            vertical-align: middle;
+            @include tablet-vl {
+                 display:block;
+                 max-width:100%;
+                 margin-bottom:10px;
+                 margin-right:0;
+            }
+
+        }    
+        .slogan {
+            color:#fff;
+            display: inline-block;
+            font: 400 14px/18px "Roboto";
+            max-width:200px;
+            vertical-align: middle;
+            @include tablet-vl {
+                 display:block;
+                 max-width:100%;
+            }
+        }
+        &:after {
+            content:'';
+            position: absolute;
+            left:140px;
+            top:0;
+            height:100%;
+            width:1px;
+            background-color:#fff;  
+            @include tablet-vl {
+                display:none;
+            }          
+        }
+    }
+    
+    
+    &__icon {
+        position: absolute;
+        right:105px;
+        width:60px;
+        height:60px;        
+        background:#fff;
+        z-index: 2;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        top:50%;
+        @include tablet-vl {
+            top:60%;
+            transform:translateX(-50%);
+            left:50%;
+        }
+        &:after {
+            content:'';
+            transform:translate(-50%,-50%);
+            top:50%;
+            left:50%;
+            @include svg-go-to-map;
+            position: absolute;
+        }
+    }
+}

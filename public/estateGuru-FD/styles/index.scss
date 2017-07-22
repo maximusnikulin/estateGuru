@@ -1,0 +1,70 @@
+/************ VARIABLES ************/
+
+@import './variables';
+
+/************ MIXINS ************/
+
+@import './service/mixins';
+
+/************ SPRITE ************/
+
+@import './service/sprite';
+
+/************ PLUGINS ************/
+
+@import './service/normalize';
+//SlickCarousel
+@import './service/slick';
+//LightGallery
+@import './service/lightgallery/lightgallery.scss';
+
+
+/************ FONTS ************/
+
+@import './service/fonts';
+
+/************ GENERALS ************/
+
+@import './general';
+
+/************ ELEMENTS ************/
+
+@import './elements/header';
+@import './elements/navbar';
+@import './elements/slider-promo';
+@import './elements/card-estate';
+@import './elements/button';
+@import './elements/link-to-map';
+@import './elements/card-news';
+@import './elements/slider-logos';
+@import './elements/footer';
+@import './elements/object';
+@import './elements/visual';
+@import './elements/slider-nav';
+@import './elements/grid';
+@import './elements/not-found';
+@import './elements/visit';
+@import './elements/popup';
+@import './elements/tooltip';
+@import './elements/slider-layouts';
+@import './elements/service-block';
+
+
+/************ SECTIONS ************/
+
+@import './sections/section-promo';
+@import './sections/section-tabs';
+@import './sections/section-cards';
+@import './sections/section-to-map';
+@import './sections/section-subscribe';
+@import './sections/section-switcher';
+@import './sections/section-callback';
+
+/************ PAGES ************/
+@import './pages/main';
+
+/************ ANIMATIONS ************/
+@import './animations';
+
+
+

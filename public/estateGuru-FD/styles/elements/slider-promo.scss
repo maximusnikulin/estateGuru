@@ -1,0 +1,228 @@
+.slider-promo {
+    .arrow {
+        cursor: pointer;
+        position:absolute;
+        top:50%;
+        transform:translate3d(0, -50% ,0);
+        z-index:2;
+        &--next {
+            @include svg-slider-promo-next;
+            right:100px;
+            @include tablet-hl {
+                right:2%;
+            }
+            @include mobile {
+                top:30%;
+            }
+        }
+        &--prev {
+            @include svg-slider-promo-prev;
+            left:100px;
+            @include tablet-hl {
+                left:2%;
+            }
+            @include mobile {
+                top:30%;
+            }
+        }
+    }
+
+}
+//Style for slide
+.slider-promo__item-content {
+    @extend .container;
+    height: 802px;
+    position: relative;    
+    width:100%;   
+    @include tablet-hl {
+        height: 680px;
+    }
+     @include tablet-vl {
+        height:100%;
+        margin:115px auto;
+    }
+    @include mobile {
+        margin:94px auto 64px;
+    }
+    // overflow:hidden;
+    .title-bg {
+        font: bold 10vw/21px "Roboto";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-transform: uppercase;
+        opacity: .04;
+        cursor: default;
+        letter-spacing: 0;
+        @include desktop {
+            //  font: bold 120px/21px "Roboto";
+        }
+    }
+    .poster {
+        position: absolute;
+        left: 38%;
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+        @include tablet-hl {
+            left: 45%;
+            
+        }
+        @include tablet-vl {
+            position: relative;            
+            top:0;
+            left:0;
+            transform:none;
+            margin:0 auto;
+            text-align: center;
+            margin-bottom:60px;
+        }
+        @include mobile {
+            max-width:278px;
+        }
+        &__content {
+            padding: 0px 60px;
+            width: 100%; 
+            position: relative;     
+            @include tablet-vl {
+                display: inline-block;
+                width:auto;
+                padding: 0px 30px;
+            }
+            @include mobile {
+                padding: 0;
+            }
+            .image {
+                position: relative;               
+                box-shadow: 0px 7px 10px 0 rgba(0, 0, 0, .15);  
+                max-width: 100%;     
+                display:block;                
+                @include tablet-hl {
+                    max-width:95%;
+                }
+                @include tablet-vl {
+                    max-width:100%;                    
+                }                
+            }
+            .button {
+                position: absolute;
+                font: 13px/13px "Roboto";
+                color: white;
+                background: #62bb46;
+                box-shadow: 0px 7px 10px 0 rgba(0, 0, 0, .15);
+                border-radius: 20px;                
+                line-height: 40px;
+                padding: 0 20px;
+                white-space: nowrap;
+                width: auto;
+                text-align: center;
+                bottom: 79px; //minus padding 20px of parrent 
+                right: calc(-75px + 20px);
+                @include tablet-hl {
+                    right:4vw;
+                }
+                @include tablet-vl {
+                    right:50%;
+                    transform:translate(50%,0);
+                    bottom:-20px;
+                }
+            }
+            .square {
+                box-sizing: content-box;
+                position: absolute;
+                border: 10px solid #f48220;
+                width: 100px;
+                height: 100px;
+                @include mobile {
+                    border: 7px solid #f48220;
+                    width: 50px;
+                    height: 50px;                
+                }
+                &--right {
+                    right: 30px;
+                    top: -30px;                   
+                }
+                @include tablet-hl {
+                    right: 45px;
+                }
+                @include tablet-vl {
+                    right: 0;
+                }
+                @include mobile {                    
+                    top: -15px;
+                    right: -15px;                                        
+                }
+            }
+        }
+    }
+    .review {
+        max-width: 250px;
+        position: absolute;
+        left: 17%;
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+        @include tablet-hl {
+            left: 15%;
+            max-width: 278px;
+        }
+        @include tablet-vl {
+            position: relative;            
+            transform:none;
+            top:0;
+            left:0;
+            max-width: 320px;
+            margin:0 auto;
+        }
+        @include mobile {
+            max-width:278px;
+        }
+        &__title {
+            .title {
+                font: bold 36px/42px "Roboto";
+                text-transform: uppercase;
+                margin-bottom:16px;
+                // white-space: nowrap;
+                @include mobile {
+                        font: bold 32px/36px "Roboto";                        
+                }
+            }
+            .caption {
+                font:100 13px/21px "Roboto";
+                color:#606060;
+                @include mobile {
+                    font:100 12px/21px "Roboto";
+                }
+
+            }
+            margin-bottom: 32px;            
+            @include mobile {
+                margin-bottom: 24px;            
+            }
+        }
+        &__text {
+            font: 300 15px/22px "Roboto";
+            @include mobile {
+                font: 300 13px/22px "Roboto";
+            }
+        }
+        &__link {
+            font: 300 15px/22px "Roboto";
+            color: $active-color;
+            display: block;
+            margin-top: 32px;
+            @include mobile {
+                font: 300 13px/22px "Roboto";
+                margin-top: 24px;
+            }
+            &:after {
+                display: inline-block;
+                position: relative;
+                top:2px;
+                margin-left:10px;                
+                content:'';
+                @include svg-to-more;
+            }
+        }
+    }
+}
+

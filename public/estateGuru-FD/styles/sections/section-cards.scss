@@ -1,0 +1,70 @@
+.section-cards {
+    @extend .container;
+    &__title { 
+
+        .title {
+            margin-bottom:30px;
+            min-height:60px;
+            white-space: nowrap;
+            &__icon {
+                display:inline-block;               
+                vertical-align: middle;
+                &--news {    
+                    @include svg-news;                
+                }
+                &--estate {
+                    @include svg-estate;
+                }
+            }
+            &__text {
+                white-space: normal;
+                position: relative;
+                font: bold 32px/32px "Roboto";                                    
+                display:inline-block;
+                vertical-align: middle;
+                margin-left:50px;
+                max-width:250px;  
+                @include tablet-hl {
+                    margin-left:30px;
+                    // font: bold 28px/28px "Roboto";                                    
+                }
+                @include mobile {
+                    margin-left:10px;
+                    // font: bold 24px/24px "Roboto";                                    
+                }
+            }
+            
+        }
+    }
+    &__content {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        flex-wrap:wrap;
+        &-item {        
+            flex-basis:calc(100% / 4) ;      
+            margin:20px 0 0; 
+            padding:0 10px;
+            flex-grow:0;
+            @include custom(1190px) {
+                 flex-basis:calc(100% / 2);      
+                //  flex-grow:1;
+            }
+            @include tablet-vl {
+                 flex-basis:calc(100% / 2 ) ;      
+            }
+            @include mobile {
+                 flex-basis:calc(100%) ;      
+            }
+        }
+    }
+    &__button {
+        margin-top:40px;
+        // @extend .container;
+        text-align: center;
+        // padding-top:20px;
+        // padding-bottom:20px;
+    }
+}

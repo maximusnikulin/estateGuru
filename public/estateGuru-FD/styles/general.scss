@@ -1,0 +1,56 @@
+.wrapper-index {
+  .list {
+    margin:100px;
+    list-style: circle;
+    &__item {
+        font-size: 15px;
+    }
+  }
+}
+
+.slick-slide {
+    outline:none;
+}
+//STYLES
+.wrapper {
+  min-height:100vh;
+  display:flex;
+  flex-direction: column;
+  // min-width:1440px;
+  overflow:hidden;
+}
+.container {
+  position: relative;
+  max-width:1440px;
+  width:100%;
+  padding:0 5%;
+  min-width:320px;
+  margin:0 auto;
+  @include tablet-vl {
+    padding:0 40px;
+  }
+  @include mobile {
+    padding:0 20px;
+  }
+}
+.container--fluid {
+  @extend .container;
+  max-width:100%;
+  width:100%;
+  padding:0;
+}
+.frozen {  
+  overflow: hidden;
+  position: relative;
+  // width:100%;  
+  
+}
+.typography {
+      p {
+        font:300 14px/21px 'Roboto';
+      }
+      a {
+        text-decoration: underline;
+        color:#a54686;
+      }
+}

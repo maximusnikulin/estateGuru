@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="62px" viewBox="0 0 50 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>marker_eg</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="marker_eg">
+            <path d="M24.7223988,0 C18.1565384,0.0090706534 11.8632026,2.62605092 7.22685651,7.27523368 C2.59051046,11.9244164 -0.00905947827,18.2249639 2.37234643e-05,24.7908243 C2.37234643e-05,37.2094602 15.401088,53.5541453 21.8964257,59.8881385 C23.4796287,61.4393034 26.0038139,61.4678649 27.6217103,59.9529208 C34.1500503,53.8413873 49.4459962,38.1237456 49.4459962,24.789602 C49.4635596,11.1171832 38.3948158,0.0188891408 24.7223988,0 Z" id="Forma_1_копия_11" fill="#62BB46" fill-rule="nonzero"></path>
+            <text id="EG" font-family="OpenSans-Bold, Open Sans" font-size="16" font-weight="bold" fill="#FFFFFF">
+                <tspan x="14" y="30">EG</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

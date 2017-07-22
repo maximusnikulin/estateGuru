@@ -1,0 +1,155 @@
+.service-block {
+    @extend .container;    
+    &__title {
+        @extend .object__title;
+    }
+    &__main {
+        position: relative;
+        margin-top:48px;
+        @include tablet-vl {
+            margin-top:32px;
+        }
+        .image {
+            width: 100%;
+            height: 100%;
+            line-height: 0;
+            opacity: .7;
+            @include tablet-hl {
+                width: calc(100% + 12%);
+                margin-left:-6%;
+            }
+            @include tablet-vl {
+                width: calc(100% + 80px);
+                margin-left:-40px;
+            }
+            @include mobile {
+                width: calc(100% + 40px);
+                margin-left:-20px;
+            }
+            img {
+                object-fit: cover;
+                object-position: bottom;
+                height: 360px;
+                width: 100%;
+            }
+        }
+        .separator {
+            height: 1px;
+            width: 100%;
+            background: #dbdbdb;
+            margin: 35px 0;
+            @include tablet-hl {
+                margin: 15px 0;
+            }
+        }
+        .review {
+            position: absolute;
+            max-width: 360px;
+            top: 34px;
+            right: 80px;
+            @include tablet-vl {
+                top:50%;
+                right:50%;
+                transform:translate(50%,-50%);
+                width:100%;                               
+            }
+            &__head {
+                font: bold 30px/30px 'Open Sans'
+            }
+            &__text {
+                font: 300 14px/22px 'Open Sans'
+            }
+        }
+    }
+    &__subtitle {
+        font: bold 21px/24px 'Open Sans';
+        margin:48px auto;
+        // max-width:1060px;
+        @include tablet-vl {
+           margin:32px auto;
+        }
+    }
+    &__more {
+        position: relative;
+        max-width:1060px; 
+        margin: 0 auto;
+        // margin-top:48px;
+        .abbr {
+            position: absolute;
+            right: 0;
+            top: 20px;
+            color: #dbdbdb;
+            font: bold 250px/250px 'Open Sans';
+            width: 50%;
+            text-align: center;
+            max-width: 414px;
+            @include tablet-hl {
+                display:none;
+            }
+        }
+        .previews {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width:calc(100% + 50px);            
+            margin-left:-25px;  
+            @include tablet-hl {
+                width:100%;
+                margin-left:0;  
+            }
+            &__item:nth-child(2n) {
+                top:400px;
+                @include tablet-hl {
+                    top:0;
+                }
+            }
+            &__item {
+                position: relative;
+                flex-basis: 50%;
+                margin-bottom:110px;
+                padding:0 25px;
+                max-width:464px;
+                  @include tablet-hl {
+                    margin:0 auto 60px;
+                    flex-basis:100%;
+                    padding:0;
+                }
+                @include mobile {
+                    margin:0 auto 48px;
+                    
+                }
+                .head {
+                    position: relative;
+                    margin-bottom:24px;
+                    &__image {
+                        line-height: 0;
+                        img {
+                            max-width: 100%
+                        }
+                    }
+                    &__title {
+                        max-width: 300px;
+                        bottom: 50px;
+                        left: -30px;
+                        position: absolute;
+                        padding: 10px 20px;
+                        font: bold 32px/38px 'Roboto';
+                        box-shadow: -4px 0 32px 0 rgba(0, 0, 0, .2);
+                        z-index: 2;
+                        background: #fff;
+                        @include mobile {
+                            font: bold 18px/24px 'Roboto';
+                            bottom:20px;
+                            max-width:190px;
+                            left:-10px;
+                        }
+                    }
+                }
+                .text {
+                    font:300 14px/21px 'Open Sans';
+                }
+            }
+        }
+    }
+}

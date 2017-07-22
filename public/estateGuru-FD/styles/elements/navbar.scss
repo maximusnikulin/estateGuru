@@ -1,0 +1,44 @@
+.navbar {
+    position:relative;
+    @extend .container--fluid;
+    // border-bottom:1px solid $border-color;
+    height:44px;
+    &:before {
+        content:'';
+        position: absolute;
+        height:1px;
+        top:50%;
+        width:100%;
+        left:0;
+        background-color:$border-color;        
+    }
+    &__menu {
+        position: absolute;
+        top:50%;
+        left:50%;
+        background:#fff;
+        transform:translate(-50%,-50%);
+        display:flex;
+        align-items: center;
+        padding: 2px;
+        border-radius: 20px;
+        border:1px solid $border-color;        
+        .link {
+            font: 13px/26px "Roboto";
+            background:white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            // &:not(:last-child) {
+            //     margin-right:30px;
+            // }
+        }
+        .active {
+            color:#fff;
+            background:#a54686;
+            pointer-events: none;
+            cursor:default;
+        }
+    }
+}
