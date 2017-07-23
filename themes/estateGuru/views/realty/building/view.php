@@ -1,13 +1,18 @@
 <?php
 /** @var Building $data */
 $title = $data->adres;
-if ($_GET["page"] > 1) {
-    $title .= ", страница " . $_GET["page"];
-}
-$this->title = [$data->seo_title, Yii::app()->getModule('yupe')->siteName];
+// die(var_export($_GET["page"],true));
+// if ($_GET["page"] > 1) {
+    
+//     $title .= ", страница " . $_GET["page"];
+// }
+
+// $this->title = [$data->seo_title, Yii::app()->getModule('yupe')->siteName];
 $this->description = $data->seo_description;
 $this->keywords = $data->seo_keywords;
+
 Yii::app()->getModule("realty")->addCardTags($data);
+
 $images = $data->getImages();
 if (!empty($images)) {
     $mainImage = array_shift($images);
@@ -15,6 +20,7 @@ if (!empty($images)) {
     $mainImage = false;
 }
 $apartments = $data->apartments;
+
 ?>
 
 <div class="object">

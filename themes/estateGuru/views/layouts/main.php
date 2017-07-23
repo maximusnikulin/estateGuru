@@ -16,7 +16,7 @@
     <?php endif; ?>
 
     <?php
-    Yii::app()->getClientScript()->registerCssFile('/public/estateGuru-FD/public/css/style.css');
+    Yii::app()->getClientScript()->registerCssFile('/frontend/public/css/style.css');
     ?>
     <script type="text/javascript">
         var yupeTokenName = '<?= Yii::app()->getRequest()->csrfTokenName;?>';
@@ -36,7 +36,7 @@
         </div>
         <div class="header__logo">
           <a href="#" class="logo">
-            <img src="/svg-icons/logo.svg" alt="" >
+            <img src="/frontend/public/svg-icons/logo.svg" alt="" >
           </a>
         </div>
         <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu']); ?>
@@ -76,7 +76,7 @@
       </div>
       <ul class="footer__content">
         <li class="link">
-          <a href="/" class="logo"><img width = "160px" src="/svg-icons/logo.svg" alt=""></a>
+          <a href="/" class="logo"><img width = "160px" src="/frontend/public/svg-icons/logo.svg" alt=""></a>
           <a href="" class="phone">8 (3852) 56-34-55</a>
         </li>
         <li class="link">
@@ -100,7 +100,7 @@
 
 
 <?php
-    Yii::app()->getClientScript()->registerScriptFile('/public/estateGuru-FD/public/js/build.js');
+    Yii::app()->getClientScript()->registerScriptFile('/frontend/public/js/bundle.js');
     ?>
 
 </body>

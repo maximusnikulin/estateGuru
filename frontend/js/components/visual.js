@@ -1,8 +1,8 @@
 function Visual(elem) {
     this.root = elem;        
     this.init = function(){
-        this.posPolygon();
-        this.hoverable();
+        // this.posPolygon();
+        // this.hoverable();
     }
     this.hoverable = function(){
         var $tooltips = this.root.find('.tooltip');                     

@@ -306,7 +306,8 @@ class RealtyController extends \yupe\components\controllers\FrontController
 
     public function actionViewBuilding($name)
     {
-        $model = Building::model()->find("slug = :slug",[":slug" => $name]);
+        
+        $model = Building::model()->find("slug = :slug",[":slug" => $name]);        
         if ($model == null || !$model->isPublished)
             throw new CHttpException(404, 'К сожалению, данные об этом доме были удалены с сайта. Но у нас есть много других отличных предложений');
 
