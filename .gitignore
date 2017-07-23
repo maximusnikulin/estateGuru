@@ -1,5 +1,10 @@
-/*
-!/index.php/
-!/public/estateGuru-FD
-!/themes/estateGuru
-!/protected
+/*.log
+/frontend/public/sprite
+/frontend/node_modules
+/frontend/public/css
+/frontend/public/js
+/protected/config
+/protected/assets
+
+
+
