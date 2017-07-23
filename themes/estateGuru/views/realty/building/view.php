@@ -8,112 +8,165 @@ $this->title = [$data->seo_title, Yii::app()->getModule('yupe')->siteName];
 $this->description = $data->seo_description;
 $this->keywords = $data->seo_keywords;
 Yii::app()->getModule("realty")->addCardTags($data);
+$images = $data->getImages();
+if (!empty($images)) {
+    $mainImage = array_shift($images);
+} else {
+    $mainImage = false;
+}
+$apartments = $data->apartments;
 ?>
-<div class="row">
-    <div>
-        <div class="col-lg-8">
-            <h1 class="view__title font-title"><?= $data->adres ?> </h1>
-            <div class="walp" style="background: #F5F5F5">
-                <div class="prew">
-                    <ul id="lightSlider">
-                        <li data-thumb="<?= $data->getImageUrl(100, 100, false); ?>">
-                            <a rel="group-building" class="fancybox"
-                               href="<?= $data->getImageUrl(1000, 1000, false); ?>"> <img
-                                    src="<?= $data->getImageUrl(1000, 1000, false); ?>"
-                                    alt="<?= $data->getTitle(); ?>"/>
-                            </a>
-                        </li>
-                        <?php foreach ($data->getImages() as $item): ?>
-                            <li data-thumb="<?= $item->getImageUrl(100, 100, false); ?>">
-                                <a rel="group-building" class="fancybox"
-                                   href="<?= $item->getImageUrl(1000, 1000, false); ?>"> <img
-                                        src="<?= $item->getImageUrl(1000, 1000, false); ?>" alt=""> </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
+
+<div class="object">
+    <div class="object__title">
+        <h1 class="text"><?= $data->adres; ?></h1>
+        <h2 class="caption">Жилой дом г. Барнаул</h2>
+    </div>
+    <div class="object__content">
+        <div class="object__photo js-gallery-photos">
+            <?php if ($mainImage !== false): ?>
+                <div class="object__photo-main">
+                    <figure class="photo" href="<?= $mainImage->getImageUrl(1000,1000); ?>"><img src="<?= $mainImage->getImageUrl(1000, 1000); ?>" alt=""></figure>
                 </div>
+            <?php endif; ?>
+            <div class="object__photo-grid ">
+                <?php foreach ($images as $image): ?>
+                    <figure class="photo" href="<?= $image->getImageUrl(1000,1000); ?>"><img src="<?= $image->getImageUrl(1000,1000); ?>" alt=""></figure>
+                <?php endforeach; ?>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="font-description">
-                <?php
-                $this->renderPartial("/map/linkOnBuilding", ["building" => $data]);
-                ?>
-                <?php if (!is_null($data->builder)): ?>
-                    <div class="view__small-info"><span class="view__small-info__name"> Застройщик:</span> <span
-                            class="main-info"><a
-                                href="<?= $data->builder->getUrl() ?>"> <?= $data->builder->name ?> </a> </span>
+        <div class="object__desc">
+            <h2 class="object__desc-title">Общая информация</h2>
+            <div class="object__desc-common">
+                <?php if (!empty($data->rayon)): ?>
+                <div class="row">
+                    <div class="row__cell">Район</div>
+                    <div class="row__cell row__cell--right"><?= $data->rayon; ?></div>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($data->adres)): ?>
+                <div class="row">
+                    <div class="row__cell">Адрес</div>
+                    <div class="row__cell row__cell--right"><?= $data->adres; ?></div>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($data->idBuilder)): ?>
+                    <div class="row">
+                        <div class="row__cell">Застройщик</div>
+                        <div class="row__cell row__cell--right"><?= $data->builder->name; ?></div>
                     </div>
                 <?php endif; ?>
-                <?php if (!is_null($data->district)): ?>
-                    <p class="view__small-info"><span class="view__small-info__name"> Район: </span><span
-                            class="main-info"> <a
-                                href="<?= $data->district->getUrl() ?>"> <?= $data->district->name ?> </a> </span></p>
-                <?php endif; ?>
-                <div data-background-alpha="0.0" data-buttons-color="#FFFFFF" data-counter-background-color="#ffffff"
-                     data-share-counter-size="12" data-top-button="false" data-share-counter-type="disable"
-                     data-share-style="1" data-mode="share" data-like-text-enable="false" data-mobile-view="true"
-                     data-icon-color="#ffffff" data-orientation="horizontal" data-text-color="#000000"
-                     data-share-shape="round-rectangle" data-sn-ids="fb.vk.tw.ok." data-share-size="30"
-                     data-background-color="#ffffff" data-preview-mobile="false" data-mobile-sn-ids="fb.vk.tw.wh.ok.vb."
-                     data-pid="1582984" data-counter-background-alpha="1.0" data-following-enable="false"
-                     data-exclude-show-more="false" data-selection-enable="true" class="uptolike-buttons"></div>
 
-                <p class="view__small-info">
-                    <?= $data->longDescription ?>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row ">
-    <div class="col-lg-12">
-        <div class="description">
-            <div class="row box-apartment">
-                  <span class="apartments-header font-title">
-                            Квартиры в этом доме
-                        </span>
-                <?php
-                $criteria = new CDbCriteria();
-                $criteria->select = 't.*';
-                $criteria->compare("idBuilding", $data->id);
-
-                $dataProv = new CActiveDataProvider(
-                    'Apartment',
-                    [
-                        'criteria' => $criteria,
-                        'pagination' => [
-                            'pageSize' => (int)Yii::app()->getModule('realty')->itemsPerPage,
-                            'pageVar' => 'page',
-                        ],
-                        'sort' => array(
-                            'defaultOrder' => 'cost DESC',
-                        )
-                        /*                'sort' => [
-                                            'sortVar' => 'sort',
-                                            'defaultOrder' => 't.position'
-                                        ],
-                          */]
-                );
-
-                $dataProv->getData();
-                $sortString = Yii::app()->request->getParam("Apartment_sort");
-                if (is_null($sortString))
-                    $sortString = "";
-                ?>
-                <div class="b-apartment">
-                    <?php if ($this->beginCache(Yii::app()->request->url . $dataProv->pagination->currentPage . $sortString)): ?>
-                        <?php
-                        $this->renderPartial("/apartment/building-list", ["dataProvider" => $dataProv, "itemPath" => "_item_for_building", "headerText" => "Квартиры в этом доме"]);
-                        ?>
-                        <?php $this->endCache(); ?>
-                    <?php endif; ?>
+                <?php if (!empty($data->walls)): ?>
+                <div class="row">
+                    <div class="row__cell">Стены</div>
+                    <div class="row__cell row__cell--right"><?= $data->walls; ?></div>
                 </div>
-                <span class="project-info-link font-description">
-                    С полной проектной декларацией вы можете ознакомиться на сайте застройщика <?= $data->builder->link; ?>
-                </span>
+                <?php endif; ?>
 
+                <?php if (!empty($data->type)): ?>
+                <div class="row">
+                    <div class="row__cell">Тип</div>
+                    <div class="row__cell row__cell--right"><?= $data->type; ?></div>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($data->floor)): ?>
+                <div class="row">
+                    <div class="row__cell">Этажей</div>
+                    <div class="row__cell row__cell--right"><?= $data->floor; ?></div>
+                </div>
+                <?php endif; ?>
+
+
+
+                <?php if (!empty($data->readyTime)): ?>
+                <div class="row">
+                    <div class="row__cell">Сдача</div>
+                    <div class="row__cell row__cell--right"><?= $data->getReadyTimes()[$data->readyTime] ?></div>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($data->priceForMeter)): ?>
+                <div class="row">
+                    <div class="row__cell">Цена за м²</div>
+                    <div class="row__cell row__cell--right"><?= $data->priceForMeter; ?></div>
+                </div>
+                <?php endif; ?>
+            </div>
+            <div class="object__desc-to-map">
+                <span class="text">Показать на карте</span>
+            </div>
+            <h2 class="object__desc-title">Описание</h2>
+            <p class="object__desc-text">
+                <?= $data->longDescription; ?>
+            </p>
+            <div class="object__desc-concl">
+                <div class="price">
+                    <span class="caption">Цена за м²</span> <span class="value"><?= $data->priceForMeter; ?></span>
+                </div>
+                <div class="callback">
+                    <div class="button button--action js-callback">Узнать больше</div>
+                </div>
             </div>
         </div>
+
     </div>
 </div>
+<section class="section-switcher">
+    <h2 class="section-switcher__title">
+        Наличие квартир
+    </h2>
+    <!-- <nav class="section-switcher__nav">
+      <div class="slider-nav js-slider-nav">
+        <div data-number="1" class="slider-nav__item active">
+          <div class="button button--nav-link">Секция 1</div>
+        </div>
+      </div>
+    </nav> -->
+    <div class="section-switcher__content">
+        <div class="visual js-visual active" data-number="1">
+            <div class="visual__image-lr">
+                <figure class="image">
+                    <img src="<?= $data->getImageUrl(1000, 1000); ?>" alt="">
+                </figure>
+            </div>
+            <div class="visual__polygons-lr">
+                <?php foreach ($apartments as $apartment): ?>
+                    <a href = "<?= $apartment->getUrl(); ?>" class="polygon" data-id="<?= $apartment->id; ?>">
+                        <div class="polygon__svg">
+                            <?= $apartment->getSvg(); ?>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+            <div class="visual__tooltips-lr">
+                <?php foreach ($apartments as $apartment): ?>
+                    <div class="tooltip hidden" data-id="<?= $apartment->id; ?>">
+                        <div class="tooltip__content">
+                            <p class="row">
+                                Этаж: <?= $apartment->getFloor()?>
+                            </p>
+                            <p class="row">
+                                Комнат: <?= $apartment->rooms; ?>
+                            </p>
+                            <p class="row">
+                                Площадь: <?= $apartment->size; ?> м<sup>2</sup>
+                            </p>
+                            <p class="row">
+                                Цена: <?= $apartment->cost; ?> руб.
+                            </p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+    </div>
+    <div class="section-switcher__legend">
+        <i class="cube"></i>
+        <p class="caption">&nbsp;&nbsp;* Кликните на зеленую область для просмотра планировок</p>
+    </div>
+</section>

@@ -156,7 +156,7 @@ class Building extends yupe\models\YModel
 			array('shortDescription, longDescription', 'safe'),
             array('rayon, seo_title', 'length', 'max'=>100),
             array('seo_description, seo_keywords', 'length', 'max'=>300),
-            array('seo_title, seo_description, seo_keywords','safe'),
+            array('rayon, floor, priceForMeter, walls, type, seo_title, seo_description, seo_keywords','safe'),
             // The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('rayon, floor, priceForMeter, walls, type, svgBackground, slug, id, image, adres, longitude, latitude, idDistrict, idBuilder, isPublished, isShowedOnMap, shortDescription, longDescription, status, readyTime', 'safe', 'on'=>'search'),

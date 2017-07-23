@@ -62,6 +62,10 @@ $this->widget(
 //            'longDescription',
             [
                 'class' => 'yupe\widgets\CustomButtonColumn',
+                "viewButtonUrl" => function($data)
+                {
+                    return  $this->createUrl('/dom/'.$data->slug);
+                },
             ],
         ],
     ]
