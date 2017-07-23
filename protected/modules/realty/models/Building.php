@@ -22,7 +22,12 @@ define("STATUS_COMMERCIAL",4);
  * @property string $longDescription
  * @property integer $status
  * @property string $readyTime
- *
+ * @property string $rayon
+ * @property string $floor
+ * @property string $priceForMeter
+ * @property string $walls
+ * @property string $type
+ * @property string $svgBackground
  *
  * @property string $seo_title
  * @property string $seo_description
@@ -104,10 +109,10 @@ class Building extends yupe\models\YModel
     public function behaviors()
     {
         return [
-            'imageUpload' => [
+            'svgBackgroundUpload' => [
                 'class' => 'yupe\components\behaviors\ImageUploadBehavior',
-                'attributeName' => 'image',
-                'uploadPath' => 'realty/buildings/',
+                'attributeName' => 'svgBackground',
+                'uploadPath' => 'realty/buildings/svgBackground',
                 'resizeOnUpload' => true,
                 'resizeOptions' => [
                     'maxWidth' => 700,
@@ -149,12 +154,12 @@ class Building extends yupe\models\YModel
 			array('longitude, latitude', 'length', 'max'=>14),
 			array('readyTime', 'length', 'max'=>45),
 			array('shortDescription, longDescription', 'safe'),
-            array('seo_title', 'length', 'max'=>100),
+            array('rayon, seo_title', 'length', 'max'=>100),
             array('seo_description, seo_keywords', 'length', 'max'=>300),
             array('seo_title, seo_description, seo_keywords','safe'),
             // The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('slug, id, image, adres, longitude, latitude, idDistrict, idBuilder, isPublished, isShowedOnMap, shortDescription, longDescription, status, readyTime', 'safe', 'on'=>'search'),
+			array('rayon, floor, priceForMeter, walls, type, svgBackground, slug, id, image, adres, longitude, latitude, idDistrict, idBuilder, isPublished, isShowedOnMap, shortDescription, longDescription, status, readyTime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -181,8 +186,18 @@ class Building extends yupe\models\YModel
         return RealtyImage::model()->findAll($criteria);
     }
 
+    public function getMainImage()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->compare("idRecord",$this->id);
+        $criteria->compare("idTable",RealtyImage::$TABLE_BUILDING);
+        return RealtyImage::model()->find($criteria);
+    }
 
-	/**
+
+
+
+    /**
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()

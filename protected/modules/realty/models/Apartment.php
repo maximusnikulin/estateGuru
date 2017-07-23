@@ -12,6 +12,7 @@
  * @property integer $size
  * @property integer $cost
  * @property string $image
+ * @property string $svgPoints
  * @property string $shortDescription
  * @property string $longDescription
 
@@ -105,10 +106,10 @@ class Apartment extends yupe\models\YModel
             array('seo_title', 'length', 'max'=>100),
             array('seo_description, seo_keywords', 'length', 'max'=>300),
             array('seo_title, seo_description, seo_keywords','safe'),
-            array('shortDescription, longDescription', 'safe'),
+            array('svgPoints, shortDescription, longDescription', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
+			array('svgPoints, image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
 		);
 	}
 

@@ -43,50 +43,6 @@
         <?=  $form->hiddenField($model, 'idBuilding'); ?>
 
 
-        <div class='row'>
-            <div class="col-sm-7">
-                <div class="preview-image-wrapper<?= !$model->getIsNewRecord() && $model->image ? '' : ' hidden' ?>">
-                    <div class="btn-group image-settings">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="collapse"
-                                data-target="#image-settings"><span class="fa fa-gear"></span></button>
-                    </div>
-                    <?=
-                    CHtml::image(
-                        !$model->getIsNewRecord() && $model->image? $model->getImageUrl(200, 200, true) : '#',
-                        $model->image,
-                        [
-                            'class' => 'preview-image img-thumbnail',
-                            'style' => !$model->getIsNewRecord() && $model->image ? '' : 'display:none',
-                        ]
-                    ); ?>
-                </div>
-
-                <?php if (!$model->getIsNewRecord() && $model->image): ?>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="delete-file"> <?= Yii::t(
-                                'YupeModule.yupe',
-                                'Delete the file'
-                            ) ?>
-                        </label>
-                    </div>
-                <?php endif; ?>
-
-                <?= $form->fileFieldGroup(
-                    $model,
-                    'image',
-                    [
-                        'widgetOptions' => [
-                            'htmlOptions' => [
-//                            'onchange' => 'readURL(this);',
-                            ],
-                        ],
-                    ]
-                ); ?>
-            </div>
-        </div>
-
-
         <div class="row">
             <div class="col-sm-7">
                 <?=  $form->textFieldGroup($model, 'floor', [
@@ -154,7 +110,7 @@
             </div>
         </div>
         <div class="row">
-            <div style="width: 400px" class="col-sm-12 <?= $model->hasErrors('shortDescription') ? 'has-error' : ''; ?>">
+            <div class="col-sm-7 <?= $model->hasErrors('shortDescription') ? 'has-error' : ''; ?>">
                 <?= $form->labelEx($model, 'shortDescription'); ?>
                 <?php $this->widget(
                     $this->module->getVisualEditor(),
@@ -168,7 +124,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 <?= $model->hasErrors('longDescription') ? 'has-error' : ''; ?>">
+            <div class="col-sm-7 <?= $model->hasErrors('longDescription') ? 'has-error' : ''; ?>">
                 <?= $form->labelEx($model, 'longDescription'); ?>
                 <?php $this->widget(
                     $this->module->getVisualEditor(),
@@ -223,6 +179,117 @@
                 ]); ?>
             </div>
         </div>
+
+        <div class="row">
+            <div class="svg-background js-svg-background">
+                <img src="<?= $model->building->getImageUrl(); ?>" alt="">
+                <div class="point-container js-point-container">
+                    <svg class="js-svg">
+
+                    </svg>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="js-clear-points">Очистить</a>
+        </div>
+        <?=  $form->hiddenField($model, 'svgPoints', ['class' => 'js-points']); ?>
+
+        <style>
+            .svg-background {
+                position: relative;
+            }
+
+            .point-container {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+
+            .point-container svg {
+                width: 100%;
+                height: 100%;
+            }
+
+            .point-container svg polygon{
+                background: red;
+            }
+        </style>
+
+        <script>
+            $(function() {
+                function Polygon () {
+                    var pointList = [];
+                    function build (arg) {
+                        var res = [];
+                        for (var i=0,l=arg.length;i<l;i++) {
+                            res.push(arg[i].join(','));
+                        }
+                        return res.join(' ');
+                    }
+                    this.setNodePoints = function (val) {
+                        this.node = ' <polygon points="' + val + '" style="fill:lime;stroke:purple;stroke-width:1" />';
+                        $('.js-svg').empty().html(this.node);
+                        $('.js-points').val(this.toString());
+                    }
+                    this.getPoint = function (i) {return pointList[i]}
+                    this.setPoint = function (i,x,y) {
+                        pointList[i] = [x,y];
+                        this.setNodePoints(build(pointList));
+                    }
+                    this.points = function () {
+                        for (var i=0,l=arguments.length;i<l;i+=2) {
+                            pointList.push([arguments[i],arguments[i+1]]);
+                        }
+                        this.setNodePoints(build(pointList));
+                    }
+                    this.pointsFromArray = function (arr) {
+                        for (var i=0,l=arr.length;i<l;i+=2) {
+                            pointList.push([arr[i],arr[i+1]]);
+                        }
+                        this.setNodePoints(build(pointList));
+                    }
+                    this.clear = function() {
+                        pointList = [];
+                        this.setNodePoints(build(pointList));
+                    }
+                    this.fromString = function(str) {
+                        console.log(str);
+                        if (typeof str == 'undefined' || str == '') {
+                            return;
+                        }
+                        var points = str.split(",");
+                        this.pointsFromArray(points);
+                    }
+                    this.toString = function() {
+                        var result = [];
+                        pointList.forEach(function(item) {
+                            result.push(item[0], item[1]);
+                        });
+                        return result.join(",");
+                    }
+                    // initialize 'points':
+                    this.points.apply(this,arguments);
+                }
+
+                var value = $('.js-points').val();
+
+                var points = new Polygon();
+                window.points = points;
+                points.fromString(value);
+
+                $('.js-svg-background').click(function(e) {
+                    window.points.points(e.offsetX, e.offsetY);
+                });
+
+                $('.js-clear-points').click(function() {
+                    points.clear();
+                })
+
+
+            })
+        </script>
+
 
 
         <?php $this->widget(

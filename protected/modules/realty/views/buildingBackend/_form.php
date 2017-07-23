@@ -48,49 +48,6 @@
 
     <?=  $form->errorSummary($model); ?>
 
-    <div class='row'>
-        <div class="col-sm-7">
-            <div class="preview-image-wrapper<?= !$model->getIsNewRecord() && $model->image ? '' : ' hidden' ?>">
-                <div class="btn-group image-settings">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="collapse"
-                            data-target="#image-settings"><span class="fa fa-gear"></span></button>
-                </div>
-                <?=
-                CHtml::image(
-                    !$model->getIsNewRecord() && $model->image? $model->getImageUrl(200, 200, true) : '#',
-                    $model->image,
-                    [
-                        'class' => 'preview-image img-thumbnail',
-                        'style' => !$model->getIsNewRecord() && $model->image ? '' : 'display:none',
-                    ]
-                ); ?>
-            </div>
-
-            <?php if (!$model->getIsNewRecord() && $model->image): ?>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="delete-file"> <?= Yii::t(
-                            'YupeModule.yupe',
-                            'Delete the file'
-                        ) ?>
-                    </label>
-                </div>
-            <?php endif; ?>
-
-            <?= $form->fileFieldGroup(
-                $model,
-                'image',
-                [
-                    'widgetOptions' => [
-                        'htmlOptions' => [
-//                            'onchange' => 'readURL(this);',
-                        ],
-                    ],
-                ]
-            ); ?>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'adres', [
@@ -111,6 +68,75 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'rayon', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('rayon'),
+                        'data-content' => $model->getAttributeDescription('rayon')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'floor', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('floor'),
+                        'data-content' => $model->getAttributeDescription('floor')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'priceForMeter', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('priceForMeter'),
+                        'data-content' => $model->getAttributeDescription('priceForMeter')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'walls', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('walls'),
+                        'data-content' => $model->getAttributeDescription('walls')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'type', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('type'),
+                        'data-content' => $model->getAttributeDescription('type')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-sm-7">
@@ -251,9 +277,48 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class='row'>
         <div class="col-sm-7">
-            <?=  $form->textFieldGroup($model, 'seo_title', [
+            <div class="preview-image-wrapper<?= !$model->getIsNewRecord() && $model->svgBackground ? '' : ' hidden' ?>">
+                <?=
+                CHtml::image(
+                    !$model->getIsNewRecord() && $model->svgBackground? $model->getImageUrl(200, 200, true) : '#',
+                    $model->svgBackground,
+                    [
+                        'class' => 'preview-image img-thumbnail',
+                        'style' => !$model->getIsNewRecord() && $model->svgBackground ? '' : 'display:none',
+                    ]
+                ); ?>
+            </div>
+
+            <?php if (!$model->getIsNewRecord() && $model->svgBackground): ?>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="delete-file"> <?= Yii::t(
+                            'YupeModule.yupe',
+                            'Delete the file'
+                        ) ?>
+                    </label>
+                </div>
+            <?php endif; ?>
+
+            <?= $form->fileFieldGroup(
+                $model,
+                'svgBackground',
+                [
+                    'widgetOptions' => [
+                        'htmlOptions' => [
+//                            'onchange' => 'readURL(this);',
+                        ],
+                    ],
+                ]
+            ); ?>
+        </div>
+    </div>
+
+  <!--  <div class="row">
+        <div class="col-sm-7">
+            <?/*=  $form->textFieldGroup($model, 'seo_title', [
                 'widgetOptions' => [
                     'htmlOptions' => [
                         'class' => 'popover-help',
@@ -261,13 +326,13 @@
                         'data-content' => $model->getAttributeDescription('seo_title')
                     ]
                 ]
-            ]); ?>
+            ]); */?>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-7">
-            <?=  $form->textFieldGroup($model, 'seo_description', [
+            <?/*=  $form->textFieldGroup($model, 'seo_description', [
                 'widgetOptions' => [
                     'htmlOptions' => [
                         'class' => 'popover-help',
@@ -275,13 +340,13 @@
                         'data-content' => $model->getAttributeDescription('seo_description')
                     ]
                 ]
-            ]); ?>
+            ]); */?>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-7">
-            <?=  $form->textFieldGroup($model, 'seo_keywords', [
+            <?/*=  $form->textFieldGroup($model, 'seo_keywords', [
                 'widgetOptions' => [
                     'htmlOptions' => [
                         'class' => 'popover-help',
@@ -289,9 +354,9 @@
                         'data-content' => $model->getAttributeDescription('seo_keywords')
                     ]
                 ]
-            ]); ?>
+            ]); */?>
         </div>
-    </div>
+    </div>-->
 
 
     <?php $this->widget(
