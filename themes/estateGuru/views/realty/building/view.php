@@ -140,12 +140,10 @@ $apartments = $data->apartments;
                 </figure>
             </div>
             <div class="visual__polygons-lr">
-                <?php foreach ($apartments as $apartment): ?>
-                    <a href = "<?= $apartment->getUrl(); ?>" class="polygon" data-id="<?= $apartment->id; ?>">
-                        <div class="polygon__svg">
+                <?php foreach ($apartments as $apartment): ?>                    
+                        <div class="polygon">
                             <?= $apartment->getSvg(); ?>
-                        </div>
-                    </a>
+                        </div>                    
                 <?php endforeach; ?>
             </div>
             <div class="visual__tooltips-lr">
