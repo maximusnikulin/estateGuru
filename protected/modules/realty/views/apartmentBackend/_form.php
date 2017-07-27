@@ -181,6 +181,20 @@
         </div>
 
         <div class="row">
+            <div class="col-sm-7">
+                <?=  $form->textFieldGroup($model, 'number', [
+                    'widgetOptions' => [
+                        'htmlOptions' => [
+                            'class' => 'popover-help',
+                            'data-original-title' => $model->getAttributeLabel('number'),
+                            'data-content' => $model->getAttributeDescription('number')
+                        ]
+                    ]
+                ]); ?>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="svg-background js-svg-background">
                 <img src="<?= $model->building->getImageUrl(); ?>" alt="">
                 <div class="point-container js-point-container">

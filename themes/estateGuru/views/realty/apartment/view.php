@@ -4,113 +4,105 @@
  */
 $images = $data->getImages();
 
-$this->title = [$data->seo_title, Yii::app()->getModule('yupe')->siteName];
+/*$this->title = [$data->seo_title, Yii::app()->getModule('yupe')->siteName];
 $this->description = $data->seo_description;
-$this->keywords = $data->seo_keywords;
+$this->keywords = $data->seo_keywords;*/
 
-Yii::app()->getModule("realty")->addCardTags($data);
-
-
-//Yii::app()->clientScript->registerMetaTag($data->getImageUrl(100, 100, false), null, null, array('property' => "og:image"));
-//Yii::app()->clientScript->registerMetaTag("фывфывфыв", null, null, array('property' => "og:title"));
-//Yii::app()->clientScript->registerMetaTag("", null, array('property' => "og:url"));
-//Yii::app()->clientScript->registerMetaTag("", null, null, array('property' => "og:site_name"));
-//Yii::app()->clientScript->registerMetaTag("", null, null, array('property' => "og:type"));
-
+$images = $data->getImages();
+if (!empty($images)) {
+    $mainImage = array_shift($images);
+} else {
+    $mainImage = false;
+}
+$apartments = $data->apartments;
 
 ?>
-<style>
-    @media screen and (max-width: 450px) {
-        .callback-main .callback__wrapper {
-            margin: 0
-        }
-    }
-</style>
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="view__title font-title"><?= $data->getTitle() ?> </h1>
-    </div>
-</div>
-<div class="row" style="padding-top:10px;">
-    <div class="col-lg-8">
-        <div class="walp" style="background: #F5F5F5">
-            <div class="prew">
-                <ul id="lightSlider">
-                    <li data-thumb="<?= $data->getImageUrl(100, 100, false); ?>">
-                        <a rel="group" class="fancybox" href="<?= $data->getImageUrl(1000, 1000, false); ?>"> <img
-                                src="<?= $data->getImageUrl(1000, 1000, false); ?>" alt="<?= $data->getTitle(); ?>"/>
-                        </a>
-                    </li>
-                    <?php foreach ($images as $item): ?>
-                        <li data-thumb="<?= $item->getImageUrl(100, 100, false); ?>">
-                            <a rel="group" class="fancybox" href="<?= $item->getImageUrl(1000, 1000, false); ?>"> <img
-                                    src="<?= $item->getImageUrl(1000, 1000, false); ?>" alt=""> </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="font-description">
-            <?php
-            $this->renderPartial("/map/linkOnBuilding", ["building" => $data->building]);
-            ?>
-            <div class="view__small-info"><span class="view__small-info__name">Дом: </span><span class="main-info"> <a
-                        href="<?= $data->building->getUrl() ?>"> <?= $data->building->adres ?> </a></span>
-            </div>
-            <?php if ($data->building->idDistrict > 0): ?>
-                <div class="view__small-info"><span class="view__small-info__name"> Квартал:</span><span
-                        class="main-info"> <a
-                            href="<?= $data->building->district->getUrl() ?>"> <?= $data->building->district->name ?> </a></span>
-                </div>
-            <?php endif; ?>
-            <?php if ($data->building->idBuilder > 0): ?>
-                <div class="view__small-info"><span class="view__small-info__name">Застройщик:</span><span
-                        class="main-info"><a
-                            href="<?= $data->building->builder->getUrl() ?>"> <?= $data->building->builder->name ?> </a> </span>
-                </div>
-            <?php endif; ?>
-            <div class="view__small-info"><span class="view__small-info__name"> Площадь:</span><span
-                    class="main-info"><?= $data->size ?> м<sup>2</sup></span></div>
-            <div class="view__small-info"><?= $data->building->getStatusAsString(); ?></span></div>
-            <?php if ($data->building->status == STATUS_IN_PROGRESS): ?>
-                <div class="view__small-info"><span class="view__small-info__name"> Срок сдачи:</span><span
-                        class="main-info "><?= $data->building->getReadyTimes()[$data->building->readyTime] ?></sup></span>
-                </div>
-            <?php endif; ?>
-            <div data-background-alpha="0.0" data-buttons-color="#FFFFFF" data-counter-background-color="#ffffff"
-                 data-share-counter-size="12" data-top-button="false" data-share-counter-type="disable"
-                 data-share-style="1" data-mode="share" data-like-text-enable="false" data-mobile-view="true"
-                 data-icon-color="#ffffff" data-orientation="horizontal" data-text-color="#000000"
-                 data-share-shape="round-rectangle" data-sn-ids="fb.vk.tw.ok." data-share-size="30"
-                 data-background-color="#ffffff" data-preview-mobile="false" data-mobile-sn-ids="fb.vk.tw.wh.ok.vb."
-                 data-pid="1582984" data-counter-background-alpha="1.0" data-following-enable="false"
-                 data-exclude-show-more="false" data-selection-enable="true" class="uptolike-buttons"></div>
-         
-            <div class="price-page price-apartment"><?= $data->getPriceAsString(); ?></div>
-            <div class="b-text-price">
-                Обратите внимание: мы не берем никаких комиссий
-            </div>
-            <div class="callback-main">
-                <?php $otherText = "assdsd"; ?>
-                <?php $this->widget('application.modules.callback.widgets.CallbackWidget', ["otherText" => $data->getTitle()]); ?>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <hr>
-        <div class="description">
-            <div class="b-description__text font-description">
-                <?= $data->longDescription ?>
-            </div>
-            <hr>
-        </div>
 
+<div class="object">
+    <div class="object__title">
+        <h1 class="text"><?= $data->building->adres; ?></h1>
+        <h2 class="caption">Квартира г. Барнаул</h2>
     </div>
-<span class="project-info-link font-description">
-    С полной проектной декларацией вы можете ознакомиться на сайте <?= $data->building->builder->link; ?>
-</span>
+    <div class="object__content">
+        <div class="object__photo js-gallery-photos">
+            <?php if ($mainImage !== false): ?>
+                <div class="object__photo-main">
+                    <figure class="photo" href="<?= $mainImage->getImageUrl(1000, 1000); ?>"><img
+                                src="<?= $mainImage->getImageUrl(1000, 1000); ?>" alt=""></figure>
+                </div>
+            <?php endif; ?>
+            <div class="object__photo-grid ">
+                <?php foreach ($images as $image): ?>
+                    <figure class="photo" href="<?= $image->getImageUrl(1000,1000); ?>"><img src="<?= $image->getImageUrl(1000,1000); ?>" alt=""></figure>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="object__desc">
+            <h2 class="object__desc-title">Общая информация</h2>
+            <div class="object__desc-common">
+                <?php if (!empty($data->rooms)): ?>
+                    <div class="row">
+                        <div class="row__cell">Количество комнат</div>
+                        <div class="row__cell row__cell--right"><?= $data->rooms; ?></div>
+                    </div>
+                <?php endif; ?>
+                <?php if (!empty($data->building->rayon)): ?>
+                    <div class="row">
+                        <div class="row__cell">Район</div>
+                        <div class="row__cell row__cell--right"><?= $data->building->rayon; ?></div>
+                    </div>
+                <?php endif; ?>
+                <?php if (!empty($data->building->adres)): ?>
+                    <div class="row">
+                        <div class="row__cell">Адрес</div>
+                        <div class="row__cell row__cell--right"><?= $data->building->adres; ?></div>
+                    </div>
+                <?php endif; ?>
+                <?php if (!empty($data->floor)): ?>
+                    <div class="row">
+                        <div class="row__cell">Этаж</div>
+                        <div class="row__cell row__cell--right"><?= $data->floor; ?></div>
+                    </div>
+                <?php endif; ?>
+                <?php if (!empty($data->size)): ?>
+                    <div class="row">
+                        <div class="row__cell">Площадь</div>
+                        <div class="row__cell row__cell--right"><?= $data->size; ?></div>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <h2 class="object__desc-title">Дополнительная информация</h2>
+            <div class="object__desc-common">
+                <?php if (!empty($data->building->rayon)): ?>
+                    <div class="row">
+                        <div class="row__cell">Район</div>
+                        <div class="row__cell row__cell--right"><?= $data->building->rayon; ?></div>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="object__desc-to-map">
+                <span class="text">Показать на карте</span>
+            </div>
+            <h2 class="object__desc-title">Описание</h2>
+            <p class="object__desc-text">
+                <?= $data->longDescription; ?>
+            </p>
+            <div class="object__desc-concl">
+                <div class="price">
+                    <span class="caption">Цена от</span> <span class = "value"><?= number_format($data->cost, 0, ".", " "); ?> &#8381;</span>
+                </div>
+                <div class="callback">
+                    <div class="button button--action">Узнать больше</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="slider-layouts js-slider-layouts js-gallery-layouts">
+    <div class="slider-layouts__item" href = "./images/layout.png">
+        <img class = "layout"  src="./images/layout.png" alt="">
+    </div>
+    <div class="slider-layouts__item" href = "./images/layout.png">
+        <img class = "layout" src="./images/layout.png" alt="">
+    </div>
 </div>

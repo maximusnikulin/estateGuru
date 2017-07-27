@@ -28,7 +28,13 @@ define("STATUS_COMMERCIAL",4);
  * @property string $walls
  * @property string $type
  * @property string $svgBackground
- *
+ * @property string $square
+ * @property string $city
+ * @property string $water
+ * @property string $basement
+ * @property string $price
+ * @property string $whereObject
+
  * @property string $seo_title
  * @property string $seo_description
  * @property string $seo_keywords
@@ -156,10 +162,10 @@ class Building extends yupe\models\YModel
 			array('shortDescription, longDescription', 'safe'),
             array('rayon, seo_title', 'length', 'max'=>100),
             array('seo_description, seo_keywords', 'length', 'max'=>300),
-            array('rayon, floor, priceForMeter, walls, type, seo_title, seo_description, seo_keywords','safe'),
+            array('square, city, water, basement, price, whereObject, rayon, floor, priceForMeter, walls, type, seo_title, seo_description, seo_keywords','safe'),
             // The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('rayon, floor, priceForMeter, walls, type, svgBackground, slug, id, image, adres, longitude, latitude, idDistrict, idBuilder, isPublished, isShowedOnMap, shortDescription, longDescription, status, readyTime', 'safe', 'on'=>'search'),
+			array('square, city, water, basement, price, whereObject, rayon, floor, priceForMeter, walls, type, svgBackground, slug, id, image, adres, longitude, latitude, idDistrict, idBuilder, isPublished, isShowedOnMap, shortDescription, longDescription, status, readyTime', 'safe', 'on'=>'search'),
 		);
 	}
 

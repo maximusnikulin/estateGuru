@@ -11,8 +11,6 @@ $title = $data->adres;
 $this->description = $data->seo_description;
 $this->keywords = $data->seo_keywords;
 
-Yii::app()->getModule("realty")->addCardTags($data);
-
 $images = $data->getImages();
 if (!empty($images)) {
     $mainImage = array_shift($images);

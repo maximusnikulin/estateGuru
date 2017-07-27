@@ -164,6 +164,91 @@
             ]); ?>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'square', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('square'),
+                        'data-content' => $model->getAttributeDescription('square')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'city', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('city'),
+                        'data-content' => $model->getAttributeDescription('city')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'water', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('water'),
+                        'data-content' => $model->getAttributeDescription('water')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'basement', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('basement'),
+                        'data-content' => $model->getAttributeDescription('basement')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'price', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('price'),
+                        'data-content' => $model->getAttributeDescription('price')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'whereObject', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('whereObject'),
+                        'data-content' => $model->getAttributeDescription('whereObject')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-sm-7">
             <?php ?>

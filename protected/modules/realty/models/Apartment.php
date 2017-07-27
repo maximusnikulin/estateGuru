@@ -15,6 +15,7 @@
  * @property string $svgPoints
  * @property string $shortDescription
  * @property string $longDescription
+ * @property string $number
 
 
  * @property string $seo_title
