@@ -1,4 +1,4 @@
-
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const path = require('path');
 const webpack = require('webpack-stream').webpack;
 const config = require('./main.config');
@@ -9,6 +9,7 @@ let isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == "developmen
 isDevelopment && console.log('Developing')
 
 let pluginsProd = [
+    // new ExtractTextPlugin("style-vue.css"),
     new webpack.optimize.UglifyJsPlugin({
         compress: {
             screw_ie8: true,
@@ -37,8 +38,11 @@ module.exports = {
         filename: 'bundle.js',
         path: '/public/js/',
     },
-    resolve: {
-        extensions: ['', '.js', '.jsx','.json']
+    resolve: {  
+        alias: {
+          'vue$': 'vue/dist/vue.common.js'
+        },
+        extensions: ['', '.js', '.jsx','.json','.vue']
     },
     plugins: [
         new webpack.DefinePlugin({         
@@ -53,12 +57,22 @@ module.exports = {
         }),
         ...plugins
     ],
-    module: {
+    vue: {        
+          extractCSS: !isDevelopment,
+          loaders: {
+            js:'babel-loader'          
+          }
+    },        
+    module: {        
         loaders: [{
             test: /\.jsx?$/,
             loaders: ['babel'],
             include: path.join(__dirname, '../../js'),
             exclude: /node_modules/
+        },
+        {
+            test: /\.vue$/,
+            loader: 'vue-loader'            
         },
         {
             test: /jquery-mousewheel/,
@@ -68,5 +82,6 @@ module.exports = {
             test: /malihu-custom-scrollbar-plugin/,
             loader: "imports?define=>false&this=>window"
         }]
-    }
+    },
+        
 };

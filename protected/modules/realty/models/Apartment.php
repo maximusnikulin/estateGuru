@@ -98,12 +98,16 @@ class Apartment extends yupe\models\YModel
     {
         $points = explode(",",$this->svgPoints);
         $result = [];
+        
         for ($i = 0; $i < count($points); $i+=2) {
             $result[] = $points[$i].",".$points[$i + 1];
         }
         $result = implode(" ", $result);
-        return '<svg height="100%" width="100%">
-                <polygon points="' . $result . '" style="fill:lime;stroke:purple;stroke-width:1" />
+        return '
+                <svg height="100%" width="100%" class = "polygon__svg">
+                 <a href =' . $this->getUrl() . '>
+                    <polygon points="' . $result . '" style="fill:red;stroke:purple;stroke-width:3px" data-id = ' . $this->id . '/>
+                 </a>
                 </svg>';
 
 	}
