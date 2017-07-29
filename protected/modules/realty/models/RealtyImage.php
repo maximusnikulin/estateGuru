@@ -13,6 +13,8 @@ class RealtyImage extends \yupe\models\YModel
 {
     static public $TABLE_APARTMENT = 1;
     static public $TABLE_BUILDING = 2;
+    static public $TABLE_APARTMENT_PLANNING = 3;
+    static public $TABLE_BUILDING_PLANNING = 4;
 	/**
 	 * @return string the associated database table name
 	 */

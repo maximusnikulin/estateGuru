@@ -23,7 +23,7 @@ $this->widget(
                 },
             ],
             'adres',
-            [
+          /*  [
                 'filter' => District::getForDropdown(),
                 'name' => 'idDistrict',
                 'value' => function ($data) {
@@ -32,7 +32,7 @@ $this->widget(
                     else
                         return $data->district->name;
                 }
-            ],
+            ],*/
             [
                 'filter' => Builder::getForDropdown(),
                 'name' => 'idBuilder',

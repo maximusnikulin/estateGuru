@@ -16,6 +16,7 @@
 <ul class="nav nav-tabs">
     <li class="active"><a href="#common" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Common"); ?></a></li>
     <li><a href="#images" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Images"); ?></a></li>
+    <li><a href="#planning" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Planning"); ?></a></li>
 </ul>
 
 <div class="tab-content">
@@ -206,7 +207,8 @@
             <a href="javascript:void(0)" class="js-clear-points">Очистить</a>
         </div>
         <?=  $form->hiddenField($model, 'svgPoints', ['class' => 'js-points']); ?>
-
+э
+        эъ
         <style>
             .svg-background {
                 position: relative;
@@ -331,6 +333,18 @@
             <?php
             $imageModel = new RealtyImage();
             $imageModel->idTable = RealtyImage::$TABLE_APARTMENT;
+            $imageModel->idRecord = $model->id;
+            $this->renderPartial("/realtyImageBackend/_form",["model" => $imageModel]);
+            ?>
+        <?php endif; ?>
+    </div>
+    <div class="tab-pane" id="planning">
+        <?php if ($model->isNewRecord):?>
+            <h2>Сначала сохраните основную информацию о квартире</h2>
+        <?php else:?>
+            <?php
+            $imageModel = new RealtyImage();
+            $imageModel->idTable = RealtyImage::$TABLE_APARTMENT_PLANNING;
             $imageModel->idRecord = $model->id;
             $this->renderPartial("/realtyImageBackend/_form",["model" => $imageModel]);
             ?>

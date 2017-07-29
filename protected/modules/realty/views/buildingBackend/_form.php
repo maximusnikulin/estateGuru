@@ -16,8 +16,9 @@
 
 <ul class="nav nav-tabs">
     <li class="active"><a href="#common" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Common"); ?></a></li>
-    <li><a href="#apartments" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Apartments"); ?></a></li>
+    <li class="js-item js-item-home js-item-second"><a href="#apartments" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Apartments"); ?></a></li>
     <li><a href="#images" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Images"); ?></a></li>
+    <li class="js-item js-item-cottage"><a href="#planning" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Planning"); ?></a></li>
 </ul>
 
 <div class="tab-content">
@@ -47,6 +48,21 @@
     </div>
 
     <?=  $form->errorSummary($model); ?>
+
+    <div class="row js-status">
+        <div class="col-sm-7">
+            <?=  $form->dropDownListGroup($model, 'status', [
+                'widgetOptions' => [
+                    'data' => Building::getStatuses(),
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('status'),
+                        'data-content' => $model->getAttributeDescription('status')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-sm-7">
@@ -82,7 +98,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row js-item js-item-home js-item-cottage">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'floor', [
                 'widgetOptions' => [
@@ -96,7 +112,21 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row js-item js-item-commercial">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'floorPos', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('floorPos'),
+                        'data-content' => $model->getAttributeDescription('floorPos')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
+    <div class="row js-item js-item-home js-item-commercial">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'priceForMeter', [
                 'widgetOptions' => [
@@ -110,7 +140,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row js-item js-item-home js-item-cottage">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'walls', [
                 'widgetOptions' => [
@@ -124,7 +154,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row js-item js-item-home">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'type', [
                 'widgetOptions' => [
@@ -151,6 +181,7 @@
             ]); ?>
         </div>
     </div>
+
     <div class="row">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'latitude', [
@@ -193,7 +224,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row js-item js-item-cottage">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'water', [
                 'widgetOptions' => [
@@ -207,7 +238,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row js-item js-item-cottage">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'basement', [
                 'widgetOptions' => [
@@ -221,7 +252,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row js-item js-item-cottage js-item-earth">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'price', [
                 'widgetOptions' => [
@@ -235,7 +266,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row js-item js-item-commercial">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'whereObject', [
                 'widgetOptions' => [
@@ -249,10 +280,10 @@
         </div>
     </div>
 
-    <div class="row">
+<!--    <div class="row">
         <div class="col-sm-7">
-            <?php ?>
-            <?=  $form->dropDownListGroup($model, 'idDistrict', [
+            <?php /**/?>
+            <?/*=  $form->dropDownListGroup($model, 'idDistrict', [
                 'widgetOptions' => [
                     'data' => District::getForDropdown(),
                     'htmlOptions' => [
@@ -261,10 +292,11 @@
                         'data-content' => $model->getAttributeDescription('idDistrict')
                     ]
                 ]
-            ]); ?>
+            ]); */?>
         </div>
-    </div>
-    <div class="row">
+    </div>-->
+
+    <div class="row js-item js-item-home">
         <div class="col-sm-7">
             <?php ?>
             <?=  $form->dropDownListGroup($model, 'idBuilder', [
@@ -279,6 +311,7 @@
             ]); ?>
         </div>
     </div>
+
     <div class="row">
         <div class="col-sm-7">
             <?=  $form->checkboxGroup($model, 'isPublished', [
@@ -292,9 +325,10 @@
             ]); ?>
         </div>
     </div>
-    <div class="row">
+
+  <!--  <div class="row">
         <div class="col-sm-7">
-            <?=  $form->checkboxGroup($model, 'isShowedOnMap', [
+            <?/*=  $form->checkboxGroup($model, 'isShowedOnMap', [
                 'widgetOptions' => [
                     'htmlOptions' => [
                         'class' => 'popover-help',
@@ -302,11 +336,25 @@
                         'data-content' => $model->getAttributeDescription('isShowedOnMap')
                     ]
                 ]
+            ]); */?>
+        </div>
+    </div>-->
+
+    <div class="row js-item js-item-home">
+        <div class="col-sm-7">
+            <?=  $form->checkboxGroup($model, 'showOnIndex', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('showOnIndex'),
+                        'data-content' => $model->getAttributeDescription('showOnIndex')
+                    ]
+                ]
             ]); ?>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12" style="width: 400px" <?= $model->hasErrors('shortDescription') ? 'has-error' : ''; ?>">
+        <div class="col-sm-12" <?= $model->hasErrors('shortDescription') ? 'has-error' : ''; ?>">
         <?= $form->labelEx($model, 'shortDescription'); ?>
         <?php $this->widget(
             $this->module->getVisualEditor(),
@@ -333,21 +381,8 @@
             <?= $form->error($model, 'longDescription'); ?>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-7">
-            <?=  $form->dropDownListGroup($model, 'status', [
-                'widgetOptions' => [
-                    'data' => Building::getStatuses(),
-                    'htmlOptions' => [
-                        'class' => 'popover-help',
-                        'data-original-title' => $model->getAttributeLabel('status'),
-                        'data-content' => $model->getAttributeDescription('status')
-                    ]
-                ]
-            ]); ?>
-        </div>
-    </div>
-    <div class="row">
+
+    <div class="row js-item js-item-home">
         <div class="col-sm-7">
             <?=  $form->dropDownListGroup($model, 'readyTime', [
                 'widgetOptions' => [
@@ -362,7 +397,7 @@
         </div>
     </div>
 
-    <div class='row'>
+    <div class='row js-item js-item-home'>
         <div class="col-sm-7">
             <div class="preview-image-wrapper<?= !$model->getIsNewRecord() && $model->svgBackground ? '' : ' hidden' ?>">
                 <?=
@@ -528,4 +563,28 @@
         ?>
     <?php endif; ?>
 </div>
+<div class="tab-pane" id="planning">
+    <?php if ($model->isNewRecord):?>
+        <h2>Сначала сохраните основную информацию о доме</h2>
+    <?php else:?>
+        <?php
+        $imageModel = new RealtyImage();
+        $imageModel->idTable = RealtyImage::$TABLE_BUILDING_PLANNING;
+        $imageModel->idRecord = $model->id;
+        $this->renderPartial("/realtyImageBackend/_form",["model" => $imageModel]);
+        ?>
+    <?php endif; ?>
 </div>
+</div>
+<script>
+    $(function() {
+        var statusClasses = ['null-class', 'js-item-home', 'js-item-cottage', 'js-item-earth', 'js-item-commercial', 'js-item-resell'];
+        var $items = $('.js-item');
+        $('.js-status select').change(function() {
+            var val = $(this).val();
+            $items.hide()
+                .filter('.' + statusClasses[val])
+                .show();
+        }).change();
+    });
+</script>
