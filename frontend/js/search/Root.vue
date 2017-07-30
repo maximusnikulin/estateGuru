@@ -5,9 +5,9 @@
 <script>    
 export default {
     name:'root',
-    data:function(){
+    data: function(){
         return {
-            title:"asdasd"
+            title: "Hey vue"
         }
     }
 }
