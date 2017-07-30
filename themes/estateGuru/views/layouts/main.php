@@ -16,8 +16,10 @@
     <?php endif; ?>
 
     <?php
-    Yii::app()->getClientScript()->registerCssFile('/frontend/public/css/style.css');
+      Yii::app()->getClientScript()->registerCssFile('/frontend/public/css/style.css');
+      Yii::app()->getClientScript()->registerScriptFile('/frontend/public/js/bundle.js', CClientScript::POS_END);
     ?>
+  
     <script type="text/javascript">
         var yupeTokenName = '<?= Yii::app()->getRequest()->csrfTokenName;?>';
         var yupeToken = '<?= Yii::app()->getRequest()->getCsrfToken();?>';
@@ -97,11 +99,5 @@
       </ul>
     </footer>
   </div>
-
-
-<?php
-    Yii::app()->getClientScript()->registerScriptFile('/frontend/public/js/bundle.js');
-    ?>
-
 </body>
 </html>
