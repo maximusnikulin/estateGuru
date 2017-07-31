@@ -19,37 +19,47 @@ class RealtyController extends \yupe\components\controllers\FrontController
      */
     public function actionIndex()
     {
+        Yii::import('news.models.*');
         $criteria = new CDbCriteria();
         $criteria->select = 't.*';
-        $criteria->compare("isPublished",1);
-        $criteria->addCondition("status <> 3");
-        $criteria->addCondition("status <> 4");
-        $criteria->addCondition("status > 0");
+        $criteria->compare("showOnIndex",1);
+        $criteria->compare("status", STATUS_HOME);
         $criteria->order = "adres ASC";
+        $sliderItems = Building::model()->findAll($criteria);
 
-        $data = new CActiveDataProvider(
-            'Building',
-            [
-                'criteria' => $criteria,
-                'pagination' => [
-                    'pageSize' => (int)Yii::app()->getModule('realty')->itemsPerPage,
-                    'pageVar' => 'page',
-                ],
-                /*                'sort' => [
-                                    'sortVar' => 'sort',
-                                    'defaultOrder' => 't.position'
-                                ],
-                  */          ]
-        );
+        $dbCriteria = new CDbCriteria([
+            'condition' => 't.status = :status',
+            'params' => [
+                ':status' => News::STATUS_PUBLISHED,
+            ],
+            'order' => 't.date DESC',
+        ]);
 
-        $page = RealtyPage::model()->find("type = ".REALTY_PAGE_MAIN);
-        $this->title = [$page->seo_title];
-        if (Yii::app()->getModule('yupe')->siteName != "")
-            $this->title[] = Yii::app()->getModule('yupe')->siteName;
-        $this->keywords = $page->seo_keywords;
-        $this->description = $page->seo_description;
+        $news = News::model()->findAll($dbCriteria);
 
-        $this->render("/building/index",["dataProvider" => $data, "page" => $page]);
+        /*   $data = new CActiveDataProvider(
+               'Building',
+               [
+                   'criteria' => $criteria,
+                   'pagination' => [
+                       'pageSize' => (int)Yii::app()->getModule('realty')->itemsPerPage,
+                       'pageVar' => 'page',
+                   ],
+                   /*                'sort' => [
+                                       'sortVar' => 'sort',
+                                       'defaultOrder' => 't.position'
+                                   ],
+                               ]
+           );
+
+           $page = RealtyPage::model()->find("type = ".REALTY_PAGE_MAIN);
+           $this->title = [$page->seo_title];
+           if (Yii::app()->getModule('yupe')->siteName != "")
+               $this->title[] = Yii::app()->getModule('yupe')->siteName;
+           $this->keywords = $page->seo_keywords;
+           $this->description = $page->seo_description;*/
+
+        $this->render("/building/index",['sliderItems' => $sliderItems, 'news' => $news]);
     }
 
     public function actionNonReady()
