@@ -106,7 +106,7 @@ class Apartment extends yupe\models\YModel
         return '
                 <svg height="100%" width="100%" class = "polygon__svg">
                  <a href =' . $this->getUrl() . '>
-                    <polygon points="' . $result . '" style="fill:red;stroke:purple;stroke-width:3px" data-id = ' . $this->id . '/>
+                    <polygon points="' . $result . '" style="fill:red;stroke:purple;stroke-width:3px" data-id = "' . $this->id . '"></polygon>
                  </a>
                 </svg>';
 

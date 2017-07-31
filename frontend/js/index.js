@@ -12,4 +12,5 @@ import './components/nav-cards';
 
 
 // VUE SEARCH
-import './main.js';
+
+import './search/main.js';
