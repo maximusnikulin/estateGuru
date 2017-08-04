@@ -239,11 +239,20 @@ class Apartment extends yupe\models\YModel
     public function getImages()
     {
         $criteria = new CDbCriteria();
-        $criteria->compare("idTable",1);
+        $criteria->compare("idTable",RealtyImage::$TABLE_APARTMENT);
         $criteria->compare("idRecord",$this->id);
         $images = RealtyImage::model()->findAll($criteria);
         return $images;
     }
+
+    public function getPlannings()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->compare("idRecord",$this->id);
+        $criteria->compare("idTable",RealtyImage::$TABLE_APARTMENT_PLANNING);
+        return RealtyImage::model()->findAll($criteria);
+    }
+
 
     public function getTitle()
     {

@@ -1,22 +1,3 @@
-<template>
-    <div class="svg-maker" ref = "svg-maker">
-        <div class="svg-maker__image">
-            <img src="/images/svg-layout.png" alt="" width="100%" ref = "image">
-        </div>
-        <div class="svg-maker__svg" v-on="{ mousemove: mouseMove, mousedown:mouseDown}"> 
-            <svg width = "100%" height = "100%" >                
-                 <path v-bind:d = "pathPoints" v-bind:fill = "fill" stroke = "green" stroke-width = "1"/>
-                 <line v-bind:x1 = "lineNext[0][0]" v-bind:y1 = "lineNext[0][1]" v-bind:x2 = "lineNext[1][0]" v-bind:y2 = "lineNext[1][1]" stroke = "violet" stroke-width = "1"></line>            
-                 <circle v-for = "point in points" v-bind:cx = "point[0]" v-bind:cy = "point[1]" r = "10" fill = "red"></circle>
-                 <circle  v-bind:cx = "pointNext[0]" v-bind:cy = "pointNext[1]" r = "10" fill = "red" opacity = ".7"></circle>                 
-            </svg>
-        </div>
-    </div>
-</template>
-
-<script>  
-
-
 
 export default {
     name:'svg-maker',

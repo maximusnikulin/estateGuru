@@ -400,4 +400,24 @@ class News extends yupe\models\YModel
     {
         return $this->is_protected == self::PROTECTED_YES;
     }
+
+    public function getFormattedDate()
+    {
+        $arr = [
+            'Января',
+            'Февраля',
+            'Марта',
+            'Апреля',
+            'Мая',
+            'Июня',
+            'Июля',
+            'Августа',
+            'Сентября',
+            'Октября',
+            'Ноября',
+            'Декабря',
+            ];
+        $time = strtotime($this->create_time);
+        return date('d', $time)." ".$arr[date('m', $time) * 1]." ".date('Y', $time);
+    }
 }
