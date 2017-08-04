@@ -14,4 +14,3 @@ import './components/nav-cards';
 // VUE SEARCH
 
 import './search/main.js';
-import './svg-maker/index.js';

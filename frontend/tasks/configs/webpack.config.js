@@ -35,7 +35,7 @@ module.exports = {
     devtool: isDevelopment ? 'eval' : 'hidden-source-map',
     output: {
         publicPath: '/public/',
-        filename: 'bundle.js',
+        filename: '[name].js',
         path: '/public/js/',
     },
     resolve: {  

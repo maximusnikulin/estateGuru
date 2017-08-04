@@ -1,10 +1,10 @@
 import Vue from 'vue';
 
-var FILL_PATH = "rgba(98, 187, 70, 0.34)";
-var COLOR_PATH = "rgba(98, 187, 70, 0.34)";
+var FILL_PATH = "rgba(98, 187, 70, 0.5)";
 var COLOR_LINE = "rgb(165, 70, 134)";
-var RADIUS_CIRCLE = "10";
-
+var RADIUS_CIRCLE = "5";
+var COLOR_CIRCLE = "red";
+var COLOR_STROKE = "violet";
 
 if (document.getElementById('vue-svg-maker')) {
     new Vue({
@@ -17,7 +17,9 @@ if (document.getElementById('vue-svg-maker')) {
                 closePath:false,
                 constants: {
                     RADIUS_CIRCLE:RADIUS_CIRCLE,
-                    COLOR_STROKE:COLOR_STROKE   
+                    COLOR_STROKE:COLOR_STROKE,
+                    COLOR_LINE:COLOR_LINE,
+                    COLOR_CIRCLE:COLOR_CIRCLE   
                 }
                 
 
@@ -62,6 +64,7 @@ if (document.getElementById('vue-svg-maker')) {
                 return [resX , resY ]
             },
             mouseMove:function(e){
+                if(this.closePath) return []
                 this.currentPos = this.getCoords([e.pageX,e.pageY]);            
             },
             mouseDown:function(e) {

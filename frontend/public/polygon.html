@@ -38,16 +38,16 @@
         </div>
         <div class="svg-maker__svg" v-on="{ mousemove: mouseMove, mousedown:mouseDown}"> 
             <svg width = "100%" height = "100%" >                
-                 <path v-bind:d = "pathPoints" v-bind:fill = "fill" stroke = "green" stroke-width = "1"/>
+                 <path v-bind:d = "pathPoints" v-bind:fill = "fill" v-bind:stroke = "constants.COLOR_LINE" stroke-width = "1"/>
                  <line v-bind:x1 = "lineNext[0][0]" v-bind:y1 = "lineNext[0][1]" v-bind:x2 = "lineNext[1][0]" v-bind:y2 = "lineNext[1][1]" stroke = "violet" stroke-width = "1"></line>            
-                 <circle v-for = "point in points" v-bind:cx = "point[0]" v-bind:cy = "point[1]" r = "10" fill = "red"></circle>
-                 <circle  v-bind:cx = "pointNext[0]" v-bind:cy = "pointNext[1]" r = "10" fill = "red" opacity = ".7"></circle>                 
+                 <circle v-for = "point in points" v-bind:cx = "point[0]" v-bind:cy = "point[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>
+                 <circle  v-bind:cx = "pointNext[0]" v-bind:cy = "pointNext[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>                 
             </svg>
         </div>
     </div>
   </section>
  
 </body>
-<script src="./js/bundle.js"></script>
+<script src="./js/svg-maker.js"></script>
 
 </html>

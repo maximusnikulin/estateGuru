@@ -19,7 +19,10 @@ let config = {
   ],
   paths: {
     //JS
-    entry:'./js/index.js',
+    entry:{
+      'bundle': './js/index.js',
+      'svg-maker': './js/svg-maker/index.js',
+    },
     js: './js/**/*.{js,jsx}',        
     //SVG
     svg_sprite: './svg-sprite/**/*.svg',
