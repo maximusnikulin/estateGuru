@@ -20,8 +20,8 @@ if (document.getElementById('vue-svg-maker')) {
                     COLOR_STROKE:COLOR_STROKE,
                     COLOR_LINE:COLOR_LINE,
                     COLOR_CIRCLE:COLOR_CIRCLE   
-                }
-                
+                },
+                result:""
 
         },
         mounted: function () {
@@ -48,11 +48,13 @@ if (document.getElementById('vue-svg-maker')) {
         updated: function(){
             if (!this.closePath & this.points.length > 1) {
                 this.closePath = Math.abs(this.points[0][0] - this.points[this.points.length - 1][0]) < RADIUS_CIRCLE * 2 && Math.abs(this.points[0][1] - this.points[this.points.length - 1][1]) < RADIUS_CIRCLE * 2;           
-                this.fill = "transparent"
+                this.fill = "transparent";
+                this.result = ""
             }
             if (this.closePath) {
                 this.points[this.points.length - 1] = this.points[0];
-                this.fill = FILL_PATH
+                this.fill = FILL_PATH;
+                this.result = this.pathPoints;
             }            
             
         },

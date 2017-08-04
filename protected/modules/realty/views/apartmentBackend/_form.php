@@ -196,115 +196,47 @@
         </div>
 
         <div class="row">
-            <div class="svg-background js-svg-background">
-                <img src="<?= $model->building->getImageUrl(); ?>" alt="">
-                <div class="point-container js-point-container">
-                    <svg class="js-svg">
-
-                    </svg>
+            <section id = "vue-svg-maker">
+                <div class="svg-maker" ref = "svg-maker" >
+                    <div class="svg-maker__image">
+                        <img src="<?= $model->building->getImageUrl(); ?>" alt="" width="100%" ref = "image">
+                    </div>
+                    <div class="svg-maker__svg" v-on="{ mousemove: mouseMove, mousedown:mouseDown}"> 
+                        <svg width = "100%" height = "100%" >                
+                            <path v-bind:d = "pathPoints" v-bind:fill = "fill" v-bind:stroke = "constants.COLOR_LINE" stroke-width = "1"/>
+                            <line v-bind:x1 = "lineNext[0][0]" v-bind:y1 = "lineNext[0][1]" v-bind:x2 = "lineNext[1][0]" v-bind:y2 = "lineNext[1][1]" stroke = "violet" stroke-width = "1"></line>            
+                            <circle v-for = "point in points" v-bind:cx = "point[0]" v-bind:cy = "point[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>
+                            <circle  v-show = "!closePath" v-bind:cx = "pointNext[0]" v-bind:cy = "pointNext[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>                 
+                        </svg>
+                    </div>
                 </div>
-            </div>
-            <a href="javascript:void(0)" class="js-clear-points">Очистить</a>
+                 <?=  $form->hiddenField($model, 'svgPoints', ['class' => 'js-points','v-model:value' => 'result']); ?>
+            </section>    
         </div>
-        <?=  $form->hiddenField($model, 'svgPoints', ['class' => 'js-points']); ?>
-э
-        эъ
+       
         <style>
-            .svg-background {
-                position: relative;
-            }
+        .svg-maker  {
+            width:840px;
+            margin:100px auto 100px;
+            border:1px solid red;
+            position: relative;
+        }
+        .svg-maker__image img{
+            max-width:100%;
+        }
+        .svg-maker{
+            
+        }
+        .svg-maker__svg {
+            position: absolute;
+            width:100%;
+            height:100%;
+            top:0;
+        }
+        </style> 
 
-            .point-container {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-            }
-
-            .point-container svg {
-                width: 100%;
-                height: 100%;
-            }
-
-            .point-container svg polygon{
-                background: red;
-            }
-        </style>
-
-        <script>
-            $(function() {
-                function Polygon () {
-                    var pointList = [];
-                    function build (arg) {
-                        var res = [];
-                        for (var i=0,l=arg.length;i<l;i++) {
-                            res.push(arg[i].join(','));
-                        }
-                        return res.join(' ');
-                    }
-                    this.setNodePoints = function (val) {
-                        this.node = ' <polygon points="' + val + '" style="fill:lime;stroke:purple;stroke-width:1" />';
-                        $('.js-svg').empty().html(this.node);
-                        $('.js-points').val(this.toString());
-                    }
-                    this.getPoint = function (i) {return pointList[i]}
-                    this.setPoint = function (i,x,y) {
-                        pointList[i] = [x,y];
-                        this.setNodePoints(build(pointList));
-                    }
-                    this.points = function () {
-                        for (var i=0,l=arguments.length;i<l;i+=2) {
-                            pointList.push([arguments[i],arguments[i+1]]);
-                        }
-                        this.setNodePoints(build(pointList));
-                    }
-                    this.pointsFromArray = function (arr) {
-                        for (var i=0,l=arr.length;i<l;i+=2) {
-                            pointList.push([arr[i],arr[i+1]]);
-                        }
-                        this.setNodePoints(build(pointList));
-                    }
-                    this.clear = function() {
-                        pointList = [];
-                        this.setNodePoints(build(pointList));
-                    }
-                    this.fromString = function(str) {
-                        console.log(str);
-                        if (typeof str == 'undefined' || str == '') {
-                            return;
-                        }
-                        var points = str.split(",");
-                        this.pointsFromArray(points);
-                    }
-                    this.toString = function() {
-                        var result = [];
-                        pointList.forEach(function(item) {
-                            result.push(item[0], item[1]);
-                        });
-                        return result.join(",");
-                    }
-                    // initialize 'points':
-                    this.points.apply(this,arguments);
-                }
-
-                var value = $('.js-points').val();
-
-                var points = new Polygon();
-                window.points = points;
-                points.fromString(value);
-
-                $('.js-svg-background').click(function(e) {
-                    window.points.points(e.offsetX, e.offsetY);
-                });
-
-                $('.js-clear-points').click(function() {
-                    points.clear();
-                })
-
-
-            })
-        </script>
+        <script type = "text/javascript" src = "/frontend/public/js/svg-maker.js"></script>
+          
 
 
 
