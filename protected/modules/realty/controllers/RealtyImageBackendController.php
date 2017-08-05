@@ -121,6 +121,7 @@ class RealtyImageBackendController extends \yupe\components\controllers\BackCont
                     $redirectLink.= "apartment/";
                 $redirectLink.= "update?id=".$model->idRecord;
 
+                $redirectLink = $this->createUrl($redirectLink);
                 $this->redirect(
                     $redirectLink
                 );
