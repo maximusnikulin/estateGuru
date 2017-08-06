@@ -25,18 +25,14 @@ $this->breadcrumbs = [
 ];
 ?>
 
-<div class="post">
-    <div class="row">
-        <div class="col-sm-12">
-            <h4><strong><?= CHtml::encode($model->title); ?></strong></h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <?php if ($model->image): ?>
-                <?= CHtml::image($model->getImageUrl(), $model->title); ?>
-            <?php endif; ?>
-            <p> <?= $model->full_text; ?></p>
-        </div>
-    </div>
+<div class="singlenews__title">
+    <h2 class="text">Новости</h2>
 </div>
+<section class = "typography singlenews__typography">
+    <h1><?= CHtml::encode($model->title); ?></h1>
+    <hr>
+    <?php if ($model->image): ?>
+        <?= CHtml::image($model->getImageUrl(), $model->title); ?>
+    <?php endif; ?>
+    <?= $model->full_text; ?>
+</section>

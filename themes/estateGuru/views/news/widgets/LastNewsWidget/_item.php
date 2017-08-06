@@ -4,7 +4,7 @@
 <li class="section-cards__content-item">
     <a class="card-news" href="<?= CHtml::normalizeUrl(['/news/news/view/', 'slug' => $data->slug]); ?>">
         <div class="card-news__head">
-            <div class="photo" style="background-image:url(./images/flat_1.jpg)"></div>
+            <div class="photo" style="background-image:url(<?= $data->getImageUrl(); ?>)"></div>
         </div>
         <div class="card-news__name">
             <h2 class="title"><?= $data->title?></h2>

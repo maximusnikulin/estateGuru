@@ -79,7 +79,7 @@
       </div>
       <ul class="footer__content">
         <li class="link">
-          <a href="/" class="logo"><img width = "160px" src="/frontend/public/svg-icons/logo.svg" alt=""></a>
+          <a href="<?= $this->createUrl('/'); ?>" class="logo"><img width = "160px" src="/frontend/public/svg-icons/logo.svg" alt=""></a>
           <a href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>" class="phone"><?= Yii::app()->getModule("realty")->phone; ?></a>
         </li>
         <li class="link">
