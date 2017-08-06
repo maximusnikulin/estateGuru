@@ -13,11 +13,9 @@ class Realty extends CApplicationComponent
 
     public function getYandexMapJson($objects)
     {
-        $arr = array("type" => "FeatureCollection", "features" => array());
-        foreach ($objects as $item)
-        {
-            $arr["features"][] = $item->getMapInfo();
-        }
+        $arr = array_map(function($item) {
+            return $item->getMapInfo();
+        }, $objects);
         return json_encode($arr,JSON_NUMERIC_CHECK);
     }
 

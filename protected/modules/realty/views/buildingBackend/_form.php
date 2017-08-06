@@ -326,9 +326,9 @@
         </div>
     </div>
 
-  <!--  <div class="row">
+    <div class="row">
         <div class="col-sm-7">
-            <?/*=  $form->checkboxGroup($model, 'isShowedOnMap', [
+            <?=  $form->checkboxGroup($model, 'isShowedOnMap', [
                 'widgetOptions' => [
                     'htmlOptions' => [
                         'class' => 'popover-help',
@@ -336,9 +336,9 @@
                         'data-content' => $model->getAttributeDescription('isShowedOnMap')
                     ]
                 ]
-            ]); */?>
+            ]); ?>
         </div>
-    </div>-->
+    </div>
 
     <div class="row js-item js-item-home">
         <div class="col-sm-7">
@@ -539,11 +539,11 @@
                         'class' => 'yupe\widgets\CustomButtonColumn',
                         "updateButtonUrl" => function($data)
                         {
-                            return "/backend/realty/apartment/update?id=".$data->id;
+                            return $this->createUrl("/backend/realty/apartment/update?id=".$data->id);
                         },
                         "deleteButtonUrl" => function($data)
                         {
-                            return "/backend/realty/apartment/delete?id=".$data->id;
+                            return $this->createUrl("/backend/realty/apartment/delete?id=".$data->id);
                         },
                     ],
                 ],

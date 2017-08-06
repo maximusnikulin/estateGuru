@@ -44,6 +44,7 @@ define("STATUS_SECOND", 5);
  */
 class Building extends yupe\models\YModel
 {
+    const STATUS_HOME = STATUS_HOME;
 
     public function getPageTitle()
     {
@@ -74,17 +75,13 @@ class Building extends yupe\models\YModel
     public function getMapInfo()
     {
         $elem = array();
-        $elem["type"] = "Feature";
         $elem["id"] = $this->id;
-        $elem["geometry"] = array(
-            "type" => "Point",
-            "coordinates" => array($this->latitude, $this->longitude)
-        );
-        $elem["properties"] = array(
-            "balloonContent" => Yii::app()->getController()->renderPartial("/building/map-card", ["model" => $this], true),
-//                "clusterCaption"=> "ggh",
-            "hintContent" => $this->adres,
-        );
+        $elem["latitude"] = $this->latitude;
+        $elem["longitude"] = $this->longitude;
+        $elem["adres"] = $this->adres;
+        $elem["type"] = $this->getStatusAsString();
+        $elem["url"] = $this->getUrl();
+        $elem["description"] = $this->shortDescription;
         return $elem;
     }
 

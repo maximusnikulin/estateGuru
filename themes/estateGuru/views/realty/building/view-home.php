@@ -3,7 +3,7 @@
 $title = $data->adres;
 // die(var_export($_GET["page"],true));
 // if ($_GET["page"] > 1) {
-    
+
 //     $title .= ", страница " . $_GET["page"];
 // }
 
@@ -98,7 +98,7 @@ $apartments = $data->apartments;
                 <?php if (!empty($data->priceForMeter)): ?>
                 <div class="row">
                     <div class="row__cell">Цена за м²</div>
-                    <div class="row__cell row__cell--right"><?= number_format($data->priceForMeter, 0, '', ' '); ?></div>
+                    <div class="row__cell row__cell--right"><?= $data->priceForMeter; ?></div>
                 </div>
                 <?php endif; ?>
             </div>
@@ -111,7 +111,7 @@ $apartments = $data->apartments;
             </p>
             <div class="object__desc-concl">
                 <div class="price">
-                    <span class="caption">Цена за м²</span> <span class="value"><?= number_format($data->priceForMeter, 0, '', ' '); ?></span>
+                    <span class="caption">Цена за м²</span> <span class="value"><?= $data->priceForMeter; ?></span>
                 </div>
                 <div class="callback">
                     <div class="button button--action js-callback">Узнать больше</div>
@@ -140,10 +140,10 @@ $apartments = $data->apartments;
                 </figure>
             </div>
             <div class="visual__polygons-lr">
-                <?php foreach ($apartments as $apartment): ?>                    
+                <?php foreach ($apartments as $apartment): ?>
                         <div class="polygon">
                             <?= $apartment->getSvg(); ?>
-                        </div>                    
+                        </div>
                 <?php endforeach; ?>
             </div>
             <div class="visual__tooltips-lr">

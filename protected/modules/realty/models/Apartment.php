@@ -16,6 +16,7 @@
  * @property string $shortDescription
  * @property string $longDescription
  * @property string $number
+ * @property bool   $showOnIndex
 
 
  * @property string $seo_title
@@ -119,10 +120,10 @@ class Apartment extends yupe\models\YModel
             array('seo_title', 'length', 'max'=>100),
             array('seo_description, seo_keywords', 'length', 'max'=>300),
             array('seo_title, seo_description, seo_keywords','safe'),
-            array('svgPoints, shortDescription, longDescription', 'safe'),
+            array('showOnIndex, svgPoints, shortDescription, longDescription', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('svgPoints, image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
+			array('showOnIndex, svgPoints, image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -154,6 +155,7 @@ class Apartment extends yupe\models\YModel
 			'shortDescription' => 'Короткое описание',
 			'longDescription' => 'Длинное описание',
             'image' => 'Изображение',
+            'showOnIndex' => 'Показывать на главной',
             'seo_title' => 'Title страницы',
             'seo_description' => 'Description',
             'seo_keywords' => 'Keywords',

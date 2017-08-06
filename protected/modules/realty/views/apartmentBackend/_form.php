@@ -43,6 +43,19 @@
 
         <?=  $form->hiddenField($model, 'idBuilding'); ?>
 
+        <div class="row">
+            <div class="col-sm-7">
+                <?=  $form->checkboxGroup($model, 'showOnIndex', [
+                    'widgetOptions' => [
+                        'htmlOptions' => [
+                            'class' => 'popover-help',
+                            'data-original-title' => $model->getAttributeLabel('showOnIndex'),
+                            'data-content' => $model->getAttributeDescription('showOnIndex')
+                        ]
+                    ]
+                ]); ?>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-sm-7">

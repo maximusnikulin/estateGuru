@@ -37,14 +37,14 @@
           <div class="button button--bar"></div>
         </div>
         <div class="header__logo">
-          <a href="#" class="logo">
+          <a href="<?= $this->createUrl('/'); ?>" class="logo">
             <img src="/frontend/public/svg-icons/logo.svg" alt="" >
           </a>
         </div>
         <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu']); ?>
         <div class="header__callback">
           <div class="header__callback-phone">
-            <a href="#">8 (3852) 56 34 55</a>
+            <a href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>"><?= Yii::app()->getModule("realty")->phone; ?></a>
 
           </div>
           <div class="header__callback-button-mb">
@@ -59,6 +59,7 @@
       <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'kategorii', 'layout' => 'navbar']); ?>
     </header>
        <?= $content; ?>
+       <?php $this->widget('application.modules.callback.widgets.CallbackWidget'); ?>
     <footer class="footer">
       <div class="footer__subscribe">
         <section class="section-subscribe ">
@@ -79,10 +80,10 @@
       <ul class="footer__content">
         <li class="link">
           <a href="/" class="logo"><img width = "160px" src="/frontend/public/svg-icons/logo.svg" alt=""></a>
-          <a href="" class="phone">8 (3852) 56-34-55</a>
+          <a href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>" class="phone"><?= Yii::app()->getModule("realty")->phone; ?></a>
         </li>
         <li class="link">
-          <p href="" class="adress">656049, Россия</br> Алтайский край г. Барнаул,</br> ул. Партизанская, 82 </p>
+          <p href="" class="adress"><?= Yii::app()->getModule("realty")->adres; ?></p>
         </li>
         <li class="link"><a href="#">Поиск недвижимости</a></li>
         <li class="link"><a href="#">Контакты</a></li>

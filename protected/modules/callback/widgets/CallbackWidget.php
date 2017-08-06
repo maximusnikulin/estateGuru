@@ -17,10 +17,10 @@ class CallbackWidget extends \yupe\widgets\YWidget
      */
     public function init()
     {
-        Yii::app()->getClientScript()->registerScriptFile(Yii::app()->getAssetManager()->publish(
+    /*    Yii::app()->getClientScript()->registerScriptFile(Yii::app()->getAssetManager()->publish(
             Yii::getPathOfAlias('application.modules.callback.views.web') . '/callback.js'
         ), CClientScript::POS_END);
-
+*/
         parent::init();
     }
 

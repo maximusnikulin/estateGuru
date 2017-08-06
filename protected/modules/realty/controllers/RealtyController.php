@@ -23,9 +23,24 @@ class RealtyController extends \yupe\components\controllers\FrontController
         $criteria = new CDbCriteria();
         $criteria->select = 't.*';
         $criteria->compare("showOnIndex",1);
-        $criteria->compare("status", STATUS_HOME);
+        $criteria->compare("status", Building::STATUS_HOME);
         $criteria->order = "adres ASC";
         $sliderItems = Building::model()->findAll($criteria);
+
+        $criteria = new CDbCriteria();
+        $criteria->select = 't.*';
+        $criteria->order = "adres ASC";
+        $criteria->compare("t.showOnIndex", true);
+        $criteria->with = 'building';
+        $apartments = Apartment::model()->findAll($criteria);
+        $apartmentsByStatuses = [];
+        foreach ($apartments as $item) {
+           if (isset($apartmentsByStatuses[$item->building->status])) {
+                $apartmentsByStatuses[$item->building->status][] = $item;
+            } else {
+                $apartmentsByStatuses[$item->building->status] = [$item];
+            }
+        }
 
         $dbCriteria = new CDbCriteria([
             'condition' => 't.status = :status',
@@ -59,7 +74,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
            $this->keywords = $page->seo_keywords;
            $this->description = $page->seo_description;*/
 
-        $this->render("/building/index",['sliderItems' => $sliderItems, 'news' => $news]);
+        $this->render("/building/index",['sliderItems' => $sliderItems, 'news' => $news, 'apartments' => $apartmentsByStatuses]);
     }
 
     public function actionNonReady()
@@ -208,35 +223,12 @@ class RealtyController extends \yupe\components\controllers\FrontController
     }
 
 
-    public function actionGetBuildingsForIndexMap()
+    public function actionGetObjectsForMap()
     {
         $criteria = new CDbCriteria();
         $criteria->compare("isShowedOnMap",1);
-        $criteria->addCondition("status <> 3");
-        $buildings = Building::model()->findAll($criteria);
-
-        $criteria = new CDbCriteria();
-        $criteria->compare("isPublished",1);
-        $districts = District::model()->findAll($criteria);
-        $result = array_merge($buildings,$districts);
-        echo Yii::app()->realty->getYandexMapJson($result);
-    }
-
-    public function actionGetObjectsForMap($map)
-    {
-        if ($map <= 3)
-        {
-            $criteria = new CDbCriteria();
-            $criteria->compare("isShowedOnMap",1);
-            $criteria->compare("status",$map);
-            $result = Building::model()->findAll($criteria);
-        }
-        if ($map == "district")
-        {
-            $criteria = new CDbCriteria();
-            $criteria->compare("isPublished",1);
-            $result = District::model()->findAll($criteria);
-        }
+//        $criteria->compare("status",$map);
+        $result = Building::model()->findAll($criteria);
         echo Yii::app()->realty->getYandexMapJson($result);
     }
 

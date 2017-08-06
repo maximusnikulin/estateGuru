@@ -42,15 +42,14 @@ class RealtyModule  extends yupe\components\WebModule
      */
     public $phone;
 
+
     public function getPhoneForLink()
     {
-        $result = str_replace("-","",$this->phone);
-        $result = str_replace(" ","",$result);
-        if ($result[0] == "8")
-        {
-            $result = "+7".substr($result,1);
+        $phoneLink = preg_replace('~\D~','',$this->phone);
+        if (strlen($phoneLink) >= 10) {
+            $phoneLink = substr($phoneLink, strlen($phoneLink) - 10);
         }
-        return $result;
+        return 'tel:+7'.$phoneLink;
     }
 
     /**
