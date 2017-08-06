@@ -5,7 +5,7 @@ function Visual(elem) {
     }
     this.hoverable = function(){
         var $tooltips = this.root.find('.tooltip');                     
-        var $polygons = this.root.find('.polygon polygon');                             
+        var $polygons = this.root.find('.polygon path');                             
         $polygons.mouseleave(function(){
             $tooltips.addClass("hidden").removeClass("show")
         });

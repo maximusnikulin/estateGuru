@@ -1,10 +1,8 @@
 .section-cards {
     @extend .container;
     &__title { 
-
         .title {
-            margin-bottom:30px;
-            min-height:60px;
+            margin-bottom:30px;           
             white-space: nowrap;
             &__icon {
                 display:inline-block;               
@@ -15,6 +13,11 @@
                 &--estate {
                     @include svg-estate;
                 }
+                & + .title__text {
+                    margin-left:50px;
+                    min-height:60px;
+                    line-height: 60px;
+                }
             }
             &__text {
                 white-space: normal;
@@ -22,7 +25,7 @@
                 font: bold 32px/32px "Roboto";                                    
                 display:inline-block;
                 vertical-align: middle;
-                margin-left:50px;
+              
                 max-width:250px;  
                 @include tablet-hl {
                     margin-left:30px;
@@ -48,6 +51,9 @@
             margin:20px 0 0; 
             padding:0 10px;
             flex-grow:0;
+            &:last-child {
+              margin-right:auto;  
+            }
             @include custom(1190px) {
                  flex-basis:calc(100% / 2);      
                 //  flex-grow:1;
@@ -57,6 +63,17 @@
             }
             @include mobile {
                  flex-basis:calc(100%) ;      
+            }
+        }
+        &-item--2x {
+            flex-basis:calc(100% / 2) ;                  
+            padding:0 10px;
+            flex-grow:0;
+             @include custom(1190px) {
+                 flex-basis:auto;
+                 min-height:360px;
+                 width:100%;      
+                //  flex-grow:1;
             }
         }
     }

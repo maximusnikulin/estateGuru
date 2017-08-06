@@ -48,6 +48,7 @@
 @import './elements/tooltip';
 @import './elements/slider-layouts';
 @import './elements/service-block';
+@import './elements/typography';
 
 
 /************ SECTIONS ************/
@@ -62,6 +63,8 @@
 
 /************ PAGES ************/
 @import './pages/main';
+@import './pages/news';
+@import './pages/singlenews';
 
 /************ ANIMATIONS ************/
 @import './animations';

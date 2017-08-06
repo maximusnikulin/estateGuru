@@ -1,7 +1,7 @@
 .service-block {
     @extend .container;    
     &__title {
-        @extend .object__title;
+        @extend .object__title;      
     }
     &__main {
         position: relative;
@@ -65,8 +65,11 @@
         font: bold 21px/24px 'Open Sans';
         margin:48px auto;
         // max-width:1060px;
-        @include tablet-vl {
+        @include tablet-vl {        
            margin:32px auto;
+        }
+        @include tablet-hl {
+            text-align: center;
         }
     }
     &__more {

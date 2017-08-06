@@ -559,13 +559,15 @@ template {
 }
 
 ul,
-nav {
-  padding: 0;
-  list-style: none;
+nav,
+ol {
+  padding: 0; 
   margin: 0;
   padding: 0;
 }
-
+ul,nav {
+  list-style:none;
+}
 a {
   color: inherit;
   text-decoration: none;
