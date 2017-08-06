@@ -2,8 +2,11 @@
     background:#fff;
     border:1px solid $border-color;
     cursor:pointer;   
-    display: block;
+    display: flex;
     transition: .5s ease;
+    flex-direction:column;    
+    position:relative;
+    
     // &:hover {
     //     box-shadow: 0 7px 10px 0 rgba(0,0,0,.08);
     //     transform: translateY(-5px)
@@ -93,6 +96,8 @@
         justify-content: space-between;
         border-top:1px solid $border-color;
         padding:10px 20px 10px;
+        width:100%;
+        align-self: flex-end;
         .cell {
             // flex-basis:calc(100% / 3);
             // flex-grow:1;

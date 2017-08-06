@@ -23,8 +23,7 @@
         height:100%; 
         z-index:10;  
         .polygon {
-            position: absolute;   
-            cursor:pointer;
+            position: absolute;               
             z-index:10;
             width: 100%;
             height: 100%;
@@ -34,7 +33,18 @@
             &__svg {
                 display:block;
                 width: 100%;
-                height: 100%;
+                height: 100%;                
+                path {
+                    cursor:pointer;
+                    fill:transparent;
+                    stroke:#f48220;
+                    stroke-width:1px;
+                    transition:all 1s ease;
+                    &:hover {
+                        fill:rgba(98, 187, 70, 0.6);
+                    }
+                }
+                
             }
             &__gallery {
                     position: absolute;

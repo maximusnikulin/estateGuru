@@ -39,18 +39,28 @@
   width:100%;
   padding:0;
 }
+.container--narrow {   
+    margin:32px auto 0;
+    max-width:1030px;
+    width:100%;
+    padding:0 48px;
+    @include mobile {
+        padding-left:20px;
+    }          
+}
 .frozen {  
   overflow: hidden;
   position: relative;
   // width:100%;  
   
 }
-.typography {
-      p {
-        font:300 14px/21px 'Roboto';
-      }
-      a {
-        text-decoration: underline;
-        color:#a54686;
-      }
-}
+
+// .typography {
+//       p {
+//         font:300 14px/21px 'Roboto';
+//       }
+//       a {
+//         text-decoration: underline;
+//         color:#a54686;
+//       }
+// }
