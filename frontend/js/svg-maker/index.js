@@ -21,14 +21,14 @@ if (document.getElementById('vue-svg-maker')) {
                     COLOR_LINE:COLOR_LINE,
                     COLOR_CIRCLE:COLOR_CIRCLE   
                 },
-                result:""
-
+                result:''
         },
         mounted: function () {
+
             this.$refs['image'].addEventListener('load', function(){
                 this.widthMaker = this.$refs['svg-maker'].offsetWidth;    
                 this.heightMaker = this.$refs['svg-maker'].offsetHeight;
-            }.bind(this))
+            }.bind(this));
             window.addEventListener('keypress', function(e){
                 if(e.charCode == 32) {       
                     if (this.closePath) {
@@ -42,8 +42,8 @@ if (document.getElementById('vue-svg-maker')) {
                     }    
                     
                 }
-            }.bind(this))
-            
+            }.bind(this));
+            this.checkOnInitValues()
         },
         updated: function(){
             if (!this.closePath & this.points.length > 1) {
@@ -51,14 +51,31 @@ if (document.getElementById('vue-svg-maker')) {
                 this.fill = "transparent";
                 this.result = ""
             }
-            if (this.closePath) {
+            if (this.closePath) {                
                 this.points[this.points.length - 1] = this.points[0];
                 this.fill = FILL_PATH;
                 this.result = this.pathPoints;
             }            
             
         },
+        
         methods: {
+            parsePath:function(path){
+                path = path.slice(1,-1)
+                path = path.split(" ").join("");
+                path = path.split("L").map(e => e.split(','));
+                console.log(path);
+                return path;
+            },
+            checkOnInitValues:function(){
+                var initValue = this.$refs['svg-input'].getAttribute('initValue'); 
+                if (initValue) {
+                    this.closePath = true;
+                    this.result = initValue;
+                    this.points = this.parsePath(initValue);
+                }               
+
+            },
             getCoords:function([x,y]){
                 var resY = y - this.$refs['svg-maker'].getBoundingClientRect().top - window.pageYOffset;
                 var resX = x - this.$refs['svg-maker'].getBoundingClientRect().left - window.pageXOffset
@@ -77,9 +94,11 @@ if (document.getElementById('vue-svg-maker')) {
             },
             removePoint: function(){
                 console.log('remove')
-            }       
+            },
+               
         },
         computed: {
+            
             pathPoints:function(){
                 // return this.points.map((el) => el.join(" ")).join(",")
                 var d = ""

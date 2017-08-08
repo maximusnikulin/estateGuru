@@ -61,6 +61,7 @@ $form = $this->beginWidget(
                 [
                     'widgetOptions' => [
                         'htmlOptions' => [
+                              'required' => true
 //                            'onchange' => 'readURL(this);',
                         ],
                     ],

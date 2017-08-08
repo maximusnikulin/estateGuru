@@ -11,7 +11,7 @@
 $this->breadcrumbs = [
     $this->getModule()->getCategory() => [],
     Yii::t('RealtyModule.realty', 'Дома') => ['/backend/realty/building/index'],
-    "Дом ".$model->idBuilding => ['/backend/realty/building/update/'.$model->idBuilding],
+    "Дом ".$model->building->adres => ['/backend/realty/building/update/'.$model->idBuilding],
     Yii::t('RealtyModule.realty', 'Добавление квартиры'),
 ];
 
@@ -25,7 +25,7 @@ $this->menu = [
 <div class="page-header">
     <h1>
         <?=  Yii::t('RealtyModule.realty', 'Квартиры'); ?>
-        <small><?=  Yii::t('RealtyModule.realty', 'добавление'); ?></small>
+<!--        <small>--><?//=  Yii::t('RealtyModule.realty', 'добавление'); ?><!--</small>-->
     </h1>
 </div>
 

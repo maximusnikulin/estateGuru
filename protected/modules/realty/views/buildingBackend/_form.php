@@ -26,6 +26,7 @@
 
     <?php
 
+
     $form = $this->beginWidget(
         '\yupe\widgets\ActiveForm',
         [
@@ -215,6 +216,7 @@
             <?=  $form->textFieldGroup($model, 'city', [
                 'widgetOptions' => [
                     'htmlOptions' => [
+                        'disabled' => true,
                         'class' => 'popover-help',
                         'data-original-title' => $model->getAttributeLabel('city'),
                         'data-content' => $model->getAttributeDescription('city')

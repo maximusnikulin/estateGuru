@@ -30,7 +30,8 @@ class BuildingBackendController extends \yupe\components\controllers\BackControl
     */
     public function actionCreate()
     {
-        $model = new Building;
+        $model = new Building;        
+        $model->city = "Барнаул"; 
         $idBuilder = Yii::app()->request->getParam("idBuilder");
         if ($idBuilder != null)
             $model->idBuilder = $idBuilder;

@@ -11,7 +11,7 @@
 $this->breadcrumbs = [
     $this->getModule()->getCategory() => [],
     Yii::t('RealtyModule.realty', 'Дома') => ['/backend/realty/building/index'],
-    $model->id => ['/backend/realty/building/view', 'id' => $model->id],
+    $model->adres => ['/backend/realty/building/view', 'id' => $model->id],
     Yii::t('RealtyModule.realty', 'Редактирование'),
 ];
 
@@ -25,10 +25,7 @@ $this->menu = [
         '/realty/building/update',
         'id' => $model->id
     ]],
-    ['icon' => 'fa fa-fw fa-eye', 'label' => Yii::t('RealtyModule.realty', 'Просмотреть Дом'), 'url' => [
-        '/realty/building/view',
-        'id' => $model->id
-    ]],
+    ['icon' => 'fa fa-fw fa-eye', 'label' => Yii::t('RealtyModule.realty', 'Просмотреть Дом'), 'url' =>   $this->createUrl('/dom/'.$model->slug)],
     ['icon' => 'fa fa-fw fa-trash-o', 'label' => Yii::t('RealtyModule.realty', 'Удалить Дом'), 'url' => '#', 'linkOptions' => [
         'submit' => ['/realty/building/delete', 'id' => $model->id],
         'confirm' => Yii::t('RealtyModule.realty', 'Вы уверены, что хотите удалить Дом?'),
@@ -39,7 +36,7 @@ $this->menu = [
 <div class="page-header">
     <h1>
         <?=  Yii::t('RealtyModule.realty', 'Редактирование') . ' ' . Yii::t('RealtyModule.realty', 'Дома'); ?>        <br/>
-        <small>&laquo;<?=  $model->id; ?>&raquo;</small>
+        <small>&laquo;<?=  $model->adres; ?>&raquo;</small>
     </h1>
 </div>
 

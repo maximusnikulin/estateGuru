@@ -42,14 +42,14 @@ class RealtyImageBackendController extends \yupe\components\controllers\BackCont
                 );
 
                 $redirectLink = "/backend/realty/";
-                if ($model->idTable == RealtyImage::$TABLE_BUILDING)
+                if ($model->idTable == RealtyImage::$TABLE_BUILDING || $model->idTable == RealtyImage::$TABLE_BUILDING_PLANNING)
                     $redirectLink.= "building/";
-                elseif ($model->idTable == RealtyImage::$TABLE_APARTMENT)
+                elseif ($model->idTable == RealtyImage::$TABLE_APARTMENT|| $model->idTable == RealtyImage::$TABLE_APARTMENT_PLANNING)
                     $redirectLink.= "apartment/";
                 $redirectLink.= "update?id=".$model->idRecord;
 
                 $this->redirect(
-                    $redirectLink
+                    $this->createUrl($redirectLink)
                 );
             } else
             {
@@ -115,9 +115,9 @@ class RealtyImageBackendController extends \yupe\components\controllers\BackCont
         if (!Yii::app()->getRequest()->getIsAjaxRequest()) {
             {
                 $redirectLink = "/backend/realty/";
-                if ($model->idTable == RealtyImage::$TABLE_BUILDING)
+                if ($model->idTable == RealtyImage::$TABLE_BUILDING || $model->idTable == RealtyImage::$TABLE_BUILDING_PLANNING)
                     $redirectLink.= "building/";
-                elseif ($model->idTable == RealtyImage::$TABLE_APARTMENT)
+                elseif ($model->idTable == RealtyImage::$TABLE_APARTMENT || $model->idTable == RealtyImage::$TABLE_APARTMENT_PLANNING)
                     $redirectLink.= "apartment/";
                 $redirectLink.= "update?id=".$model->idRecord;
 

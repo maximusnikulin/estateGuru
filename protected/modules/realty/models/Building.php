@@ -48,6 +48,7 @@ class Building extends yupe\models\YModel
 
     public function getPageTitle()
     {
+
         return [$this->adres, Yii::app()->getModule('yupe')->siteName];
     }
 
@@ -232,7 +233,7 @@ class Building extends yupe\models\YModel
             'seo_title' => 'Title страницы',
             'seo_description' => 'Description',
             'seo_keywords' => 'Keywords',
-            'status' => 'Статус',
+            'status' => 'Тип объекта',
             'readyTime' => 'Время готовности',
             'floorPos' => 'Этаж',
             'showOnIndex' => 'Показывать на главной',

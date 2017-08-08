@@ -207,7 +207,26 @@
                 ]); ?>
             </div>
         </div>
-
+    <style>
+            .svg-maker  {
+                width:840px;
+                margin:100px auto 100px;
+                border:1px solid red;
+                position: relative;
+            }
+            .svg-maker__image img{
+                max-width:100%;
+            }
+            .svg-maker{
+                
+            }
+            .svg-maker__svg {
+                position: absolute;
+                width:100%;
+                height:100%;
+                top:0;
+            }
+            </style> 
         <div class="row">
             <section id = "vue-svg-maker">
                 <div class="svg-maker" ref = "svg-maker" >
@@ -223,30 +242,9 @@
                         </svg>
                     </div>
                 </div>
-                 <?=  $form->hiddenField($model, 'svgPoints', ['class' => 'js-points','v-model:value' => 'result']); ?>
+                 <?=  $form->hiddenField($model, 'svgPoints', ['class' => 'js-points','v-model:value' => "result", "initValue" => "$model->svgPoints", 'ref' => "svg-input"]); ?>
             </section>    
-        </div>
-       
-        <style>
-        .svg-maker  {
-            width:840px;
-            margin:100px auto 100px;
-            border:1px solid red;
-            position: relative;
-        }
-        .svg-maker__image img{
-            max-width:100%;
-        }
-        .svg-maker{
-            
-        }
-        .svg-maker__svg {
-            position: absolute;
-            width:100%;
-            height:100%;
-            top:0;
-        }
-        </style> 
+        </div>      
 
         <script type = "text/javascript" src = "/frontend/public/js/svg-maker.js"></script>
           

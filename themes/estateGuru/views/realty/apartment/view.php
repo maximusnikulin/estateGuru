@@ -14,7 +14,7 @@ if (!empty($images)) {
 } else {
     $mainImage = false;
 }
-$apartments = $data->apartments;
+//$apartments = $data->apartments;
 
 ?>
 
