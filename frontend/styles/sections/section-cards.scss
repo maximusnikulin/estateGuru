@@ -46,6 +46,7 @@
         width: calc(100% + 20px);
         margin-left: -10px;
         flex-wrap:wrap;
+        align-items:stretch;        
         &-item {        
             flex-basis:calc(100% / 4) ;      
             margin:20px 0 0; 

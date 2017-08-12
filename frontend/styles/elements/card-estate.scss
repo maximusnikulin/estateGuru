@@ -6,7 +6,7 @@
     transition: .5s ease;
     flex-direction:column;    
     position:relative;
-    
+    height: 100%;
     // &:hover {
     //     box-shadow: 0 7px 10px 0 rgba(0,0,0,.08);
     //     transform: translateY(-5px)
@@ -77,35 +77,60 @@
     //NAME
     &__name {
         padding:20px;
-        min-height: 110px;
+        min-height: 80px;
         .address {
             font:700 16px/21px "Roboto";
             color:black;
             margin-bottom:5px;
             letter-spacing: .5px;
+            text-transform: uppercase;
         }
         .type {
             text-transform: uppercase;
-            font:400 12px/21px "Roboto";
+            font:400 13px/21px "Roboto";
             color:#606060;
-        }
+        }        
     }
     //INFO
+    &__more {
+        padding:0px 20px 10px;
+        .row  {            
+            color:#606060;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom:8px;
+            &__name {
+                font:500 13px/21px "Roboto";                
+                text-transform: uppercase;
+            }
+            &__val {
+                font:400 13px/21px "Roboto";
+                max-width:150px;
+                text-align: right;
+            }
+        }   
+    }
+
     &__info {
         display:flex;
         justify-content: space-between;
         border-top:1px solid $border-color;
         padding:10px 20px 10px;
         width:100%;
-        align-self: flex-end;
+        margin-top:auto;
         .cell {
             // flex-basis:calc(100% / 3);
             // flex-grow:1;
             // text-align: center;
+            max-width: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             &__title {
                 text-transform: uppercase;
-                font:300 12px/24px "Roboto"; 
+                font:300 12px/18px "Roboto"; 
                 color:#606060;
+                margin-bottom:5px;
             }
             &__val {
                  font:400 13px/24px "Roboto";
