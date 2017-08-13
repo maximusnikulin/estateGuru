@@ -31,6 +31,7 @@ define("STATUS_SECOND", 5);
  * @property string $type
  * @property string $svgBackground
  * @property string $square
+ * @property string $usefulSquare
  * @property string $city
  * @property string $water
  * @property string $basement
@@ -42,6 +43,7 @@ define("STATUS_SECOND", 5);
  * @property string $seo_keywords
  * @property Apartment[] $apartments
  */
+Yii::import('application.modules.dictionary.models.*');
 class Building extends yupe\models\YModel
 {
     const STATUS_HOME = STATUS_HOME;
@@ -54,6 +56,46 @@ class Building extends yupe\models\YModel
     public function getTitle()
     {
         return $this->adres;
+    }
+
+
+    public function getWallsTypes() {
+        $group = DictionaryGroup::model()->find("code = 'walls'");
+        $result = [];
+        foreach ($group->getData() as $item) {
+            $result[$item->code] = $item->value;
+        }
+        return $result;
+    }
+
+    public function getWallsType() {
+        return DictionaryData::model()->find("code = '".$this->walls."'");
+    }
+
+    public function getRayons() {
+        $group = DictionaryGroup::model()->find("code = 'districts'");
+        $result = [];
+        foreach ($group->getData() as $item) {
+            $result[$item->code] = $item->value;
+        }
+        return $result;
+    }
+
+    public function getRayon() {
+        return DictionaryData::model()->find("code = '".$this->rayon."'");
+    }
+
+    public function getBuildingTypes() {
+        $group = DictionaryGroup::model()->find("code = 'buildingTypes'");
+        $result = [];
+        foreach ($group->getData() as $item) {
+            $result[$item->code] = $item->value;
+        }
+        return $result;
+    }
+
+    public function getBuildingType() {
+        return DictionaryData::model()->find("code = '".$this->type."'");
     }
 
 
@@ -76,6 +118,11 @@ class Building extends yupe\models\YModel
     {
         $elem = array();
         $elem["id"] = $this->id;
+        // картинка 265 180
+        //район
+        // мин цена
+        // этажность
+        // мин-макс площадь квартир
         $elem["latitude"] = $this->latitude;
         $elem["longitude"] = $this->longitude;
         $elem["adres"] = $this->adres;
@@ -157,7 +204,7 @@ class Building extends yupe\models\YModel
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('idDistrict, idBuilder, isPublished, isShowedOnMap, status', 'numerical', 'integerOnly' => true),
+            array('usefulSquare, idDistrict, idBuilder, isPublished, isShowedOnMap, status', 'numerical', 'integerOnly' => true),
             array('slug, image, adres', 'length', 'max' => 200),
             array('longitude, latitude', 'length', 'max' => 14),
             array('readyTime', 'length', 'max' => 45),
@@ -167,7 +214,7 @@ class Building extends yupe\models\YModel
             array('floorPos, showOnIndex, square, city, water, basement, price, whereObject, rayon, floor, priceForMeter, walls, type, seo_title, seo_description, seo_keywords', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('floorPos, showOnIndex, square, city, water, basement, price, whereObject, rayon, floor, priceForMeter, walls, type, svgBackground, slug, id, image, adres, longitude, latitude, idDistrict, idBuilder, isPublished, isShowedOnMap, shortDescription, longDescription, status, readyTime', 'safe', 'on' => 'search'),
+            array('usefulSquare, floorPos, showOnIndex, square, city, water, basement, price, whereObject, rayon, floor, priceForMeter, walls, type, svgBackground, slug, id, image, adres, longitude, latitude, idDistrict, idBuilder, isPublished, isShowedOnMap, shortDescription, longDescription, status, readyTime', 'safe', 'on' => 'search'),
         );
     }
 
@@ -237,6 +284,7 @@ class Building extends yupe\models\YModel
             'floorPos' => 'Этаж',
             'showOnIndex' => 'Показывать на главной',
             'square' => 'Площадь',
+            'usefulSquare' => 'Полезная площадь',
             'city' => 'Город',
             'water' => 'Вода',
             'basement' => 'Канализация',

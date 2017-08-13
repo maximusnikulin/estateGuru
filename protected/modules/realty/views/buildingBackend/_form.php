@@ -86,8 +86,9 @@
 
     <div class="row">
         <div class="col-sm-7">
-            <?=  $form->textFieldGroup($model, 'rayon', [
+            <?=  $form->dropDownListGroup($model, 'rayon', [
                 'widgetOptions' => [
+                    'data' => $model->getRayons(),
                     'htmlOptions' => [
                         'class' => 'popover-help',
                         'data-original-title' => $model->getAttributeLabel('rayon'),
@@ -142,8 +143,9 @@
 
     <div class="row js-item js-item-home js-item-cottage">
         <div class="col-sm-7">
-            <?=  $form->textFieldGroup($model, 'walls', [
+            <?=  $form->dropDownListGroup($model, 'walls', [
                 'widgetOptions' => [
+                    'data' => $model->getWallsTypes(),
                     'htmlOptions' => [
                         'class' => 'popover-help',
                         'data-original-title' => $model->getAttributeLabel('walls'),
@@ -156,8 +158,9 @@
 
     <div class="row js-item js-item-home">
         <div class="col-sm-7">
-            <?=  $form->textFieldGroup($model, 'type', [
+            <?=  $form->dropDownListGroup($model, 'type', [
                 'widgetOptions' => [
+                    'data' => $model->getBuildingTypes(),
                     'htmlOptions' => [
                         'class' => 'popover-help',
                         'data-original-title' => $model->getAttributeLabel('type'),
@@ -265,6 +268,22 @@
             ]); ?>
         </div>
     </div>
+
+
+    <div class="row js-item js-item-commercial">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'usefulSquare', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('usefulSquare'),
+                        'data-content' => $model->getAttributeDescription('usefulSquare')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
 
     <div class="row js-item js-item-commercial">
         <div class="col-sm-7">
