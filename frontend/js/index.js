@@ -14,4 +14,6 @@ import './components/menu';
 
 // VUE SEARCH
 
-import './search/main.js';
+// import './search/index.js';
+
+import './search-map/index.js';

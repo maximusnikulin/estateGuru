@@ -1,5 +1,5 @@
  $(window).on('load', function(){
-     if(typeof ymaps !== 'undefined') {
+     if(typeof ymaps !== 'undefined' && document.getElementById('map-contacts')) {
         ymaps.ready(init);
      }
     

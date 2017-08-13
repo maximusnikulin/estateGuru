@@ -74,6 +74,10 @@ module.exports = {
             test: /\.vue$/,
             loader: 'vue-loader'            
         },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
+            },
         {
             test: /jquery-mousewheel/,
             loader: "imports?define=>false&this=>window"
