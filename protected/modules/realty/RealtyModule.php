@@ -179,23 +179,23 @@ class RealtyModule  extends yupe\components\WebModule
     public function getNavigation()
     {
         return [
-            [
-                'icon' => 'fa fa-fw fa-map-o',
-                'label' => Yii::t('RealtyModule.realty', 'Districts'),
-                'url' => ['/backend/realty/district/index'],
-                'items' => [
-                    [
-                        'icon' => 'fa fa-fw fa-list-alt',
-                        'label' => Yii::t('RealtyModule.realty', 'Districts list'),
-                        'url' => ['/backend/realty/district/index'],
-                    ],
-                    [
-                        'icon' => 'fa fa-fw fa-plus-square',
-                        'label' => Yii::t('RealtyModule.realty', 'Create district'),
-                        'url' => ['/backend/realty/district/create'],
-                    ],
-                ],
-            ],
+            // [
+            //     'icon' => 'fa fa-fw fa-map-o',
+            //     'label' => Yii::t('RealtyModule.realty', 'Districts'),
+            //     'url' => ['/backend/realty/district/index'],
+            //     'items' => [
+            //         [
+            //             'icon' => 'fa fa-fw fa-list-alt',
+            //             'label' => Yii::t('RealtyModule.realty', 'Districts list'),
+            //             'url' => ['/backend/realty/district/index'],
+            //         ],
+            //         [
+            //             'icon' => 'fa fa-fw fa-plus-square',
+            //             'label' => Yii::t('RealtyModule.realty', 'Create district'),
+            //             'url' => ['/backend/realty/district/create'],
+            //         ],
+            //     ],
+            // ],
             [
                 'icon' => 'fa fa-fw fa-male',
                 'label' => Yii::t('RealtyModule.realty', 'Builders'),
@@ -230,11 +230,11 @@ class RealtyModule  extends yupe\components\WebModule
                     ],
                 ],
             ],
-            [
-                'icon' => 'fa fa-fw fa-page',
-                'label' => Yii::t('RealtyModule.realty', 'Страницы'),
-                'url' => ['/backend/realty/realtyPage/index'],
-            ],
+            // [
+            //     'icon' => 'fa fa-fw fa-page',
+            //     'label' => Yii::t('RealtyModule.realty', 'Страницы'),
+            //     'url' => ['/backend/realty/realtyPage/index'],
+            // ],
             [
                 'icon' => 'fa fa-fw fa-home',
                 'label' => Yii::t('RealtyModule.realty', 'Buildings'),

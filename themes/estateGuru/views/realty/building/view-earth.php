@@ -28,12 +28,12 @@ if (!empty($images)) {
         <div class="object__photo js-gallery-photos">
             <?php if ($mainImage !== false): ?>
                 <div class="object__photo-main">
-                    <figure class="photo" href="<?= $mainImage->getImageUrl(1000,1000); ?>"><img src="<?= $mainImage->getImageUrl(1000, 1000); ?>" alt=""></figure>
+                    <figure class="photo" href="<?= $mainImage->getImageUrl(); ?>"><img src="<?= $mainImage->getImageUrl(); ?>" alt=""></figure>
                 </div>
             <?php endif; ?>
             <div class="object__photo-grid ">
                 <?php foreach ($images as $image): ?>
-                    <figure class="photo" href="<?= $image->getImageUrl(1000,1000); ?>"><img src="<?= $image->getImageUrl(1000,1000); ?>" alt=""></figure>
+                    <figure class="photo" href="<?= $image->getImageUrl(); ?>"><img src="<?= $image->getImageUrl(468,480); ?>" alt=""></figure>
                 <?php endforeach; ?>
             </div>
         </div>

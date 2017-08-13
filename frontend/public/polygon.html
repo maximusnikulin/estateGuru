@@ -29,6 +29,7 @@
     top:0;
   }
 </style> 
+<!-- INITIAL M 225.5,184L 213.5,330L 304.5,330L 389.5,261L 225.5,184 Z -->
 <body class="">
   <section id = "vue-svg-maker">
     <div class="svg-maker" ref = "svg-maker" >
@@ -44,7 +45,7 @@
             </svg>
         </div>
     </div>
-    <input type="hidden" v-model:value = "result">
+    <input type="hidden" ref = "svg-input" v-model:value = "result" initValue = "M 225.5,184L 213.5,330L 304.5,330L 389.5,261L 225.5,184 Z" >
   </section>
  
 </body>

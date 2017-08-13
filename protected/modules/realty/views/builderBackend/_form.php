@@ -56,11 +56,7 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-7">
-                <?= $form->slugFieldGroup($model, 'slug', ['sourceAttribute' => 'name']); ?>
-            </div>
-        </div>
+        
 
         <div class='row'>
             <div class="col-sm-7">

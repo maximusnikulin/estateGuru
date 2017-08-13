@@ -207,7 +207,7 @@ class Apartment extends yupe\models\YModel
     
     public function getUrl()
     {
-        return "/dom/".$this->building->slug."/".$this->id;
+        return Yii::app()->controller->createUrl("/dom/".$this->building->slug."/".$this->id);
     }
 
     public function getOldUrl()

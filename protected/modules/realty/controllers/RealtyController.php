@@ -33,7 +33,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
         $criteria->compare("t.showOnIndex", true);
         $criteria->with = 'building';
         $apartments = Apartment::model()->findAll($criteria);
-        $apartmentsByStatuses = [];
+        $apartmentsByStatuses = [STATUS_HOME=>[],STATUS_COMMERCIAL=>[]];
         foreach ($apartments as $item) {
            if (isset($apartmentsByStatuses[$item->building->status])) {
                 $apartmentsByStatuses[$item->building->status][] = $item;

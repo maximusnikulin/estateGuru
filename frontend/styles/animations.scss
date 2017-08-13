@@ -98,3 +98,31 @@
         }
     }
 }
+
+//MENU 
+.menu {
+    transition: visibility .5s;
+    visibility: hidden;
+    .menu__container {
+        transition: transform .5s ease;
+        transform: translateX(-100%);
+    }
+    .menu__overlay {
+        transition: 
+            opacity .5s ease,
+            visibility .5s ease;
+        opacity:0;
+        visibility:hidden;
+    }
+}
+.menu.open {
+    transition: visibility 0s;
+    visibility:visible;
+    .menu__container {
+        transform: translateX(0);
+    }
+    .menu__overlay { 
+        opacity:1;
+        visibility:visible;
+    }
+}

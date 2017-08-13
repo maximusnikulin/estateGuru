@@ -31,6 +31,20 @@
 
 <body>
    <div class="wrapper main">
+   <div class="menu">
+      <div class="menu__overlay"></div>
+      <menu class = "menu__container">
+        <a href = "#" class = "menu__item"><img src="/svg-icons/logo.svg" width = "120" alt=""></a>
+        <a href = "#" class = "menu__item">Услуги</a>
+        <a href = "#" class = "menu__item">Новости</a>
+        <a href = "#" class = "menu__item">Контакты</a>
+        <a href = "#" class = "menu__item">Новостройки</a>
+        <a href = "#" class = "menu__item">Коммерческая недвижимость</a>
+        <a href = "#" class = "menu__item">Вторичное жилье</a>
+        <a href = "#" class = "menu__item">Коттеджи</a>
+        <a href = "#" class = "menu__item">Земля</a>
+      </menu>
+    </div>
     <header class="header">
       <div class="header__content">
         <div class="header__bar">
@@ -45,7 +59,6 @@
         <div class="header__callback">
           <div class="header__callback-phone">
             <a href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>"><?= Yii::app()->getModule("realty")->phone; ?></a>
-
           </div>
           <div class="header__callback-button-mb">
             <a href="javascript:;" class="button button--callback-mb"></a>
@@ -60,6 +73,7 @@
     </header>
        <?= $content; ?>
        <?php $this->widget('application.modules.callback.widgets.CallbackWidget'); ?>
+       
     <footer class="footer">
       <div class="footer__subscribe">
         <section class="section-subscribe ">

@@ -19,25 +19,26 @@ if (!empty($images)) {
 }
 $apartments = $data->apartments;
 
-
+//var_dump($data->longDescription);
+//die;
 
 ?>
 
 <div class="object">
     <div class="object__title">
         <h1 class="text"><?= $data->adres; ?></h1>
-        <h2 class="caption">Жилой дом <?= $data->city; ?></h2>
+        <h2 class="caption">Жилой дом г. <?= $data->city; ?></h2>
     </div>
     <div class="object__content">
         <div class="object__photo js-gallery-photos">
             <?php if ($mainImage !== false): ?>
                 <div class="object__photo-main">
-                    <figure class="photo" href="<?= $mainImage->getImageUrl(1000,1000); ?>"><img src="<?= $mainImage->getImageUrl(1000, 1000); ?>" alt=""></figure>
+                    <figure class="photo" href="<?= $mainImage->getImageUrl(); ?>"><img src="<?= $mainImage->getImageUrl(); ?>" alt=""></figure>
                 </div>
             <?php endif; ?>
             <div class="object__photo-grid ">
                 <?php foreach ($images as $image): ?>
-                    <figure class="photo" href="<?= $image->getImageUrl(1000,1000); ?>"><img src="<?= $image->getImageUrl(1000,1000); ?>" alt=""></figure>
+                    <figure class="photo" href="<?= $image->getImageUrl(); ?>"><img src="<?= $image->getImageUrl(468,480); ?>" alt=""></figure>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -98,7 +99,7 @@ $apartments = $data->apartments;
                 <?php if (!empty($data->priceForMeter)): ?>
                 <div class="row">
                     <div class="row__cell">Цена за м²</div>
-                    <div class="row__cell row__cell--right"><?= $data->priceForMeter; ?></div>
+                    <div class="row__cell row__cell--right"><?= number_format($data->priceForMeter, 0, '', ' '); ?></div>
                 </div>
                 <?php endif; ?>
             </div>
@@ -106,12 +107,12 @@ $apartments = $data->apartments;
                 <span class="text">Показать на карте</span>
             </div>
             <h2 class="object__desc-title">Описание</h2>
-            <p class="object__desc-text">
+            <div class="object__desc-text">
                 <?= $data->longDescription; ?>
-            </p>
+            </div>
             <div class="object__desc-concl">
                 <div class="price">
-                    <span class="caption">Цена за м²</span> <span class="value"><?= $data->priceForMeter; ?></span>
+                    <span class="caption">Цена за м²</span> <span class="value"><?= number_format($data->priceForMeter, 0, '', ' '); ?></span>
                 </div>
                 <div class="callback">
                     <div class="button button--action js-callback">Узнать больше</div>
