@@ -48,7 +48,7 @@ $apartments = $data->apartments;
                 <?php if (!empty($data->rayon)): ?>
                 <div class="row">
                     <div class="row__cell">Район</div>
-                    <div class="row__cell row__cell--right"><?= $data->rayon; ?></div>
+                    <div class="row__cell row__cell--right"><?= $data->getRayon()->value; ?></div>
                 </div>
                 <?php endif; ?>
 
@@ -69,14 +69,14 @@ $apartments = $data->apartments;
                 <?php if (!empty($data->walls)): ?>
                 <div class="row">
                     <div class="row__cell">Стены</div>
-                    <div class="row__cell row__cell--right"><?= $data->walls; ?></div>
+                    <div class="row__cell row__cell--right"><?= $data->getWallsType()->value; ?></div>
                 </div>
                 <?php endif; ?>
 
                 <?php if (!empty($data->type)): ?>
                 <div class="row">
                     <div class="row__cell">Тип</div>
-                    <div class="row__cell row__cell--right"><?= $data->type; ?></div>
+                    <div class="row__cell row__cell--right"><?= $data->getBuildingType()->value; ?></div>
                 </div>
                 <?php endif; ?>
 
@@ -99,7 +99,7 @@ $apartments = $data->apartments;
                 <?php if (!empty($data->priceForMeter)): ?>
                 <div class="row">
                     <div class="row__cell">Цена за м²</div>
-                    <div class="row__cell row__cell--right"><?= number_format($data->priceForMeter, 0, '', ' '); ?></div>
+                    <div class="row__cell row__cell--right"><?= $data->priceForMeter; ?></div>
                 </div>
                 <?php endif; ?>
             </div>
@@ -112,7 +112,7 @@ $apartments = $data->apartments;
             </div>
             <div class="object__desc-concl">
                 <div class="price">
-                    <span class="caption">Цена за м²</span> <span class="value"><?= number_format($data->priceForMeter, 0, '', ' '); ?></span>
+                    <span class="caption">Цена за м²</span> <span class="value"><?= $data->priceForMeter; ?></span>
                 </div>
                 <div class="callback">
                     <div class="button button--action js-callback">Узнать больше</div>

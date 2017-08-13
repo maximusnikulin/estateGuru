@@ -48,10 +48,10 @@ if (!empty($images)) {
                 <?php endif; ?>
 
                 <?php if (!empty($data->rayon)): ?>
-                <div class="row">
-                    <div class="row__cell">Район</div>
-                    <div class="row__cell row__cell--right"><?= $data->rayon; ?></div>
-                </div>
+                    <div class="row">
+                        <div class="row__cell">Район</div>
+                        <div class="row__cell row__cell--right"><?= $data->getRayon()->value; ?></div>
+                    </div>
                 <?php endif; ?>
 
                 <?php if (!empty($data->adres)): ?>
