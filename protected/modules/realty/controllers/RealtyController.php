@@ -222,18 +222,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
         $this->render("/apartment/big-list", ["dataProvider" => $data, "itemPath" => "_item_for_building", "map" => 4, "page" => $page]);
     }
 
-
-    public function actionGetObjectsForMap()
-    {
-        $criteria = new CDbCriteria();
-        $criteria->compare("isShowedOnMap",1);
-//        $criteria->compare("status",$map);
-        $result = Building::model()->findAll($criteria);
-        echo Yii::app()->realty->getYandexMapJson($result);
-    }
-
-
-    public function actionSearch()
+    public function actionGetApartmentsForMap()
     {
         $criteria = new CDbCriteria();
         $criteria->select = 't.*';
@@ -243,67 +232,74 @@ class RealtyController extends \yupe\components\controllers\FrontController
                 "condition" => "building.isPublished = 1",
             ]
         ];
-        if (Yii::app()->request->getParam("rooms") != null)
-        {
+        if (Yii::app()->request->getParam("rooms") != null) {
             $rooms = Yii::app()->request->getParam("rooms");
-            if (array_search("4",$rooms) !== false)
-            {
+            if (array_search("4",$rooms) !== false) {
                 $rooms[] = "5";
                 $rooms[] = "6";
             }
             $criteria->addInCondition("rooms",$rooms);
         }
-        if (Yii::app()->request->getParam("minimalCost") != null)
-        {
+        if (!is_null(Yii::app()->request->getParam('type'))) {
+            $criteria->compare("status", Yii::app()->request->getParam('type'));
+        }
+        if (Yii::app()->request->getParam("minimalCost") != null) {
             $criteria->addCondition("cost >= ".Yii::app()->request->getParam("minimalCost"));
         }
-        if (Yii::app()->request->getParam("maximalCost") != null)
-        {
+        if (Yii::app()->request->getParam("maximalCost") != null) {
             $criteria->addCondition("cost <= ".Yii::app()->request->getParam("maximalCost"));
         }
-        if (Yii::app()->request->getParam("minimalSize") != null)
-        {
+        if (Yii::app()->request->getParam("minimalSize") != null) {
             $criteria->addCondition("size >= ".Yii::app()->request->getParam("minimalSize"));
         }
-        if (Yii::app()->request->getParam("maximalSize") != null)
-        {
+        if (Yii::app()->request->getParam("maximalSize") != null) {
             $criteria->addCondition("size <= ".Yii::app()->request->getParam("maximalSize"));
         }
-        if (Yii::app()->request->getParam("status") != null)
-        {
-            $criteria->addInCondition("building.status",Yii::app()->request->getParam("status"));
-        }
-        if (Yii::app()->request->getParam("time") != null)
-        {
+        if (Yii::app()->request->getParam("time") != null) {
             $criteria->addInCondition("building.readyTime",Yii::app()->request->getParam("time"));
         }
+        $apartments = Apartment::model()->findAll($criteria);
+        $result = array_map(function ($item) {
+            return [
+                'id' => $item->id,
+                'adres' => $item->building->adres,
+                'idBuilding' => $item->idBuilding,
+                'latitude' => $item->building->latitude,
+                'longitude' => $item->building->longitude,
+                'url' => $item->getUrl(),
+                'price' => $item->price,
+                'floor' => $item->getFloorAsString(),
+                'image' => $item->getImageUrl(200, 200),
+            ];
+        }, $apartments);
+        echo json_encode($result, JSON_NUMERIC_CHECK);
+    }
 
-        $data = new CActiveDataProvider(
-            'Apartment',
-            [
-                'criteria' => $criteria,
-                'pagination' => [
-                    'pageSize' => (int)Yii::app()->getModule('realty')->itemsPerPage,
-                    'pageVar' => 'page',
-                ],
-                /*                'sort' => [
-                                    'sortVar' => 'sort',
-                                    'defaultOrder' => 't.position'
-                                ],
-                  */          ]
-        );
-
-        $title = "Результаты поиска";
-        if ($_GET["page"] > 1)
-        {
-            $title.= ", страница ".$_GET["page"];
+    public function actionGetBuildingsForMap()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->compare("isShowedOnMap",1);
+        if (!is_null(Yii::app()->request->getParam('type'))) {
+            $criteria->compare("status", Yii::app()->request->getParam('type'));
         }
-        $this->title = [$title,Yii::app()->getModule('yupe')->siteName];
-        $this->description = "Результаты поиска квартир, страница".(isset($_GET["page"])? $_GET["page"] : "1");
-//        $this->keywords = $page->seo_keywords;
-
-
-        $this->render("/apartment/list",["dataProvider" => $data, "headerText" => "Результаты поиска"]);
+        if (!is_null(Yii::app()->request->getParam('offset'))) {
+            $criteria->offset = Yii::app()->request->getParam('offset');
+        }
+        if (!is_null(Yii::app()->request->getParam('limit'))) {
+            $criteria->limit = Yii::app()->request->getParam('limit');
+        }
+        $buildings = Building::model()->findAll($criteria);
+        $result = array_map(function ($item) {
+            return [
+                'id' => $item->id,
+                'adres' => $item->adres,
+                'latitude' => $item->latitude,
+                'longitude' => $item->longitude,
+                'url' => $item->getUrl(),
+                'image' => $item->getMainImage()->getImageUrl(200, 200),
+            ];
+        }, $buildings);
+        echo json_encode($result, JSON_NUMERIC_CHECK);
     }
 
     public function actionViewBuilding($name)

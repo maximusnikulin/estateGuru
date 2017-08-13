@@ -21,7 +21,9 @@ return [
     ],
     'rules'     => [
         '/' => '/realty/realty/index',
-        '/map.json' => 'realty/realty/getObjectsForMap',
+
+        '/api/objects' => 'realty/realty/getBuildingsForMap',
+        '/api/apartments' => 'realty/realty/getApartmentsForMap',
         '/realty' => 'realty/realty/index',
         '/poisk' => 'realty/realty/search',
         '/zhilie-kompleksy' => 'realty/realty/listDistricts',
