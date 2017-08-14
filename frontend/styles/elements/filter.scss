@@ -1,0 +1,32 @@
+.filter {
+  @extend .container;
+  display: flex;
+  width:100%;
+  &__group {
+    width:100%;
+    flex-basis: calc(100% / 4);
+    padding:0 20px;
+
+  }
+
+}
+.filter {
+  .v-select .selected-tag {
+    margin:0;
+    line-height:0;
+    float:none;
+    height:auto;
+    background-color: #fff;
+    border: none;
+    border-radius: 0;
+    padding:0;
+    position: absolute;
+    top: 18px;
+    left: 10px;
+    z-index:-1;
+  }
+  .v-select input[type=search],
+  .v-select input[type=search]:focus {
+    float:none;
+  }
+}

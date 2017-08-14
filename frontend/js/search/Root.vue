@@ -13,7 +13,7 @@
 
 <script>    
 import vueSlider from 'vue-slider-component';
-import vSelect from "vue-select"
+import vSelect from "./vue-select.js"
 
 export default {
     name:'root',

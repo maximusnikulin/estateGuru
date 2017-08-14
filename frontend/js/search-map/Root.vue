@@ -1,59 +1,36 @@
 <template>
-    <div id = "js-map">
+    <div>
+        <vue-filter></vue-filter>
+        <pre>{{objects}}</pre>
+
+        <!--<vue-map></vue-map>-->
     </div>
+
 </template>
 
 <script>
     import {API_HOST} from '../config.js';
+    import {PM_BALOON_LT, CR_BALOON_LT, PM_ICON_LT, CR_ICON_LT} from './layouts.js';
     import objects from './objects.json';
-    console.log(objects);
+    import Map from './Map.vue';
+    import Filter from './Filter.vue';
+
     export default {
         name: 'root',
-        created: function () {
-             this.successFetch(objects);
-//            fetch(API_HOST + '/api/objects', {credentials:'include'})
-//                .then(this.successFetch)
-//                .catch()
+        components: {
+            'vue-map': Map,
+            'vue-filter': Filter
         },
-        methods: {
-            successFetch: function (result) {
-                this.objects = result;
-
-                ymaps.ready(this.initMap)
-
-            },
-            initMap: function () {
-                this.map = new ymaps.Map('js-map', {
-                    center: [55.7, 37.6],
-                    zoom: 10,
-                    controls: ['zoomControl']
-                });
-                this.map.behaviors.disable('scrollZoom');
-                this.updatePlacemarks();
-            },
-            updatePlacemarks: function () {
-                var geoCluster = new ymaps.Clusterer();
-
-                this.objects.forEach((el,index,arr) => {
-                    geoCluster.add(new ymaps.Placemark(
-                        el.geo
-                    ))
-                });
-
-                this.map.geoObjects.add(geoCluster);
-                this.map.setBounds(geoCluster.getBounds())
-            },
-            data: function () {
-                return {
-                    map: null,
-                    objects: null
-                }
+        data:function(){
+            return {
+                objects:[]
             }
         }
+
     }
 </script>
 <style>
     #js-map {
-        min-height:800px;
+        min-height: 800px;
     }
 </style> 
