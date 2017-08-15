@@ -8,10 +8,10 @@
         </div>
         <div class="card-news__name">
             <h2 class="title"><?= $data->title?></h2>
-            <p class="preview"><?= $data->short_text?></p>
+            <article class="preview"><?= $data->short_text?></article>
         </div>
         <div class="card-news__info">
-            <div class="views"></div>
+<!--            <div class="views"></div>-->
             <div class="date">
                 <?= $data->getFormattedDate(); ?>
             </div>

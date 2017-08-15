@@ -31,27 +31,15 @@
 
 <body>
    <div class="wrapper main">
-   <div class="menu">
-      <div class="menu__overlay"></div>
-      <menu class = "menu__container">
-        <a href = "#" class = "menu__item"><img src="/svg-icons/logo.svg" width = "120" alt=""></a>
-        <a href = "#" class = "menu__item">Услуги</a>
-        <a href = "#" class = "menu__item">Новости</a>
-        <a href = "#" class = "menu__item">Контакты</a>
-        <a href = "#" class = "menu__item">Новостройки</a>
-        <a href = "#" class = "menu__item">Коммерческая недвижимость</a>
-        <a href = "#" class = "menu__item">Вторичное жилье</a>
-        <a href = "#" class = "menu__item">Коттеджи</a>
-        <a href = "#" class = "menu__item">Земля</a>
-      </menu>
-    </div>
-    <header class="header">
+
+   <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu', 'layout' => 'side-menu']); ?>
+       <header class="header">
       <div class="header__content">
         <div class="header__bar">
           <div class="button button--bar"></div>
         </div>
         <div class="header__logo">
-          <a href="<?= $this->createUrl('/'); ?>" class="logo">
+          <a href="/" class="logo">
             <img src="/svg-icons/logo.svg" alt="" >
           </a>
         </div>

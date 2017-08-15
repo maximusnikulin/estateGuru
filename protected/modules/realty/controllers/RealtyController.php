@@ -37,6 +37,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
         $criteria->select = 't.*';
         $criteria->order = "adres ASC";
         $criteria->compare("t.showOnIndex", true);
+        $criteria->limit = 8;
         $criteria->with = 'building';
         $apartments = Apartment::model()->findAll($criteria);
         $apartmentsByStatuses = [STATUS_HOME=>[],STATUS_COMMERCIAL=>[]];

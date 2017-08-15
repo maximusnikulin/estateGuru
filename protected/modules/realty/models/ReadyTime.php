@@ -15,7 +15,7 @@ class ReadyTime extends yupe\models\YModel
 	 */
 	public function tableName()
 	{
-		return 'readytimes';
+		return 'readyTimes';
 	}
 
 	/**

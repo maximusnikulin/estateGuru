@@ -54,71 +54,71 @@ $form = $this->beginWidget(
         ); ?>
     </div>
 
-    <div class="col-sm-2">
-        <?php if (count($languages) > 1): { ?>
-            <?= $form->dropDownListGroup(
-                $model,
-                'lang',
-                [
-                    'widgetOptions' => [
-                        'data' => $languages,
-                        'htmlOptions' => [
-                            'empty' => Yii::t('NewsModule.news', '-no matter-'),
-                        ],
-                    ],
-                ]
-            ); ?>
-            <?php if (!$model->isNewRecord): { ?>
-                <?php foreach ($languages as $k => $v): { ?>
-                    <?php if ($k !== $model->lang): { ?>
-                        <?php if (empty($langModels[$k])): { ?>
-                            <a href="<?= $this->createUrl(
-                                '/news/newsBackend/create',
-                                ['id' => $model->id, 'lang' => $k]
-                            ); ?>"><i class="iconflags iconflags-<?= $k; ?>" title="<?= Yii::t(
-                                    'NewsModule.news',
-                                    'Add translation for {lang} language',
-                                    ['{lang}' => $v]
-                                ) ?>"></i></a>
-                        <?php } else: { ?>
-                            <a href="<?= $this->createUrl(
-                                '/news/newsBackend/update',
-                                ['id' => $langModels[$k]]
-                            ); ?>"><i class="iconflags iconflags-<?= $k; ?>" title="<?= Yii::t(
-                                    'NewsModule.news',
-                                    'Edit translation in to {lang} language',
-                                    ['{lang}' => $v]
-                                ) ?>"></i></a>
-                        <?php } endif; ?>
-                    <?php } endif; ?>
-                <?php } endforeach; ?>
-            <?php } endif; ?>
-        <?php } else: { ?>
-            <?= $form->hiddenField($model, 'lang'); ?>
-        <?php } endif; ?>
-    </div>
+<!--    <div class="col-sm-2">-->
+<!--        --><?php //if (count($languages) > 1): { ?>
+<!--            --><?//= $form->dropDownListGroup(
+//                $model,
+//                'lang',
+//                [
+//                    'widgetOptions' => [
+//                        'data' => $languages,
+//                        'htmlOptions' => [
+//                            'empty' => Yii::t('NewsModule.news', '-no matter-'),
+//                        ],
+//                    ],
+//                ]
+//            ); ?>
+<!--            --><?php //if (!$model->isNewRecord): { ?>
+<!--                --><?php //foreach ($languages as $k => $v): { ?>
+<!--                    --><?php //if ($k !== $model->lang): { ?>
+<!--                        --><?php //if (empty($langModels[$k])): { ?>
+<!--                            <a href="--><?//= $this->createUrl(
+//                                '/news/newsBackend/create',
+//                                ['id' => $model->id, 'lang' => $k]
+//                            ); ?><!--"><i class="iconflags iconflags---><?//= $k; ?><!--" title="--><?//= Yii::t(
+//                                    'NewsModule.news',
+//                                    'Add translation for {lang} language',
+//                                    ['{lang}' => $v]
+//                                ) ?><!--"></i></a>-->
+<!--                        --><?php //} else: { ?>
+<!--                            <a href="--><?//= $this->createUrl(
+//                                '/news/newsBackend/update',
+//                                ['id' => $langModels[$k]]
+//                            ); ?><!--"><i class="iconflags iconflags---><?//= $k; ?><!--" title="--><?//= Yii::t(
+//                                    'NewsModule.news',
+//                                    'Edit translation in to {lang} language',
+//                                    ['{lang}' => $v]
+//                                ) ?><!--"></i></a>-->
+<!--                        --><?php //} endif; ?>
+<!--                    --><?php //} endif; ?>
+<!--                --><?php //} endforeach; ?>
+<!--            --><?php //} endif; ?>
+<!--        --><?php //} else: { ?>
+<!--            --><?//= $form->hiddenField($model, 'lang'); ?>
+<!--        --><?php //} endif; ?>
+<!--    </div>-->
 
 </div>
 
-<div class="row">
-    <div class="col-sm-7">
-        <?= $form->dropDownListGroup(
-            $model,
-            'category_id',
-            [
-                'widgetOptions' => [
-                    'data' => Yii::app()->getComponent('categoriesRepository')->getFormattedList(
-                        (int)Yii::app()->getModule('news')->mainCategory
-                    ),
-                    'htmlOptions' => [
-                        'empty' => Yii::t('NewsModule.news', '--choose--'),
-                        'encode' => false,
-                    ],
-                ],
-            ]
-        ); ?>
-    </div>
-</div>
+<!--<div class="row">-->
+<!--    <div class="col-sm-7">-->
+<!--        --><?//= $form->dropDownListGroup(
+//            $model,
+//            'category_id',
+//            [
+//                'widgetOptions' => [
+//                    'data' => Yii::app()->getComponent('categoriesRepository')->getFormattedList(
+//                        (int)Yii::app()->getModule('news')->mainCategory
+//                    ),
+//                    'htmlOptions' => [
+//                        'empty' => Yii::t('NewsModule.news', '--choose--'),
+//                        'encode' => false,
+//                    ],
+//                ],
+//            ]
+//        ); ?>
+<!--    </div>-->
+<!--</div>-->
 
 <div class="row">
     <div class="col-sm-7">
@@ -207,11 +207,11 @@ $form = $this->beginWidget(
     </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-7">
-        <?= $form->textFieldGroup($model, 'link'); ?>
-    </div>
-</div>
+<!--<div class="row">-->
+<!--    <div class="col-sm-7">-->
+<!--        --><?//= $form->textFieldGroup($model, 'link'); ?>
+<!--    </div>-->
+<!--</div>-->
 
 <div class="row">
     <div class="col-sm-7">

@@ -417,7 +417,7 @@ class News extends yupe\models\YModel
             'Ноября',
             'Декабря',
             ];
-        $time = strtotime($this->create_time);
-        return date('d', $time)." ".$arr[date('m', $time) * 1]." ".date('Y', $time);
+        $time = strtotime($this->date);
+        return date('d', $time)." ".$arr[date('m', $time) * 1 - 1]." ".date('Y', $time);
     }
 }

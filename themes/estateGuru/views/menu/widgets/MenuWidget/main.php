@@ -8,9 +8,6 @@ foreach ($this->params['items'] as $key => $item) {
         $url = $item['url'];
     }
 
-    if (true) {
-        $url = '/public_html'.$url;
-    }
     $active = ($_SERVER['REQUEST_URI'] == $url);
     $this->params['items'][$key]['url'] = $url;
     $this->params['items'][$key]['active'] = $active;
