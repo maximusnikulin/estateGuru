@@ -1,4 +1,9 @@
 .section-search-map {
+  &__title {
+    @extend .container;
+    @extend .object__title;
+    margin-bottom:40px;
+  }
   #js-map {
     min-height:800px;
   }

@@ -1,92 +1,130 @@
 <template>
-    <div>
-    <div class="filter">
-        <div class="filter__group">
-            <vue-slider v-model = "price.value" v-bind:min = "price.min" v-bind:max = "price.max"></vue-slider>
+        <div class="filter">
+            <div class="filter__group">
+                <div class="filter__group-label">
+                    <h2 class="title">Цена</h2>
+                    <p class="caption">
+                        От {{price.value[0]}} до {{price.value[1]}}
+                    </p>
+                </div>
+                <div class="filter__group-input">
+                    <vue-slider v-model="price.value"
+                                :min="price.min"
+                                :max="price.max"
+                                :tooltip="false"
+                                :dot-size="30"
+                                :process-style="{
+                                background:'#62bb46',                                
+                            }"></vue-slider>
+                </div>
+            </div>
+            <div class="filter__group">
+            <div class="filter__group-label">
+                <h2 class="title">Площадь</h2>
+                <p class="caption">
+                    От {{area.value[0]}} до {{area.value[1]}}
+                </p>
+            </div>
+            <div class="filter__group-input">
+                <vue-slider v-model="area.value"
+                            :min="area.min"
+                            :max="area.max"
+                            :tooltip="false"
+                            :dot-size="30"
+                            :process-style="{
+                                background:'#62bb46',
+                            }"></vue-slider>
+            </div>
         </div>
-        <div class="filter__group">
-            <vue-slider v-model = "area.value" v-bind:min = "area.min" v-bind:max = "area.max"></vue-slider>
+            <div class="filter__group">
+                <div class="filter__group-label">
+                    <h2 class="title">Количество комнат</h2>
+                    <p class="caption">
+                        Выберите количество комнат
+                    </p>
+                </div>
+                <div class="filter__group-input">
+                    <label class="checkbox">
+                        <input type="checkbox" value="1" v-model="rooms"/>
+                        <div class="box">1</div>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="2" v-model="rooms"/>
+                        <div class="box">2</div>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="3" v-model="rooms"/>
+                        <div class="box">3</div>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="4" v-model="rooms"/>
+                        <div class="box">4+</div>
+                    </label>
+                </div>
+            </div>
+            <div class="filter__group">
+                <div class="filter__group-label">
+                    <h2 class="title">Район</h2>
+                    <p class="caption">
+                        Выберите район
+                    </p>
+                </div>
+                <div class="filter__group-input">
+                   <vue-select
+                        v-model = "district.selected"
+                        :options = "district.list"
+                        :allow-empty="false"
+                        track-by="name"
+                        label = "label"
+                        :searchable="true"
+                        :show-labels="false"
+                        placeholder = "Найти"
+                   ></vue-select>
+                </div>
+            </div>
         </div>
-        <div class="filter__group">
-            <label class = "checkbox">
-                <input type="checkbox" value = "1" v-model = "rooms"/>
-                <div class="box">1</div>
-            </label>
-            <label class = "checkbox">
-                <input type="checkbox" value = "2" v-model = "rooms"/>
-                <div class="box">2</div>
-            </label>
-            <label class = "checkbox">
-                <input type="checkbox" value = "3" v-model = "rooms"/>
-                <div class="box">3</div>
-            </label>
-            <label class = "checkbox">
-                <input type="checkbox" value = "4" v-model = "rooms"/>
-                <div class="box">4</div>
-            </label>
 
-        </div>
-        <div class="filter__group">
-            <vue-select
-                    ref = "select"
-                    v-model:value.sync = "district.selected"
-                    :options = "district.list"
-                    :searchable = "false"
-                    :onChange = "onChangeSelect"
-            ></vue-select>
-        </div>
-    </div>
-    <div>
-        <pre>Price</pre>
-        <pre>{{price}}</pre>
-        <pre>District</pre>
-        <pre>{{district}}</pre>
-        <pre>Area</pre>
-        <pre>{{area}}</pre>
-        <pre>Rooms</pre>
-        <pre>{{rooms}}</pre>
-    </div>
-    </div>
 </template>
 
 <script>
     import {API_HOST} from '../config.js';
     import vueSlider from 'vue-slider-component';
-    import vSelect from "./vue-select.js"
+    import Multiselect from 'vue-multiselect'
+
     export default {
         name: 'vue-filter',
         components: {
-            'vue-slider' : vueSlider,
-            'vue-select' : vSelect
+            'vue-slider': vueSlider,
+            'vue-select': Multiselect
         },
-        updated: function(){
-            console.log(this.price)
+        updated: function () {
+            console.log(this.district.value)
         },
         data: function () {
             return {
-                    price: {
-                        min:0,
-                        max:10000000,
-                        value: [0,10000000]
-                    },
-                    area: {
-                        min: 0,
-                        max: 10000000,
-                        value: [0, 10000000]
-                    },
-                    district:{
-                        list:[
-                            {value:"any",label:"Любой"},
-                            {value: "zheleznodorozn", label:"Железнодорожный"},
-                            {value: "industrialny", label:"Индустриальный"},
-                            {value: "leninsky", label:"Ленинский"},
-                        ],
-                        selected: {
-                            value:"any",
-                            label:"Любой"
-                        }
-                    },
-                    rooms:[]
+                price: {
+                    min: 0,
+                    max: 10000000,
+                    value: [0, 10000000]
+                },
+                area: {
+                    min: 0,
+                    max: 10000000,
+                    value: [0, 10000000]
+                },
+                district: {
+                    list: [
+                        { name: "any", label: "Любой" },
+                        { name: "zheleznodorozn", label: "Железнодорожный" },
+                        { name: "industrialny", label: "Индустриальный" },
+                        { name: "leninsky", label: "Ленинский" },
+                    ],
+                    selected: {
+                        name: "any",
+                        label: "Любой"
+                    }
+                },
+                rooms: []
             }
         }
     }

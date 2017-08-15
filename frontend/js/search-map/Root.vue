@@ -2,8 +2,7 @@
     <div>
         <vue-filter></vue-filter>
         <pre>{{objects}}</pre>
-
-        <!--<vue-map></vue-map>-->
+        <vue-map></vue-map>
     </div>
 
 </template>

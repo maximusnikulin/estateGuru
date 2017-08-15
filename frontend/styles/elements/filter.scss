@@ -1,32 +1,50 @@
 .filter {
   @extend .container;
   display: flex;
-  width:100%;
+  width:calc(100% + 40px);
+  margin-left:-20px;
   &__group {
     width:100%;
     flex-basis: calc(100% / 4);
     padding:0 20px;
-
+    &-label {
+      margin-bottom:15px;
+      .title {
+        font: 500 18px / 24px "Roboto";
+      }
+      .caption {
+        font: 400 14px / 20px "Roboto"
+      }
+    }
+    &-input {
+      //display:flex;
+      .checkbox {
+        margin-right:20px;
+        display:inline-block;
+      }
+    }
   }
+
 
 }
 .filter {
-  .v-select .selected-tag {
-    margin:0;
-    line-height:0;
-    float:none;
-    height:auto;
-    background-color: #fff;
-    border: none;
-    border-radius: 0;
-    padding:0;
-    position: absolute;
-    top: 18px;
-    left: 10px;
-    z-index:-1;
+  .multiselect__tags {
+    border-radius: 20px;
+    padding: 8px 40px 0 16px;
+    transition:border-radius .5s ease;
   }
-  .v-select input[type=search],
-  .v-select input[type=search]:focus {
-    float:none;
+  .multiselect--active {
+      .multiselect__tags {
+        border-radius: 20px 20px 0 0;
+      }
+      .multiselect__content-wrapper {
+        transition-delay:.2s;
+      }
   }
+  .multiselect__option--selected.multiselect__option--highlight,
+  .multiselect__option multiselect__option--highlight,
+  .multiselect__option--highlight{
+    background: #62bb46;
+  }
+
 }

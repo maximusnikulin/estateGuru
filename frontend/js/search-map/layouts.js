@@ -35,7 +35,7 @@ export const PM_BALOON_LT = `<div class="placemark__balloon" >
                               </div>
                             </a>
                            </div>`;
-export const CR_ICON_LT = `<div class = "cluster__icon">от {{properties.minPrice}} </div>`
+export const CR_ICON_LT = `<div class = "cluster__icon">от {{properties.minPrice}} &#8381;</div>`
 export const CR_BALOON_LT = `<div class = "cluster__baloon">
                                 <a href="#" class = "card-map">
                                     <div class="card-map__head">

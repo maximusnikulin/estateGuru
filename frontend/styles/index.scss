@@ -17,7 +17,8 @@
 @import './service/slick';
 //LightGallery
 @import './service/lightgallery/lightgallery.scss';
-
+//Select Vue
+@import './service/vue-multiselect.min.css';
 
 /************ FONTS ************/
 
@@ -51,6 +52,7 @@
 @import './elements/typography';
 @import './elements/menu';
 @import './elements/filter';
+@import './elements/checkbox';
 
 
 /************ SECTIONS ************/
