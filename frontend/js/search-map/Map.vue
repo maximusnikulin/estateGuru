@@ -10,7 +10,6 @@
     import objects from './objects.json';
     export default {
         name: 'root',
-
         created: function () {
             this.successFetch(objects);
         },

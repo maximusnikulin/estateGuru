@@ -46,7 +46,7 @@
     }
     // overflow:hidden;
     .title-bg {
-        font: bold 10vw/21px "Roboto";
+        font: bold 10vw/12vw "Roboto";
         position: absolute;
         top: 50%;
         left: 50%;
@@ -54,7 +54,7 @@
         text-transform: uppercase;
         opacity: .04;
         cursor: default;
-        letter-spacing: 0;
+        text-align:center;
         @include desktop {
             //  font: bold 120px/21px "Roboto";
         }

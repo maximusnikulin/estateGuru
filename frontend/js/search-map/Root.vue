@@ -21,7 +21,7 @@
             'vue-filter': Filter
         },
         created:function(){
-            
+
         },
         data:function(){
             return {
