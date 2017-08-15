@@ -48,6 +48,8 @@ class Building extends yupe\models\YModel
 {
     const STATUS_HOME = STATUS_HOME;
 
+    const HOUSE_WAS_BUILDED = 1;
+
     public function getPageTitle()
     {
 

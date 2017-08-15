@@ -21,7 +21,7 @@
     );
     Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/styles.css');
     Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/bootstrap-notify.css');
-    Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/main.js');
+    Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/index.js');
     Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/bootstrap-notify.js');
     Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/jquery.li-translit.js');
     if (($langs = $this->yupe->getLanguageSelectorArray()) != []) {

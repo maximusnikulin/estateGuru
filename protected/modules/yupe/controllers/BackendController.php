@@ -417,6 +417,8 @@ class BackendController extends yupe\components\controllers\BackController
             || !Yii::app()->getRequest()->getIsAjaxRequest()
             || ($method = Yii::app()->getRequest()->getPost('method')) === null
         ) {
+            var_dump('asdasd');
+            die;
             throw new CHttpException(404, Yii::t('YupeModule.yupe', 'Page was not found!'));
         }
 

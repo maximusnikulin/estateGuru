@@ -4,8 +4,10 @@
     @extend .object__title;
     margin-bottom:40px;
   }
-  #js-map {
+  &__content {
+    position: relative;
     min-height:800px;
+    border:1px solid #e8e6e6;
   }
   .placemark__icon {
     background: #fff;

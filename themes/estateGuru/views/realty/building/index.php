@@ -44,3 +44,37 @@
       <a href="#" class="button button--empty button--blue">Все новости</a>
     </div>-->
 </section>
+<section class="section-tab main__logos">
+    <div class="section-tabs__switcher">
+        <div class="navbar">
+            <nav class="navbar__menu">
+                <li class="link active"data-id="1"><a href="javascript:;" >Банки-партнеры</a></li>
+<!--                <li class="link" data-id="2"><a href="javascript:;" >Застройщики</a></li>-->
+            </nav>
+        </div>
+    </div>
+    <?php
+        $bankLogos = Image::model()->findAll('category_id = '.Image::CATEGORY_BANK_LOGOS);
+    ?>
+    <div class="section-tabs__content">
+
+        <?php if (count($bankLogos) >= 4): ?>
+        <div class="slider-logos js-slider-logos" data-id = "1">
+            <?php foreach ($bankLogos as $item): ?>
+                <div class="slider-logos__item">
+                    <figure class="logo">
+                        <img src="<?= $item->getImageUrl(); ?>" alt="<?= $item->alt; ?>">
+                    </figure>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+<!--        <div class="slider-logos js-slider-logos" data-id = "2" style = "display:none">-->
+<!--            <div class="slider-logos__item">-->
+<!--                <figure class="logo">-->
+<!--                    <img src="https://upload.wikimedia.org/wikipedia/ru/d/d6/Sberbank.svg" alt="">-->
+<!--                </figure>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</section>

@@ -83,11 +83,27 @@
                 ]); ?>
             </div>
         </div>
+
+
         <div class="row">
             <div class="col-sm-7">
-                <?=  $form->dropDownListGroup($model, 'rooms', [
+                <?=  $form->checkboxGroup($model, 'isStudio', [
                     'widgetOptions' => [
-                        "data" => Apartment::getRoomsArray(),
+                        'htmlOptions' => [
+                            'class' => 'popover-help',
+                            'data-original-title' => $model->getAttributeLabel('isStudio'),
+                            'data-content' => $model->getAttributeDescription('isStudio')
+                        ]
+                    ]
+                ]); ?>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-7">
+                <?=  $form->textFieldGroup($model, 'rooms', [
+                    'widgetOptions' => [
                         'htmlOptions' => [
                             'class' => 'popover-help',
                             'data-original-title' => $model->getAttributeLabel('rooms'),

@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import Root from './Root.vue'
 
-if (document.getElementById('vue-search')) {
-    new Vue({
-        el: '#vue-search',
+//Event Bus
+export const bus = new Vue();
 
+if (document.getElementById('vue-search-cards')) {
+    new Vue({
+        el: '#vue-search-cards',
         render: function (createElement) {
             return createElement(Root)
         }

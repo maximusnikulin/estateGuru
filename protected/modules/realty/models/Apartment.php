@@ -17,7 +17,7 @@
  * @property string $longDescription
  * @property string $number
  * @property bool   $showOnIndex
-
+ * @property bool   $isStudio
 
  * @property string $seo_title
  * @property string $seo_description
@@ -119,11 +119,11 @@ class Apartment extends yupe\models\YModel
             array('image', 'length', 'max'=>200),
             array('seo_title', 'length', 'max'=>100),
             array('seo_description, seo_keywords', 'length', 'max'=>300),
-            array('seo_title, seo_description, seo_keywords','safe'),
+            array('isStudio, seo_title, seo_description, seo_keywords','safe'),
             array('showOnIndex, svgPoints, shortDescription, longDescription', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('showOnIndex, svgPoints, image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
+			array('isStudio, showOnIndex, svgPoints, image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -145,20 +145,21 @@ class Apartment extends yupe\models\YModel
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'idBuilding' => 'Id Building',
-			'floor' => 'Этаж',
+            'id' => 'ID',
+            'idBuilding' => 'Id Building',
+            'floor' => 'Этаж',
             'maxFloor' => 'Конечный этаж',
-			'rooms' => 'Количество комнат',
-			'size' => 'Площадь',
-			'cost' => 'Стоимость',
-			'shortDescription' => 'Короткое описание',
-			'longDescription' => 'Длинное описание',
+            'rooms' => 'Количество комнат',
+            'size' => 'Площадь',
+            'cost' => 'Стоимость',
+            'shortDescription' => 'Короткое описание',
+            'longDescription' => 'Длинное описание',
             'image' => 'Изображение',
             'showOnIndex' => 'Показывать на главной',
             'seo_title' => 'Title страницы',
             'seo_description' => 'Description',
             'seo_keywords' => 'Keywords',
+            'isStudio' => 'Является студией',
 		);
 	}
 
@@ -215,6 +216,10 @@ class Apartment extends yupe\models\YModel
         return "/building/".$this->building->slug."/".$this->id;
     }
 
+    public function getStudioAsString() {
+	    return ($this->isStudio) ? 'Студия' : 'Стандартная';
+
+    }
 
     public function getFloor()
     {

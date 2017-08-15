@@ -9,11 +9,11 @@ import './components/gallery-layouts';
 import './components/popup';
 import './components/map-contacts';
 import './components/nav-cards';
-import './components/menu';
+// import './components/menu';
 
 
 // VUE SEARCH
 
-// import './search/index.js';
+// import './search-cards/index.js';
 
 import './search-map/index.js';

@@ -1,7 +1,6 @@
 <template>
-    <div>
+    <div class = "section-search-map__content">
         <vue-filter></vue-filter>
-        <pre>{{objects}}</pre>
         <vue-map></vue-map>
     </div>
 
@@ -13,12 +12,16 @@
     import objects from './objects.json';
     import Map from './Map.vue';
     import Filter from './Filter.vue';
+    import {bus} from './index.js';
 
     export default {
         name: 'root',
         components: {
             'vue-map': Map,
             'vue-filter': Filter
+        },
+        created:function(){
+            
         },
         data:function(){
             return {

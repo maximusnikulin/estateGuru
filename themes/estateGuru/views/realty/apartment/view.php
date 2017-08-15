@@ -98,11 +98,16 @@ if (!empty($images)) {
         </div>
     </div>
 </div>
-<div class="slider-layouts js-slider-layouts js-gallery-layouts">
-    <div class="slider-layouts__item" href = "./images/layout.png">
-        <img class = "layout"  src="./images/layout.png" alt="">
+
+<?php
+    $images = $data->getPlannings();
+?>
+<?php if (!empty($images)): ?>
+    <div class="slider-layouts js-slider-layouts js-gallery-layouts">
+        <?php foreach ($images as $image): ?>
+            <div class="slider-layouts__item" href = "<?= $image->getImageUrl(840, 480); ?>">
+                <img class = "layout"  src="<?= $image->getImageUrl(840, 480); ?>" alt="">
+            </div>
+        <?php endforeach; ?>
     </div>
-    <div class="slider-layouts__item" href = "./images/layout.png">
-        <img class = "layout" src="./images/layout.png" alt="">
-    </div>
-</div>
+<?php endif; ?>

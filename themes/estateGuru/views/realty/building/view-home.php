@@ -112,7 +112,7 @@ $apartments = $data->apartments;
             </div>
             <div class="object__desc-concl">
                 <div class="price">
-                    <span class="caption">Цена за м²</span> <span class="value"><?= $data->priceForMeter; ?></span>
+                    <span class="caption">Цена за м²</span> <span class="value"><?= $data->priceForMeter; ?>&nbsp;&#8381;</span>
                 </div>
                 <div class="callback">
                     <div class="button button--action js-callback">Узнать больше</div>
@@ -122,6 +122,7 @@ $apartments = $data->apartments;
 
     </div>
 </div>
+<?php if ($data->svgBackground): ?>
 <section class="section-switcher">
     <h2 class="section-switcher__title">
         Наличие квартир
@@ -175,3 +176,4 @@ $apartments = $data->apartments;
         <p class="caption">&nbsp;&nbsp;* Кликните на зеленую область для просмотра планировок</p>
     </div>
 </section>
+<?php endif; ?>

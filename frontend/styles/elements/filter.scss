@@ -1,25 +1,36 @@
 .filter {
-  @extend .container;
-  display: flex;
-  width:calc(100% + 40px);
-  margin-left:-20px;
+  position: absolute;
+  width:25%;
+  top:0;
+  left:0;
+  background:#fff;
+  height:100%;
+  z-index:2000;
+  padding:40px 40px 0 20px;
+  border-right:1px solid #e8e6e6;
+  &__title {
+    margin-top:0;
+    font:700 24px/28px "Roboto";
+  }
   &__group {
     width:100%;
-    flex-basis: calc(100% / 4);
-    padding:0 20px;
+    margin-top:30px;
+    &--full {
+      flex-basis:100%;
+    }
     &-label {
-      margin-bottom:15px;
       .title {
         font: 500 18px / 24px "Roboto";
       }
       .caption {
-        font: 400 14px / 20px "Roboto"
+        font: 400 14px / 20px "Roboto";
+        min-height:40px;
       }
     }
     &-input {
       //display:flex;
       .checkbox {
-        margin-right:20px;
+        margin-right:6%;
         display:inline-block;
       }
     }

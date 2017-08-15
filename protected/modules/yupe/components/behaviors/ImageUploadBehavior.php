@@ -108,16 +108,24 @@ class ImageUploadBehavior extends FileUploadBehavior
             );
         }
 
-        Imagine::resize(
-            $this->getUploadedFileInstance()->getTempName(),
-            $this->resizeOptions['width'],
-            $this->resizeOptions['height']
-        )->save(
-            $path,
-            $this->resizeOptions['quality']
-        );
+        if (!$this->isSvg()) {
+            Imagine::resize(
+                $this->getUploadedFileInstance()->getTempName(),
+                $this->resizeOptions['width'],
+                $this->resizeOptions['height']
+            )->save(
+                $path,
+                $this->resizeOptions['quality']
+            );
+        }
 
         $this->getOwner()->setAttribute($this->attributeName, $newFileName);
+    }
+
+    protected function isSvg()
+    {
+        return pathinfo($this->getFilePath(), PATHINFO_EXTENSION) == 'svg';
+
     }
 
     /**
@@ -137,7 +145,7 @@ class ImageUploadBehavior extends FileUploadBehavior
             return null;
         }
 
-        if ($width || $height) {
+        if (!$this->isSvg() && ($width || $height)) {
             return $this->thumbnailer->thumbnail(
                 $file ?: $webRoot.$defaultImage,
                 $this->uploadPath,

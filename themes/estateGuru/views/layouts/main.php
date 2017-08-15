@@ -16,8 +16,8 @@
     <?php endif; ?>
 
     <?php
-      Yii::app()->getClientScript()->registerCssFile('/frontend/public/css/style.css');
-      Yii::app()->getClientScript()->registerScriptFile('/frontend/public/js/bundle.js', CClientScript::POS_END);
+      Yii::app()->getClientScript()->registerCssFile('/css/style.css');
+      Yii::app()->getClientScript()->registerScriptFile('/js/bundle.js', CClientScript::POS_END);
     ?>
   
     <script type="text/javascript">
@@ -52,7 +52,7 @@
         </div>
         <div class="header__logo">
           <a href="<?= $this->createUrl('/'); ?>" class="logo">
-            <img src="/frontend/public/svg-icons/logo.svg" alt="" >
+            <img src="/svg-icons/logo.svg" alt="" >
           </a>
         </div>
         <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu']); ?>
@@ -93,7 +93,7 @@
       </div>
       <ul class="footer__content">
         <li class="link">
-          <a href="<?= $this->createUrl('/'); ?>" class="logo"><img width = "160px" src="/frontend/public/svg-icons/logo.svg" alt=""></a>
+          <a href="<?= $this->createUrl('/'); ?>" class="logo"><img width = "160px" src="/svg-icons/logo.svg" alt=""></a>
           <a href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>" class="phone"><?= Yii::app()->getModule("realty")->phone; ?></a>
         </li>
         <li class="link">

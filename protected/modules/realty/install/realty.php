@@ -21,6 +21,7 @@ return [
     ],
     'rules'     => [
         '/' => '/realty/realty/index',
+        '/services' => '/realty/realty/services',
 
         '/api/objects' => 'realty/realty/getBuildingsForMap',
         '/api/apartments' => 'realty/realty/getApartmentsForMap',

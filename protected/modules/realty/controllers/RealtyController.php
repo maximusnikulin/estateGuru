@@ -12,6 +12,12 @@
 
 class RealtyController extends \yupe\components\controllers\FrontController
 {
+
+    public function actionServices()
+    {
+        $this->render('/building/services');
+
+    }
     /**
      * Действие "по умолчанию"
      *

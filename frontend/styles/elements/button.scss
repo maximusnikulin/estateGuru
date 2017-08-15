@@ -20,6 +20,10 @@
     //     transform: translateY(-5px)
     // } 
 }
+.button--filter {
+    padding: 8px 40px;
+    width:100%;
+}
 .button--popup {    
     @extend .button--action;
     box-shadow: none;

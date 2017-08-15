@@ -40,6 +40,8 @@ class Image extends yupe\models\YModel
      */
     const STATUS_NEED_CHECK = 0;
 
+
+    const CATEGORY_BANK_LOGOS = 1;
     /**
      *
      */
@@ -115,6 +117,7 @@ class Image extends yupe\models\YModel
                 'attributeName' => 'file',
                 'minSize' => $module->minSize,
                 'maxSize' => $module->maxSize,
+                'resizeOnUpload' => false,
                 'types' => $module->allowedExtensions,
                 'requiredOn' => 'insert',
                 'uploadPath' => $module->uploadPath,

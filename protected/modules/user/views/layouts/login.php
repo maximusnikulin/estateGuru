@@ -20,7 +20,7 @@
         Yii::getPathOfAlias('application.modules.yupe.views.assets')
     );
     Yii::app()->getClientScript()->registerCssFile($mainAssets . '/css/styles.css');
-    Yii::app()->getClientScript()->registerScriptFile($mainAssets . '/js/main.js');
+    Yii::app()->getClientScript()->registerScriptFile($mainAssets . '/js/index.js');
     Yii::app()->getClientScript()->registerScriptFile($mainAssets . '/js/jquery.li-translit.js');
     if (($langs = $this->yupe->getLanguageSelectorArray()) != []) {
         Yii::app()->getClientScript()->registerCssFile($mainAssets . '/css/flags.css');
