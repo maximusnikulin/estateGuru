@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a27c099f-c848-46f9-8a74-eace77946547" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/js/index.js" afterPath="$PROJECT_DIR$/frontend/js/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/js/search-map/Map.vue" afterPath="$PROJECT_DIR$/frontend/js/search-map/Map.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/estateGuru.iml" afterPath="$PROJECT_DIR$/.idea/estateGuru.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/js/search-map/Root.vue" afterPath="$PROJECT_DIR$/frontend/js/search-map/Root.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/styles/elements/slider-promo.scss" afterPath="$PROJECT_DIR$/frontend/styles/elements/slider-promo.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/js/search-map/Map.vue" afterPath="$PROJECT_DIR$/frontend/js/search-map/Map.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/estateGuru/views/realty/building/slider-item.php" afterPath="$PROJECT_DIR$/themes/estateGuru/views/realty/building/slider-item.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/js/index.js" afterPath="$PROJECT_DIR$/frontend/js/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,12 +17,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="187">
               <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -34,11 +39,9 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/js/search-map/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
+            <state relative-caret-position="119">
               <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding>
-                <marker date="1502792577000" expanded="true" signature="146:277" ph="{&quot;el&quot;: '##vue-search-map'...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -48,36 +51,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="748">
               <caret line="44" column="78" lean-forward="false" selection-start-line="44" selection-start-column="78" selection-end-line="44" selection-end-column="85" />
-              <folding>
-                <marker date="1502773221000" expanded="true" signature="82:89" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="158:2216" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="223:2210" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="284:710" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="346:387" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="448:653" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="599:606" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="771:983" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="1045:1370" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="1097:1278" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="1447:2179" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="1500:1680" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="1733:1913" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="1966:2140" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="2370:2377" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="2444:4629" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="2508:4623" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="2573:3023" ph="..." />
-                <marker date="1502773221000" expanded="false" signature="2639:2680" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="2745:2962" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="2904:2911" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="3088:3312" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="3378:3723" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="3434:3627" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="3804:4588" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="3861:4053" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="4110:4302" ph="..." />
-                <marker date="1502773221000" expanded="true" signature="4359:4545" ph="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -85,8 +59,8 @@
       <file leaf-file-name="Map.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/js/search-map/Map.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-287">
-              <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+            <state relative-caret-position="119">
+              <caret line="17" column="37" lean-forward="false" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -202,8 +176,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="x" value="54" />
+    <option name="y" value="-8" />
+    <option name="width" value="1320" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -223,59 +199,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <expand>
-            <path>
-              <item name="estateGuru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="estateGuru" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="estateGuru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="estateGuru" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="estateGuru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="estateGuru" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="estateGuru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="estateGuru" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="estateGuru" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="estateGuru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="estateGuru" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="estateGuru" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="estateGuru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="estateGuru" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="estateGuru" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="realty" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="estateGuru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="estateGuru" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="estateGuru" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="realty" type="462c0819:PsiDirectoryNode" />
-              <item name="building" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www.estateguru.ru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www.estateguru.ru" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -313,25 +252,6 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-    </configuration>
-    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
-      <PhpTestRunnerSettings />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method />
-    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
       <config-file value="" />
       <node-interpreter value="project" />
@@ -357,6 +277,15 @@
     </configuration>
     <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
       <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -405,7 +334,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53727000" />
+    <option name="totallyTimeSpent" value="53751000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -417,33 +346,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26031747" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70119524" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70119524" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -482,13 +404,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/vue-multiselect/src/Multiselect.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/node_modules/vue-multiselect/src/Multiselect.vue" />
     <entry file="file://$PROJECT_DIR$/frontend/styles/elements/object.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -739,7 +655,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="187">
           <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -750,11 +666,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/js/search-map/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="119">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <marker date="1502792577000" expanded="true" signature="146:277" ph="{&quot;el&quot;: '##vue-search-map'...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -762,36 +676,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
           <caret line="44" column="78" lean-forward="false" selection-start-line="44" selection-start-column="78" selection-end-line="44" selection-end-column="85" />
-          <folding>
-            <marker date="1502773221000" expanded="true" signature="82:89" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="158:2216" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="223:2210" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="284:710" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="346:387" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="448:653" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="599:606" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="771:983" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="1045:1370" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="1097:1278" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="1447:2179" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="1500:1680" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="1733:1913" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="1966:2140" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="2370:2377" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="2444:4629" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="2508:4623" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="2573:3023" ph="..." />
-            <marker date="1502773221000" expanded="false" signature="2639:2680" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="2745:2962" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="2904:2911" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="3088:3312" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="3378:3723" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="3434:3627" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="3804:4588" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="3861:4053" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="4110:4302" ph="..." />
-            <marker date="1502773221000" expanded="true" signature="4359:4545" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -804,8 +689,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/js/search-map/Map.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-287">
-          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        <state relative-caret-position="119">
+          <caret line="17" column="37" lean-forward="false" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
           <folding />
         </state>
       </provider>
