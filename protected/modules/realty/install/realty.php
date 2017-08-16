@@ -22,6 +22,7 @@ return [
     'rules'     => [
         '/' => '/realty/realty/index',
         '/services' => '/realty/realty/services',
+        '/contacts' => '/realty/realty/contacts',
 
         '/api/objects' => 'realty/realty/getBuildingsForMap',
         '/api/apartments' => 'realty/realty/getApartmentsForMap',
