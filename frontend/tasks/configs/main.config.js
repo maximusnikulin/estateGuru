@@ -27,7 +27,7 @@ let config = {
     //SVG
     svg_sprite: './svg-sprite/**/*.svg',
     //DIST
-    dist: './public',    
+    dist: '../public_html',
   },
   output: {
     js: 'js',

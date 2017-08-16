@@ -23,7 +23,7 @@ module.exports = (gulp, plugins, config) => () => {
       mode: {
            dest:'',
            css:{
-             dest:'public/css',
+             dest:'../public_html/css',
              sprite:'../sprite/sprite.svg',             
              prefix: config.preprocessor == 'sass' ? '@mixin svg-%s' : '.svg-%s',
              mixin:"common",
