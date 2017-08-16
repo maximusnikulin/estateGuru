@@ -1,14 +1,21 @@
 <?php
-$this->title = Yii::t('NewsModule.news', 'News');
-$this->breadcrumbs = [Yii::t('NewsModule.news', 'News')];
+$data = $dataProvider->getData();
+$firstElem = array_shift($data)
+
 ?>
-
-<h1><?= Yii::t('NewsModule.news', 'News') ?></h1>
-
-<?php $this->widget(
-    'bootstrap.widgets.TbListView',
-    [
-        'dataProvider' => $dataProvider,
-        'itemView' => '_item',
-    ]
-); ?>
+<section class="section-cards news__cards">
+    <div class="section-cards__title">
+        <div class="title">
+            <h2 class="title__text">Новости </h2>
+        </div>
+    </div>
+    <ul class="section-cards__content">
+        <?= $this->renderPartial('/news/_item-large', ['data' => $firstElem]); ?>
+        <?php foreach ($data as $item): ?>
+            <?= $this->renderPartial('/news/_item', ['data' => $item]); ?>
+        <?php endforeach; ?>
+    </ul>
+    <div class="section-cards__button">
+        <a href="#" class="button button--empty button--blue">Все новости</a>
+    </div>
+</section>

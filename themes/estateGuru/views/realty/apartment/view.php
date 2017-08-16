@@ -49,7 +49,7 @@ if (!empty($images)) {
                 <?php if (!empty($data->building->rayon)): ?>
                     <div class="row">
                         <div class="row__cell">Район</div>
-                        <div class="row__cell row__cell--right"><?= $data->building->rayon; ?></div>
+                        <div class="row__cell row__cell--right"><?= $data->building->getRayon()->value; ?></div>
                     </div>
                 <?php endif; ?>
                 <?php if (!empty($data->building->adres)): ?>
@@ -76,7 +76,7 @@ if (!empty($images)) {
                 <?php if (!empty($data->building->rayon)): ?>
                     <div class="row">
                         <div class="row__cell">Район</div>
-                        <div class="row__cell row__cell--right"><?= $data->building->rayon; ?></div>
+                        <div class="row__cell row__cell--right"><?= $data->building->getRayon()->value; ?></div>
                     </div>
                 <?php endif; ?>
             </div>

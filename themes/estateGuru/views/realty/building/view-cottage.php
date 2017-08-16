@@ -102,56 +102,15 @@ if (!empty($images)) {
 
     </div>
 </div>
-<section class="section-switcher">
-    <h2 class="section-switcher__title">
-        Наличие квартир
-    </h2>
-    <!-- <nav class="section-switcher__nav">
-      <div class="slider-nav js-slider-nav">
-        <div data-number="1" class="slider-nav__item active">
-          <div class="button button--nav-link">Секция 1</div>
-        </div>
-      </div>
-    </nav> -->
-    <div class="section-switcher__content">
-        <div class="visual js-visual active" data-number="1">
-            <div class="visual__image-lr">
-                <figure class="image">
-                    <img src="<?= $data->getImageUrl(1000, 1000); ?>" alt="">
-                </figure>
+<?php
+$images = $data->getPlannings();
+?>
+<?php if (!empty($images)): ?>
+    <div class="slider-layouts js-slider-layouts js-gallery-layouts">
+        <?php foreach ($images as $image): ?>
+            <div class="slider-layouts__item" href = "<?= $image->getImageUrl(840, 480); ?>">
+                <img class = "layout"  src="<?= $image->getImageUrl(840, 480); ?>" alt="">
             </div>
-            <div class="visual__polygons-lr">
-                <?php foreach ($apartments as $apartment): ?>                    
-                        <div class="polygon">
-                            <?= $apartment->getSvg(); ?>
-                        </div>                    
-                <?php endforeach; ?>
-            </div>
-            <div class="visual__tooltips-lr">
-                <?php foreach ($apartments as $apartment): ?>
-                    <div class="tooltip hidden" data-id="<?= $apartment->id; ?>">
-                        <div class="tooltip__content">
-                            <p class="row">
-                                Этаж: <?= $apartment->getFloor()?>
-                            </p>
-                            <p class="row">
-                                Комнат: <?= $apartment->rooms; ?>
-                            </p>
-                            <p class="row">
-                                Площадь: <?= $apartment->size; ?> м<sup>2</sup>
-                            </p>
-                            <p class="row">
-                                Цена: <?= number_format($apartment->cost, 0, '', ' '); ?> руб.
-                            </p>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-
+        <?php endforeach; ?>
     </div>
-    <div class="section-switcher__legend">
-        <i class="cube"></i>
-        <p class="caption">&nbsp;&nbsp;* Кликните на зеленую область для просмотра планировок</p>
-    </div>
-</section>
+<?php endif; ?>

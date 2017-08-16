@@ -1,8 +1,8 @@
 <?php
 /* @var News $data */
 ?>
-<li class="section-cards__content-item">
-    <a class="card-news" href="<?= CHtml::normalizeUrl(['/news/news/view/', 'slug' => $data->slug]); ?>">
+<li class="section-cards__content-item section-cards__content-item--2x">
+    <a class="card-news card-news--full" href="<?= CHtml::normalizeUrl(['/news/news/view/', 'slug' => $data->slug]); ?>">
         <div class="card-news__head">
             <div class="photo" style="background-image:url(<?= $data->getImageUrl(); ?>)"></div>
         </div>
