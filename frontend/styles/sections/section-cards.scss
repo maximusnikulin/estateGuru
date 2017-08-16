@@ -4,19 +4,22 @@
         .title {
             margin-bottom:30px;           
             white-space: nowrap;
+
             &__icon {
                 display:inline-block;               
                 vertical-align: middle;
+                margin-right:50px;
+                @include tablet-hl {
+                    margin-right:30px;
+                }
+                @include mobile {
+                    margin-right:10px;
+                }
                 &--news {    
                     @include svg-news;                
                 }
                 &--estate {
                     @include svg-estate;
-                }
-                & + .title__text {
-                    margin-left:50px;
-                    // min-height:60px;
-                    // line-height: 60px;
                 }
             }
             &__text {
@@ -26,15 +29,7 @@
                 display:inline-block;
                 vertical-align: middle;
               
-                max-width:250px;  
-                @include tablet-hl {
-                    margin-left:30px;
-                    // font: bold 28px/28px "Roboto";                                    
-                }
-                @include mobile {
-                    margin-left:10px;
-                    // font: bold 24px/24px "Roboto";                                    
-                }
+                max-width:250px;
             }
             
         }
