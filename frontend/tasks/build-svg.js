@@ -32,7 +32,7 @@ module.exports = (gulp, plugins, config) => () => {
              example:false,
              render:config.preprocessor == 'sass' ? {
                scss:{
-                  dest : '../../styles/service/sprite.scss'
+                  dest : '../../frontend/styles/service/sprite.scss'
                }
              }:
              {
