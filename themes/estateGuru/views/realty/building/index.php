@@ -55,6 +55,9 @@
     </div>
     <?php
         $bankLogos = Image::model()->findAll('category_id = '.Image::CATEGORY_BANK_LOGOS);
+        $builders = Building::model()->findAll();
+        $builders = array_merge($builders, $builders);
+        $builders = array_merge($builders, $builders);
     ?>
     <div class="section-tabs__content">
 
@@ -69,12 +72,16 @@
             <?php endforeach; ?>
         </div>
         <?php endif; ?>
-<!--        <div class="slider-logos js-slider-logos" data-id = "2" style = "display:none">-->
-<!--            <div class="slider-logos__item">-->
-<!--                <figure class="logo">-->
-<!--                    <img src="https://upload.wikimedia.org/wikipedia/ru/d/d6/Sberbank.svg" alt="">-->
-<!--                </figure>-->
-<!--            </div>-->
-<!--        </div>-->
+        <?php if (count($builders) >= 4): ?>
+            <div class="slider-logos js-slider-logos" data-id = "2" style = "display:none">
+                <?php foreach ($builders as $item): ?>
+                    <div class="slider-logos__item">
+                        <figure class="logo">
+                            <img src="<?= $item->getImageUrl(); ?>" alt="<?= $item->alt; ?>">
+                        </figure>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
