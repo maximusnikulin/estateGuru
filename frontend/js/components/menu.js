@@ -9,5 +9,5 @@ bar.addEventListener('click',function(){
 });
 overlay.addEventListener('click',function(){
     menu.classList.remove('open');
-    document.body.classList.add('frozen');
+    document.body.classList.remove('frozen');
 });

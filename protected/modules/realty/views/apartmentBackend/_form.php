@@ -262,7 +262,7 @@
             </section>    
         </div>      
 
-        <script type = "text/javascript" src = "/frontend/public/js/svg-maker.js"></script>
+        <script type = "text/javascript" src = "/js/svg-maker.js"></script>
           
 
 

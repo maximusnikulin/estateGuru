@@ -5,7 +5,7 @@
  * @var FeedbackModule $module
  */
 ?>
-<div class="form">
+<div class="form form--feedback">
     <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', [
         'id' => 'feedback-widget-form',
         'htmlOptions' => [
