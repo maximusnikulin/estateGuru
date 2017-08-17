@@ -49,7 +49,7 @@
         <div class="navbar">
             <nav class="navbar__menu">
                 <li class="link active"data-id="1"><a href="javascript:;" >Банки-партнеры</a></li>
-<!--                <li class="link" data-id="2"><a href="javascript:;" >Застройщики</a></li>-->
+                <li class="link" data-id="2"><a href="javascript:;" >Застройщики</a></li>
             </nav>
         </div>
     </div>
