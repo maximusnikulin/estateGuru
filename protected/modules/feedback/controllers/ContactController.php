@@ -93,6 +93,7 @@ class ContactController extends \yupe\components\controllers\FrontController
                     if (Yii::app()->getRequest()->getIsAjaxRequest()) {
                         Yii::app()->ajax->failure(
                             Yii::t('FeedbackModule.feedback', 'It is not possible to send message!')
+
                         );
                     }
 
@@ -109,6 +110,7 @@ class ContactController extends \yupe\components\controllers\FrontController
                     Yii::app()->ajax->rawText(CActiveForm::validate($form));
                 }
             }
+
         }
 
         $this->render('index', ['model' => $form, 'module' => $module]);

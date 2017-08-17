@@ -42,7 +42,7 @@
     <?php $this->widget('application.modules.news.widgets.LastNewsWidget'); ?>
     <div class="section-cards__button">
       <a href="/news" class="button button--empty button--blue">Все новости</a>
-    </div>-->
+    </div>
 </section>
 <section class="section-tab main__logos">
     <div class="section-tabs__switcher">
@@ -56,8 +56,6 @@
     <?php
         $bankLogos = Image::model()->findAll('category_id = '.Image::CATEGORY_BANK_LOGOS);
         $builders = Builder::model()->findAll();
-        $builders = array_merge($builders, $builders);
-        $builders = array_merge($builders, $builders);
     ?>
     <div class="section-tabs__content">
 

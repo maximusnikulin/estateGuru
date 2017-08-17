@@ -29,7 +29,7 @@ return [
         ]
     ],
     'rules' => [
-        '/contacts' => '/feedback/contact/index',
+        '/feedback' => '/feedback/contact/index',
         '/faq' => '/feedback/contact/faq',
         '/faq/<id:\d+>' => '/feedback/contact/faqView',
         '/feedback/contact/captcha/refresh/<v>' => '/feedback/contact/captcha/refresh',
