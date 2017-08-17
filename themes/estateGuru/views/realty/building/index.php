@@ -55,7 +55,7 @@
     </div>
     <?php
         $bankLogos = Image::model()->findAll('category_id = '.Image::CATEGORY_BANK_LOGOS);
-        $builders = Building::model()->findAll();
+        $builders = Builder::model()->findAll();
         $builders = array_merge($builders, $builders);
         $builders = array_merge($builders, $builders);
     ?>
