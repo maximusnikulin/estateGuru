@@ -40,21 +40,24 @@
         </div>
     </div>
     <?php $this->widget('application.modules.news.widgets.LastNewsWidget'); ?>
-    <!--<div class="section-cards__button">
-      <a href="#" class="button button--empty button--blue">Все новости</a>
+    <div class="section-cards__button">
+      <a href="/news" class="button button--empty button--blue">Все новости</a>
     </div>-->
 </section>
 <section class="section-tab main__logos">
     <div class="section-tabs__switcher">
         <div class="navbar">
             <nav class="navbar__menu">
-                <li class="link active"data-id="1"><a href="javascript:;" >Банки-партнеры</a></li>
-<!--                <li class="link" data-id="2"><a href="javascript:;" >Застройщики</a></li>-->
+                <li class="link active" data-id="1"><a href="javascript:;" >Банки-партнеры</a></li>
+                <li class="link" data-id="2"><a href="javascript:;" >Застройщики</a></li>
             </nav>
         </div>
     </div>
     <?php
         $bankLogos = Image::model()->findAll('category_id = '.Image::CATEGORY_BANK_LOGOS);
+        $builders = Builder::model()->findAll();
+        $builders = array_merge($builders, $builders);
+        $builders = array_merge($builders, $builders);
     ?>
     <div class="section-tabs__content">
 
@@ -69,12 +72,16 @@
             <?php endforeach; ?>
         </div>
         <?php endif; ?>
-<!--        <div class="slider-logos js-slider-logos" data-id = "2" style = "display:none">-->
-<!--            <div class="slider-logos__item">-->
-<!--                <figure class="logo">-->
-<!--                    <img src="https://upload.wikimedia.org/wikipedia/ru/d/d6/Sberbank.svg" alt="">-->
-<!--                </figure>-->
-<!--            </div>-->
-<!--        </div>-->
+        <?php if (count($builders) >= 4): ?>
+            <div class="slider-logos js-slider-logos" data-id = "2" style = "display:none">
+                <?php foreach ($builders as $item): ?>
+                    <div class="slider-logos__item">
+                        <figure class="logo">
+                            <img src="<?= $item->getImageUrl(); ?>" alt="<?= $item->name; ?>">
+                        </figure>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
