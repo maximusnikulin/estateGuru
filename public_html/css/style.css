@@ -260,9 +260,8 @@ select {
  */
 button,
 html [type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
+* {
+  -webkit-appearance: none;
   /* 2 */ }
 
 /**
@@ -1321,7 +1320,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   padding: 0; }
 
 .container--narrow, .typography {
-  margin: 32px auto 0;
+  margin: 32px auto 48px;
   max-width: 1030px;
   width: 100%;
   padding: 0 48px; }
@@ -1499,7 +1498,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     .slider-promo__item-content {
       margin: 94px auto 64px; } }
   .slider-promo__item-content .title-bg {
-    font: bold 10vw/21px "Roboto";
+    font: bold 10vw/12vw "Roboto";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1507,7 +1506,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     text-transform: uppercase;
     opacity: .04;
     cursor: default;
-    letter-spacing: 0; }
+    text-align: center; }
   .slider-promo__item-content .poster {
     position: absolute;
     left: 38%;
@@ -1693,7 +1692,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       bottom: 20px;
       left: 20px; }
       .card-estate__head .price__title, .card-news__head .price__title, .section-search-map .placemark__balloon .card-map__head .price__title, .section-search-map .cluster__baloon .card-map__head .price__title {
-        font: 400 12px/21px "Roboto";
+        font: 400 13px/21px "Roboto";
         color: #fff;
         display: block; }
       .card-estate__head .price__val, .card-news__head .price__val, .section-search-map .placemark__balloon .card-map__head .price__val, .section-search-map .cluster__baloon .card-map__head .price__val {
@@ -2604,7 +2603,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     .slider-layouts__item img {
       max-width: 100%;
       display: block;
-      width: 100%; }
+      width: auto;
+      margin: 0 auto; }
 
 .service-block__main {
   position: relative;
@@ -2762,6 +2762,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   font: 400 14px/24px  'Open Sans';
   color: #767676;
   margin-top: 24px; }
+
+.typography img {
+  max-width: 100%;
+  margin: 0 auto; }
 
 .typography figure {
   text-align: center;
@@ -2932,7 +2936,14 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   white-space: nowrap; }
   .section-cards__title .title__icon {
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: middle;
+    margin-right: 50px; }
+    @media (max-width: 1024px) {
+      .section-cards__title .title__icon {
+        margin-right: 30px; } }
+    @media (max-width: 560px) {
+      .section-cards__title .title__icon {
+        margin-right: 10px; } }
     .section-cards__title .title__icon--news {
       background: url("../sprite/sprite-65e7ca40.svg") no-repeat;
       background-position: 60% 0;
@@ -2943,8 +2954,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       background-position: 0 0;
       width: 54px;
       height: 58px; }
-    .section-cards__title .title__icon + .title__text {
-      margin-left: 50px; }
   .section-cards__title .title__text {
     white-space: normal;
     position: relative;
@@ -2952,12 +2961,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     display: inline-block;
     vertical-align: middle;
     max-width: 250px; }
-    @media (max-width: 1024px) {
-      .section-cards__title .title__text {
-        margin-left: 30px; } }
-    @media (max-width: 560px) {
-      .section-cards__title .title__text {
-        margin-left: 10px; } }
 
 .section-cards__content {
   display: -ms-flexbox;

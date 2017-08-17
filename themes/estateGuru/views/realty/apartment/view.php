@@ -71,7 +71,7 @@ if (!empty($images)) {
                     </div>
                 <?php endif; ?>
             </div>
-            <h2 class="object__desc-title">Дополнительная информация</h2>
+            <!-- <h2 class="object__desc-title">Дополнительная информация</h2>
             <div class="object__desc-common">
                 <?php if (!empty($data->building->rayon)): ?>
                     <div class="row">
@@ -79,14 +79,14 @@ if (!empty($images)) {
                         <div class="row__cell row__cell--right"><?= $data->building->getRayon()->value; ?></div>
                     </div>
                 <?php endif; ?>
-            </div>
+            </div> -->
             <div class="object__desc-to-map">
                 <span class="text">Показать на карте</span>
             </div>
             <h2 class="object__desc-title">Описание</h2>
-            <p class="object__desc-text">
+            <article class="object__desc-text">
                 <?= $data->longDescription; ?>
-            </p>
+            </article>
             <div class="object__desc-concl">
                 <div class="price">
                     <span class="caption">Цена от</span> <span class = "value"><?= number_format($data->cost, 0, ".", " "); ?> &#8381;</span>

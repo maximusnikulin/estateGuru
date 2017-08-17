@@ -341,9 +341,8 @@ html [type="button"],
 
 /* 1 */
 
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
+* {
+  -webkit-appearance: none;
   /* 2 */
 }
 
