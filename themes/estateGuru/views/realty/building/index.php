@@ -77,7 +77,7 @@
                 <?php foreach ($builders as $item): ?>
                     <div class="slider-logos__item">
                         <figure class="logo">
-                            <img src="<?= $item->getImageUrl(); ?>" alt="<?= $item->alt; ?>">
+                            <img src="<?= $item->getImageUrl(); ?>" alt="<?= $item->name; ?>">
                         </figure>
                     </div>
                 <?php endforeach; ?>
