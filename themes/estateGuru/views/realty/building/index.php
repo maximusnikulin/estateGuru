@@ -40,15 +40,15 @@
         </div>
     </div>
     <?php $this->widget('application.modules.news.widgets.LastNewsWidget'); ?>
-    <!--<div class="section-cards__button">
-      <a href="#" class="button button--empty button--blue">Все новости</a>
+    <div class="section-cards__button">
+      <a href="/news" class="button button--empty button--blue">Все новости</a>
     </div>-->
 </section>
 <section class="section-tab main__logos">
     <div class="section-tabs__switcher">
         <div class="navbar">
             <nav class="navbar__menu">
-                <li class="link active"data-id="1"><a href="javascript:;" >Банки-партнеры</a></li>
+                <li class="link active" data-id="1"><a href="javascript:;" >Банки-партнеры</a></li>
                 <li class="link" data-id="2"><a href="javascript:;" >Застройщики</a></li>
             </nav>
         </div>
