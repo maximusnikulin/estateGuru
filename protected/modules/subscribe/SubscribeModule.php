@@ -85,7 +85,7 @@ class SubscribeModule  extends yupe\components\WebModule
             ['label' => Yii::t('SubscribeModule.subscribe', 'subscribe')],
             [
                 'icon' => 'fa fa-fw fa-list-alt',
-                'label' => Yii::t('SubscribeModule.subscribe', 'Index'),
+                'label' => Yii::t('SubscribeModule.subscribe', 'Подписки'),
                 'url' => ['/subscribe/subscribeBackend/index']
             ],
         ];
