@@ -17,6 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return [
+    'realty' => 'Объекты',
     "Realty" => "Недвижимость",
     "Districts" => "Кварталы",
     "Districts list" => "Список кварталов",
