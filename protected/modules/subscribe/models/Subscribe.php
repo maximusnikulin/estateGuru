@@ -51,9 +51,9 @@ class Subscribe extends yupe\models\YModel
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => 'Код',
 			'email' => 'Email',
-			'dateAdd' => 'Date Add',
+			'dateAdd' => 'Дата подписки',
 		);
 	}
 

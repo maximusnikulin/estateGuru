@@ -214,7 +214,7 @@ class SubscribeModule  extends yupe\components\WebModule
                     [
                         'type' => AuthItem::TYPE_OPERATION,
                         'name' => 'Subscribe.SubscribeBackend.Index',
-                        'description' => Yii::t('SubscribeModule.subscribe', 'Index')
+                        'description' => Yii::t('SubscribeModule.subscribe', 'Просмотр')
                     ],
                 ]
             ]
