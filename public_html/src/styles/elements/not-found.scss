@@ -1,0 +1,53 @@
+.not-found {
+    display:block;
+    margin:150px 0;
+    text-align: center;
+    &__title {
+        display: inline-block;
+        position: relative;
+        .title {
+            text-align: center;
+            font:bold 150px/185px "Roboto";
+            position: relative;
+            z-index:2;
+            .green {
+                color:#62bb46
+            }
+        }
+        .head {
+            font:200 24px/24px "Roboto";
+            margin-bottom:24px;
+        }
+        .square { 
+            &--1x {
+                border:6px solid #f58220;
+                width:80px;
+                height:80px;
+                position: absolute;
+                top: -5%;
+                left: 0px;
+            }
+            &--2x {
+                border:5px solid #f58220;
+                width:40px;
+                height:40px;
+                position: absolute;
+                top: 15%;
+                right: -25%;
+            }
+            &--3x {
+                border:3px solid #f58220;
+                width:20px;
+                height:20px;
+                position: absolute;
+                bottom: 25%;
+                left: -25%;
+            }
+        }
+    }
+    &__text {
+        max-width:320px;
+        margin:0 auto;
+        text-align: center;
+    }
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "id": 6,
+    "address": "Солнечная поляна 32",
+    "geo": [55.7, 37.6],
+    "rooms":2,
+    "price":1500000,
+    "url": "/dom/solnechnaya-polyana-32",
+    "image": "http://localhost:8888/public/uploads/thumbs/realty/images//200x200_cropped_7c77293a4475779073b4822049b0232d.jpeg",
+    "deadline":"2-ой квартал 2018"
+  },
+  {
+    "id": 2,
+    "address": "Солнечная поляна 32",
+    "geo": [55.7, 37.6],
+    "rooms":2,
+    "price":2500000,
+    "url": "/dom/solnechnaya-polyana-32",
+    "image": "http://localhost:8888/public/uploads/thumbs/realty/images//200x200_cropped_7c77293a4475779073b4822049b0232d.jpeg",
+    "deadline":"2-ой квартал 2018"
+  },
+  {
+  "id": 5,
+  "address": "Солнечная поляна 35",
+  "geo": [55.8, 37.6],
+  "price":45000000,
+  "url": "/dom/solnechnaya-polyana-35",
+  "image": "http://localhost:8888/public/uploads/thumbs/realty/images//200x200_cropped_7c77293a4475779073b4822049b0232d.jpeg",
+  "deadline":""
+},
+  {
+    "id": 7,
+    "address": "Солнечная поляна 35",
+    "geo": [55.8, 37.6],
+    "price":7000000,
+    "url": "/dom/solnechnaya-polyana-35",
+    "image": "http://localhost:8888/public/uploads/thumbs/realty/images//200x200_cropped_7c77293a4475779073b4822049b0232d.jpeg",
+    "deadline":""
+  },
+  {
+    "id": 17,
+    "address": "Солнечная поляна 22",
+    "geo": [55.9, 37.6],
+    "price":8000000,
+    "url": "/dom/solnechnaya-polyana-35",
+    "image": "http://localhost:8888/public/uploads/thumbs/realty/images//200x200_cropped_7c77293a4475779073b4822049b0232d.jpeg",
+    "deadline":"3-ий квартал 2019"
+  }
+]

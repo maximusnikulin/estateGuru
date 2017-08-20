@@ -1,0 +1,74 @@
+@mixin common {
+	background: url("../sprite/sprite-65e7ca40.svg") no-repeat;
+}
+
+@mixin svg-bar {
+	@include common;
+	background-position: 98.13084112149532% 37.357894736842105%;
+	width: 34px;
+	height: 24px;
+}
+
+@mixin svg-cross {
+	@include common;
+	background-position: 61.66811468288445% 62.298603651987115%;
+	width: 25.9px;
+	height: 25.9px;
+}
+
+@mixin svg-estate {
+	@include common;
+	background-position: 0 0;
+	width: 54px;
+	height: 58px;
+}
+
+@mixin svg-go-to-map {
+	@include common;
+	background-position: 0 69.45276014848523%;
+	width: 35.49px;
+	height: 35.49px;
+}
+
+@mixin svg-magnifier {
+	@include common;
+	background-position: 98.13084112149532% 69.98823529411764%;
+	width: 34px;
+	height: 34px;
+}
+
+@mixin svg-news {
+	@include common;
+	background-position: 60% 0;
+	width: 51px;
+	height: 58px;
+}
+
+@mixin svg-phone {
+	@include common;
+	background-position: 0 99.45744680851064%;
+	width: 25px;
+	height: 25px;
+}
+
+@mixin svg-slider-promo-next {
+	@include common;
+	background-position: 33.63662212112596% 69.45276014848523%;
+	width: 35.49px;
+	height: 35.49px;
+}
+
+@mixin svg-slider-promo-prev {
+	@include common;
+	background-position: 99.5166334944555% 0;
+	width: 35.49px;
+	height: 35.49px;
+}
+
+@mixin svg-to-more {
+	@include common;
+	background-position: 20.161290322580644% 89.03809523809524%;
+	width: 17px;
+	height: 14px;
+}
+

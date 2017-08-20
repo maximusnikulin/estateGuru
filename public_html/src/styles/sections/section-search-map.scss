@@ -1,0 +1,98 @@
+.section-search-map {
+  &__title {
+    @extend .container;
+    @extend .object__title;
+    margin-bottom:40px;
+  }
+  &__content {
+    position: relative;
+    min-height:800px;
+    border:1px solid #e8e6e6;
+  }
+  .placemark__icon {
+    background: #fff;
+    border-radius:5px;
+    padding:5px 10px;
+    display: inline-block;
+    position: absolute;
+    left:-20px;
+    top:-38px;
+    box-shadow:0 1px 20px 1px rgba(0,0,0,.2);
+    white-space: nowrap;
+    &:after {
+      position: absolute;
+      bottom: -10px;
+      left: 10px;
+      content:'';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 10px 0 10px;
+      border-color: #fff transparent transparent transparent;
+      font: 700 14px/18px "Roboto";
+    }
+  }
+  .placemark__balloon {
+    .card-map{
+      border:none;
+      user-select: none;
+      &__head {
+        @extend .card-estate__head;
+        max-height:150px;
+      }
+      &__name {
+        @extend .card-estate__name;
+        padding:10px;
+        .address {
+          font: 700 14px/18px "Roboto";
+        }
+        .type {
+          font: 400 12px/18px "Roboto";
+        }
+      }
+      &__more {
+        @extend .card-estate__more;
+        padding:10px;
+      }
+      &__info {
+        @extend .card-estate__info;
+      }
+    }
+  }
+  .cluster__icon {
+    @extend .placemark__icon;
+  }
+  .cluster__baloon{
+    @extend .placemark__balloon;
+  }
+  [class *= "ymaps"]{
+    &[class *= "balloon__content"] {
+      padding:0;
+      margin:0;
+      border:none;
+      box-shadow:none;
+    }
+    &[class *= "cluster-tabs__section_type_content"] {
+    padding:0;
+  }
+    &[class *="cluster-tabs"] {
+      padding:0;
+    }
+    &[class *= "cluster-tabs__menu-item"] {
+      border-radius: 0;
+      cursor:pointer;
+      padding:5px ;
+    }
+    &[class *= "cluster-tabs__menu-item_current_yes"] {
+      background:#62bb46;
+      * {
+        color:#fff !important;
+      }
+    }
+    &[class *= "cluster-tabs__menu-item-text"] {
+      font: 400 14px/18px "Roboto";
+      color:black;
+    }
+  }
+
+}
