@@ -29,6 +29,11 @@
             width:100%;
             min-width:100%;
         }
+        &--error {
+            .input {
+                border-color:salmon;
+            }    
+        }
         .input {
              border-radius:20px;
              background:#fff;

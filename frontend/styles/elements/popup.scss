@@ -24,7 +24,7 @@
                 margin-bottom: 40px
             }
             &__field {
-                margin-bottom: 25px;
+                margin-bottom: 25px;                
                 .label {
                     font: 12px/21px Roboto;
                     color: #545454;
@@ -34,6 +34,7 @@
                 }
                 .error {
                     @extend .label;
+                    display:none;
                     float: right;
                     color: salmon;
                 }
@@ -41,18 +42,22 @@
                     font: 16px/24px Roboto;
                     border: 1px solid #d3d3d3;
                     padding: 5px 8px;
-                    &--error {
-                        border-color: salmon;
-                    }
+                    
                 }
                 .textarea {
                    width:100%;
                    resize: none;
                    height:100px;
-                   @extend .input;
-                   &--error {
-                       @extend .input--error;
-                   }
+                   @extend .input;                   
+                }
+                &--error {                    
+                    .input,
+                    .textarea {
+                        border-color: salmon;
+                    }
+                    .error {
+                        display:block;
+                    }
 
                 }
             }

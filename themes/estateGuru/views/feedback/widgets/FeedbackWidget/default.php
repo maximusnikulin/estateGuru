@@ -4,7 +4,9 @@
  * @var TbActiveForm $form
  * @var FeedbackModule $module
  */
+ 
 ?>
+
 <div class="form form--feedback">
     <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', [
         'id' => 'feedback-widget-form',
@@ -12,24 +14,25 @@
                 'class' => 'popup popup--data',
         ],
         'action' => ['/feedback/contact/index'],
-    ]); ?>
+    ]); 
+    ?>
       <h2 class="popup__title">
             <span>Свяжитесь с нами</span>
         </h2>
         <div class="popup__field">
             <label for="name" class = "label">Имя</label>
             <label for="name" class = "error">Ошибка</label>
-            <?= $form->textField($model, 'name', ['class' => 'input']); ?>
+            <?= $form->textField($model, 'name', ['class' => 'input', 'id'  => 'name']); ?>
         </div>
         <div class="popup__field">
             <label for="email" class = "label">E-mail</label>
             <label for="email" class = "error">Ошибка</label>
-            <?= $form->textField($model, 'email', ['class' => 'input']); ?>
+            <?= $form->textField($model, 'email', ['class' => 'input', 'id'  => 'email']); ?>
         </div>
         <div class="popup__field">
             <label for="message" class = "label">Сообщение</label>
             <label for="message" class = "error">Ошибка</label>
-            <?= $form->textArea($model, 'name', ['class' => 'textarea']); ?>
+            <?= $form->textArea($model, 'text', ['class' => 'textarea', 'id'  => 'message']); ?>
         </div>
         <div class="popup__button">
             <button type = "submit" class = "button button--popup">Отправить</button>

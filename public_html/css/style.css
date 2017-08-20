@@ -2487,18 +2487,22 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       display: block;
       float: left; }
     .popup__field .error {
+      display: none;
       float: right;
       color: salmon; }
     .popup__field .input, .popup__field .textarea {
       font: 16px/24px Roboto;
       border: 1px solid #d3d3d3;
       padding: 5px 8px; }
-      .popup__field .input--error, .popup__field .textarea--error {
-        border-color: salmon; }
     .popup__field .textarea {
       width: 100%;
       resize: none;
       height: 100px; }
+    .popup__field--error .input, .popup__field--error .popup__field .textarea, .popup__field .popup__field--error .textarea,
+    .popup__field--error .textarea {
+      border-color: salmon; }
+    .popup__field--error .error {
+      display: block; }
   .popup__message {
     font: 16px/24px Roboto;
     text-align: center; }
@@ -3041,6 +3045,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       .section-subscribe__form-group {
         width: 100%;
         min-width: 100%; } }
+    .section-subscribe__form-group--error .input, .section-subscribe__form-group--error .popup__field .textarea, .popup__field .section-subscribe__form-group--error .textarea {
+      border-color: salmon; }
     .section-subscribe__form-group .input, .section-subscribe__form-group .popup__field .textarea, .popup__field .section-subscribe__form-group .textarea {
       border-radius: 20px;
       background: #fff;

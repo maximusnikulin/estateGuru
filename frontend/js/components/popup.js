@@ -1,7 +1,22 @@
- function randomIntervalInclude(min, max) {
-     var random = min + Math.random() * (max + 1 - min);
-     return +Math.floor(random).toFixed(2);
- }
+export const checkValidation = (body) => {
+        console.log(body);
+        var errors = {}    
+        Object.keys(body).forEach(function(key){
+            if(key.indexOf('[name]') !== -1) {            
+                if (body[key] == '') {
+                    errors[key] = true;
+                }           
+            }
+            if(key.indexOf('[phone]') !== -1) {            
+                if (body[key] == '') {
+                    errors[key] = true;
+                }             
+            }
+        })
+        return errors;
+}
+
+
  const TITLE_ERROR = `Произошла ошибка`;
  const MESSAGE_ERROR = `К сожалению наш сервис временно недоступен.</br>Мы уже устраняем проблему, попробуйте через 2 минуты.`;
 
@@ -44,13 +59,47 @@
  }
 
  $buttonsOpen.on('click', function () {
-     $('body').addClass('frozen')
+     $('body').addClass('frozen');
      $sectionCallback.addClass('show-data');
  })
- $buttonSend.on('click', function (e) {
-     e.preventDefault();
-     let rnd = Math.round(Math.random());
-     showResult(rnd)
+
+ $formData.on('submit', function (e) {
+     e.preventDefault();   
+     $(this).find('.popup__field').removeClass('popup__field--error');
+     var fields = $(this).serializeArray();
+     var date = new Date();
+     var time = date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+     console.log(time);
+    //  $(this).find('.popup__field input[type="hidden"]').val(time);
+     var body = {}; 
+        fields.forEach(el => body[el.name] = el.value);         
+        var errors = checkValidation(body);
+        console.log(errors);
+        if (Object.keys(errors).length) {            
+            for (var key in errors) {       
+                var selector = '.popup__field [name="' + key + '"]';
+                $(this).find(selector).parent().addClass('popup__field--error');                
+            }
+
+        }
+        else {
+            $(this).find('.button').text('Отправка...')
+            $(this).find('.popup__field input, .popup__field textarea').attr('disabled', true)
+            var url = e.target.action;
+            $.ajax({
+                type:'POST',
+                url,
+                data: JSON.stringify(body),
+                success:function(e){
+                    showResult(true)
+
+                },
+                error:function(e){
+                    showResult(false)
+                }
+            });
+        }
+
  })
  $buttonClose.on('click', function (e) {
      $('body').removeClass('frozen')
