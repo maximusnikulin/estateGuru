@@ -22,11 +22,6 @@ function Visual(elem) {
             $tooltips.addClass("hidden").removeClass("show")
             $tooltipCur.addClass("show").removeClass("hidden")      
         });
-        if (this.window.innerWidth < 1024) {
-            $tooltips.forEach((el) => {
-                console.log(el)
-            })
-        }
     }
 }
 

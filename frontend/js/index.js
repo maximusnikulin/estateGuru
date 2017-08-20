@@ -1,4 +1,4 @@
-console.log('asdasd');
+
 import './components/slider-promo';
 import './components/slider-logos';
 // import './components/slider-nav';

@@ -89,7 +89,7 @@ export const checkValidation = (body) => {
             $.ajax({
                 type:'POST',
                 url,
-                data: JSON.stringify(body),
+                data: body,
                 success:function(e){
                     showResult(true)
 

@@ -7,10 +7,15 @@ $('.section-subscribe__form-group').on('submit', function(e){
         $('.section-subscribe__form-group button').text('Отправка...');
         $.ajax({
             url:'/subscribe?email=' + value ,            
-            success:function(){
-                $('.section-subscribe__form-group').hide();
-                $('.section-subscribe__title').hide();
-                $('.section-subscribe__message').show()
+            success:function(res){
+                if (res.success) {
+                    $('.section-subscribe__form-group').hide();
+                    $('.section-subscribe__title').hide();
+                    $('.section-subscribe__message').show()
+                }
+                else {
+
+                }
             }
         })
     }
