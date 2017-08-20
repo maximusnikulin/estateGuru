@@ -64,6 +64,7 @@ class ContactController extends \yupe\components\controllers\FrontController
 
         // проверить не передан ли тип и присвоить его аттрибуту модели
         $form->type = empty($type) ? FeedBack::TYPE_DEFAULT : (int)$type;
+        $form->theme = "Обратная связь";
 
         $module = Yii::app()->getModule('feedback');
 

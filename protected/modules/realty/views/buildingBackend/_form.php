@@ -17,7 +17,7 @@
 <ul class="nav nav-tabs">
     <li class="active"><a href="#common" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Common"); ?></a></li>
     <li class="js-item js-item-home js-item-second"><a href="#apartments" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Apartments"); ?></a></li>
-    <li><a href="#images" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Images"); ?></a></li>
+    <li class="js-item js-item-cottage js-item-earth js-item-commercial js-item-home"><a href="#images" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Images"); ?></a></li>
     <li class="js-item js-item-cottage"><a href="#planning" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Planning"); ?></a></li>
 </ul>
 
@@ -200,7 +200,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row js-item js-item-cottage">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'square', [
                 'widgetOptions' => [
@@ -599,7 +599,7 @@
 </div>
 <script>
     $(function() {
-        var statusClasses = ['null-class', 'js-item-home', 'js-item-cottage', 'js-item-earth', 'js-item-commercial', 'js-item-resell'];
+        var statusClasses = ['null-class', 'js-item-home', 'js-item-cottage', 'js-item-earth', 'js-item-commercial', 'js-item-second'];
         var $items = $('.js-item');
         $('.js-status select').change(function() {
             var val = $(this).val();

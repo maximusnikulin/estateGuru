@@ -37,7 +37,7 @@ $this->widget(
         'columns' => [
             'name',
             'phone',
-            'time',
+     //       'time',
             [
                 'class' => 'bootstrap.widgets.TbEditableColumn',
                 'name' => 'comment',

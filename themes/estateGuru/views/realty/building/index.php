@@ -19,7 +19,7 @@
     </div>
     <div class="section-tabs__content">
         <?= $this->renderPartial('/apartment/section-cards', ['id' => 1, 'needHide' => false, 'title' => 'Новостройки', 'items' => $apartments[STATUS_HOME]]); ?>
-        <?= $this->renderPartial('/apartment/section-cards', ['id' => 2, 'needHide' => true, 'title' => 'Вторичное жилье', 'items' => $apartments[STATUS_COMMERCIAL]]); ?>
+        <?= $this->renderPartial('/apartment/section-cards', ['id' => 2, 'needHide' => true, 'title' => 'Вторичное жилье', 'items' => $apartments[STATUS_SECOND]]); ?>
     </div>
 
 </section>

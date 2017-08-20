@@ -114,7 +114,7 @@ Yii::app()->getClientScript()->registerCssFile($assets . '/css/feedback.css');
                 ],
                 'filter'   => CHtml::activeTextField($model, 'email', ['class' => 'form-control']),
             ],
-            'create_time',
+     /*       'create_time',
             [
                 'class'    => 'bootstrap.widgets.TbEditableColumn',
                 'editable' => [
@@ -135,7 +135,7 @@ Yii::app()->getClientScript()->registerCssFile($assets . '/css/feedback.css');
                     $model->getTypeList(),
                     ['class' => 'form-control', 'empty' => '']
                 ),
-            ],
+            ],*/
             [
                 'class'   => 'yupe\widgets\EditableStatusColumn',
                 'name'    => 'status',
@@ -148,7 +148,7 @@ Yii::app()->getClientScript()->registerCssFile($assets . '/css/feedback.css');
                     FeedBack::STATUS_PROCESS       => ['class' => 'label-info'],
                 ],
             ],
-            [
+        /*    [
                 'class'    => 'bootstrap.widgets.TbEditableColumn',
                 'editable' => [
                     'url'    => $this->createUrl('/feedback/feedbackBackend/inline'),
@@ -168,7 +168,7 @@ Yii::app()->getClientScript()->registerCssFile($assets . '/css/feedback.css');
                     $model->getIsFaqList(),
                     ['class' => 'form-control', 'empty' => '']
                 ),
-            ],
+            ],*/
             [
                 'class'    => 'yupe\widgets\CustomButtonColumn',
                 'template' => '{answer}{view}{update}{delete}',
