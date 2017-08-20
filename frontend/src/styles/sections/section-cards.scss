@@ -1,0 +1,83 @@
+.section-cards {
+    @extend .container;
+    &__title { 
+        .title {
+            margin-bottom:30px;           
+            white-space: nowrap;
+
+            &__icon {
+                display:inline-block;               
+                vertical-align: middle;
+                margin-right:50px;
+                @include tablet-hl {
+                    margin-right:30px;
+                }
+                @include mobile {
+                    margin-right:10px;
+                }
+                &--news {    
+                    @include svg-news;                
+                }
+                &--estate {
+                    @include svg-estate;
+                }
+            }
+            &__text {
+                white-space: normal;
+                position: relative;
+                font: bold 32px/32px "Roboto";                                    
+                display:inline-block;
+                vertical-align: middle;
+              
+                max-width:250px;
+            }
+            
+        }
+    }
+    &__content {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        flex-wrap:wrap;
+        align-items:stretch;        
+        &-item {        
+            flex-basis:calc(100% / 4) ;      
+            margin:20px 0 0; 
+            padding:0 10px;
+            flex-grow:0;
+            &:last-child {
+              margin-right:auto;  
+            }
+            @include custom(1190px) {
+                 flex-basis:calc(100% / 2);      
+                //  flex-grow:1;
+            }
+            @include tablet-vl {
+                 flex-basis:calc(100% / 2 ) ;      
+            }
+            @include mobile {
+                 flex-basis:calc(100%) ;      
+            }
+        }
+        &-item--2x {
+            flex-basis:calc(100% / 2) ;                  
+            padding:0 10px;
+            flex-grow:0;
+             @include custom(1190px) {
+                 flex-basis:auto;
+                 min-height:360px;
+                 width:100%;      
+                //  flex-grow:1;
+            }
+        }
+    }
+    &__button {
+        margin-top:40px;
+        // @extend .container;
+        text-align: center;
+        // padding-top:20px;
+        // padding-bottom:20px;
+    }
+}

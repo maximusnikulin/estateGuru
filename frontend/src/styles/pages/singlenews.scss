@@ -1,0 +1,12 @@
+.singlenews {
+    &__title {
+        @extend .object__title;
+        margin:32px auto 0;
+        max-width:1030px;
+        width:100%;
+        padding:0 48px;
+        @include mobile {
+            padding-left:20px;
+        }      
+    }    
+}

@@ -1,0 +1,128 @@
+//POPUP-CALLBACK
+.section-callback {
+    visibility: hidden;
+    opacity: 0;
+    .popup--data {
+        display: inline-block;
+        transform: translateY(-100px)
+    }
+    .popup--result {
+        display: none;
+    }
+}
+
+.section-callback.show-data {
+    visibility: visible;
+    opacity: 1;
+    transition: .5s ease;
+    .popup--data {
+        transition: .5s ease;
+        display: inline-block;
+        transform: translateY(0px)
+    }
+}
+
+.section-callback.show-result {
+    .popup--data {
+        display: none;
+    }
+    .popup--result {
+        display: inline-block;
+    }
+}
+
+//OBJECT-PHOTO-GRID-HOVER
+.object {
+    .object__photo-grid,
+    .object__photo-main
+    {
+        .photo {
+            position: relative;
+            line-height: 0;
+            cursor: pointer;
+            &:before {
+                transition: .5s ease;
+                opacity: 0;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+                content: '';
+                position: absolute;
+                background-color: rgba(0, 0, 0, .5);
+            }
+            &:after {
+                transition: .5s ease;
+                transform: scale(0);
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                @include svg-magnifier;
+                margin: auto;
+            }
+            &:hover {
+                @include onHover {
+                    &:before {
+                        opacity: 1;
+                    }
+                    &:after {
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+    }
+    .object__photo-grid {
+        .photo {
+            @include tablet-hl {
+                &:before {
+                    opacity: 1;
+                }
+                &:after {
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+    .object__photo-main {
+        .photo {
+            &:before {
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+        }
+    }
+}
+
+//MENU 
+.menu {
+    transition: visibility .5s;
+    visibility: hidden;
+    .menu__container {
+        transition: transform .5s ease;
+        transform: translateX(-100%);
+    }
+    .menu__overlay {
+        transition: 
+            opacity .5s ease,
+            visibility .5s ease;
+        opacity:0;
+        visibility:hidden;
+    }
+}
+.menu.open {
+    transition: visibility 0s;
+    visibility:visible;
+    .menu__container {
+        transform: translateX(0);
+    }
+    .menu__overlay { 
+        opacity:1;
+        visibility:visible;
+    }
+}

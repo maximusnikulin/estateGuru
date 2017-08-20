@@ -1,0 +1,61 @@
+.filter {
+  position: absolute;
+  width:25%;
+  top:0;
+  left:0;
+  background:#fff;
+  height:100%;
+  z-index:2000;
+  padding:40px 40px 0 20px;
+  border-right:1px solid #e8e6e6;
+  &__title {
+    margin-top:0;
+    font:700 24px/28px "Roboto";
+  }
+  &__group {
+    width:100%;
+    margin-top:30px;
+    &--full {
+      flex-basis:100%;
+    }
+    &-label {
+      .title {
+        font: 500 18px / 24px "Roboto";
+      }
+      .caption {
+        font: 400 14px / 20px "Roboto";
+        min-height:40px;
+      }
+    }
+    &-input {
+      //display:flex;
+      .checkbox {
+        margin-right:6%;
+        display:inline-block;
+      }
+    }
+  }
+
+
+}
+.filter {
+  .multiselect__tags {
+    border-radius: 20px;
+    padding: 8px 40px 0 16px;
+    transition:border-radius .5s ease;
+  }
+  .multiselect--active {
+      .multiselect__tags {
+        border-radius: 20px 20px 0 0;
+      }
+      .multiselect__content-wrapper {
+        transition-delay:.2s;
+      }
+  }
+  .multiselect__option--selected.multiselect__option--highlight,
+  .multiselect__option multiselect__option--highlight,
+  .multiselect__option--highlight{
+    background: #62bb46;
+  }
+
+}

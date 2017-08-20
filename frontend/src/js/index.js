@@ -1,4 +1,3 @@
-console.log('asdasd');
 import './components/slider-promo';
 import './components/slider-logos';
 // import './components/slider-nav';
@@ -19,4 +18,4 @@ import './components/subscribe.js';
 
 // import './search-cards/index.js';
 
-// import './search-map/index.js';
+import './search-map/index.js';
