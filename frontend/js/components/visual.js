@@ -13,14 +13,20 @@ function Visual(elem) {
            let $target = $(e.target); 
            let idPolygon = $(this).data("id");                   
            let $tooltipCur = $tooltips.filter('.tooltip[data-id=' + idPolygon + ']');                                                 
-           let parentOffset = $(this).parents('.polygon').offset(); 
-           $tooltipCur.css({
+           let parentOffset = $(this).parents('.polygon').offset();
+
+           $tooltipCur.css({               
                 left: e.pageX - parentOffset.left,
                 top: e.pageY - parentOffset.top,                   
             })               
             $tooltips.addClass("hidden").removeClass("show")
             $tooltipCur.addClass("show").removeClass("hidden")      
-        })
+        });
+        if (this.window.innerWidth < 1024) {
+            $tooltips.forEach((el) => {
+                console.log(el)
+            })
+        }
     }
 }
 

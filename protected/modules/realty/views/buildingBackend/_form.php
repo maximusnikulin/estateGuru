@@ -504,14 +504,14 @@
         'bootstrap.widgets.TbButton', [
             'buttonType' => 'submit',
             'context'    => 'primary',
-            'label'      => Yii::t('RealtyModule.realty', 'Сохранить Дом и продолжить'),
+            'label'      => Yii::t('RealtyModule.realty', 'Сохранить Объект и продолжить'),
         ]
     ); ?>
     <?php $this->widget(
         'bootstrap.widgets.TbButton', [
             'buttonType' => 'submit',
             'htmlOptions'=> ['name' => 'submit-type', 'value' => 'index'],
-            'label'      => Yii::t('RealtyModule.realty', 'Сохранить Дом и закрыть'),
+            'label'      => Yii::t('RealtyModule.realty', 'Сохранить Объект и закрыть'),
         ]
     ); ?>
 
@@ -519,7 +519,7 @@
 </div>
 <div class="tab-pane" id="apartments">
     <?php if ($model->isNewRecord):?>
-        <h2>Сначала сохраните основную информацию о доме</h2>
+        <h2>Сначала сохраните основную информацию об объекте недвижимости</h2>
     <?php else:?>
         <?php
         $this->widget(
@@ -574,7 +574,7 @@
 </div>
 <div class="tab-pane" id="images">
     <?php if ($model->isNewRecord):?>
-        <h2>Сначала сохраните основную информацию о доме</h2>
+        <h2>Сначала сохраните основную информацию об объекте недвижимости</h2>
     <?php else:?>
         <?php
         $imageModel = new RealtyImage();
@@ -586,7 +586,7 @@
 </div>
 <div class="tab-pane" id="planning">
     <?php if ($model->isNewRecord):?>
-        <h2>Сначала сохраните основную информацию о доме</h2>
+        <h2>Сначала сохраните основную информацию об объекте недвижимости</h2>
     <?php else:?>
         <?php
         $imageModel = new RealtyImage();

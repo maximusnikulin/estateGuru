@@ -242,29 +242,29 @@
                 height:100%;
                 top:0;
             }
-            </style> 
-        <div class="row">
-            <section id = "vue-svg-maker">
-                <div class="svg-maker" ref = "svg-maker" >
-                    <div class="svg-maker__image">
-                        <img src="<?= $model->building->getImageUrl(); ?>" alt="" width="100%" ref = "image">
+            </style>             
+        <?php if (!IS_NULL($model->building->getImageUrl())):?>
+            <div class="row">
+                <section id = "vue-svg-maker">
+                    <div class="svg-maker" ref = "svg-maker" >
+                        <div class="svg-maker__image">
+                            <img src="<?= $model->building->getImageUrl(); ?>" alt="" width="100%" ref = "image">
+                        </div>
+                        <div class="svg-maker__svg" v-on="{ mousemove: mouseMove, mousedown:mouseDown}"> 
+                            <svg width = "100%" height = "100%" >                
+                                <path v-bind:d = "pathPoints" v-bind:fill = "fill" v-bind:stroke = "constants.COLOR_LINE" stroke-width = "1"/>
+                                <line v-bind:x1 = "lineNext[0][0]" v-bind:y1 = "lineNext[0][1]" v-bind:x2 = "lineNext[1][0]" v-bind:y2 = "lineNext[1][1]" stroke = "violet" stroke-width = "1"></line>            
+                                <circle v-for = "point in points" v-bind:cx = "point[0]" v-bind:cy = "point[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>
+                                <circle  v-show = "!closePath" v-bind:cx = "pointNext[0]" v-bind:cy = "pointNext[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>                 
+                            </svg>
+                        </div>
                     </div>
-                    <div class="svg-maker__svg" v-on="{ mousemove: mouseMove, mousedown:mouseDown}"> 
-                        <svg width = "100%" height = "100%" >                
-                            <path v-bind:d = "pathPoints" v-bind:fill = "fill" v-bind:stroke = "constants.COLOR_LINE" stroke-width = "1"/>
-                            <line v-bind:x1 = "lineNext[0][0]" v-bind:y1 = "lineNext[0][1]" v-bind:x2 = "lineNext[1][0]" v-bind:y2 = "lineNext[1][1]" stroke = "violet" stroke-width = "1"></line>            
-                            <circle v-for = "point in points" v-bind:cx = "point[0]" v-bind:cy = "point[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>
-                            <circle  v-show = "!closePath" v-bind:cx = "pointNext[0]" v-bind:cy = "pointNext[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>                 
-                        </svg>
-                    </div>
-                </div>
-                 <?=  $form->hiddenField($model, 'svgPoints', ['class' => 'js-points','v-model:value' => "result", "initValue" => "$model->svgPoints", 'ref' => "svg-input"]); ?>
-            </section>    
-        </div>      
+                    <?=  $form->hiddenField($model, 'svgPoints', ['class' => 'js-points','v-model:value' => "result", "initValue" => "$model->svgPoints", 'ref' => "svg-input"]); ?>
+                </section>    
+            </div>      
 
-        <script type = "text/javascript" src = "/js/svg-maker.js"></script>
-          
-
+            <script type = "text/javascript" src = "/js/svg-maker.js"></script>
+        <?php endif; ?> 
 
 
         <?php $this->widget(

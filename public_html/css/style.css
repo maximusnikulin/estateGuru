@@ -2130,8 +2130,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       font: 100 13px/21px "Roboto";
       color: #606060; }
   .object__photo {
-    -ms-flex-preferred-size: 50%;
-        flex-basis: 50%;
+    -ms-flex-preferred-size: 45%;
+        flex-basis: 45%;
     padding-right: 80px; }
     @media (max-width: 1024px) {
       .object__photo {
@@ -2146,6 +2146,11 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       margin-bottom: 10px; }
       .object__photo-main img {
         width: 100%; }
+      .object__photo-main .photo {
+        max-width: 500px; }
+        @media (max-width: 768px) {
+          .object__photo-main .photo {
+            margin: 0 auto; } }
     .object__photo-grid {
       display: -ms-flexbox;
       display: flex;
@@ -2174,8 +2179,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
         .object__photo-grid .photo img {
           max-width: 100%; }
   .object__desc {
-    -ms-flex-preferred-size: 50%;
-        flex-basis: 50%; }
+    -ms-flex-preferred-size: 55%;
+        flex-basis: 55%; }
     @media (max-width: 768px) {
       .object__desc {
         -ms-flex-preferred-size: auto;
@@ -2194,7 +2199,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
         color: #4e4d4d; }
         .object__desc-common .row:not(:last-child) {
           border-bottom: 1px solid rgba(118, 118, 118, 0.5); }
-    .object__desc-to-map {
+    .object__desc-to-map, .object__desc-to-house {
       width: 100%;
       height: 82px;
       font: 400 16px/24px "Roboto";
@@ -2206,18 +2211,25 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       background-image: url("/images/map.png");
       margin-bottom: 24px;
       cursor: pointer; }
-      .object__desc-to-map .text {
+      .object__desc-to-map .text, .object__desc-to-house .text {
         position: relative;
         z-index: 20;
         margin: auto; }
-      .object__desc-to-map:after {
+      .object__desc-to-map:after, .object__desc-to-house:after {
         left: 0;
         position: absolute;
         width: 100%;
         height: 100%;
         background-color: #a54686;
         opacity: .65;
+        z-index: 19;
         content: ''; }
+    .object__desc-to-house {
+      background-image: url("/images/house.jpg");
+      background-position: bottom; }
+      .object__desc-to-house:after {
+        background-color: #62bb46;
+        opacity: .85; }
     .object__desc-text {
       font: 14px/21px "Open Sans";
       color: #4e4d4d;
@@ -2247,6 +2259,11 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
           display: inline-block;
           vertical-align: top;
           display: block; }
+        .object__desc-concl .price .warning {
+          font: 10px/12px 'Open Sans';
+          color: black;
+          display: block;
+          margin-top: 10px; }
       .object__desc-concl .callback {
         margin-bottom: 24px; }
 
@@ -3033,6 +3050,11 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     @media (max-width: 768px) {
       .section-subscribe__title {
         display: none; } }
+  .section-subscribe__message {
+    display: none;
+    max-width: 500px;
+    font: 100 16px/21px "Roboto";
+    margin: 0 auto; }
   .section-subscribe__form-group {
     position: relative;
     width: 30%;

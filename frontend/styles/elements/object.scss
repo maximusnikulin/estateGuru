@@ -30,7 +30,7 @@ $text_color:#4e4d4d;
     }
     
     &__photo {
-        flex-basis: 50%;
+        flex-basis: 45%;
         padding-right: 80px;
 
         @include tablet-hl {
@@ -45,6 +45,13 @@ $text_color:#4e4d4d;
             margin-bottom: 10px;
             img {
                 width: 100%;
+            }
+            .photo {
+                max-width:500px;
+                @include tablet-vl {
+                    margin:0 auto;
+                }
+
             }
         }
         &-grid {
@@ -72,7 +79,7 @@ $text_color:#4e4d4d;
        
     }
     &__desc {
-        flex-basis: 50%;
+        flex-basis: 55%;
         @include tablet-vl {
               flex-basis: auto;
         }
@@ -115,7 +122,19 @@ $text_color:#4e4d4d;
                 height: 100%;
                 background-color: #a54686;
                 opacity: .65;
+                z-index:19;
                 content: '';
+            }
+        }
+        &-to-house {
+            @extend .object__desc-to-map;
+            background-image: url('/images/house.jpg');
+            background-position: bottom;
+            
+            &:after {
+                background-color:  #62bb46;
+                opacity:.85;
+                
             }
         }
         &-text {
@@ -149,6 +168,12 @@ $text_color:#4e4d4d;
                     vertical-align: top;
                     display: block;
                 }
+              .warning {
+                font: 10px/12px 'Open Sans';
+                color:black;
+                display: block;
+                margin-top:10px;
+              }
             }
             .callback {
                 margin-bottom:24px;

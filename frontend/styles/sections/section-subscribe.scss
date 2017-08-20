@@ -17,6 +17,12 @@
             display:none
         }
     }
+    &__message {
+        display: none;
+        max-width:500px;
+        font:100 16px/21px "Roboto";
+        margin:0 auto;       
+    }
     &__form-group {
         position: relative;
         width: 30%;

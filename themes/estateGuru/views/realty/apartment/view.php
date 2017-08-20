@@ -83,13 +83,17 @@ if (!empty($images)) {
             <div class="object__desc-to-map">
                 <span class="text">Показать на карте</span>
             </div>
+            <a class="object__desc-to-house" href = "<?= $data->getBuildingUrl()?>">
+                <span class="text">Показать еще квартиры в доме</span>
+            </a>
             <h2 class="object__desc-title">Описание</h2>
             <article class="object__desc-text">
                 <?= $data->longDescription; ?>
             </article>
             <div class="object__desc-concl">
                 <div class="price">
-                    <span class="caption">Цена от</span> <span class = "value"><?= number_format($data->cost, 0, ".", " "); ?> &#8381;</span>
+                    <span class="caption">Цена </span> <span class = "value"><?= number_format($data->cost, 0, ".", " "); ?> &#8381;</span>
+                    <span class = 'warning'>* - об актуальных ценах уточняйте по телефону</span>
                 </div>
                 <div class="callback">
                     <div class="button button--action">Узнать больше</div>
