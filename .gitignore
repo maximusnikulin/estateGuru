@@ -1,13 +1,10 @@
 /*.log
 /.idea
-/frontend/public/sprite
-/frontend/node_modules
-/frontend/public/css
-/frontend/public/js
+
+/public_html/node_modules
+
 /protected/config
 /protected/assets
-
-
 
 /.idea/workspace.xml
 /.idea/estateGuru.iml

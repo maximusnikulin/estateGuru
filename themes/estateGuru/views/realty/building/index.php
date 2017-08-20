@@ -44,7 +44,7 @@
       <a href="/news" class="button button--empty button--blue">Все новости</a>
     </div>
 </section>
-<section class="section-tab main__logos">
+<section class="section-tab main__logos   js-navbar-logos">
     <div class="section-tabs__switcher">
         <div class="navbar">
             <nav class="navbar__menu">
