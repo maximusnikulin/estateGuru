@@ -128,7 +128,7 @@
         </div>
     </div>
 
-    <div class="row js-item js-item-home js-item-commercial">
+    <!-- <div class="row js-item js-item-home js-item-commercial">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'priceForMeter', [
                 'widgetOptions' => [
@@ -140,7 +140,7 @@
                 ]
             ]); ?>
         </div>
-    </div>
+    </div> -->
 
     <div class="row js-item js-item-home js-item-cottage">
         <div class="col-sm-7">

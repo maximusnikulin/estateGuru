@@ -12,13 +12,13 @@
     <div class="section-tabs__switcher">
         <div class="navbar ">
             <nav class="navbar__menu">
-                <li class="link active" data-id = "1"><a href="javascript:;" >Новостройки</a></li>
+                <li class="link active" data-id = "1"><a href="javascript:;" >Квартиры в новостройках</a></li>
                 <li class="link" data-id = "2"><a href="javascript:;" >Вторичное жилье</a></li>
             </nav>
         </div>
     </div>
     <div class="section-tabs__content">
-        <?= $this->renderPartial('/apartment/section-cards', ['id' => 1, 'needHide' => false, 'title' => 'Новостройки', 'items' => $apartments[STATUS_HOME]]); ?>
+        <?= $this->renderPartial('/apartment/section-cards', ['id' => 1, 'needHide' => false, 'title' => 'Квартиры в новостройках', 'items' => $apartments[STATUS_HOME]]); ?>
         <?= $this->renderPartial('/apartment/section-cards', ['id' => 2, 'needHide' => true, 'title' => 'Вторичное жилье', 'items' => $apartments[STATUS_SECOND]]); ?>
     </div>
 

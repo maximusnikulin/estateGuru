@@ -2,7 +2,7 @@
     position:relative;
     @extend .container--fluid;
     // border-bottom:1px solid $border-color;
-    height:44px;
+    min-height:44px;
     &:before {
         content:'';
         position: absolute;
@@ -24,12 +24,18 @@
         border-radius: 20px;
         border:1px solid $border-color;        
         .link {
-            font: 13px/26px "Roboto";
+            font: 13px/18px "Roboto";
             background:white;
-            padding: 6px 20px;
+            padding: 12px 20px;
             border-radius: 20px;
             cursor: pointer;
             white-space: nowrap;
+            display: block;
+            height:100%;
+            @include mobile {
+                white-space: normal;
+                padding: 8px 20px;
+            }
             // &:not(:last-child) {
             //     margin-right:30px;
             // }

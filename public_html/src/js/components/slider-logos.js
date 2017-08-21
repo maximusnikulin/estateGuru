@@ -36,7 +36,7 @@ $(window).on('load', function () {
     var links = tabs.find('.link');
     $(links).on('click', function(e){
         var id = $(this).data("id");
-        $('.link').removeClass('active');
+        $(links).removeClass('active');
         $(this).addClass('active');
         $('.slider-logos').css('display','none');
 

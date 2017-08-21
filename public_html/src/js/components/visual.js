@@ -19,7 +19,7 @@ function Visual(elem) {
                 left: e.pageX - parentOffset.left,
                 top: e.pageY - parentOffset.top,                   
             })               
-            $tooltips.addClass("hidden").removeClass("show")
+            // $tooltips.addClass("hidden").removeClass("show")
             $tooltipCur.addClass("show").removeClass("hidden")      
         });
     }
