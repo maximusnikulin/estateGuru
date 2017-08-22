@@ -5,6 +5,8 @@ define("STATUS_EARTH", 3);
 define("STATUS_COMMERCIAL", 4);
 define("STATUS_SECOND", 5);
 
+Yii::import('application.modules.dictionary.models.*');
+
 /**
  * This is the model class for table "buildings".
  *
@@ -43,7 +45,6 @@ define("STATUS_SECOND", 5);
  * @property string $seo_keywords
  * @property Apartment[] $apartments
  */
-Yii::import('application.modules.dictionary.models.*');
 class Building extends yupe\models\YModel
 {
     const STATUS_HOME = STATUS_HOME;
