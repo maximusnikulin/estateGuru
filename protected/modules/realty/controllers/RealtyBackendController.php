@@ -50,6 +50,7 @@ class RealtyBackendController extends \yupe\components\controllers\BackControlle
             for ($j = 0; $j < $numApartments; $j++) {
                 $apartment = new Apartment();
                 $apartment->idBuilding = $model->id;
+                $apartment->isStudio = rand(0, 4) == 2 ? 1 : 0;
                 $apartment->floor = rand(1, $model->floor);
                 if (rand(1, 5) == 3) {
                     $apartment->maxFloor = $apartment->floor + 2;
