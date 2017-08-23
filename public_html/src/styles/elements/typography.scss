@@ -1,12 +1,18 @@
 .typography {
     @extend .container--narrow;
-    h1 {
-        font:bold 30px/32px  'Open Sans';
+    h1 {        
+        font: bold 30px/38px 'Open Sans';
         text-align: left;
+        margin-bottom: 24px;
     }
     h2 {
         margin-top:24px;
         font:bold 21px/24px  'Open Sans';
+        text-align: left;
+    }
+    h3 {
+        margin-top:24px;
+        font:bold 18px/22px  'Open Sans';
         text-align: left;
     }
     hr {
