@@ -130,7 +130,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-7">
                 <?=  $form->textFieldGroup($model, 'seo_title', [
                     'widgetOptions' => [
@@ -142,9 +142,9 @@
                     ]
                 ]); ?>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-7">
                 <?=  $form->textFieldGroup($model, 'seo_description', [
                     'widgetOptions' => [
@@ -156,9 +156,9 @@
                     ]
                 ]); ?>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-7">
                 <?=  $form->textFieldGroup($model, 'seo_keywords', [
                     'widgetOptions' => [
@@ -170,7 +170,7 @@
                     ]
                 ]); ?>
             </div>
-        </div>
+        </div> -->
 
 
         <?php $this->widget(
