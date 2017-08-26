@@ -23,7 +23,6 @@ return [
         '/' => '/realty/realty/index',
         '/services' => '/realty/realty/services',
         '/contacts' => '/realty/realty/contacts',
-
         '/api/objects' => 'realty/realty/getBuildingsForMap',
         '/api/apartments' => 'realty/realty/getApartmentsForMap',
         '/realty' => 'realty/realty/index',

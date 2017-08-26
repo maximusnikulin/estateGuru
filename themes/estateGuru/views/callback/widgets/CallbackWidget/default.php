@@ -25,12 +25,12 @@ $model->time = '12:00';
             <div class="popup__field">
                 <label for="name" class="label">Имя</label>
                 <label for="name" class="error">Ошибка</label>
-                <?= $form->textFieldGroup($model, 'name', ['id' => 'name']); ?>
+                <?= $form->textField($model, 'name', ['id' => 'name','class' => 'input']); ?>
             </div>
             <div class="popup__field">
                 <label for="phone" class="label">Телефон</label>
                 <label for="phone" class="error">Ошибка</label>
-                <?= $form->textFieldGroup($model, 'phone', ['id' => 'phone']); ?>
+                <?= $form->textField($model, 'phone', ['id' => 'phone', 'class' => 'input']); ?>
             </div>
             <?= $form->hiddenField($model, 'time'); ?>
             <div class="popup__button">

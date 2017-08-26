@@ -56,13 +56,15 @@ class ContactController extends \yupe\components\controllers\FrontController
         $form = new FeedBackForm();
 
         // если пользователь авторизован - подставить его данные
-        if (Yii::app()->getUser()->isAuthenticated()) {
-            $form->email = Yii::app()->getUser()->getProFileField('email');
-            $form->name = Yii::app()->getUser()->getProFileField('nick_name');
-        }
+//        if (Yii::app()->getUser()->isAuthenticated()) {
+//            $form->email = Yii::app()->getUser()->getProFileField('email');
+//            $form->name = Yii::app()->getUser()->getProFileField('nick_name');
+//
+//        }
 
         // проверить не передан ли тип и присвоить его аттрибуту модели
         $form->type = empty($type) ? FeedBack::TYPE_DEFAULT : (int)$type;
+        $form->theme = "Обратная связь";
 
         $module = Yii::app()->getModule('feedback');
 

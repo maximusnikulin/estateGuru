@@ -72,6 +72,19 @@ class Building extends yupe\models\YModel
         return $result;
     }
 
+    public function getMinimalPrice()
+    {
+        $apartments = $this->apartments;
+        $min = reset($apartments)->cost;
+
+        foreach($apartments as $key=>$item) {
+            if ($item->cost < $min) {
+                $min = $item->cost;
+            }
+        }
+        return $min;
+
+    }
     public function getWallsType() {
         return DictionaryData::model()->find("code = '".$this->walls."'");
     }

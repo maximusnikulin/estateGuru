@@ -1,0 +1,14 @@
+.section-tabs { 
+    // overflow: hidden;
+    &__switcher {
+        @extend .container--fluid;     
+        margin-bottom:60px;
+        @include tablet-hl {
+            margin-bottom:40px;
+        }           
+        
+    }    
+    &__content {
+        
+    }
+}

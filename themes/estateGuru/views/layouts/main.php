@@ -57,7 +57,7 @@
         </div>
       </div>
     
-      <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'kategorii', 'layout' => 'navbar']); ?>
+      <!-- <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'kategorii', 'layout' => 'navbar']); ?> -->
     </header>
        <?= $content; ?>
        <?php $this->widget('application.modules.callback.widgets.CallbackWidget'); ?>
@@ -66,7 +66,8 @@
       <div class="footer__subscribe">
         <section class="section-subscribe ">
           <div class="section-subscribe__content">
-            <label for="email" class="section-subscribe__title">Подписывайтесь, чтобы быть в курсе новостей, акций и спецпредложений:</label>
+            <label for="email" class="section-subscribe__title">Подписывайтесь, чтобы быть в курсе новостей, акций и спецпредложений:</label>            
+            <label for="email" class="section-subscribe__message">Вы успешно подписались на рассылку акций и спецпредложений от Estate Guru.</br> Спасибо за подписку!</label>
             <form class="section-subscribe__form-group">
               <input class="input" type="text" placeholder="Укажите ваш e-mail" id="email">
               <button class="button button--action" type="text">Подписаться</button>

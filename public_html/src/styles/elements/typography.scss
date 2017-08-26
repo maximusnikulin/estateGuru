@@ -1,0 +1,96 @@
+.typography {
+    @extend .container--narrow;
+    h1 {        
+        font: bold 30px/38px 'Open Sans';
+        text-align: left;
+        margin-bottom: 24px;
+    }
+    h2 {
+        margin-top:24px;
+        font:bold 21px/24px  'Open Sans';
+        text-align: left;
+    }
+    h3 {
+        margin-top:24px;
+        font:bold 18px/22px  'Open Sans';
+        text-align: left;
+    }
+    hr {
+        margin:32px 0 24px;
+    }
+    p {
+        font:400 14px/24px  'Open Sans';
+        color:#767676;
+        margin-top: 24px;
+    }
+    img {
+        max-width:100%;
+        margin:0 auto;
+    }
+    figure {
+        text-align: center;
+        width:100%;
+        margin-top: 24px;
+        img {
+            max-width:100%;
+            margin:0 auto;
+        }
+        figcaption {
+            text-align:left;
+            font-style: italic;
+            color:#767676;
+            font:400 14px/24px  'Open Sans';
+        }
+    }
+    ol {
+        padding-left:40px;
+        margin-top:24px;        
+        @include mobile {
+            padding-left:20px;
+        }
+        li {
+           color:#767676;
+           font:400 14px/24px  'Open Sans'; 
+           &:not(:last-child) {
+                margin-bottom:14px;
+            }          
+        }
+    }
+    ul {
+        padding-left:40px;
+        margin-top:24px;
+        
+        @include mobile {
+            padding-left:20px;
+        }
+        li {
+            color:#767676;
+            font:400 14px/24px  'Open Sans';
+            display: block;
+            &:not(:last-child) {
+                margin-bottom:14px;
+            }
+            &:before {
+                content:'●';
+                color:#f9b479;
+                display: inline-block;
+                vertical-align: top;
+                margin-left: -16px;
+                margin-right: 8px;
+            }
+            * {
+                white-space: normal;
+                display: inline-block;
+                margin:0;
+            }
+        }
+    }
+    a {
+        color:#f9b479;
+        font:400 14px/24px  'Open Sans';          
+    }
+    span {
+        font:400 10px/14px  'Open Sans';  
+        color:#767676;        
+    }
+}

@@ -112,7 +112,8 @@ $apartments = $data->apartments;
             </div>
             <div class="object__desc-concl">
                 <div class="price">
-                    <span class="caption">Цена за м²</span> <span class="value"><?= $data->priceForMeter; ?>&nbsp;&#8381;</span>
+                    <span class="caption">Цены от</span> <span class="value"><?=number_format($data->getMinimalPrice(), 0, '', ' ');  ?>&nbsp;&#8381;</span>
+                    <span class = 'warning'>* - об актуальных ценах уточняйте по телефону</span>
                 </div>
                 <div class="callback">
                     <div class="button button--action js-callback">Узнать больше</div>

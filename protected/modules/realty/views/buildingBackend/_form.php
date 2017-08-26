@@ -17,7 +17,7 @@
 <ul class="nav nav-tabs">
     <li class="active"><a href="#common" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Common"); ?></a></li>
     <li class="js-item js-item-home js-item-second"><a href="#apartments" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Apartments"); ?></a></li>
-    <li><a href="#images" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Images"); ?></a></li>
+    <li class="js-item js-item-cottage js-item-earth js-item-commercial js-item-home"><a href="#images" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Images"); ?></a></li>
     <li class="js-item js-item-cottage"><a href="#planning" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Planning"); ?></a></li>
 </ul>
 
@@ -128,7 +128,7 @@
         </div>
     </div>
 
-    <div class="row js-item js-item-home js-item-commercial">
+    <!-- <div class="row js-item js-item-home js-item-commercial">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'priceForMeter', [
                 'widgetOptions' => [
@@ -140,7 +140,7 @@
                 ]
             ]); ?>
         </div>
-    </div>
+    </div> -->
 
     <div class="row js-item js-item-home js-item-cottage">
         <div class="col-sm-7">
@@ -200,7 +200,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row js-item js-item-cottage">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'square', [
                 'widgetOptions' => [
@@ -504,14 +504,14 @@
         'bootstrap.widgets.TbButton', [
             'buttonType' => 'submit',
             'context'    => 'primary',
-            'label'      => Yii::t('RealtyModule.realty', 'Сохранить Дом и продолжить'),
+            'label'      => Yii::t('RealtyModule.realty', 'Сохранить Объект и продолжить'),
         ]
     ); ?>
     <?php $this->widget(
         'bootstrap.widgets.TbButton', [
             'buttonType' => 'submit',
             'htmlOptions'=> ['name' => 'submit-type', 'value' => 'index'],
-            'label'      => Yii::t('RealtyModule.realty', 'Сохранить Дом и закрыть'),
+            'label'      => Yii::t('RealtyModule.realty', 'Сохранить Объект и закрыть'),
         ]
     ); ?>
 
@@ -519,7 +519,7 @@
 </div>
 <div class="tab-pane" id="apartments">
     <?php if ($model->isNewRecord):?>
-        <h2>Сначала сохраните основную информацию о доме</h2>
+        <h2>Сначала сохраните основную информацию об объекте недвижимости</h2>
     <?php else:?>
         <?php
         $this->widget(
@@ -574,7 +574,7 @@
 </div>
 <div class="tab-pane" id="images">
     <?php if ($model->isNewRecord):?>
-        <h2>Сначала сохраните основную информацию о доме</h2>
+        <h2>Сначала сохраните основную информацию об объекте недвижимости</h2>
     <?php else:?>
         <?php
         $imageModel = new RealtyImage();
@@ -586,7 +586,7 @@
 </div>
 <div class="tab-pane" id="planning">
     <?php if ($model->isNewRecord):?>
-        <h2>Сначала сохраните основную информацию о доме</h2>
+        <h2>Сначала сохраните основную информацию об объекте недвижимости</h2>
     <?php else:?>
         <?php
         $imageModel = new RealtyImage();
@@ -599,7 +599,7 @@
 </div>
 <script>
     $(function() {
-        var statusClasses = ['null-class', 'js-item-home', 'js-item-cottage', 'js-item-earth', 'js-item-commercial', 'js-item-resell'];
+        var statusClasses = ['null-class', 'js-item-home', 'js-item-cottage', 'js-item-earth', 'js-item-commercial', 'js-item-second'];
         var $items = $('.js-item');
         $('.js-status select').change(function() {
             var val = $(this).val();

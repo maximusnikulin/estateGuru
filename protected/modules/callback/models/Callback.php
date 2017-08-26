@@ -56,15 +56,15 @@ class Callback extends \yupe\models\YModel
                 'pattern' => '/^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/',
                 'message' => Yii::t('CallbackModule.callback', 'Incorrect time value'),
             ],
-            [
+/*            [
                 'phone',
                 'match',
                 'pattern' => Yii::app()->getModule('callback')->phonePattern,
                 'message' => Yii::t('CallbackModule.callback', 'Incorrect phone value'),
-            ],
+            ], */
             ['comment', 'length', 'max' => 255],
             ['status', 'numerical', 'integerOnly' => true],
-            ['url', 'url'],
+          /*  ['url', 'url'], */
             ['id, name, phone, time, comment, status, create_time, url', 'safe', 'on' => 'search'],
         ];
     }

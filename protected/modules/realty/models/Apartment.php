@@ -64,7 +64,7 @@ class Apartment extends yupe\models\YModel
     {
         return number_format($this->cost,0,","," ").'<span class="rubl"> руб.</span>';
     }
-
+    
 
     public function behaviors()
     {
@@ -215,7 +215,9 @@ class Apartment extends yupe\models\YModel
     {
         return "/building/".$this->building->slug."/".$this->id;
     }
-
+    public function getBuildingUrl(){
+        return "/dom/".$this->building->slug;
+    }
     public function getStudioAsString() {
 	    return ($this->isStudio) ? 'Студия' : 'Стандартная';
 

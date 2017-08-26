@@ -10,20 +10,20 @@
  **/
 $this->breadcrumbs = [
     $this->getModule()->getCategory() => [],
-    Yii::t('RealtyModule.realty', 'Дома') => ['/backend/realty/building/index'],
+    Yii::t('RealtyModule.realty', 'Объекты') => ['/backend/realty/building/index'],
     Yii::t('RealtyModule.realty', 'Управление'),
 ];
 
-$this->pageTitle = Yii::t('RealtyModule.realty', 'Дома - управление');
+$this->pageTitle = Yii::t('RealtyModule.realty', 'Объекты - управление');
 
 $this->menu = [
-    ['icon' => 'fa fa-fw fa-list-alt', 'label' => Yii::t('RealtyModule.realty', 'Управление Домами'), 'url' => ['/realty/building/index']],
-    ['icon' => 'fa fa-fw fa-plus-square', 'label' => Yii::t('RealtyModule.realty', 'Добавить Дом'), 'url' => ['/realty/building/create']],
+    ['icon' => 'fa fa-fw fa-list-alt', 'label' => Yii::t('RealtyModule.realty', 'Управление Объектами'), 'url' => ['/realty/building/index']],
+    ['icon' => 'fa fa-fw fa-plus-square', 'label' => Yii::t('RealtyModule.realty', 'Добавить Объект'), 'url' => ['/realty/building/create']],
 ];
 ?>
 <div class="page-header">
     <h1>
-        <?=  Yii::t('RealtyModule.realty', 'Дома'); ?>
+        <?=  Yii::t('RealtyModule.realty', 'Объекты'); ?>
         <small><?=  Yii::t('RealtyModule.realty', 'управление'); ?></small>
     </h1>
 </div>
@@ -31,7 +31,7 @@ $this->menu = [
 <p>
     <a class="btn btn-default btn-sm dropdown-toggle" data-toggle="collapse" data-target="#search-toggle">
         <i class="fa fa-search">&nbsp;</i>
-        <?=  Yii::t('RealtyModule.realty', 'Поиск Домов');?>
+        <?=  Yii::t('RealtyModule.realty', 'Поиск Объектов');?>
         <span class="caret">&nbsp;</span>
     </a>
 </p>
@@ -52,7 +52,7 @@ $this->menu = [
 
 <br/>
 
-<p> <?=  Yii::t('RealtyModule.realty', 'В данном разделе представлены средства управления Домами'); ?>
+<p> <?=  Yii::t('RealtyModule.realty', 'В данном разделе представлены средства управления Обхектами недвижимости'); ?>
 </p>
 
 <?php

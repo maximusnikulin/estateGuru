@@ -173,7 +173,7 @@ $form = $this->beginWidget(
             'context'     => 'primary',
             'encodeLabel' => false,
             'buttonType'  => 'submit',
-            'label'       => '<i class="fa fa-search">&nbsp;</i> ' . Yii::t('RealtyModule.realty', 'Искать Дом'),
+            'label'       => '<i class="fa fa-search">&nbsp;</i> ' . Yii::t('RealtyModule.realty', 'Искать Объект'),
         ]
     ); ?>
 
