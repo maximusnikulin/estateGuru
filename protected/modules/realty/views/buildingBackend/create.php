@@ -23,7 +23,7 @@ $this->menu = [
 ?>
 <div class="page-header">
     <h1>
-        <?=  Yii::t('RealtyModule.realty', 'Объекта'); ?>
+        <?=  Yii::t('RealtyModule.realty', 'Объекты'); ?>
         <small><?=  Yii::t('RealtyModule.realty', 'добавление'); ?></small>
     </h1>
 </div>

@@ -49,10 +49,10 @@
             <a href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>"><?= Yii::app()->getModule("realty")->phone; ?></a>
           </div>
           <div class="header__callback-button-mb">
-            <a href="javascript:;" class="button button--callback-mb"></a>
+            <a href="javascript:;" class="button button--callback-mb js-callback"></a>
           </div>
           <div class="header__callback-button">
-            <a href="javascript:;" class="button button--callback">Обратный звонок</a>
+            <a href="javascript:;" class="button button--callback js-callback">Обратный звонок</a>
           </div>
         </div>
       </div>

@@ -156,6 +156,7 @@ class Apartment extends yupe\models\YModel
             'longDescription' => 'Длинное описание',
             'image' => 'Изображение',
             'showOnIndex' => 'Показывать на главной',
+            
             'seo_title' => 'Title страницы',
             'seo_description' => 'Description',
             'seo_keywords' => 'Keywords',
@@ -186,9 +187,12 @@ class Apartment extends yupe\models\YModel
 		$criteria->compare('floor',$this->floor);
 		$criteria->compare('rooms',$this->rooms);
 		$criteria->compare('size',$this->size);
-		$criteria->compare('cost',$this->cost);
+        $criteria->compare('cost',$this->cost);
+        // $criteria->compare('long',$this->long);
+        // $criteria->compare('latitude',$this->latitude);
 		$criteria->compare('shortDescription',$this->shortDescription,true);
-		$criteria->compare('longDescription',$this->longDescription,true);
+        $criteria->compare('longDescription',$this->longDescription,true);
+        
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -261,6 +265,6 @@ class Apartment extends yupe\models\YModel
     {
         return $this->getRoomsAsString()." на ".$this->getFloorAsString()." по адресу ".$this->building->adres;
     }
-
+    
 
 }

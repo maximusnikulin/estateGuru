@@ -18,6 +18,7 @@ if (!empty($images)) {
 
 ?>
 
+<?= var_dump($data); ?>
 <div class="object">
     <div class="object__title">
         <h1 class="text"><?= $data->building->adres; ?></h1>
@@ -80,8 +81,8 @@ if (!empty($images)) {
                     </div>
                 <?php endif; ?>
             </div> -->
-            <div class="object__desc-to-map">
-                <span class="text">Показать на карте</span>
+            <div class="object__desc-on-map" >
+                
             </div>
             <a class="object__desc-to-house" href = "<?= $data->getBuildingUrl()?>">
                 <span class="text">Показать еще квартиры в доме</span>
@@ -96,7 +97,7 @@ if (!empty($images)) {
                     <span class = 'warning'>* - об актуальных ценах уточняйте по телефону</span>
                 </div>
                 <div class="callback">
-                    <div class="button button--action">Узнать больше</div>
+                    <div class="button button--action js-callback">Узнать больше</div>
                 </div>
             </div>
         </div>
@@ -115,3 +116,4 @@ if (!empty($images)) {
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
