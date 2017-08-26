@@ -103,8 +103,8 @@ $apartments = $data->apartments;
                 </div>
                 <?php endif; ?>
             </div>
-            <div class="object__desc-to-map js-show-on-map">
-                <span class="text">Показать на карте</span>
+            <div class="object__desc-on-map" data-geo = 
+                "<?=$data->latitude . ',' . $data->longitude;?>">
             </div>
             <h2 class="object__desc-title">Описание</h2>
             <div class="object__desc-text">
@@ -145,6 +145,22 @@ $apartments = $data->apartments;
             <div class="visual__polygons-lr">
                 <?php foreach ($apartments as $apartment): ?>
                         <div class="polygon">
+                            <div class="polygon__toggler-mb "><span>Подробнее</span></div>    
+                            <div class="polygon__card-mb ">
+                                <p class="row">
+                                    Этаж: <?= $apartment->getFloor()?>
+                                </p>
+                                <p class="row">
+                                    Комнат: <?= $apartment->rooms; ?>
+                                </p>
+                                <p class="row">
+                                    Площадь: <?= $apartment->size; ?> м<sup>2</sup>
+                                </p>
+                                <p class="row">
+                                    Цена: <?= number_format($apartment->cost, 0, '', ' '); ?> руб.
+                                </p>
+                                <a class = "link" href = "<?= $apartment->getUrl();?>"> Перейти </a>
+                            </div>   
                             <?= $apartment->getSvg(); ?>
                         </div>
                 <?php endforeach; ?>

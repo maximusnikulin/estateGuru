@@ -28,13 +28,12 @@ $text_color:#4e4d4d;
             color: #606060; // text-transform: uppercase;
         }
     }
-    &__on-map {
-        min-height:200px;
-    }
+
     &__photo {
         flex-basis: 45%;
         padding-right: 80px;
-
+        max-width:500px;
+        margin:0 auto;
         @include tablet-hl {
             padding-right: 30px;
         }
@@ -99,6 +98,14 @@ $text_color:#4e4d4d;
                 &:not(:last-child) {
                     border-bottom: 1px solid rgba(118, 118, 118, .5);
                 }
+            }
+        }
+        &-on-map {
+            min-height:250px;
+            margin-bottom: 20px;
+            overflow:hidden;
+            & > [class *= "map"] {
+                position: absolute;
             }
         }
         &-to-map {

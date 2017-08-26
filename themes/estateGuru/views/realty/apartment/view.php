@@ -18,7 +18,7 @@ if (!empty($images)) {
 
 ?>
 
-<?= var_dump($data); ?>
+
 <div class="object">
     <div class="object__title">
         <h1 class="text"><?= $data->building->adres; ?></h1>
@@ -81,10 +81,10 @@ if (!empty($images)) {
                     </div>
                 <?php endif; ?>
             </div> -->
-            <div class="object__desc-on-map" >
-                
+            <div class="object__desc-on-map" data-geo = 
+                "<?=$data->building->latitude . ',' . $data->building->longitude;?>">
             </div>
-            <a class="object__desc-to-house" href = "<?= $data->getBuildingUrl()?>">
+            <a class="object__desc-to-map" href = "<?= $data->getBuildingUrl()?>">
                 <span class="text">Показать еще квартиры в доме</span>
             </a>
             <h2 class="object__desc-title">Описание</h2>

@@ -2,6 +2,37 @@ function Visual(elem) {
     this.root = elem;        
     this.init = function(){        
         this.hoverable();
+        this.cardPosition()
+    }
+    this.cardPosition = function() {
+        var $cards = this.root.find('.polygon .polygon__mobile-card');  
+        var $polygons = this.root.find('.polygon path');  
+        for (var i = 0; i < $polygons.length; i++) {
+            var polygon = $($polygons[i]);
+            var yCard = polygon.offset().top - this.root.offset().top ;
+            var xCard = polygon.offset().left - this.root.offset().left - 20;
+            var wCard = polygon.get(0).getBoundingClientRect().width ;
+            var hCard = polygon.get(0).getBoundingClientRect().height;
+            var card = polygon.parents('svg').prev();
+            var toggler = polygon.parents('svg').prev().prev();
+            
+            card.css({
+                left:xCard + "px",
+                top:yCard + "px",
+                width:wCard + "px",
+                height:hCard + "px",                
+            })
+            toggler.css({
+                left:xCard + "px",
+                top:yCard + "px",  
+                width:wCard + "px",              
+            })
+
+            toggler.on("click", function(){                
+                $(this).toggleClass("polygon__toggler-mb--active");
+                $(this).next().toggleClass("polygon__card-mb--active")
+            })
+        }
     }
     this.hoverable = function(){
         var $tooltips = this.root.find('.tooltip');                     

@@ -12,6 +12,7 @@ import './components/map-contacts';
 import './components/nav-cards';
 import './components/menu';
 import './components/subscribe.js';
+import './components/map-desc.js';
 
 
 // // VUE SEARCH

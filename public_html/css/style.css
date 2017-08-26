@@ -2140,12 +2140,12 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     .object__title .caption, .service-block__title .caption, .section-search-map__title .caption, .singlenews__title .caption {
       font: 100 13px/21px "Roboto";
       color: #606060; }
-  .object__on-map {
-    min-height: 200px; }
   .object__photo {
     -ms-flex-preferred-size: 45%;
         flex-basis: 45%;
-    padding-right: 80px; }
+    padding-right: 80px;
+    max-width: 500px;
+    margin: 0 auto; }
     @media (max-width: 1024px) {
       .object__photo {
         padding-right: 30px; } }
@@ -2210,6 +2210,12 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
         color: #4e4d4d; }
         .object__desc-common .row:not(:last-child) {
           border-bottom: 1px solid rgba(118, 118, 118, 0.5); }
+    .object__desc-on-map {
+      min-height: 250px;
+      margin-bottom: 20px;
+      overflow: hidden; }
+      .object__desc-on-map > [class*="map"] {
+        position: absolute; }
     .object__desc-to-map, .object__desc-to-house {
       width: 100%;
       height: 82px;
@@ -2283,7 +2289,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   width: 100%;
   height: 100%;
   position: relative;
-  margin: 0 auto; }
+  margin: 0 auto;
+  box-sizing: content-box; }
   .visual__image-lr {
     text-align: center; }
     .visual__image-lr .image img {
@@ -2291,7 +2298,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   .visual__polygons-lr {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 20px;
     width: 100%;
     height: 100%;
     z-index: 10; }
@@ -2302,6 +2309,53 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       height: 100%;
       left: 0;
       top: 0; }
+      .visual__polygons-lr .polygon__toggler-mb {
+        position: absolute;
+        background: #fff;
+        border: 1px solid #f48220;
+        z-index: 200;
+        display: none;
+        padding-left: 20px;
+        text-align: center; }
+        .visual__polygons-lr .polygon__toggler-mb span {
+          font: 300 13px/16px "Roboto";
+          vertical-align: middle; }
+        @media (max-width: 1024px) {
+          .visual__polygons-lr .polygon__toggler-mb {
+            display: block; } }
+        .visual__polygons-lr .polygon__toggler-mb:after {
+          transition: all .5s ease;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          content: '';
+          background-size: contain;
+          vertical-align: middle;
+          background: url("../sprite/sprite-65e7ca40.svg") no-repeat;
+          background-position: 33.63662212112596% 69.45276014848523%;
+          width: 35.49px;
+          height: 35.49px;
+          transform: rotate(90deg) scale(0.5); }
+        .visual__polygons-lr .polygon__toggler-mb--active:after {
+          transform: rotate(-90deg) scale(0.5); }
+      .visual__polygons-lr .polygon__card-mb {
+        position: absolute;
+        background: white;
+        padding: 50px 10px 10px;
+        font: 300 13px/16px "Roboto";
+        transform-origin: left top;
+        border: 1px solid #f48220;
+        display: none; }
+        .visual__polygons-lr .polygon__card-mb .row {
+          margin-bottom: 10px; }
+        .visual__polygons-lr .polygon__card-mb .link {
+          margin-top: 20px;
+          display: block;
+          font-weight: 300;
+          color: #a54686;
+          font-size: 15px; }
+        .visual__polygons-lr .polygon__card-mb--active {
+          display: block; }
       .visual__polygons-lr .polygon__svg {
         display: block;
         width: 100%;
@@ -2312,8 +2366,13 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
           stroke: #f48220;
           stroke-width: 1px;
           transition: all 1s ease; }
-          .visual__polygons-lr .polygon__svg path:hover {
-            fill: rgba(98, 187, 70, 0.6); }
+          @media (max-width: 1024px) {
+            .visual__polygons-lr .polygon__svg path {
+              fill: rgba(98, 187, 70, 0.3);
+              pointer-events: none; } }
+          @media (min-width: 1025px) {
+            .visual__polygons-lr .polygon__svg path:hover {
+              fill: rgba(98, 187, 70, 0.6); } }
       .visual__polygons-lr .polygon__gallery {
         position: absolute;
         width: 100%;
@@ -3117,8 +3176,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   .section-switcher__content {
     position: relative;
     margin-bottom: 48px;
-    overflow: hidden;
-    padding: 0 40px 40px; }
+    overflow: hidden; }
     @media (max-width: 1024px) {
       .section-switcher__content {
         -webkit-overflow-scrolling: touch;
@@ -3135,7 +3193,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
         .section-switcher__content:after {
           visibility: visible; } }
     .section-switcher__content .visual {
-      width: 860px;
+      width: 900px;
+      padding: 0 20px;
       visibility: hidden;
       opacity: 0;
       position: absolute;

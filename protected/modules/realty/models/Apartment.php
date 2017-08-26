@@ -156,7 +156,7 @@ class Apartment extends yupe\models\YModel
             'longDescription' => 'Длинное описание',
             'image' => 'Изображение',
             'showOnIndex' => 'Показывать на главной',
-            
+
             'seo_title' => 'Title страницы',
             'seo_description' => 'Description',
             'seo_keywords' => 'Keywords',
@@ -264,6 +264,11 @@ class Apartment extends yupe\models\YModel
     public function getTitle()
     {
         return $this->getRoomsAsString()." на ".$this->getFloorAsString()." по адресу ".$this->building->adres;
+    }
+    
+    public function getGeo()
+    {
+        return $this->$building->lattitude . " " . $this->$building->longitude;
     }
     
 

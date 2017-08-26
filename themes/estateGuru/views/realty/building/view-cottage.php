@@ -83,8 +83,8 @@ if (!empty($images)) {
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="object__desc-to-map js-show-on-map">
-                <span class="text">Показать на карте</span>
+            <div class="object__desc-on-map" data-geo = 
+                "<?=$data->building->latitude . ',' . $data->building->longitude;?>">
             </div>
             <h2 class="object__desc-title">Описание</h2>
             <p class="object__desc-text">

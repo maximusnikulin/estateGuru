@@ -3,7 +3,8 @@
     width:100%;
     height:100%;
     position: relative;
-    margin:0 auto;
+    margin:0 auto;   
+    box-sizing: content-box; 
     &__navbar {
         
     }
@@ -18,7 +19,7 @@
     &__polygons-lr {
         position: absolute;
         top:0;
-        left:0;
+        left:20px;
         width:100%;
         height:100%; 
         z-index:10;  
@@ -29,6 +30,64 @@
             height: 100%;
             left: 0;
             top: 0;
+            &__toggler-mb {                
+                position:absolute;
+                background:#fff;
+                border:1px solid #f48220;
+                z-index: 200;
+                display:none;
+                padding-left:20px;
+                text-align: center;
+                span {
+                    font:300 13px/16px "Roboto";
+                    vertical-align: middle;
+                }
+                
+                @include tablet-hl {
+                    display:block;
+                }
+                &:after {
+                    transition:all .5s ease;
+                    display: inline-block;
+                    width:20px;
+                    height: 20px;                    
+                    content:'';
+                    background-size:contain;
+                    vertical-align: middle;
+                    @include svg-slider-promo-next;                   
+                    transform:rotate(90deg) scale(.5);
+                    
+                }                
+                &--active {
+                    &:after {
+
+                        transform:rotate(-90deg) scale(.5);
+                    }
+
+                }
+            }            
+            &__card-mb {
+                position: absolute;
+                background:rgb(255, 255, 255);
+                padding:50px 10px 10px;
+                font:300 13px/16px "Roboto";
+                transform-origin:left top;
+                border:1px solid #f48220;   
+                display:none;           
+                .row {
+                    margin-bottom:10px;
+                }
+                .link {
+                    margin-top:20px;
+                    display:block;
+                    font-weight:300;
+                    color:#a54686;
+                    font-size:15px;
+                }              
+                &--active {
+                   display:block;
+                }
+            }
 
             &__svg {
                 display:block;
@@ -40,8 +99,15 @@
                     stroke:#f48220;
                     stroke-width:1px;
                     transition:all 1s ease;
+                    @include tablet-hl {
+                        fill:rgba(98, 187, 70, 0.3);
+                        pointer-events: none;
+                    }
                     &:hover {
-                        fill:rgba(98, 187, 70, 0.6);
+                        @include onHover {
+                            fill:rgba(98, 187, 70, 0.6);
+                        }
+                        
                     }
                 }
                 
