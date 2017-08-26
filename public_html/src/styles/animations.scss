@@ -126,3 +126,55 @@
         visibility:visible;
     }
 }
+
+//HOVER BUTTONS
+.button {
+    transition:all .3s ease-in-out;
+}
+.button--action:hover {
+    // @include onHover {
+    //     transform:translateY(-10px);        
+    // }
+}
+.button--empty:hover {
+    @include onHover {
+        transform:translateY(-10px);
+        box-shadow:
+            0px 10px 20px 0 rgba(98, 187, 70, 0.20);        
+            
+    }
+}
+.button--blue:hover {
+    @include onHover {
+        transform:translateY(-10px);
+        box-shadow:
+            0px 10px 20px 0 rgba(74, 148, 241, 0.20);
+            
+    }
+}
+
+//CARD
+.card-estate {
+    transition:all .5s ease-in-out;
+    &__head {
+        .photo {
+            transition:all .5s ease-in-out;
+        }
+    }
+    
+}
+.card-estate:hover {
+    transform:translateY(-5px);
+    box-shadow:
+        0px 5px 15px 0 rgba(0, 0, 0, 0.10);
+    .photo {
+        transform:scale(1.1);
+    }
+}
+// .button--filter 
+// .button--popup
+// .button--nav-link
+// .button--callback-mb
+// .button--bar 
+// .button--green
+// .button--blue 

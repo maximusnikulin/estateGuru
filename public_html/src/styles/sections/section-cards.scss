@@ -28,8 +28,10 @@
                 font: bold 32px/32px "Roboto";                                    
                 display:inline-block;
                 vertical-align: middle;
-              
                 max-width:250px;
+                @include mobile {
+                    font: bold 24px/28px "Roboto";
+                }
             }
             
         }

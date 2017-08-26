@@ -9,16 +9,12 @@
     background-color:#62bb46;
     border:none;
     color:white;
-    border: 2px solid #62bb46;
-    // box-shadow: 0 7px 10px 0 rgba(0,0,0,.08);
+    border: 2px solid #62bb46;    
 }
 .button--empty {    
     background:none;
     transition: .5s ease;
-    // &:hover {
-    //     box-shadow: 0 7px 10px 0 rgba(0,0,0,.08);
-    //     transform: translateY(-5px)
-    // } 
+   
 }
 .button--filter {
     padding: 8px 40px;

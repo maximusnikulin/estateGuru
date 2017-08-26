@@ -12,10 +12,8 @@
         }     
     }
     &__news {
-        margin-bottom:60px;
-          @include tablet-hl {
-            margin-bottom:40px; 
-        }  
+        margin-bottom:80px;
+      
     }
     &__logos {
         margin-bottom:60px;        

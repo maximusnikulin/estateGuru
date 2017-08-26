@@ -28,7 +28,9 @@ $text_color:#4e4d4d;
             color: #606060; // text-transform: uppercase;
         }
     }
-    
+    &__on-map {
+        min-height:200px;
+    }
     &__photo {
         flex-basis: 45%;
         padding-right: 80px;
@@ -47,7 +49,7 @@ $text_color:#4e4d4d;
                 width: 100%;
             }
             .photo {
-                max-width:500px;
+                // max-width:500px;
                 @include tablet-vl {
                     margin:0 auto;
                 }

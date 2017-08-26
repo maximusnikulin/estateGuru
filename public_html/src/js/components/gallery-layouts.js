@@ -1,11 +1,16 @@
 import lightGallery from 'lightgallery';
 
-const settings = {
+import "lg-thumbnail"
+
+// console.log(lightGallery)
+
+const SETTINGS = {
     selector:".slider-layouts__item",
     thumbnail:true,
     animateThumb: false,
-    showThumbByDefault: true   
+    showThumbByDefault: true,
+    subHtmlSelectorRelative: true
 }
 $(window).on('load', function(){
-    $(".js-gallery-layouts").lightGallery(settings)
+    $(".js-gallery-layouts").lightGallery(SETTINGS)
 })

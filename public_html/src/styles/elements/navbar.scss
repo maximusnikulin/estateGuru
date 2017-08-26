@@ -2,7 +2,7 @@
     position:relative;
     @extend .container--fluid;
     // border-bottom:1px solid $border-color;
-    min-height:44px;
+    // min-height:44px;
     &:before {
         content:'';
         position: absolute;
@@ -19,7 +19,7 @@
         background:#fff;
         transform:translate(-50%,-50%);
         display:flex;
-        align-items: center;
+        align-items: stretch;
         padding: 2px;
         border-radius: 20px;
         border:1px solid $border-color;        
@@ -30,11 +30,16 @@
             border-radius: 20px;
             cursor: pointer;
             white-space: nowrap;
-            display: block;
-            height:100%;
+            display: block;            
             @include mobile {
                 white-space: normal;
                 padding: 8px 20px;
+            }
+            a {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                display: block;
             }
             // &:not(:last-child) {
             //     margin-right:30px;
