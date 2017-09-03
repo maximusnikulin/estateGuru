@@ -19,4 +19,5 @@ import './components/map-desc.js';
 
 // // import './search-cards/index.js';
 
-// // import './search-map/index.js';
+import './search-map/index.js';
+

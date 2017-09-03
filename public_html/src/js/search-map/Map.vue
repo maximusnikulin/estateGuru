@@ -5,31 +5,53 @@
 </template>
 
 <script>
+
     import {API_HOST} from '../config.js';
     import {PM_BALOON_LT,CR_BALOON_LT, PM_ICON_LT, CR_ICON_LT} from './layouts.js';
-    import objects from './objects.json';
+    import {bus, formatPrice} from './index.js';
+    import basesAPI from './basesAPI.js';
+    import queryString from 'query-string'
     export default {
         name: 'root',
         created: function () {
-            this.successFetch(objects);
+            this.setType();  
+
+            this.getData(null, ymaps.ready(this.initMap));
+            bus.$on('CHANGE_FILTER', function(query) {
+                this.getData(query, this.updatePlacemarks);
+            }.bind(this))
+             
         },
         methods: {
-            successFetch: function (result) {
-                this.objects = result;
-                ymaps.ready(this.initMap)
-
+            setType:function() {
+                var params = queryString.parse(location.search);                
+                this.type = "type" in params ? params.type : null
             },
+            getData:function(query, callback){
+                var API_BASE = basesAPI[this.type];
+                var url = `${API_HOST}${API_BASE}` + (query || '');
+                console.log(url)
+                fetch(url)
+                    .then(res => res.json())
+                    .then(res => {
+                        this.objects = res;
+                        if (callback) {
+                            callback();
+                        }                        
+                    })               
+                    .catch(err => new Error(err.message))
+            },            
             initMap: function () {
                 this.map = new ymaps.Map('js-map', {
                         center: [55.7, 37.6],
-                        zoom:12,
-                        controls: ['zoomControl']
+                        zoom:14,
+                        controls: []
                     },
                     {
                         minZoom:10,
                         maxZoom:14,
                     });
-
+                this.map.controls.add(new ymaps.control.ZoomControl({options: { position: { right: 10, top: 50 }}}));
                 this.map.behaviors.disable('scrollZoom');
                 this.map.events.add('balloonopen', (e) => {
                     var balloon = e.get('balloon');
@@ -40,20 +62,13 @@
                     });
                 });
                 this.updatePlacemarks();
-            },
-            updateClusterMinPrice:function(geoCluster){
-                var clusters = geoCluster.getClusters();
-                clusters.forEach((cluster) => {
-                    var geoObjects = cluster.properties.get('geoObjects');
-                    var prices = [];
-                    geoObjects.forEach((obj) => prices.push(obj.properties.get('price')));
-                    cluster.properties.singleSet('minPrice', Math.min.apply(null, prices));
-                })
-            },
+            }, 
             updatePlacemarks: function () {
+                this.map.geoObjects.removeAll();    
                 var geoCluster = new ymaps.Clusterer({
                     groupByCoordinates:true,
                     clusterIconLayout: ymaps.templateLayoutFactory.createClass(CR_ICON_LT),
+
                     clusterIconShape: {
                         type:"Rectangle",
                         coordinates:[
@@ -65,14 +80,27 @@
                     clusterBalloonLeftColumnWidth: 100,
                     clusterBalloonContentLayoutHeight: 347,
                     clusterBalloonContentLayoutWidth: 350,
-                    clusterDisableClickZoom: true
+                    clusterDisableClickZoom: true,
                 });
                 this.objects.forEach((el,index,arr) => {
                     geoCluster.add(new ymaps.Placemark(
-                        el.geo,
+                        [el.longitude, el.latitude],
                         {
-                            clusterCaption: el.price,
-                            price:el.price
+                            clusterCaption: formatPrice(el.cost),                            
+                            cost: el.cost,
+                            adres: el.adres,
+                            type: el.type,
+                            floor: el.floor,
+                            size: el.size,
+                            rooms: el.rooms,
+                            rayon: el.rayon + " район",
+                            url: el.url,
+                            image: el.image,
+                            squareGa:el.squareGa,
+                            generalSquare:el.generalSquare,
+                            usefullSquare:el.usefullSquare,
+                            square:el.square                            
+
                         },
                         {
                             iconLayout:ymaps.templateLayoutFactory.createClass(PM_ICON_LT),
@@ -84,29 +112,39 @@
                             },
                             balloonContentLayout: ymaps.templateLayoutFactory.createClass(PM_BALOON_LT),
                             balloonCloseButton: true,
-                            balloonMaxWidth: 280,
+                            balloonMinWidth: 250,
                             openEmptyBalloon:true
                         }
                     ))
                 });
 
-                this.map.geoObjects.add(geoCluster);
-                this.map.setBounds(
-                    geoCluster.getBounds(),
-                    {
-//                        checkZoomRange: true
-                    }
-                );
-                this.updateClusterMinPrice(geoCluster);
+                this.map.geoObjects.add(geoCluster);                
+                this.map.setBounds(this.map.geoObjects.getBounds(), {
+                      checkZoomRange: true,
+                      // zoomMargin:58
+                });
+                this.updateClusterMinCost(geoCluster);
+                
                 this.map.events.add('boundschange', () => {
-                    this.updateClusterMinPrice(geoCluster);
+                    this.updateClusterMinCost(geoCluster);
                 })
 
+            },
+            updateClusterMinCost:function(geoCluster){
+                var clusters = geoCluster.getClusters();
+                clusters.forEach((cluster) => {
+                    var geoObjects = cluster.properties.get('geoObjects');
+                    var costs = [];
+                    geoObjects.forEach((obj) => costs.push(obj.properties.get('cost')));
+                    var minCost = Math.min.apply(null, costs);
+                    var formatMinCost = formatPrice(minCost);
+                    cluster.properties.singleSet('minCost', formatMinCost);
 
-
+                })
             },
             data: function () {
                 return {
+                    type:null,
                     map: null,
                     objects: null
                 }

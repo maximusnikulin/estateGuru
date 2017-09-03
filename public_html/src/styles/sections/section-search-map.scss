@@ -10,7 +10,8 @@
     border:1px solid #e8e6e6;
   }
   .placemark__icon {
-    background: #fff;
+    background:  #62bb46;
+    color:#fff;
     border-radius:5px;
     padding:5px 10px;
     display: inline-block;
@@ -18,7 +19,8 @@
     left:-20px;
     top:-38px;
     box-shadow:0 1px 20px 1px rgba(0,0,0,.2);
-    white-space: nowrap;
+    white-space: nowrap;    
+    cursor:pointer;
     &:after {
       position: absolute;
       bottom: -10px;
@@ -28,7 +30,7 @@
       height: 0;
       border-style: solid;
       border-width: 10px 10px 0 10px;
-      border-color: #fff transparent transparent transparent;
+      border-color: #62bb46 transparent transparent transparent;
       font: 700 14px/18px "Roboto";
     }
   }
@@ -39,15 +41,17 @@
       &__head {
         @extend .card-estate__head;
         max-height:150px;
+        
       }
       &__name {
         @extend .card-estate__name;
         padding:10px;
+        min-height:auto;
         .address {
-          font: 700 14px/18px "Roboto";
+          font: 700 16px/18px "Roboto";
         }
         .type {
-          font: 400 12px/18px "Roboto";
+          font: 400 14px/18px "Roboto";
         }
       }
       &__more {

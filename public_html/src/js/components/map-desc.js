@@ -1,7 +1,8 @@
 $(window).on("load", function(){
-    if ($("object__desc-on-map")) {
-        ymaps.ready(function() {
-            var container = $(".object__desc-on-map");            
+    var container = $(".object__desc-on-map");
+    
+    if (container.length) {
+        ymaps.ready(function() {            
             var geo = container.data("geo").split(",");
             var map  = new ymaps.Map(container.get(0), {
                 center: geo,

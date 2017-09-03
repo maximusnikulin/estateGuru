@@ -32,8 +32,8 @@ $text_color:#4e4d4d;
     &__photo {
         flex-basis: 45%;
         padding-right: 80px;
-        max-width:500px;
-        margin:0 auto;
+        // max-width:500px;
+        // margin:0 auto;
         @include tablet-hl {
             padding-right: 30px;
         }

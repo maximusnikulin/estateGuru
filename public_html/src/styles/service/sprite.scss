@@ -1,17 +1,17 @@
 @mixin common {
-	background: url("../sprite/sprite-65e7ca40.svg") no-repeat;
+	background: url("../sprite/sprite-e6c2986e.svg") no-repeat;
 }
 
 @mixin svg-bar {
 	@include common;
-	background-position: 98.13084112149532% 37.357894736842105%;
+	background-position: 0 77.90833333333333%;
 	width: 34px;
 	height: 24px;
 }
 
 @mixin svg-cross {
 	@include common;
-	background-position: 61.66811468288445% 62.298603651987115%;
+	background-position: 0 99.48348856900932%;
 	width: 25.9px;
 	height: 25.9px;
 }
@@ -23,51 +23,58 @@
 	height: 58px;
 }
 
+@mixin svg-filter-icon {
+	@include common;
+	background-position: 51.42857142857143% 0;
+	width: 58px;
+	height: 58px;
+}
+
 @mixin svg-go-to-map {
 	@include common;
-	background-position: 0 69.45276014848523%;
+	background-position: 0 53.45129481153811%;
 	width: 35.49px;
 	height: 35.49px;
 }
 
 @mixin svg-magnifier {
 	@include common;
-	background-position: 98.13084112149532% 69.98823529411764%;
+	background-position: 82.53488372093024% 52.72727272727273%;
 	width: 34px;
 	height: 34px;
 }
 
 @mixin svg-news {
 	@include common;
-	background-position: 60% 0;
+	background-position: 100% 0;
 	width: 51px;
 	height: 58px;
 }
 
 @mixin svg-phone {
 	@include common;
-	background-position: 0 99.45744680851064%;
+	background-position: 18.768115942028984% 98.73109243697479%;
 	width: 25px;
 	height: 25px;
 }
 
 @mixin svg-slider-promo-next {
 	@include common;
-	background-position: 33.63662212112596% 69.45276014848523%;
+	background-position: 55.666222257077884% 53.45129481153811%;
 	width: 35.49px;
 	height: 35.49px;
 }
 
 @mixin svg-slider-promo-prev {
 	@include common;
-	background-position: 99.5166334944555% 0;
+	background-position: 27.833111128538942% 53.45129481153811%;
 	width: 35.49px;
 	height: 35.49px;
 }
 
 @mixin svg-to-more {
 	@include common;
-	background-position: 20.161290322580644% 89.03809523809524%;
+	background-position: 96.21232876712328% 44.61538461538461%;
 	width: 17px;
 	height: 14px;
 }

@@ -8,11 +8,11 @@
 
 <script>
     import {API_HOST} from '../config.js';
-    import {PM_BALOON_LT, CR_BALOON_LT, PM_ICON_LT, CR_ICON_LT} from './layouts.js';
-    import objects from './objects.json';
+    import {PM_BALOON_LT, CR_BALOON_LT, PM_ICON_LT, CR_ICON_LT} from './layouts.js';    
     import Map from './Map.vue';
     import Filter from './Filter.vue';
     import {bus} from './index.js';
+
 
     export default {
         name: 'root',
@@ -20,11 +20,12 @@
             'vue-map': Map,
             'vue-filter': Filter
         },
+        
         created:function(){
 
         },
         data:function(){
-            return {
+            return {                
                 objects:[]
             }
         }

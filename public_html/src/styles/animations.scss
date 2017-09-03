@@ -50,6 +50,7 @@
                 content: '';
                 position: absolute;
                 background-color: rgba(0, 0, 0, .5);
+                cursor: pointer; 
             }
             &:after {
                 transition: .5s ease;
@@ -62,6 +63,7 @@
                 bottom: 0;
                 @include svg-magnifier;
                 margin: auto;
+                cursor: pointer; 
             }
             &:hover {
                 @include onHover {
@@ -155,20 +157,20 @@
 
 //CARD
 .card-estate {
-    transition:all .5s ease-in-out;
+    transition:all .5s ease-;
     &__head {
         .photo {
-            transition:all .5s ease-in-out;
+            transition:all .5s ease;
         }
     }
     
 }
 .card-estate:hover {
-    transform:translateY(-5px);
+    transform:translateY(-4px);
     box-shadow:
-        0px 5px 15px 0 rgba(0, 0, 0, 0.10);
+        0px 3px 15px 0 rgba(0, 0, 0, 0.1);
     .photo {
-        transform:scale(1.1);
+        transform:scale(1.05);
     }
 }
 // .button--filter 
