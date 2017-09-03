@@ -71,7 +71,11 @@ class Building extends yupe\models\YModel
         }
         return $result;
     }
-
+    public function getPriceAsString()
+    {
+        return number_format($this->price,0,","," ");
+    }
+    
     public function getMinimalPrice()
     {
         $apartments = $this->apartments;

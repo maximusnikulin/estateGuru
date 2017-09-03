@@ -168,7 +168,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-7">
                 <?=  $form->textFieldGroup($model, 'seo_title', [
                     'widgetOptions' => [
@@ -208,9 +208,9 @@
                     ]
                 ]); ?>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-7">
                 <?=  $form->textFieldGroup($model, 'number', [
                     'widgetOptions' => [
@@ -222,7 +222,7 @@
                     ]
                 ]); ?>
             </div>
-        </div>
+        </div> -->
     <style>
             .svg-maker  {
                 width:840px;

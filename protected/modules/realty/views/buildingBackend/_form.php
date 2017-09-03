@@ -200,7 +200,7 @@
         </div>
     </div>
 
-    <div class="row js-item js-item-cottage">
+    <div class="row js-item js-item-earth js-item-cottage js-item-commercial">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'square', [
                 'widgetOptions' => [
@@ -257,7 +257,7 @@
         </div>
     </div>
 
-    <div class="row js-item js-item-cottage js-item-earth">
+    <div class="row js-item js-item-cottage js-item-earth js-item-commercial">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'price', [
                 'widgetOptions' => [

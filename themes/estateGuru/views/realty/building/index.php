@@ -12,19 +12,27 @@
     <div class="section-tabs__switcher">
         <div class="navbar ">
             <nav class="navbar__menu">
-                <li class="link active" data-id = "1"><a href="javascript:;" >Квартиры в новостройках</a></li>
-                <li class="link" data-id = "2"><a href="javascript:;" >Вторичное жилье</a></li>
+                <?php if (isset($apartments[STATUS_HOME])): ?>
+                    <li class="link active" data-id = "1"><a href="javascript:;" >Квартиры в новостройках</a></li>
+                <? endif ?>
+                <?php if (isset($apartments[STATUS_SECOND])): ?>
+                    <li class="link" data-id = "2"><a href="javascript:;" >Вторичное жилье</a></li>
+                <? endif ?>
             </nav>
         </div>
     </div>
     <div class="section-tabs__content">
+    <?php if (isset($apartments[STATUS_HOME])): ?>
         <?= $this->renderPartial('/apartment/section-cards', ['id' => 1, 'needHide' => false, 'title' => 'Квартиры в новостройках', 'items' => $apartments[STATUS_HOME]]); ?>
+    <?php endif; ?>    
+    <?php if (isset($apartments[STATUS_SECOND])): ?>
         <?= $this->renderPartial('/apartment/section-cards', ['id' => 2, 'needHide' => true, 'title' => 'Вторичное жилье', 'items' => $apartments[STATUS_SECOND]]); ?>
+    <?php endif; ?>   
     </div>
 
 </section>
 <section class="section-to-map main__link-to-map">
-    <a href="#" class="link-to-map">
+    <a href="/search/map?type=apartments" class="link-to-map">
         <div class="link-to-map__title">
             <h2 class="name">Поиск по карте</h2>
             <p class="slogan">Уникальная возможность быстро найти квартиру в нужном районе</p>

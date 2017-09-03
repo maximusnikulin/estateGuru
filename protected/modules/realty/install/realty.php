@@ -21,12 +21,12 @@ return [
     ],
     'rules'     => [
         '/' => '/realty/realty/index',
+        '/search/map' => 'realty/realty/search',
         '/services' => '/realty/realty/services',
         '/contacts' => '/realty/realty/contacts',
         '/api/objects' => 'realty/realty/getBuildingsForMap',
         '/api/apartments' => 'realty/realty/getApartmentsForMap',
         '/realty' => 'realty/realty/index',
-        '/poisk' => 'realty/realty/search',
         '/zhilie-kompleksy' => 'realty/realty/listDistricts',
         '/zastroyschiki' => 'realty/realty/listBuilders',
         '/stroyaschiesya-doma' => 'realty/realty/nonReady',

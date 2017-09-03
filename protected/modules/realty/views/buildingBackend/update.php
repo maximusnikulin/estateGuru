@@ -11,8 +11,7 @@
 $this->breadcrumbs = [
     $this->getModule()->getCategory() => [],
     Yii::t('RealtyModule.realty', 'Объекты') => ['/backend/realty/building/index'],
-    $model->adres => ['/backend/realty/building/view', 'id' => $model->id],
-    Yii::t('RealtyModule.realty', 'Редактирование'),
+    $model->adres
 ];
 
 $this->pageTitle = Yii::t('RealtyModule.realty', 'Объекты - редактирование');

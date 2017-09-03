@@ -20,6 +20,9 @@ class RealtyController extends \yupe\components\controllers\FrontController
     public function actionContacts() {
         $this->render('/building/contacts');
     }
+    public function actionSearchMap() {
+        $this->render('/search/map');
+    }
     /**
      * Действие "по умолчанию"
      *
@@ -32,6 +35,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
         $criteria->select = 't.*';
         $criteria->compare("showOnIndex",1);
         $criteria->compare("status", Building::STATUS_HOME);
+        $criteria->compare("isPublished", 1);
         $criteria->order = "adres ASC";
         $sliderItems = Building::model()->findAll($criteria);
 
@@ -40,7 +44,11 @@ class RealtyController extends \yupe\components\controllers\FrontController
         $criteria->order = "adres ASC";
         $criteria->compare("t.showOnIndex", true);
         $criteria->limit = 8;
-        $criteria->with = 'building';
+        $criteria->with = [
+            'building' => [
+                'condition' => 'isPublished=1',
+            ]
+        ];
         $apartments = Apartment::model()->findAll($criteria);
         $apartmentsByStatuses = [STATUS_HOME=>[],STATUS_COMMERCIAL=>[]];
         foreach ($apartments as $item) {
@@ -233,42 +241,58 @@ class RealtyController extends \yupe\components\controllers\FrontController
 
     public function actionGetApartmentsForMap()
     {
+        header("Access-Control-Allow-Origin: * ");
         $criteria = new CDbCriteria();
         $criteria->select = 't.*';
-        $criteria->addCondition("idBuilding <> 0");
-        $criteria->with = [
-            "building" => [
-                "condition" => "building.isPublished = 1",
-            ]
-        ];
+        $criteria->addCondition("id <> 0");
+        $criteria->addCondition("isPublished=1");
+
+        if (Yii::app()->request->getParam("rayon") != null) {
+            $criteria->compare("rayon", Yii::app()->request->getParam("rayon"));
+        }
+        if (Yii::app()->request->getParam("type") != null) {
+            $criteria->compare("status", Yii::app()->request->getParam("type"));
+        }
+        if (Yii::app()->request->getParam("time") != null) {
+            $criteria->compare("readyTime",Yii::app()->request->getParam("time"));
+        }
+
+        $buildings = Building::model()->findAll($criteria);
+        $ids = array_map(function($item) {
+            return $item->id;
+        }, $buildings);
+
+        $criteria = new CDbCriteria();
+        $criteria->addInCondition("idBuilding", $ids);
+
+        // var_dump(Yii::app()->request->getParam("cost")[0]);
         if (Yii::app()->request->getParam("rooms") != null) {
             $rooms = Yii::app()->request->getParam("rooms");
             if (array_search("4",$rooms) !== false) {
                 $rooms[] = "5";
                 $rooms[] = "6";
             }
-            $criteria->addInCondition("rooms",$rooms);
+            $criteria->addInCondition("rooms", $rooms);
         }
-        if (!is_null(Yii::app()->request->getParam('type'))) {
-            $criteria->compare("status", Yii::app()->request->getParam('type'));
+        if (Yii::app()->request->getParam("cost") != null) {
+            $criteria->addCondition("cost >= ".Yii::app()->request->getParam("cost")[0]);
         }
-        if (Yii::app()->request->getParam("minimalCost") != null) {
-            $criteria->addCondition("cost >= ".Yii::app()->request->getParam("minimalCost"));
+        if (Yii::app()->request->getParam("cost") != null) {
+            $criteria->addCondition("cost <= ".Yii::app()->request->getParam("cost")[1]);
         }
-        if (Yii::app()->request->getParam("maximalCost") != null) {
-            $criteria->addCondition("cost <= ".Yii::app()->request->getParam("maximalCost"));
+        if (Yii::app()->request->getParam("size") != null) {
+            $criteria->addCondition("size >= ".Yii::app()->request->getParam("size")[0]);
         }
-        if (Yii::app()->request->getParam("minimalSize") != null) {
-            $criteria->addCondition("size >= ".Yii::app()->request->getParam("minimalSize"));
+        if (Yii::app()->request->getParam("size") != null) {
+            $criteria->addCondition("size <= ".Yii::app()->request->getParam("size")[1]);
         }
-        if (Yii::app()->request->getParam("maximalSize") != null) {
-            $criteria->addCondition("size <= ".Yii::app()->request->getParam("maximalSize"));
-        }
-        if (Yii::app()->request->getParam("time") != null) {
-            $criteria->addInCondition("building.readyTime",Yii::app()->request->getParam("time"));
-        }
+
+
         $apartments = Apartment::model()->findAll($criteria);
+
         $result = array_map(function ($item) {
+            $images = $item->getImages();
+
             return [
                 'id' => $item->id,
                 'adres' => $item->building->adres,
@@ -276,11 +300,17 @@ class RealtyController extends \yupe\components\controllers\FrontController
                 'latitude' => $item->building->latitude,
                 'longitude' => $item->building->longitude,
                 'url' => $item->getUrl(),
-                'price' => $item->price,
-                'floor' => $item->getFloorAsString(),
-                'image' => $item->getImageUrl(200, 200),
+                'cost' => $item->cost,
+                'floor' => $item->getFloor(),
+                'type' => $item->getStudioAsString(),
+                'deadline' => is_null($item->building->readyTimeObj) ? "Дом сдан" : $item->building->readyTimeObj->text,
+                'rayon' => $item->building->getRayon()->value,
+                'image' => empty($images) ? null : reset($images)->getImageUrl(200, 200),
+                'rooms' => $item->rooms,
+                'size' => $item->size
             ];
         }, $apartments);
+        
         echo json_encode($result, JSON_NUMERIC_CHECK);
     }
 
@@ -288,25 +318,51 @@ class RealtyController extends \yupe\components\controllers\FrontController
     {
         $criteria = new CDbCriteria();
         $criteria->compare("isShowedOnMap",1);
+
         if (!is_null(Yii::app()->request->getParam('type'))) {
             $criteria->compare("status", Yii::app()->request->getParam('type'));
         }
+        
         if (!is_null(Yii::app()->request->getParam('offset'))) {
             $criteria->offset = Yii::app()->request->getParam('offset');
         }
         if (!is_null(Yii::app()->request->getParam('limit'))) {
             $criteria->limit = Yii::app()->request->getParam('limit');
-        }
+        }        
         $buildings = Building::model()->findAll($criteria);
         $result = array_map(function ($item) {
-            return [
+            // var_dump($item);
+            $image = $item->getMainImage();
+            $status= $item->status;
+            $result = [
                 'id' => $item->id,
                 'adres' => $item->adres,
                 'latitude' => $item->latitude,
                 'longitude' => $item->longitude,
                 'url' => $item->getUrl(),
-                'image' => $item->getMainImage()->getImageUrl(200, 200),
+                'image' => is_null($image->getImageUrl()) ? null : $image->getImageUrl(200, 200),
+                'type' => $item->getStatusAsString(),
+                'cost' => $item->getPriceAsString(),
+                'rayon' => $item->getRayon()->value,
             ];
+            //COTTAGE
+            if ($status == 2) {
+                // var_dump($item);
+                $result["square"] = $item->square;
+                $result["floor"] = $item->floor;
+            }
+            //EARTH
+            if ($status == 3) {
+               $result["squareGa"] = $item->square;
+            }
+            //COMMERCIAL
+            if ($status == 4) {
+                // var_dump($item);
+               $result["usefullSquare"] = $item->usefulSquare;
+               $result["generalSquare"] = $item->square;               
+            }
+            return $result;
+
         }, $buildings);
         echo json_encode($result, JSON_NUMERIC_CHECK);
     }
@@ -398,4 +454,5 @@ class RealtyController extends \yupe\components\controllers\FrontController
         $this->render("/district/list",["dataProvider" => $data, "page" => $page]);
     }
 
+    
 }

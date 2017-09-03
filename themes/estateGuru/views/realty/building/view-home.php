@@ -33,7 +33,7 @@ $apartments = $data->apartments;
         <div class="object__photo js-gallery-photos">
             <?php if ($mainImage !== false): ?>
                 <div class="object__photo-main">
-                    <figure class="photo" href="<?= $mainImage->getImageUrl(); ?>"><img src="<?= $mainImage->getImageUrl(); ?>" alt=""></figure>
+                    <figure class="photo" href="<?= $mainImage->getImageUrl(); ?>"><img src="<?= $mainImage->getImageUrl(468,480); ?>" alt=""></figure>
                 </div>
             <?php endif; ?>
             <div class="object__photo-grid ">
@@ -103,8 +103,7 @@ $apartments = $data->apartments;
                 </div>
                 <?php endif; ?>
             </div>
-            <div class="object__desc-on-map" data-geo = 
-                "<?=$data->latitude . ',' . $data->longitude;?>">
+            <div class="object__desc-on-map" data-geo = "<?=$data->latitude . ',' . $data->longitude;?>">
             </div>
             <h2 class="object__desc-title">Описание</h2>
             <div class="object__desc-text">

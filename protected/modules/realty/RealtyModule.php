@@ -14,7 +14,7 @@ class RealtyModule  extends yupe\components\WebModule
     const VERSION = '0.9.8';
 
 
-
+    
     public function addCardTags($model)
     {
         Yii::app()->clientScript->registerMetaTag($model->seo_title,null,null,["itemprop" => "name"]);

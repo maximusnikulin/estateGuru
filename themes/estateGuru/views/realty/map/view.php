@@ -38,7 +38,6 @@ Yii::app()->clientScript->registerScriptFile("https://api-maps.yandex.ru/2.1/?la
                 $(".map__button").html("Показать объекты на карте");
             else
                 $(".map__button").html("Скрыть карту");
-
             myMap.container.fitToViewport();
         });
     }
