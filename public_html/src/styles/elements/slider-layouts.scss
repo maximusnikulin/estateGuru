@@ -43,7 +43,7 @@
     padding:0 40px;
     margin:0 auto 50px;
     position: relative;
-    @include mobile {
+    @include tablet-vl {
         padding:0 20px 60px;
     }
     &__item { 

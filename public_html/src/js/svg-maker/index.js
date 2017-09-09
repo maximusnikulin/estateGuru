@@ -74,7 +74,6 @@ if (document.getElementById('vue-svg-maker')) {
                     this.result = initValue;
                     this.points = this.parsePath(initValue);
                 }               
-
             },
             getCoords:function([x,y]){
                 var resY = y - this.$refs['svg-maker'].getBoundingClientRect().top - window.pageYOffset;

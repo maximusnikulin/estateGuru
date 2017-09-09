@@ -19,65 +19,32 @@ class Realty extends CApplicationComponent
         return json_encode($arr,JSON_NUMERIC_CHECK);
     }
 
-
-    public function getMinimumAvailableCost()
-    {
-        $criteria = new CDbCriteria();
-        $criteria->select = "cost";
-        $criteria->order = "cost ASC";
-        $criteria->with = [
-            "building" => [
-                "condition" => "isPublished = 1"
-            ]
-        ];
-        $criteria->limit = 1;
-        $apartment = Apartment::model()->find($criteria);
-        return intval($apartment->cost);
+    public function aggregateInstanceByType($type) {
+        $factory = new GetAggregateFactory();
+        $instance = $factory->getInstance($type);
+        $instance->type = $type;
+        return $instance;
     }
 
-    public function getMaximumAvailableCost()
+
+    public function getMinimumAvailableCost($type)
     {
-        $criteria = new CDbCriteria();
-        $criteria->select = "cost";
-        $criteria->order = "cost DESC";
-        $criteria->with = [
-            "building" => [
-                "condition" => "isPublished = 1"
-            ]
-        ];
-        $criteria->limit = 1;
-        $apartment = Apartment::model()->find($criteria);
-        return intval($apartment->cost);
+        return $this->aggregateInstanceByType($type)->getMinimumAvailableCost();
     }
 
-    public function getMinimumAvailableSize()
+    public function getMaximumAvailableCost($type)
     {
-        $criteria = new CDbCriteria();
-        $criteria->select = "size";
-        $criteria->order = "size ASC";
-        $criteria->with = [
-            "building" => [
-                "condition" => "isPublished = 1"
-            ]
-        ];
-        $criteria->limit = 1;
-        $apartment = Apartment::model()->find($criteria);
-        return intval($apartment->size);
+        return $this->aggregateInstanceByType($type)->getMaximumAvailableCost();
     }
 
-    public function getMaximumAvailableSize()
+    public function getMinimumAvailableSize($type)
     {
-        $criteria = new CDbCriteria();
-        $criteria->select = "size";
-        $criteria->order = "size DESC";
-        $criteria->with = [
-            "building" => [
-                "condition" => "isPublished = 1"
-            ]
-        ];
-        $criteria->limit = 1;
-        $apartment = Apartment::model()->find($criteria);
-        return intval($apartment->size);
+        return $this->aggregateInstanceByType($type)->getMinimumAvailableSize();
+    }
+
+    public function getMaximumAvailableSize($type)
+    {
+        return $this->aggregateInstanceByType($type)->getMaximumAvailableSize();
     }
 
 }

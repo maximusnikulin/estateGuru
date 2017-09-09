@@ -62,7 +62,7 @@ if (!empty($images)) {
 
             </div>
             <div class="object__desc-on-map" data-geo = 
-                "<?=$data->building->latitude . ',' . $data->building->longitude;?>">
+                "<?=$data->latitude . ',' . $data->longitude;?>">
             </div>
             <h2 class="object__desc-title">Описание</h2>
             <p class="object__desc-text">

@@ -1,5 +1,5 @@
   <?php
-Yii::import('application.modules.menu.components.YMenu');
+ Yii::import('application.modules.menu.components.YMenu');
 
   foreach ($this->params['items'] as $key => $item) {
       if (is_array($item['url'])) {
@@ -12,6 +12,7 @@ Yii::import('application.modules.menu.components.YMenu');
       $this->params['items'][$key]['url'] = $url;
       $this->params['items'][$key]['active'] = $active;
   }
+
   ?>
     <div class="header__navbar">
     <div class="navbar">

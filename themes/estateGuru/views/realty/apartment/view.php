@@ -111,7 +111,7 @@ if (!empty($images)) {
     <div class="slider-layouts js-slider-layouts js-gallery-layouts">
         <?php foreach ($images as $image): ?>
             <div class="slider-layouts__item" href = "<?= $image->getImageUrl(840, 480); ?>">
-                <img class = "layout"  src="<?= $image->getImageUrl(840, 480); ?>" alt="">
+                <img class = "layout"  src="<?= $image->getImageUrl(840, 480); ?>" alt="<?= $image->label; ?>">
             </div>
         <?php endforeach; ?>
     </div>

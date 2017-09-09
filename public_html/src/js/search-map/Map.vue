@@ -13,8 +13,8 @@
     import queryString from 'query-string'
     export default {
         name: 'root',
+        props:['typeEstate'],
         created: function () {
-            this.setType();  
 
             this.getData(null, ymaps.ready(this.initMap));
             bus.$on('CHANGE_FILTER', function(query) {
@@ -23,12 +23,8 @@
              
         },
         methods: {
-            setType:function() {
-                var params = queryString.parse(location.search);                
-                this.type = "type" in params ? params.type : null
-            },
             getData:function(query, callback){
-                var API_BASE = basesAPI[this.type];
+                var API_BASE = basesAPI[this.$props.typeEstate];
                 var url = `${API_HOST}${API_BASE}` + (query || '');
                 console.log(url)
                 fetch(url)
@@ -144,7 +140,6 @@
             },
             data: function () {
                 return {
-                    type:null,
                     map: null,
                     objects: null
                 }

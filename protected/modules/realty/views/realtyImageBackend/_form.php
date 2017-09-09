@@ -26,6 +26,20 @@ $form = $this->beginWidget(
      <?=  $form->hiddenField($model, 'idRecord') ;?>
      <?=  $form->hiddenField($model, 'idTable'); ?>
 
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->textFieldGroup($model, 'label', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('label'),
+                        'data-content' => $model->getAttributeDescription('label')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
     <div class='row'>
         <div class="col-sm-7">
             <div class="preview-image-wrapper<?= !$model->getIsNewRecord() && $model->path ? '' : ' hidden' ?>">
@@ -100,6 +114,10 @@ $images = RealtyImage::model()->findAll($criteria);
                     <img src="<?= $image->getImageUrl(100, 100); ?>" alt="" class="img-responsive"/>
                 </td>
                 <td class="text-center">
+                    <br>
+                    <b><?= $image->label; ?></b>
+                    <br>
+                    <br>
                     <a data-id="<?= $image->id; ?>" href="<?= $this->createUrl(
                         '/backend/realty/realtyImage/delete?id='.$image->id); ?>"
                        class="btn btn-default product-delete-image"><i

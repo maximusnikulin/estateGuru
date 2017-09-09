@@ -1,8 +1,7 @@
 .navbar {
     position:relative;
-    @extend .container--fluid;
-    // border-bottom:1px solid $border-color;
-    // min-height:44px;
+    z-index: 50;
+    @extend .container--fluid;            
     &:before {
         content:'';
         position: absolute;

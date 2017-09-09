@@ -32,7 +32,7 @@
 <body>
    <div class="wrapper main">
 
-   <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu', 'layout' => 'side-menu']); ?>
+    <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu', 'layout' => 'side-menu']); ?>
        <header class="header">
       <div class="header__content">
         <div class="header__bar">
@@ -56,8 +56,11 @@
           </div>
         </div>
       </div>
-    
-      <!-- <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'kategorii', 'layout' => 'navbar']); ?> -->
+        <?php if (isset($this->menuWithMapLinks) && $this->menuWithMapLinks): ?>
+            <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'kategoriiWithMap', 'layout' => 'navbar']); ?>
+        <?php else: ?>
+            <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'kategorii', 'layout' => 'navbar']); ?>
+         <?php endif; ?>
     </header>
        <?= $content; ?>
        <?php $this->widget('application.modules.callback.widgets.CallbackWidget'); ?>
@@ -80,27 +83,30 @@
           </div>
         </section>
       </div>
-      <ul class="footer__content">
-        <li class="link">
+      <div class="footer__content">
+        <div class="footer__content-logo">        
           <a href="<?= $this->createUrl('/'); ?>" class="logo"><img width = "160px" src="/svg-icons/logo.svg" alt=""></a>
+        </div>       
+        <ul class="footer__content-list">
+        <li class="link">          
           <a href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>" class="phone"><?= Yii::app()->getModule("realty")->phone; ?></a>
         </li>
         <li class="link">
           <p href="" class="adress"><?= Yii::app()->getModule("realty")->adres; ?></p>
         </li>
-        <li class="link"><a href="#">Поиск недвижимости</a></li>
-        <li class="link"><a href="#">Контакты</a></li>
-        <li class="link"><a href="#">Новости</a></li>
-        <li class="link"><a href="#">Услуги</a></li>
-        <li class="link"><a href="#">Новостройки</a></li>
-        <li class="link"><a href="#">Вторичное жилье</a></li>
-        <li class="link"><a href="#">Сдача квартир</a></li>
-        <li class="link"><a href="#">Коммерческая недвижимость</a></li>
-        <li class="link"><a href="#">Продажа зумли</a></li>
-        <li class="link"><a>Сдача земли в аренду</a></li>
-        <li class="link"><a>Продажа котеджей</a></li>
-        <li class="link"><a href="javascript:;" class="button button--callback">Обратный звонок</a></li>
-      </ul>
+        <li class="link"><a href="/search/cards/apartments">Поиск недвижимости</a></li>
+        <li class="link"><a href="/contacts">Контакты</a></li>
+        <li class="link"><a href="/news">Новости</a></li>
+        <li class="link"><a href="/service">Услуги</a></li>
+        <li class="link"><a href="/search/cards/apartments">Квартиры в новостройках</a></li>
+        <li class="link"><a href="/search/cards/second">Вторичная недвижимость</a></li>        
+        <li class="link"><a href="/search/cards/commercial">Коммерческая недвижимость</a></li>
+        <li class="link"><a href="/search/cards/earth">Земельные участки</a></li>        
+        <li class="link"><a href="/search/cards/cotage">Коттеджи</a></li>
+        <li class="link"><a href="javascript:;" class="button button--callback">Обратный звонок</a></li>  
+</ul>  
+        
+</div>
     </footer>
   </div>
 </body>

@@ -1,4 +1,28 @@
-.section-search-map {
+.section-search--map {      
+    min-height:800px;
+    .section-search__content {
+       height:100%; 
+    }    
+}
+.section-search--cards {      
+    @extend .container;
+    .section-search__content {
+      min-height:800px;      
+    } 
+    .section-cards__content {
+        padding:0 20px 20px 70px;        
+        @include mobile {
+          padding:0 10px 20px 60px;
+        }       
+      }          
+}
+.section-search {
+  
+  @include tablet-hl {
+    max-width:100%;
+    padding:0;
+    
+  }
   &__title {
     @extend .container;
     @extend .object__title;
@@ -6,8 +30,14 @@
   }
   &__content {
     position: relative;
-    min-height:800px;
-    border:1px solid #e8e6e6;
+    border:1px solid #e8e6e6;   
+    overflow: hidden;
+    margin-bottom:40px;
+    height:100%;
+    @include tablet-hl {
+      border-left:none;
+      border-right:none;
+    }   
   }
   .placemark__icon {
     background:  #62bb46;
@@ -99,4 +129,12 @@
     }
   }
 
+}
+
+@media screen and (max-width:1440px) and (min-width:1190px) {
+    .section-search {
+      .section-cards__content-item {
+        flex-basis:calc(100% / 3);
+      }
+    }
 }

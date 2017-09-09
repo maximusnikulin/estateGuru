@@ -1,16 +1,18 @@
 .header {
     @extend .container--fluid;
-    @include tablet-vl {
+    @include tablet-hl {
         border-bottom: 1px solid $border-color;
     }
     &__navbar {
-            @include tablet-vl {
+            margin-top: 20px;
+            margin-bottom: 60px;
+            @include tablet-hl {
                 display:none;
             }
     }
     &__content {
         @extend .container;
-        height: 100px;
+        height: 124px;
         display: flex;
         align-items: center;
         position: relative;

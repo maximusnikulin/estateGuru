@@ -1,4 +1,7 @@
-export const API_HOST = "http://localhost:8888"
+'use strict';
+
+export const API_HOST = "http://localhost:8888";
+
 export const DISTRICT_LIST = [
     { name: "any", label: "Любой" },
     { name: "zheleznodorozn", label: "Железнодорожный" },

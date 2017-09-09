@@ -13,11 +13,12 @@ import './components/nav-cards';
 import './components/menu';
 import './components/subscribe.js';
 import './components/map-desc.js';
+import './components/tilt.js';
 
 
 // // VUE SEARCH
 
-// // import './search-cards/index.js';
+import './search-cards/index.js';
 
 import './search-map/index.js';
 

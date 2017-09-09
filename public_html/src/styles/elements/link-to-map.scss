@@ -6,7 +6,10 @@
     position: relative;
     display:block;
     cursor:pointer;
-
+    &:hover {
+            background-size: 120% 120%;            
+    }
+    
     &:after {
         content:'';
         position: absolute;

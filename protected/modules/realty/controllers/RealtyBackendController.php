@@ -77,7 +77,7 @@ class RealtyBackendController extends \yupe\components\controllers\BackControlle
 
     public function actionGenerateSeoTags()
     {
-        $classes = ["Apartment","Building","Builder","District"];
+        $classes = ["Apartment","Building","Builder","Disotrict"];
         foreach ($classes as $className)
         {
             $models = $className::model()->findAll();

@@ -8,6 +8,7 @@
  * @property integer $idRecord
  * @property integer $idTable
  * @property string $path
+ * @property string $label
  */
 class RealtyImage extends \yupe\models\YModel
 {
@@ -32,10 +33,10 @@ class RealtyImage extends \yupe\models\YModel
 		// will receive user inputs.
 		return array(
 			array('idRecord, idTable', 'numerical', 'integerOnly'=>true),
-			array('path', 'length', 'max'=>200),
+			array('path, label', 'length', 'max'=>200),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, idRecord, idTable, path', 'safe', 'on'=>'search'),
+			array('id, label,  idRecord, idTable, path', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,7 +78,8 @@ class RealtyImage extends \yupe\models\YModel
 			'id' => 'ID',
 			'idRecord' => 'Id Record',
 			'idTable' => 'Id Table',
-			'path' => 'Path',
+			'path' => 'Путь к изображению',
+            'label' => 'Подпись к изображению'
 		);
 	}
 

@@ -8,7 +8,16 @@ foreach ($this->params['items'] as $key => $item) {
         $url = $item['url'];
     }
 
-    $active = ($_SERVER['REQUEST_URI'] == $url);
+    $active = false;
+    $pathChunks = explode("/", $_SERVER['REQUEST_URI']);
+    while (count($pathChunks) > 0) {
+        $currentUrl = implode("/", $pathChunks);
+        $active = ($currentUrl == $url);
+        if ($active) {
+            break;
+        }
+        array_splice($pathChunks, count($pathChunks) - 1, 1);
+    }
     $this->params['items'][$key]['url'] = $url;
     $this->params['items'][$key]['active'] = $active;
 }

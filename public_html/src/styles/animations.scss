@@ -140,7 +140,7 @@
 }
 .button--empty:hover {
     @include onHover {
-        transform:translateY(-10px);
+        transform:translateY(-4px);
         box-shadow:
             0px 10px 20px 0 rgba(98, 187, 70, 0.20);        
             
@@ -148,7 +148,7 @@
 }
 .button--blue:hover {
     @include onHover {
-        transform:translateY(-10px);
+        transform:translateY(-4px);
         box-shadow:
             0px 10px 20px 0 rgba(74, 148, 241, 0.20);
             
@@ -157,21 +157,14 @@
 
 //CARD
 .card-estate {
-    transition:all .5s ease-;
-    &__head {
-        .photo {
-            transition:all .5s ease;
-        }
-    }
-    
+    transition:all .2s ease;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+
 }
 .card-estate:hover {
     transform:translateY(-4px);
-    box-shadow:
-        0px 3px 15px 0 rgba(0, 0, 0, 0.1);
-    .photo {
-        transform:scale(1.05);
-    }
+    box-shadow: 0px 3px 15px 0 rgba(0, 0, 0, 0.1);
 }
 // .button--filter 
 // .button--popup

@@ -1,7 +1,12 @@
 <template>
-    <div class = "section-search-map__content">
-        <vue-filter></vue-filter>
-        <vue-map></vue-map>
+    <div class = "section-search section-search--map">
+        <h1 class="section-search__title">
+           {{typeEstate | getCaption}}
+        </h1>
+        <div class="section-search__content">
+            <vue-filter v-bind:typeEstate = "typeEstate"></vue-filter>
+            <vue-map v-bind:typeEstate = "typeEstate"></vue-map>
+        </div>
     </div>
 
 </template>
@@ -26,14 +31,25 @@
         },
         data:function(){
             return {                
-                objects:[]
+                typeEstate: window.settingsFilter.typeEstate
+            }
+        },
+         filters: {
+        getCaption:function(value) {
+            switch (value) {
+                case 'cottage':
+                    return 'Поиск Коттеджей';
+                case 'apartments':
+                    return 'Поиск Квартир';
+                case 'second':
+                    return 'Поиск Вторичной недвижимости';
+                case 'earth':
+                    return 'Поиск Земельных участков';
+                case 'commercial':
+                    return 'Поиск Коммерческой недвижимости';
             }
         }
+    }
 
     }
 </script>
-<style>
-    #js-map {
-        min-height: 800px;
-    }
-</style> 

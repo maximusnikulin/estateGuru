@@ -4,10 +4,18 @@ Yii::import("application.modules.dictionary.models.*");
     $rayons = DictionaryData::model()->findAll("group_id = 3");
 ?>
 
-<section class = "section-search-map" >
-        <div  id = "vue-search-map"></div>
+<section class = "section-search-cards" >
+    <div  id = "vue-search-cards"></div>
 </section>
-
+<section class="section-to-map main__link-to-map">
+    <a href="/search/map/apartments" class="link-to-map">
+        <div class="link-to-map__title">
+            <h2 class="name">Поиск по карте</h2>
+            <p class="slogan">Уникальная возможность быстро найти квартиру в нужном районе</p>
+        </div>
+        <i class="link-to-map__icon"></i>
+    </a>
+</section>
 <script type = "text/javascript">
     window.settingsFilter = {
         typeEstate: "<?= $type ?>",
@@ -20,15 +28,15 @@ Yii::import("application.modules.dictionary.models.*");
             <?=Yii::app()->request->getParam("maximalSize", Yii::app()->realty->getMaximumAvailableSize($type)); ?>
         ],
         rayon: [
-                {
-                    id:"",
-                    label:"Любой"
-                },
+            {
+                id:"",
+                label:"Любой"
+            },
             <?php foreach ($rayons as $rayon): ?>
-                {
-                    id: "<?= $rayon->code; ?>",
-                    label: "<?= $rayon->value; ?>"
-                },
+            {
+                id: "<?= $rayon->code; ?>",
+                label: "<?= $rayon->value; ?>"
+            },
             <?php endforeach; ?>
         ]
     }

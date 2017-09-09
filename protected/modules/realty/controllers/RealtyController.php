@@ -13,6 +13,8 @@
 class RealtyController extends \yupe\components\controllers\FrontController
 {
 
+    protected $menuWithMapLinks = false;
+
     public function actionServices() {
         $this->render('/building/services');
     }
@@ -20,8 +22,12 @@ class RealtyController extends \yupe\components\controllers\FrontController
     public function actionContacts() {
         $this->render('/building/contacts');
     }
-    public function actionSearchMap() {
-        $this->render('/search/map');
+    public function actionSearchMap($type) {
+        $this->menuWithMapLinks = true;
+        $this->render('/search/map', ['type' => $type]);
+    }
+    public function actionSearchCards($type) {
+        $this->render('/search/cards', ['type' => $type]);
     }
     /**
      * Действие "по умолчанию"
@@ -69,183 +75,15 @@ class RealtyController extends \yupe\components\controllers\FrontController
 
         $news = News::model()->findAll($dbCriteria);
 
-        /*   $data = new CActiveDataProvider(
-               'Building',
-               [
-                   'criteria' => $criteria,
-                   'pagination' => [
-                       'pageSize' => (int)Yii::app()->getModule('realty')->itemsPerPage,
-                       'pageVar' => 'page',
-                   ],
-                   /*                'sort' => [
-                                       'sortVar' => 'sort',
-                                       'defaultOrder' => 't.position'
-                                   ],
-                               ]
-           );
-
-           $page = RealtyPage::model()->find("type = ".REALTY_PAGE_MAIN);
-           $this->title = [$page->seo_title];
-           if (Yii::app()->getModule('yupe')->siteName != "")
-               $this->title[] = Yii::app()->getModule('yupe')->siteName;
-           $this->keywords = $page->seo_keywords;
-           $this->description = $page->seo_description;*/
-
         $this->render("/building/index",['sliderItems' => $sliderItems, 'news' => $news, 'apartments' => $apartmentsByStatuses]);
-    }
-
-    public function actionNonReady()
-    {
-        $criteria = new CDbCriteria();
-        $criteria->select = 't.*';
-        $criteria->compare("isPublished",1);
-        $criteria->compare("status",1);
-
-        $data = new CActiveDataProvider(
-            'Building',
-            [
-                'criteria' => $criteria,
-                'pagination' => [
-                    'pageSize' => (int)Yii::app()->getModule('realty')->itemsPerPage,
-                    'pageVar' => 'page',
-                ],
-                /*                'sort' => [
-                                    'sortVar' => 'sort',
-                                    'defaultOrder' => 't.position'
-                                ],
-                  */          ]
-        );
-
-
-        $page = RealtyPage::model()->find("type = ".REALTY_PAGE_NON_READY);
-        $this->title = [$page->seo_title];
-        if (Yii::app()->getModule('yupe')->siteName != "")
-            $this->title[] = Yii::app()->getModule('yupe')->siteName;
-        $this->keywords = $page->seo_keywords;
-        $this->description = $page->seo_description;
-        $this->render("/building/list",["dataProvider" => $data, "map" => STATUS_IN_PROGRESS, "page" => $page]);
-    }
-
-    public function actionReady()
-    {
-        $criteria = new CDbCriteria();
-        $criteria->select = 't.*';
-        $criteria->with = [
-            'building' => [
-                'condition' => 'building.isPublished = 1 AND building.status = 2',
-            ]
-        ];
-        $data = new CActiveDataProvider(
-            'Apartment',
-            [
-                'criteria' => $criteria,
-                'pagination' => [
-                    'pageSize' => (int)Yii::app()->getModule('realty')->itemsPerPage,
-                    'pageVar' => 'page',
-                ],
-                /*                'sort' => [
-                                    'sortVar' => 'sort',
-                                    'defaultOrder' => 't.position'
-                                ],
-                  */          ]
-        );
-
-
-        $page = RealtyPage::model()->find("type = ".REALTY_PAGE_READY);
-        $this->title = [$page->seo_title];
-        if (Yii::app()->getModule('yupe')->siteName != "")
-            $this->title[] = Yii::app()->getModule('yupe')->siteName;
-        $this->keywords = $page->seo_keywords;
-        $this->description = $page->seo_description;
-        $this->render("/apartment/big-list", ["dataProvider" => $data, "itemPath" => "_item_for_building", "map" => STATUS_READY, "page" => $page]);
-    }
-
-    public function actionResell()
-    {
-        $criteria = new CDbCriteria();
-        $criteria->select = 't.*';
-        $criteria->with = [
-            'building' => [
-                'condition' => 'building.isPublished = 1 AND building.status = 3',
-            ]
-        ];
-//        $criteria->compare("isPublished",1);
-//        $criteria->compare("status",3);
-
-        $apartments = Apartment::model()->findAll($criteria);
-
-        $data = new CActiveDataProvider(
-            'Apartment',
-            [
-                'criteria' => $criteria,
-                'pagination' => [
-                    'pageSize' => (int)Yii::app()->getModule('realty')->itemsPerPage,
-                    'pageVar' => 'page',
-                ],
-                /*                'sort' => [
-                                    'sortVar' => 'sort',
-                                    'defaultOrder' => 't.position'
-                                ],
-                  */          ]
-        );
-
-
-        $page = RealtyPage::model()->find("type = ".REALTY_PAGE_RESELL);
-        $this->title = [$page->seo_title];
-        if (Yii::app()->getModule('yupe')->siteName != "")
-            $this->title[] = Yii::app()->getModule('yupe')->siteName;
-        $this->keywords = $page->seo_keywords;
-        $this->description = $page->seo_description;
-        $this->render("/apartment/big-list", ["dataProvider" => $data, "itemPath" => "_item_for_building", "map" => 3, "page" => $page]);
-    }
-
-
-    public function actionCommercial()
-    {
-        $criteria = new CDbCriteria();
-        $criteria->select = 't.*';
-        $criteria->with = [
-            'building' => [
-                'condition' => 'building.isPublished = 1 AND building.status = 4',
-            ]
-        ];
-//        $criteria->compare("isPublished",1);
-//        $criteria->compare("status",3);
-
-        $apartments = Apartment::model()->findAll($criteria);
-
-        $data = new CActiveDataProvider(
-            'Apartment',
-            [
-                'criteria' => $criteria,
-                'pagination' => [
-                    'pageSize' => (int)Yii::app()->getModule('realty')->itemsPerPage,
-                    'pageVar' => 'page',
-                ],
-                /*                'sort' => [
-                                    'sortVar' => 'sort',
-                                    'defaultOrder' => 't.position'
-                                ],
-                  */          ]
-        );
-
-
-        $page = RealtyPage::model()->find("type = ".REALTY_PAGE_COMMERCIAL);
-        $this->title = [$page->seo_title];
-        if (Yii::app()->getModule('yupe')->siteName != "")
-            $this->title[] = Yii::app()->getModule('yupe')->siteName;
-        $this->keywords = $page->seo_keywords;
-        $this->description = $page->seo_description;
-        $this->render("/apartment/big-list", ["dataProvider" => $data, "itemPath" => "_item_for_building", "map" => 4, "page" => $page]);
     }
 
     public function actionGetApartmentsForMap()
     {
-        header("Access-Control-Allow-Origin: * ");
         $criteria = new CDbCriteria();
         $criteria->select = 't.*';
         $criteria->addCondition("id <> 0");
-        $criteria->addCondition("isPublished=1");
+        $criteria->compare("isPublished", 1);
 
         if (Yii::app()->request->getParam("rayon") != null) {
             $criteria->compare("rayon", Yii::app()->request->getParam("rayon"));
@@ -286,13 +124,16 @@ class RealtyController extends \yupe\components\controllers\FrontController
         if (Yii::app()->request->getParam("size") != null) {
             $criteria->addCondition("size <= ".Yii::app()->request->getParam("size")[1]);
         }
-
-
+        if (!is_null(Yii::app()->request->getParam('offset'))) {
+            $criteria->offset = Yii::app()->request->getParam('offset');
+        }
+        if (!is_null(Yii::app()->request->getParam('limit'))) {
+            $criteria->limit = Yii::app()->request->getParam('limit');
+        }
         $apartments = Apartment::model()->findAll($criteria);
 
         $result = array_map(function ($item) {
             $images = $item->getImages();
-
             return [
                 'id' => $item->id,
                 'adres' => $item->building->adres,
@@ -314,15 +155,18 @@ class RealtyController extends \yupe\components\controllers\FrontController
         echo json_encode($result, JSON_NUMERIC_CHECK);
     }
 
-    public function actionGetBuildingsForMap()
+    public function actionGetBuildingsForMap($type)
     {
         $criteria = new CDbCriteria();
         $criteria->compare("isShowedOnMap",1);
+        $criteria->compare("isPublished", 1);
 
-        if (!is_null(Yii::app()->request->getParam('type'))) {
-            $criteria->compare("status", Yii::app()->request->getParam('type'));
+        if (!is_null(Yii::app()->request->getParam("rayon"))) {
+            $criteria->compare("rayon", Yii::app()->request->getParam("rayon"));
         }
-        
+        if (!is_null(Yii::app()->request->getParam("type"))) {
+            $criteria->compare("status", Yii::app()->request->getParam("type"));
+        }
         if (!is_null(Yii::app()->request->getParam('offset'))) {
             $criteria->offset = Yii::app()->request->getParam('offset');
         }
@@ -331,7 +175,6 @@ class RealtyController extends \yupe\components\controllers\FrontController
         }        
         $buildings = Building::model()->findAll($criteria);
         $result = array_map(function ($item) {
-            // var_dump($item);
             $image = $item->getMainImage();
             $status= $item->status;
             $result = [
@@ -359,7 +202,8 @@ class RealtyController extends \yupe\components\controllers\FrontController
             if ($status == 4) {
                 // var_dump($item);
                $result["usefullSquare"] = $item->usefulSquare;
-               $result["generalSquare"] = $item->square;               
+               $result["generalSquare"] = $item->square;
+               $result["floor"] = $item->floorPos;
             }
             return $result;
 
@@ -412,11 +256,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
                     'pageSize' => (int)Yii::app()->getModule('realty')->itemsPerPage,
                     'pageVar' => 'page',
                 ],
-                /*                'sort' => [
-                                    'sortVar' => 'sort',
-                                    'defaultOrder' => 't.position'
-                                ],
-                  */          ]
+            ]
         );
 
         $page = RealtyPage::model()->find("type = ".REALTY_PAGE_BUILDERS);
@@ -439,11 +279,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
                     'pageSize' => (int)Yii::app()->getModule('realty')->itemsPerPage,
                     'pageVar' => 'page',
                 ],
-                /*                'sort' => [
-                                    'sortVar' => 'sort',
-                                    'defaultOrder' => 't.position'
-                                ],
-                  */          ]
+            ]
         );
         $page = RealtyPage::model()->find("type = ".REALTY_PAGE_DISTRICTS);
         $this->title = [$page->seo_title];

@@ -1,4 +1,10 @@
 <?php
+define("STATUS_HOME", 1);
+define("STATUS_COTTAGE", 2);
+define("STATUS_EARTH", 3);
+define("STATUS_COMMERCIAL", 4);
+define("STATUS_SECOND", 5);
+
 /**
  * Файл настроек для модуля realty
  *
@@ -21,12 +27,14 @@ return [
     ],
     'rules'     => [
         '/' => '/realty/realty/index',
-        '/search/map' => 'realty/realty/search',
         '/services' => '/realty/realty/services',
         '/contacts' => '/realty/realty/contacts',
         '/api/objects' => 'realty/realty/getBuildingsForMap',
         '/api/apartments' => 'realty/realty/getApartmentsForMap',
         '/realty' => 'realty/realty/index',
+        '/search/map/<type:\w+>' => 'realty/realty/searchMap',
+        '/search/cards/<type:\w+>' => 'realty/realty/searchCards',
+
         '/zhilie-kompleksy' => 'realty/realty/listDistricts',
         '/zastroyschiki' => 'realty/realty/listBuilders',
         '/stroyaschiesya-doma' => 'realty/realty/nonReady',
