@@ -1,10 +1,21 @@
 <template>
-    <ul class="section-cards__content">
+    <ul class="section-cards__content"  v-if = "loading">        
+        <li class = "prelaoder">
+            <div class = "preloader__content"></div>
+        </li>
+    </ul>
+    <ul class="section-cards__content"  v-else-if = "objects.length == 0">        
+        <div class = "not-found-cards">
+            Ваш поиск не дал результатов
+        </div>
+    </ul>
+    <ul class="section-cards__content"  v-else >        
         <li class="section-cards__content-item" v-for="item in objects">
-            <a class="card-estate" href="/dom/lazurnaya-10/31">
+            <a class="card-estate" v-bind:href= "item.url">
                 <div class="card-estate__head">
-                    <div class="photo"
-                         style="background-image:url(http://localhost:8888/uploads/thumbs/realty/images//1000x1000_cropped_ab1856b222b5c50ded6a650dd9049a6a.jpg)"></div>
+                    <div class="photo" v-bind:style="{
+                        backgroundImage: 'url(' + item.image +')'
+                    }"></div>
                     <div class="price">
                         <span class="price__title">Цена</span>
                         <span class="price__val">{{item.cost | formatCost }} &nbsp;₽</span>
@@ -80,7 +91,7 @@
         props: ["typeEstate"],
         created: function () {
             this.getData(null);
-
+            
             bus.$on('CHANGE_FILTER', function (query) {
                 this.getData(query)
             }.bind(this))
@@ -89,21 +100,23 @@
         data: function () {
             return {
                 objects: [],
-                last_page:false
+                last_page:false,
+                loading:true
             }
         },
         methods: {
             getData: function (query, callback) {
-                var API_BASE = basesAPI[this.$props.typeEstate];
 
+                var API_BASE = basesAPI[this.$props.typeEstate],
+                               url = `${API_HOST}${API_BASE}` + (query || '');                
 
-                var url = `${API_HOST}${API_BASE}` + (query || '');
-                console.log(url);
+                this.loading = true;
                 fetch(url)
                     .then(res => res.json())
                     .then(res => {
-                        console.log(res)
+                        this.loading = false;
                         this.objects = res;
+
                         if (callback) {
                             callback();
                         }

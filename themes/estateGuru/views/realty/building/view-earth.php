@@ -56,7 +56,7 @@ if (!empty($images)) {
                 <?php if (!empty($data->square)): ?>
                     <div class="row">
                         <div class="row__cell">Площадь</div>
-                        <div class="row__cell row__cell--right"><?= $data->square; ?> м<sup>2</sup></div>
+                        <div class="row__cell row__cell--right"><?= $data->square; ?> Гa</div>
                     </div>
                 <?php endif; ?>
 
@@ -65,12 +65,13 @@ if (!empty($images)) {
                 "<?=$data->latitude . ',' . $data->longitude;?>">
             </div>
             <h2 class="object__desc-title">Описание</h2>
-            <p class="object__desc-text">
+            <article class="object__desc-text">
                 <?= $data->longDescription; ?>
-            </p>
+            </article>
             <div class="object__desc-concl">
                 <div class="price">
-                    <span class="caption">Цена</span> <span class="value"><?= number_format($data->price, 0, '', ' '); ?></span>
+                    <span class="caption">Цена</span> <span class="value"><?= number_format($data->price, 0, '', ' '); ?>&nbsp;&#8381;</span>
+                    <span class = 'warning'>* - об актуальных ценах уточняйте по телефону</span>
                 </div>
                 <div class="callback">
                     <div class="button button--action js-callback">Узнать больше</div>

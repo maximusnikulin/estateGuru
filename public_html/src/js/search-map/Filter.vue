@@ -65,7 +65,7 @@
         }"></vue-slider>
                 </div>
             </div>
-            <div class="filter__group"  v-show = "type == 'apartments' || type == 'second'">
+            <div class="filter__group"  v-show = "typeEstate == 'apartments' || typeEstate == 'second'">
                 <div class="filter__group-label">
                     <h2 class="title">Количество комнат</h2>
                     <p class="caption">

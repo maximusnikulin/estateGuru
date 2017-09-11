@@ -2,6 +2,7 @@
 /**
  * @var Building $item
  */
+
 ?>
 <div class="slider-promo__item">
     <div class="slider-promo__item-content">
@@ -10,8 +11,8 @@
         <!--//REVIEW-->
         <div class="poster">
             <div class="poster__content">
-                <figure class="square square--right"></figure>
-                <img class="image" src="<?= $item->getMainImage()->getImageUrl(320,480); ?>" alt="">
+                <figure class="square square--right"></figure>                
+                <img class="image" src="<?= !is_null($item->getMainImage()) ? $item->getMainImage()->getImageUrl(320,480) : '/images/plug.png'; ?>" alt="">
                 <a class="button button--action" href="<?= $item->getUrl()?>">
                     Выбрать квартиру
                 </a>

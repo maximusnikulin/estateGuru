@@ -116,8 +116,7 @@
 
                 this.map.geoObjects.add(geoCluster);                
                 this.map.setBounds(this.map.geoObjects.getBounds(), {
-                      checkZoomRange: true,
-                      // zoomMargin:58
+                      checkZoomRange: true                      
                 });
                 this.updateClusterMinCost(geoCluster);
                 
@@ -135,7 +134,6 @@
                     var minCost = Math.min.apply(null, costs);
                     var formatMinCost = formatPrice(minCost);
                     cluster.properties.singleSet('minCost', formatMinCost);
-
                 })
             },
             data: function () {

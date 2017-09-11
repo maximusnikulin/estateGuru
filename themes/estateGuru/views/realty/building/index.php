@@ -23,10 +23,10 @@
     </div>
     <div class="section-tabs__content">
     <?php if (isset($apartments[STATUS_HOME])): ?>
-        <?= $this->renderPartial('/apartment/section-cards', ['id' => 1, 'needHide' => false, 'title' => 'Квартиры в новостройках', 'items' => $apartments[STATUS_HOME]]); ?>
+        <?= $this->renderPartial('/apartment/section-cards', ['id' => 1, 'needHide' => false, 'title' => 'Квартиры в новостройках', 'items' => $apartments[STATUS_HOME], 'type' => 'apartments']);  ?>
     <?php endif; ?>    
     <?php if (isset($apartments[STATUS_SECOND])): ?>
-        <?= $this->renderPartial('/apartment/section-cards', ['id' => 2, 'needHide' => true, 'title' => 'Вторичное жилье', 'items' => $apartments[STATUS_SECOND]]); ?>
+        <?= $this->renderPartial('/apartment/section-cards', ['id' => 2, 'needHide' => true, 'title' => 'Вторичное жилье', 'items' => $apartments[STATUS_SECOND],'type' => 'second' ]); ?>
     <?php endif; ?>   
     </div>
 

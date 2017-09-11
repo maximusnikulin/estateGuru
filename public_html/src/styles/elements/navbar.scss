@@ -24,8 +24,7 @@
         border:1px solid $border-color;        
         .link {
             font: 13px/18px "Roboto";
-            background:white;
-            padding: 12px 20px;
+            background:white;          
             border-radius: 20px;
             cursor: pointer;
             white-space: nowrap;
@@ -35,6 +34,7 @@
                 padding: 8px 20px;
             }
             a {
+                padding: 12px 20px;
                 position: relative;
                 top: 50%;
                 transform: translateY(-50%);

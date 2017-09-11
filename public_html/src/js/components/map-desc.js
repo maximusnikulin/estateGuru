@@ -3,13 +3,20 @@ $(window).on("load", function(){
     
     if (container.length) {
         ymaps.ready(function() {            
-            var geo = container.data("geo").split(",");
+            var geo = container.data("geo").split(",").reverse();
+
             var map  = new ymaps.Map(container.get(0), {
                 center: geo,
-                zoom:12,
+                zoom:15,
                 controls: ['zoomControl']
             });
-            var marker = new ymaps.Placemark(geo);
+            var marker = new ymaps.Placemark(
+                geo, {},
+                {
+                    iconLayout: 'default#image',
+                    iconImageHref: '/svg-icons/marker_house.svg',
+                    iconImageSize: [50, 62],
+                });
             map.geoObjects.add(marker)
         })
     }

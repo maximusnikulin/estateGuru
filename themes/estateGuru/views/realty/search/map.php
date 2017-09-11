@@ -7,7 +7,15 @@ Yii::import("application.modules.dictionary.models.*");
 <section class = "section-search-map" >
         <div  id = "vue-search-map"></div>
 </section>
-
+<section class="section-to-map main__link-to-map">
+    <a href="/search/cards/apartments" class="link-to-cards">
+        <div class="link-to-map__title">
+            <h2 class="name">Поиск по карточкам</h2>            
+            <p class="slogan">Удобный поиск недвижимости в виде карточек</p>
+        </div>
+        <i class="link-to-map__icon"></i>
+    </a>
+</section>
 <script type = "text/javascript">
     window.settingsFilter = {
         typeEstate: "<?= $type ?>",

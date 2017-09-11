@@ -69,20 +69,20 @@
             &__card-mb {
                 position: absolute;
                 background:rgb(255, 255, 255);
-                padding:50px 10px 10px;
-                font:300 13px/16px "Roboto";
+                padding:40px 10px 10px;
+                font:300 12px/16px "Roboto";
                 transform-origin:left top;
                 border:1px solid #f48220;   
                 display:none;           
                 .row {
-                    margin-bottom:10px;
+                    margin-bottom:5px;
                 }
                 .link {
-                    margin-top:20px;
+                    margin-top:5px;
                     display:block;
                     font-weight:300;
                     color:#a54686;
-                    font-size:15px;
+                    font-size:13px;
                 }              
                 &--active {
                    display:block;

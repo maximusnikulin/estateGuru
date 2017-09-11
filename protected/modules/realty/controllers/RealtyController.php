@@ -146,7 +146,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
                 'type' => $item->getStudioAsString(),
                 'deadline' => is_null($item->building->readyTimeObj) ? "Дом сдан" : $item->building->readyTimeObj->text,
                 'rayon' => $item->building->getRayon()->value,
-                'image' => empty($images) ? null : reset($images)->getImageUrl(200, 200),
+                'image' => empty($images) ? '/images/plug.png' : reset($images)->getImageUrl(200, 200),
                 'rooms' => $item->rooms,
                 'size' => $item->size
             ];
@@ -175,7 +175,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
         }        
         $buildings = Building::model()->findAll($criteria);
         $result = array_map(function ($item) {
-            $image = $item->getMainImage();
+            $image = $item->getMainImage();            
             $status= $item->status;
             $result = [
                 'id' => $item->id,
@@ -183,7 +183,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
                 'latitude' => $item->latitude,
                 'longitude' => $item->longitude,
                 'url' => $item->getUrl(),
-                'image' => is_null($image->getImageUrl()) ? null : $image->getImageUrl(200, 200),
+                'image' => is_null($image) ? '/images/plug.png' : $image->getImageUrl(200, 200),
                 'type' => $item->getStatusAsString(),
                 'cost' => $item->getPriceAsString(),
                 'rayon' => $item->getRayon()->value,

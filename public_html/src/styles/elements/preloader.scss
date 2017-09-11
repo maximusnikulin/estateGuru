@@ -1,0 +1,37 @@
+.preloader {
+    position: absolute;
+    height: 100%;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:200000;
+    background: #fff;
+
+}
+.preloader__content {
+        position: absolute;
+        top:50%;
+        left:50%;        
+        width: 150px;
+        height: 150px;        
+        border-color: transparent;        
+        margin: -75px 0 0 -75px;
+        border-width: 3px;       
+        z-index: 99;
+        animation: rotation 1s infinite linear;
+        border-left: 6px solid rgba(244, 130, 32, 0.2);
+        border-right: 6px solid rgba(244, 130, 32, 0.2);
+        border-bottom: 6px solid rgba(244, 130, 32, 0.2);
+        border-top: 6px solid #f48220;
+        border-radius: 100%;    
+        
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(359deg);
+        }
+    }
+    
+}

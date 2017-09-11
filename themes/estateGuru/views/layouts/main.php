@@ -32,7 +32,25 @@
 <body>
    <div class="wrapper main">
 
-    <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu', 'layout' => 'side-menu']); ?>
+        <!-- MENU -->
+
+        <div class="menu">
+            <div class="menu__overlay"></div>
+            <menu class = "menu__container">
+                <a href = "/" class = "menu__item"><img src="/svg-icons/logo.svg" width = "120" alt=""></a>                
+                <a class = "menu__item" href="/contacts">Контакты</a>
+                <a class = "menu__item" href="/news">Новости</a>
+                <a class = "menu__item" href="/service">Услуги</a>
+                <a class = "menu__item" href="/search/cards/apartments">Квартиры в новостройках</a>
+                <a class = "menu__item" href="/search/cards/second">Вторичная недвижимость</a></li>   
+                <a class = "menu__item" href="/search/cards/commercial">Коммерческая недвижимость</a>
+                <a class = "menu__item" href="/search/cards/earth">Земельные участки</a></li>   
+                <a class = "menu__item" href="/search/cards/cotage">Коттеджи</a>
+                <a class = "menu__item js-callback" href="javascript:;" class="button button--callback js-callback">Обратный звонок</a>
+            </menu>
+        </div>
+
+        <!-- ENDMENU -->
        <header class="header">
       <div class="header__content">
         <div class="header__bar">
@@ -103,7 +121,7 @@
         <li class="link"><a href="/search/cards/commercial">Коммерческая недвижимость</a></li>
         <li class="link"><a href="/search/cards/earth">Земельные участки</a></li>        
         <li class="link"><a href="/search/cards/cotage">Коттеджи</a></li>
-        <li class="link"><a href="javascript:;" class="button button--callback">Обратный звонок</a></li>  
+        <li class="link"><a href="javascript:;" class="button button--callback js-callback">Обратный звонок</a></li>  
 </ul>  
         
 </div>

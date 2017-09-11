@@ -1,3 +1,14 @@
+.link-to-cards {
+    @extend .link-to-map;
+    background-image: url('/images/house.jpg') !important;
+    background-position: bottom;
+    
+    &:after {
+        background-color:  #62bb46 !important;
+        opacity:.65;
+        
+    }
+} 
 .link-to-map {
     height:250px;
     width:100%;
@@ -7,7 +18,11 @@
     display:block;
     cursor:pointer;
     &:hover {
-            background-size: 120% 120%;            
+        @include onHover {
+            .link-to-map__icon {
+                transform: scale(1.1);
+            }
+        }
     }
     
     &:after {
@@ -41,16 +56,28 @@
             color:#fff;
             display: inline-block;
             font: bold 32px/32px "Roboto";
-            max-width:130px;
+            max-width:200px;
             margin-right:20px;
             vertical-align: middle;
+            position: relative;
             @include tablet-vl {
                  display:block;
                  max-width:100%;
                  margin-bottom:10px;
                  margin-right:0;
             }
-
+            &:after {
+                content:'';
+                position: absolute;
+                right:-10px;
+                top:0;
+                height:100%;
+                width:1px;
+                background-color:#fff;  
+                @include tablet-vl {
+                    display:none;
+                }          
+            }
         }    
         .slogan {
             color:#fff;
@@ -63,18 +90,6 @@
                  max-width:100%;
             }
         }
-        &:after {
-            content:'';
-            position: absolute;
-            left:140px;
-            top:0;
-            height:100%;
-            width:1px;
-            background-color:#fff;  
-            @include tablet-vl {
-                display:none;
-            }          
-        }
     }
     
     
@@ -86,10 +101,11 @@
         background:#fff;
         z-index: 2;
         border-radius: 50%;
-        transform: translateY(-50%);
+        margin-top:-30px;
         top:50%;
+        transition:all .3s ease;
         @include tablet-vl {
-            top:60%;
+            top: 70%;
             transform:translateX(-50%);
             left:50%;
         }

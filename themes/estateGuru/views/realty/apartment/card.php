@@ -13,7 +13,9 @@ if (!empty($images)) {
     <a class="card-estate" href="<?= $item->getUrl(); ?>">
         <div class="card-estate__head">
             <?php if ($mainImage): ?>
-            <div class="photo" style="background-image:url(<?= $mainImage->getImageUrl(1000, 1000); ?>)"></div>
+                <div class="photo" style="background-image:url(<?= $mainImage->getImageUrl(1000, 1000); ?>)"></div>
+            <?php else: ?>
+                <div class="photo" style="background-image:url(/images/plug.png)"></div>
             <?php endif; ?>
             <div class="price">
                 <span class="price__title">Цена</span>

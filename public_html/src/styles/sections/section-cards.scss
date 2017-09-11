@@ -74,6 +74,15 @@
                 //  flex-grow:1;
             }
         }
+        .not-found-cards {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            padding: 20px;
+            font:18px/16px 'Roboto';
+            text-align: center;
+        }
     }
     &__button {
         margin-top:40px;

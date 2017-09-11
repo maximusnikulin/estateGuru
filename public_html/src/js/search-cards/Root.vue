@@ -24,7 +24,8 @@ export default {
 	},
     data: function(){
         return {
-           typeEstate: window.settingsFilter.typeEstate
+           typeEstate: window.settingsFilter.typeEstate,
+           loading:false
         }
     },
     filters: {

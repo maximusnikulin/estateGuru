@@ -134,9 +134,6 @@ $text_color:#4e4d4d;
                 z-index:19;
                 content: '';
             }
-        }
-        &-to-house {
-            @extend .object__desc-to-map;
             background-image: url('/images/house.jpg');
             background-position: bottom;
             
@@ -146,6 +143,17 @@ $text_color:#4e4d4d;
                 
             }
         }
+        // &-to-house {
+        //     @extend .object__desc-to-map;
+        //     background-image: url('/images/house.jpg');
+        //     background-position: bottom;
+            
+        //     &:after {
+        //         background-color:  #62bb46;
+        //         opacity:.85;
+                
+        //     }
+        // }
         &-text {
             font: 14px/21px "Open Sans";
             color: $text_color;

@@ -1,6 +1,6 @@
 'use strict';
 
-export const API_HOST = window.location.host;
+export const API_HOST = window.location.origin;
 
 export const DISTRICT_LIST = [
     { name: "any", label: "Любой" },

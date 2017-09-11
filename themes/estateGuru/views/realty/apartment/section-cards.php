@@ -22,6 +22,11 @@ if (is_null($items)) {
         <?php endforeach; ?>
     </ul>
     <div class="section-cards__button">
-        <a href="#" class="button button--empty button--green">Перейти к поиску</a>
+        <?php if ($type == "second"): ?>
+        <a href="/search/cards/second" class="button button--empty button--green">Перейти к поиску</a>
+        <?php elseif($type == 'apartments'): ?>
+            <a href="/search/cards/apartments" class="button button--empty button--green">Перейти к поиску</a>
+        <?php endif; ?>
+        
     </div>
 </section>
