@@ -114,14 +114,10 @@ class RealtyController extends \yupe\components\controllers\FrontController
         }
         if (Yii::app()->request->getParam("cost") != null) {
             $criteria->addCondition("cost >= ".Yii::app()->request->getParam("cost")[0]);
-        }
-        if (Yii::app()->request->getParam("cost") != null) {
             $criteria->addCondition("cost <= ".Yii::app()->request->getParam("cost")[1]);
         }
         if (Yii::app()->request->getParam("size") != null) {
             $criteria->addCondition("size >= ".Yii::app()->request->getParam("size")[0]);
-        }
-        if (Yii::app()->request->getParam("size") != null) {
             $criteria->addCondition("size <= ".Yii::app()->request->getParam("size")[1]);
         }
         if (!is_null(Yii::app()->request->getParam('offset'))) {
@@ -173,6 +169,18 @@ class RealtyController extends \yupe\components\controllers\FrontController
         if (!is_null(Yii::app()->request->getParam('limit'))) {
             $criteria->limit = Yii::app()->request->getParam('limit');
         }        
+        if (Yii::app()->request->getParam("cost") != null) {
+            $criteria->addCondition("price >= ".Yii::app()->request->getParam("cost")[0]);
+            $criteria->addCondition("price <= ".Yii::app()->request->getParam("cost")[1]);
+        }
+        if (Yii::app()->request->getParam("size") != null) {
+            if (Yii::app()->request->getParam("type") == STATUS_COMMERCIAL) {
+                $squareFieldName = 'usefulSquare';
+            } else {
+                $squareFieldName = 'square';
+            }
+            $criteria->addInCondition($squareFieldName, Yii::app()->request->getParam("size"));
+        }
         $buildings = Building::model()->findAll($criteria);
         $result = array_map(function ($item) {
             $image = $item->getMainImage();            
