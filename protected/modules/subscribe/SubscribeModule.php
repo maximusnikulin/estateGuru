@@ -41,7 +41,7 @@ class SubscribeModule  extends yupe\components\WebModule
      */
     public function getCategory()
     {
-        return Yii::t('SubscribeModule.subscribe', 'Realty');
+        return Yii::t('SubscribeModule.subscribe', 'Services');
     }
 
     /**
