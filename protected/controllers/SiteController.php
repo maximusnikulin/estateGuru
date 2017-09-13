@@ -35,7 +35,7 @@ class SiteController extends FrontController
     {
         $error = \Yii::app()->errorHandler->error;
         
-        \CVarDumper::dump($error, 10, true);
+        // \CVarDumper::dump($error, 10, true);
         if (empty($error) || !isset($error['code']) || !(isset($error['message']) || isset($error['msg']))) {
             $this->redirect(['index']);
         }

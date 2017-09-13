@@ -141,34 +141,28 @@ $apartments = $data->apartments;
                     <img src="<?= $data->getImageUrl(1000, 1000); ?>" alt="">
                 </figure>
             </div>
-            <div class="visual__polygons-lr">                
-                        <div class="polygon">
-                            <svg height="100%" width="100%" class = "polygon__svg">                               
-                                    <?php foreach ($apartments as $apartment): ?>
-                                        <a href = '<?= $apartment->getUrl() ?>' >
-                                            <?= $apartment->getSvg(); ?>
-                                            <foreignObject>
-                                                <div class="polygon__toggler-mb "><span>Подробнее</span></div>    
-                                                <div class="polygon__card-mb ">
-                                                    <p class="row">
-                                                        Этаж: <?= $apartment->getFloor()?>
-                                                    </p>
-                                                    <p class="row">
-                                                        Комнат: <?= $apartment->rooms; ?>
-                                                    </p>
-                                                    <p class="row">
-                                                        Площадь: <?= $apartment->size; ?> м<sup>2</sup>
-                                                    </p>
-                                                    <p class="row">
-                                                        Цена: <?= number_format($apartment->cost, 0, '', ' '); ?> руб.
-                                                    </p>
-                                                    <a class = "link" href = "<?= $apartment->getUrl();?>"> Перейти </a>
-                                                </div> 
-                                            </foreignObject>    
-                                        </a>
-                                    <?php endforeach; ?>    
-                            </svg>                          
+            <div class="visual__polygons-lr">
+                <?php foreach ($apartments as $apartment): ?>
+                    <div class="polygon">
+                        <div class="polygon__toggler-mb "><span>Подробнее</span></div>
+                        <div class="polygon__card-mb ">
+                            <p class="row">
+                                Этаж: <?= $apartment->getFloor()?>
+                            </p>
+                            <p class="row">
+                                Комнат: <?= $apartment->rooms; ?>
+                            </p>
+                            <p class="row">
+                                Площадь: <?= $apartment->size; ?> м<sup>2</sup>
+                            </p>
+                            <p class="row">
+                                Цена: <?= number_format($apartment->cost, 0, '', ' '); ?> руб.
+                            </p>
+                            <a class = "link" href = "<?= $apartment->getUrl();?>"> Перейти </a>
                         </div>
+                        <?= $apartment->getSvg(); ?>
+                    </div>
+                <?php endforeach; ?>
             </div>
             <div class="visual__tooltips-lr">
                 <?php foreach ($apartments as $apartment): ?>

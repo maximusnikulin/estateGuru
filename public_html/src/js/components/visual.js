@@ -2,43 +2,45 @@ function Visual(elem) {
     this.root = elem;        
     this.init = function(){        
         this.hoverable();
-        this.cardPosition()
-    }
-    this.cardPosition = function() {        
-        var $paths = this.root.find('.polygon path');  
-        
-        for (var i = 0; i < $paths.length; i++) {
-            var curPath = $($paths[i]);            
-            var a = curPath.parent();
-            $(a).on('click', function(e) {
-                if (window.innerWidth < 1024 ) {
-                    e.preventDefault();                
-                };
+        this.cardPosition();
+    };
+    this.cardPosition = function() {
+        var $cards = this.root.find('.polygon .polygon__mobile-card');
+        var $polygons = this.root.find('.polygon path');
+        for (var i = 0; i < $polygons.length; i++) {
+            var polygon = $($polygons[i]);
+            if (polygon.offset().top == 0) {
+                var yCard = polygon.get(0).getBoundingClientRect().top - this.root.offset().top ;
+                var xCard = polygon.get(0).getBoundingClientRect().left - this.root.offset().left - 20;
+            } else {
+                var yCard = polygon.offset().top - this.root.offset().top ;
+                var xCard = polygon.offset().left - this.root.offset().left - 20;
+            }
+
+            var wCard = polygon.get(0).getBoundingClientRect().width ;
+            var hCard = polygon.get(0).getBoundingClientRect().height;
+            var card = polygon.parents('svg').prev();
+            var toggler = polygon.parents('svg').prev().prev();
+
+
+            card.css({
+                left:xCard + "px",
+                top:yCard + "px",
+                width:wCard + "px",
+                height:hCard + "px",
             })
-           
-            var yCard = curPath.offset().top - this.root.offset().top, 
-                xCard = curPath.offset().left - this.root.offset().left - 20,
-                wCard = curPath.get(0).getBoundingClientRect().width, 
-                hCard = curPath.get(0).getBoundingClientRect().height,            
-                card = curPath.next().find('.polygon__card-mb'),          
-                toggler = curPath.next().find('.polygon__toggler-mb');
-                card.css({
-                    left:xCard + "px",
-                    top:yCard + "px",
-                    width:wCard + "px",
-                    height:hCard + "px",                
-                })
-                toggler.css({
-                    left:xCard + "px",
-                    top:yCard + "px",  
-                    width:wCard + "px",              
-                })
-                toggler.on("click", function(){                
-                    $(this).toggleClass("polygon__toggler-mb--active");
-                    $(this).next().toggleClass("polygon__card-mb--active")
-                })
+            toggler.css({
+                left:xCard + "px",
+                top:yCard + "px",
+                width:wCard + "px",
+            })
+
+            toggler.on("click", function(){
+                $(this).toggleClass("polygon__toggler-mb--active");
+                $(this).next().toggleClass("polygon__card-mb--active")
+            });
         }
-    }
+    };
     this.hoverable = function(){
         var $tooltips = this.root.find('.tooltip');                     
         var $polygons = this.root.find('.polygon path');                             
@@ -61,5 +63,9 @@ function Visual(elem) {
     }
 }
 
-let visual = new Visual($('.js-visual'))
-visual.init();
+
+
+$(window).on('load', function(){
+    var visual = new Visual($('.js-visual'))
+    visual.init()
+})

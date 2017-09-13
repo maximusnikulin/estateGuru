@@ -5,7 +5,7 @@ $text_color:#4e4d4d;
     &__content {
         display: flex;
         margin-top: 32px;
-        @include tablet-vl {
+        @include mobile {
             flex-direction: column;
         }
     }
@@ -37,7 +37,7 @@ $text_color:#4e4d4d;
         @include tablet-hl {
             padding-right: 30px;
         }
-        @include tablet-vl {
+        @include mobile {
               margin-bottom:48px;      
               flex-basis: auto;
               padding-right: 0;
@@ -81,7 +81,7 @@ $text_color:#4e4d4d;
     }
     &__desc {
         flex-basis: 55%;
-        @include tablet-vl {
+        @include mobile {
               flex-basis: auto;
         }
         &-title {

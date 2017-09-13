@@ -1459,8 +1459,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       .navbar__menu .link a {
         padding: 12px 20px;
         position: relative;
-        top: 50%;
-        transform: translateY(-50%);
         display: block; }
     .navbar__menu .active {
       color: #fff;
@@ -2159,7 +2157,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     display: -ms-flexbox;
     display: flex;
     margin-top: 32px; }
-    @media (max-width: 768px) {
+    @media (max-width: 560px) {
       .object__content {
         -ms-flex-direction: column;
             flex-direction: column; } }
@@ -2186,7 +2184,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     @media (max-width: 1024px) {
       .object__photo {
         padding-right: 30px; } }
-    @media (max-width: 768px) {
+    @media (max-width: 560px) {
       .object__photo {
         margin-bottom: 48px;
         -ms-flex-preferred-size: auto;
@@ -2229,7 +2227,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   .object__desc {
     -ms-flex-preferred-size: 55%;
         flex-basis: 55%; }
-    @media (max-width: 768px) {
+    @media (max-width: 560px) {
       .object__desc {
         -ms-flex-preferred-size: auto;
             flex-basis: auto; } }
@@ -2344,7 +2342,12 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       width: 100%;
       height: 100%;
       left: 0;
-      top: 0; }
+      top: 0;
+      pointer-events: none; }
+      @media (max-width: 1024px) {
+        .visual__polygons-lr .polygon {
+          pointer-events: all;
+          position: static; } }
       .visual__polygons-lr .polygon__toggler-mb {
         position: absolute;
         background: #fff;
@@ -2381,7 +2384,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
         font: 300 12px/16px "Roboto";
         transform-origin: left top;
         border: 1px solid #f48220;
-        display: none; }
+        display: none;
+        z-index: 20; }
         .visual__polygons-lr .polygon__card-mb .row {
           margin-bottom: 5px; }
         .visual__polygons-lr .polygon__card-mb .link {
@@ -2393,10 +2397,15 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
         .visual__polygons-lr .polygon__card-mb--active {
           display: block; }
       .visual__polygons-lr .polygon__svg {
+        position: absolute;
         display: block;
         width: 100%;
-        height: 100%; }
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none; }
         .visual__polygons-lr .polygon__svg path {
+          pointer-events: all;
           cursor: pointer;
           fill: transparent;
           stroke: #f48220;
