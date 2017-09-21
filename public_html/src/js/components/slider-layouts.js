@@ -4,7 +4,8 @@ const SETTINGS = {
     slidesToShow:1,
     infinite:false,
     swipe:true,
-    draggable:true
+    draggable:true,
+
 }
 
 $(window).on('load', function () {

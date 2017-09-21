@@ -157,21 +157,6 @@
         </div>
     </div>
 
-    <div class="row js-item js-item-home">
-        <div class="col-sm-7">
-            <?=  $form->dropDownListGroup($model, 'type', [
-                'widgetOptions' => [
-                    'data' => $model->getBuildingTypes(),
-                    'htmlOptions' => [
-                        'class' => 'popover-help',
-                        'data-original-title' => $model->getAttributeLabel('type'),
-                        'data-content' => $model->getAttributeDescription('type')
-                    ]
-                ]
-            ]); ?>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'longitude', [
@@ -271,9 +256,9 @@
         </div>
     </div>
 
-
+<!-- 
     <div class="row js-item js-item-commercial">
-        <div class="col-sm-7">
+        <div class="col-sm-7">                        
             <?=  $form->textFieldGroup($model, 'usefulSquare', [
                 'widgetOptions' => [
                     'htmlOptions' => [
@@ -284,7 +269,7 @@
                 ]
             ]); ?>
         </div>
-    </div>
+    </div> -->
 
 
     <div class="row js-item js-item-commercial">
@@ -341,6 +326,21 @@
                         'class' => 'popover-help',
                         'data-original-title' => $model->getAttributeLabel('isPublished'),
                         'data-content' => $model->getAttributeDescription('isPublished')
+                    ]
+                ]
+            ]); ?>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-7">
+            <?=  $form->checkboxGroup($model, 'isPromo', [
+                'widgetOptions' => [
+                    'htmlOptions' => [
+                        'class' => 'popover-help',
+                        'data-original-title' => $model->getAttributeLabel('isPromo'),
+                        'data-content' => $model->getAttributeDescription('isPromo')
                     ]
                 ]
             ]); ?>

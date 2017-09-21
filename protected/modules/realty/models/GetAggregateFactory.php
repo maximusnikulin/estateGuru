@@ -10,8 +10,6 @@ class GetAggregateFactory {
     public function getInstance($type) {
         if ($type == 'apartments' || $type == 'second') {
             return new ApartmentGetAggregate();
-        } elseif ($type == 'commercial') {
-            return new CommercialGetAggregate();
         } else {
             return new BuildingGetAggregate();
         }

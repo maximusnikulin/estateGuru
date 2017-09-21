@@ -114,15 +114,19 @@
                     ))
                 });
 
-                this.map.geoObjects.add(geoCluster);                
-                this.map.setBounds(this.map.geoObjects.getBounds(), {
-                      checkZoomRange: true                      
-                });
+                this.map.geoObjects.add(geoCluster);
+
                 this.updateClusterMinCost(geoCluster);
-                
+
+                this.map.setBounds(this.map.geoObjects.getBounds(), {
+                    checkZoomRange:true,
+                });
+
                 this.map.events.add('boundschange', () => {
                     this.updateClusterMinCost(geoCluster);
                 })
+
+
 
             },
             updateClusterMinCost:function(geoCluster){

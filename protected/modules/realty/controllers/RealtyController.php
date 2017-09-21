@@ -16,17 +16,27 @@ class RealtyController extends \yupe\components\controllers\FrontController
     protected $menuWithMapLinks = false;
 
     public function actionServices() {
+        $this->title = 'EstateGuru - Услуги';
         $this->render('/building/services');
     }
 
     public function actionContacts() {
+        $this->title = 'EstateGuru - Контакты';
+        $this->description = 'Контакты';
+
         $this->render('/building/contacts');
     }
     public function actionSearchMap($type) {
+        $this->title = 'EstateGuru - Поиск недвижимости на карте';
+        $this->description = 'Поиск недвижимости на карте';
+
         $this->menuWithMapLinks = true;
         $this->render('/search/map', ['type' => $type]);
     }
     public function actionSearchCards($type) {
+        $this->title = 'EstateGuru - Поиск недвижимости ';
+        $this->description = 'Поиск недвижимости';
+
         $this->render('/search/cards', ['type' => $type]);
     }
     /**
@@ -74,7 +84,8 @@ class RealtyController extends \yupe\components\controllers\FrontController
         ]);
 
         $news = News::model()->findAll($dbCriteria);
-
+        $this->title = 'EstateGuru - Поиск и Продажа недвижимости';
+        $this->description = 'EstateGuru - Поиск и Продажа недвижимости';
         $this->render("/building/index",['sliderItems' => $sliderItems, 'news' => $news, 'apartments' => $apartmentsByStatuses]);
     }
 
@@ -174,11 +185,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
             $criteria->addCondition("price <= ".Yii::app()->request->getParam("cost")[1]);
         }
         if (Yii::app()->request->getParam("size") != null) {
-            if (Yii::app()->request->getParam("type") == STATUS_COMMERCIAL) {
-                $squareFieldName = 'usefulSquare';
-            } else {
-                $squareFieldName = 'square';
-            }
+            $squareFieldName = 'square';
             $criteria->addInCondition($squareFieldName, Yii::app()->request->getParam("size"));
         }
         $buildings = Building::model()->findAll($criteria);
@@ -208,9 +215,8 @@ class RealtyController extends \yupe\components\controllers\FrontController
             }
             //COMMERCIAL
             if ($status == 4) {
-                // var_dump($item);
-               $result["usefullSquare"] = $item->usefulSquare;
-               $result["generalSquare"] = $item->square;
+                // var_dump($item);               
+               $result["square"] = $item->square;
                $result["floor"] = $item->floorPos;
             }
             return $result;
@@ -221,11 +227,13 @@ class RealtyController extends \yupe\components\controllers\FrontController
 
     public function actionViewBuilding($name)
     {
-        
         $model = Building::model()->find("slug = :slug",[":slug" => $name]);        
-        if ($model == null || !$model->isPublished)
+        if ($model == null || !$model->isPublished || $model->status == Building::STATUS_SECOND) {
             throw new CHttpException(404, 'К сожалению, данные об этом доме были удалены с сайта. Но у нас есть много других отличных предложений');
-
+        }
+        $seoTemplate = Yii::app()->getModule('realty')->getSeoTemplateForBuilding($model);
+        $this->title = $model->getTitle($seoTemplate);
+        $this->description = strip_tags($model->longDescription);
         $this->render("/building/view",["data" => $model]);
     }
 
@@ -250,6 +258,9 @@ class RealtyController extends \yupe\components\controllers\FrontController
         $model = Apartment::model()->findByPk($id);
         if ($model == null || $model->building == null || !$model->building->isPublished)
             throw new CHttpException(404, 'К сожалению, данные об этой квартире были удалены с сайта. Но у нас есть много других отличных предложений');
+        $seoTemplate = Yii::app()->getModule('realty')->seoTemplateForApartment;
+        $this->title = $model->getTitle($seoTemplate);
+        $this->description = strip_tags($model->longDescription);
         $this->render("/apartment/view",["data" => $model]);
     }
 

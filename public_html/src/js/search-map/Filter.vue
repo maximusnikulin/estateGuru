@@ -37,12 +37,13 @@
                 <div class="filter__group-input">
                     <vue-slider ref="slider-cost"
                                 v-model="values.cost"
+                                :disabled = "settings.cost[0] == settings.cost[1]"
                                 :min="settings.cost[0]"
                                 :max="settings.cost[1]"
                                 :tooltip="false"
                                 :dot-size="30"
                                 :process-style="{
-        background:'#f48220',
+                                background:'#f48220',
         }"></vue-slider>
                 </div>
             </div>
@@ -60,6 +61,7 @@
                                 :max="settings.size[1]"
                                 :tooltip="false"
                                 :dot-size="30"
+                                :disabled = "settings.size[0] == settings.size[1]"
                                 :process-style="{
         background:'#f48220',
         }"></vue-slider>

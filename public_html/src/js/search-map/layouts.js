@@ -33,21 +33,9 @@ export const PM_BALOON_LT = `<div class="placemark__balloon" >
                                 {% if properties.squareGa %}
                                   <div class="cell">
                                     <p class="cell__title">Площадь</p>
-                                    <p class="cell__val">{{properties.squareGa}} Га</p>
+                                    <p class="cell__val">{{properties.squareGa}} Сот</p>
                                   </div>  
-                                {% endif %}
-                                {% if properties.generalSquare %}
-                                  <div class="cell">
-                                    <p class="cell__title">Общая площадь</p>
-                                    <p class="cell__val">{{properties.generalSquare}} м²</p>
-                                  </div>  
-                                {% endif %}
-                                {% if properties.usefullSquare %}
-                                  <div class="cell">
-                                    <p class="cell__title">Полезная площадь</p>
-                                    <p class="cell__val">{{properties.usefullSquare}} м²</p>
-                                  </div>  
-                                {% endif %}
+                                {% endif %}                                                         
                                 {% if properties.size || properties.square %}
                                   <div class="cell">
                                     <p class="cell__title">Площадь</p>

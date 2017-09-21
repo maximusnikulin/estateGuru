@@ -1890,6 +1890,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .link-to-cards {
   background-image: url("/images/house.jpg") !important;
   background-position: bottom; }
+  @media (max-width: 768px) {
+    .link-to-cards .link-to-map__icon {
+      top: 80% !important; } }
   .link-to-cards:after {
     background-color: #62bb46 !important;
     opacity: .65; }
@@ -3384,7 +3387,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .section-search--map {
   min-height: 800px; }
   .section-search--map .section-search__content {
-    height: 100%; }
+    height: 100%;
+    padding-left: 50px; }
 
 .section-search--cards .section-search__content {
   min-height: 800px; }

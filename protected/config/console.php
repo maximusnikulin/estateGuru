@@ -6,7 +6,7 @@ Yii::setPathOfAlias('themes', __DIR__ . '/../../themes/');
 
 return [
     // У вас этот путь может отличаться. Можно подсмотреть в config/main.php.
-    'basePath' => dirname(__DIR__),
+    'basePath' => __DIR__ . '/..',
     'name' => 'Cron',
     'preload' => ['log'],
     'commandMap' => [
@@ -76,7 +76,8 @@ return [
             ],
         ],
         // параметры подключения к базе данных, подробнее http://www.yiiframework.ru/doc/guide/ru/database.overview
-        'db' => file_exists(__DIR__ . '/db.php') ? require_once __DIR__ . '/db.php' : []
+        'db' => file_exists(__DIR__ . '/db.php') ? require_once __DIR__ . '/db.php' : [],
+        
     ],
     'modules' => ['yupe' => ['class' => 'application.modules.yupe.YupeModule', 'cache' => true,],]
 ];

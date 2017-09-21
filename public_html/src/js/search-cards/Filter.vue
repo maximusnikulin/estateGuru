@@ -41,6 +41,7 @@
                                 :max="settings.cost[1]"
                                 :tooltip="false"
                                 :dot-size="30"
+                                :disabled = "settings.cost[0] == settings.cost[1]"
                                 :process-style="{
         background:'#f48220',
         }"></vue-slider>
@@ -60,6 +61,7 @@
                                 :max="settings.size[1]"
                                 :tooltip="false"
                                 :dot-size="30"
+                                :disabled = "settings.size[0] == settings.size[1]"
                                 :process-style="{
         background:'#f48220',
         }"></vue-slider>

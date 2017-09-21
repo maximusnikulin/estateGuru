@@ -2,7 +2,12 @@
     @extend .link-to-map;
     background-image: url('/images/house.jpg') !important;
     background-position: bottom;
-    
+    .link-to-map__icon {
+        @include tablet-vl {
+            top:80% !important;
+        }
+
+    }
     &:after {
         background-color:  #62bb46 !important;
         opacity:.65;

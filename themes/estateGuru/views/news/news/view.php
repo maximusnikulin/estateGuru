@@ -13,7 +13,7 @@
  **/
 ?>
 <?php
-$this->title = $model->title;
+$this->title = "EstateGuru - ".$model->title;
 $this->description = $model->description;
 $this->keywords = $model->keywords;
 ?>
@@ -21,7 +21,7 @@ $this->keywords = $model->keywords;
 <?php
 $this->breadcrumbs = [
     Yii::t('NewsModule.news', 'News') => ['/news/news/index'],
-    $model->title
+    $this->title
 ];
 ?>
 

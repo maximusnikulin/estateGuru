@@ -21,9 +21,12 @@ if (!empty($images)) {
                 <span class="price__title">Цена</span>
                 <span class="price__val"><?= number_format($item->cost, 0, '', ' '); ?> &nbsp;&#8381;</span>
             </div>
-           <!-- <ul class="tags">
-                <li class="tags__item tags__item--sale">Скидка -10%</li>
-            </ul>-->
+            <? if ($item->building->isPromo): ?>
+                <ul class="tags">
+                    <li class="tags__item tags__item--sale">Скидка</li>
+                </ul>
+            <? endif;?>
+           
         </div>
         <div class="card-estate__name">
             <h2 class="address"><?= $item->building->adres; ?></h2>

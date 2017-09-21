@@ -6,17 +6,15 @@
         <ul class="shedule">
             <li class = "shedule__item ">
                 <h2 class="title">Адрес</h2>
-                <p class="text">656049  Алтайский край, Россия </br>  г. Барнаул,  ул. Партизанская, </p>
+                <p class="text"><?= Yii::app()->getModule("realty")->adres; ?></p>
             </li>
             <li class = "shedule__item ">
                 <h2 class="title">Телефон</h2>
-                <a href = "phone:892312312312" class="link">8(3852) 56-34-55</a>
-                <a href = "phone:892312312312" class="link">8(3852) 56-34-55</a>
+                <a href = "phone:<?= Yii::app()->getModule("realty")->phone; ?>" class="link"><?= Yii::app()->getModule("realty")->phone; ?></a>                
             </li>
             <li class = "shedule__item ">
                 <h2 class="title">E-mail</h2>
-                <a class="link" href = "support@estateguru.ru ">manager@estateguru.ru</a>
-                <a class="link" href = "support@estateguru.ru ">support@estateguru.ru</a>
+                <a class="link" href = "email:estate-guru@mail.ru">estate-guru@mail.ru</a>                
 
             </li>
             <li class = "shedule__item ">

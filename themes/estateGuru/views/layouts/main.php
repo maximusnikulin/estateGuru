@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="<?= Yii::app()->language; ?>">
-<head>
-  
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Content-Language" content="ru-RU" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <link rel="icon" href="/images/favicon.png" type="image/png" />
     <title><?= $this->title;?></title>
     <meta name="description" content="<?= $this->description;?>" />
     <meta name="keywords" content="<?= $this->keywords;?>" />
@@ -64,7 +62,7 @@
         <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu']); ?>
         <div class="header__callback">
           <div class="header__callback-phone">
-            <a href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>"><?= Yii::app()->getModule("realty")->phone; ?></a>
+            <a href="tel:+79635009600">+7 963 500 9600</a>
           </div>
           <div class="header__callback-button-mb">
             <a href="javascript:;" class="button button--callback-mb js-callback"></a>

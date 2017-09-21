@@ -50,15 +50,7 @@
                     <div class="cell" v-show="item.floor">
                         <p class="cell__title">Этаж</p>
                         <p class="cell__val">{{item.floor}}</p>
-                    </div>
-                    <div class="cell" v-show = "item.generalSquare">
-                        <p class="cell__title">Общая площадь</p>
-                        <p class="cell__val">{{item.generalSquare}} м²</p>
-                    </div>
-                    <div class="cell" v-show = "item.usefullSquare">
-                        <p class="cell__title">Полезная площадь</p>
-                        <p class="cell__val">{{item.usefullSquare}} м²</p>
-                    </div>
+                    </div>                    
                     <div class="cell" v-show = "item.squareGa">
                         <p class="cell__title">Площадь</p>
                         <p class="cell__val">{{item.squareGa}} Га</p>

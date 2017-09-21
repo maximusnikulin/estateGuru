@@ -14,28 +14,15 @@ class RealtyModule  extends yupe\components\WebModule
     const VERSION = '0.9.8';
 
 
-    
-    public function addCardTags($model)
-    {
-        Yii::app()->clientScript->registerMetaTag($model->seo_title,null,null,["itemprop" => "name"]);
-        Yii::app()->clientScript->registerMetaTag($model->seo_description,null,null,["itemprop" => "description"]);
-        Yii::app()->clientScript->registerMetaTag($model->getImageUrl(200,200,false),null,null,["itemprop" => "image"]);
-
-
-        Yii::app()->clientScript->registerMetaTag($model->seo_title,null,null,["property" => "og:title"]);
-        Yii::app()->clientScript->registerMetaTag("article",null,null,["property" => "og:type"]);
-        Yii::app()->clientScript->registerMetaTag("Ладом",null,null,["property" => "og:site_name"]);
-        Yii::app()->clientScript->registerMetaTag($model->seo_description,null,null,["property" => "og:description"]);
-        Yii::app()->clientScript->registerMetaTag($model->getImageUrl(200,200,false),null,null,["property" => "og:image"]);
-
-        Yii::app()->clientScript->registerMetaTag("summary_large_image",null,null,["property" => "twitter:card"]);
-        Yii::app()->clientScript->registerMetaTag("Ладом",null,null,["property" => "twitter:site"]);
-        Yii::app()->clientScript->registerMetaTag($model->seo_title,null,null,["property" => "twitter:title"]);
-        Yii::app()->clientScript->registerMetaTag($model->getImageUrl(200,200,false),null,null,["property" => "twitter:image"]);
-        Yii::app()->clientScript->registerMetaTag("",null,null,["property" => "twitter:image:alt"]);
-
-    }
-
+    /**
+     * @var string
+     */
+     public $seoTemplateForHome;
+     public $seoTemplateForCottage;
+     public $seoTemplateForEarth;
+     public $seoTemplateForCommercial;
+     public $seoTemplateForApartment;
+     
 
     /**
      * @var string
@@ -123,6 +110,12 @@ class RealtyModule  extends yupe\components\WebModule
             "itemsPerPage" => "Кол-во элементов на странице",
             "phone" => "Номер телефона",
             "adres" => "Адрес",
+            "seo" => "Адрес",
+            'seoTemplateForHome' => 'Шаблон SEO для новостроек',
+            'seoTemplateForCottage' => 'Шаблон SEO для коттеджей',
+            'seoTemplateForEarth' => 'Шаблон SEO для участков',
+            'seoTemplateForCommercial' => 'Шаблон SEO для коммерческой',
+            'seoTemplateForApartment' => 'Шаблон SEO для квартир',
             "itemsPerPage" => "Элементов на странице",
             "uploadPath" => "Путь для загрузки изображений",
             "editor" => "Используемый визуальный редактор"
@@ -142,9 +135,29 @@ class RealtyModule  extends yupe\components\WebModule
             'adres',
             'itemsPerPage',
             'uploadPath',
+            'seoTemplateForHome',
+            'seoTemplateForCottage',
+            'seoTemplateForEarth',
+            'seoTemplateForCommercial',
+            'seoTemplateForApartment',
             'editor' => Yii::app()->getModule('yupe')->editors,
         ];
 
+    }
+
+    public function getSeoTemplateForBuilding(Building $model) {
+        if ($model->status == STATUS_HOME) {
+            return $this->seoTemplateForHome;
+        }
+        if ($model->status == STATUS_COTTAGE) {
+            return $this->seoTemplateForCottage;
+        }
+        if ($model->status == STATUS_EARTH) {
+            return $this->seoTemplateForEarth;
+        }
+        if ($model->status == STATUS_COMMERCIAL) {
+            return $this->seoTemplateForCommercial;
+        }
     }
 
 

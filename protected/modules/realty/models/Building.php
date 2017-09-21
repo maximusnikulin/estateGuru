@@ -37,25 +37,31 @@ Yii::import('application.modules.dictionary.models.*');
  * @property string $seo_title
  * @property string $seo_description
  * @property string $seo_keywords
+ * @property bool $isPromo
  * @property Apartment[] $apartments
  */
 class Building extends yupe\models\YModel
 {
+    use TraitSeoTitle;
+
     const STATUS_HOME = STATUS_HOME;
+    const STATUS_SECOND = STATUS_SECOND;
 
     const HOUSE_WAS_BUILDED = 1;
 
     public function getPageTitle()
     {
-
         return [$this->adres, Yii::app()->getModule('yupe')->siteName];
     }
 
-    public function getTitle()
+    public function getPropertiesForSeoTemplater()
     {
-        return $this->adres;
+        $properties = [];
+        $properties['type'] = $this->getStatusAsString();
+        $properties['walls'] = $this->getWallsType();
+        $properties['minPrice'] = $this->getMinimalPrice();
+        return $properties;
     }
-
 
     public function getWallsTypes() {
         $group = DictionaryGroup::model()->find("code = 'walls'");
@@ -73,6 +79,9 @@ class Building extends yupe\models\YModel
     public function getMinimalPrice()
     {
         $apartments = $this->apartments;
+        if (empty($apartments)) {
+            return 0;
+        }
         $min = reset($apartments)->cost;
 
         foreach($apartments as $key=>$item) {
@@ -100,18 +109,6 @@ class Building extends yupe\models\YModel
         return DictionaryData::model()->find("code = '".$this->rayon."'");
     }
 
-    public function getBuildingTypes() {
-        $group = DictionaryGroup::model()->find("code = 'buildingTypes'");
-        $result = [];
-        foreach ($group->getData() as $item) {
-            $result[$item->code] = $item->value;
-        }
-        return $result;
-    }
-
-    public function getBuildingType() {
-        return DictionaryData::model()->find("code = '".$this->type."'");
-    }
 
 
     public function getPageDescription()
@@ -151,8 +148,8 @@ class Building extends yupe\models\YModel
     {
         return [
             0 => "-------",
-            STATUS_HOME => "Дом",
-            STATUS_COTTAGE => "Коттедж",
+            STATUS_HOME => "Новостройки",
+            STATUS_COTTAGE => "Частные дома",
             STATUS_EARTH => "Земельный участок",
             STATUS_COMMERCIAL => "Коммерческая недвижимость",
             STATUS_SECOND => "Вторичная продажа",
@@ -226,10 +223,10 @@ class Building extends yupe\models\YModel
             array('shortDescription, longDescription', 'safe'),
             array('rayon, seo_title', 'length', 'max' => 100),
             array('seo_description, seo_keywords', 'length', 'max' => 300),
-            array('floorPos, showOnIndex, square, city, water, basement, price, whereObject, rayon, floor, priceForMeter, walls, type, seo_title, seo_description, seo_keywords', 'safe'),
+            array('isPromo, floorPos, showOnIndex, square, city, water, basement, price, whereObject, rayon, floor, priceForMeter, walls, type, seo_title, seo_description, seo_keywords', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('usefulSquare, floorPos, showOnIndex, square, city, water, basement, price, whereObject, rayon, floor, priceForMeter, walls, type, svgBackground, slug, id, image, adres, longitude, latitude, idDistrict, idBuilder, isPublished, isShowedOnMap, shortDescription, longDescription, status, readyTime', 'safe', 'on' => 'search'),
+            array('isPromo, usefulSquare, floorPos, showOnIndex, square, city, water, basement, price, whereObject, rayon, floor, priceForMeter, walls, type, svgBackground, slug, id, image, adres, longitude, latitude, idDistrict, idBuilder, isPublished, isShowedOnMap, shortDescription, longDescription, status, readyTime', 'safe', 'on' => 'search'),
         );
     }
 
@@ -310,7 +307,8 @@ class Building extends yupe\models\YModel
             'priceForMeter' => 'Минимальная цена за м2',
             'walls' => 'Стены',
             'type' => 'Тип строения',
-            'svgBackground' => 'Подложка с планировками'
+            'svgBackground' => 'Подложка с планировками',
+            'isPromo' => 'Акция'
         );
     }
     /**

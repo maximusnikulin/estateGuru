@@ -3,7 +3,8 @@ const SETTINGS = {
     nextArrow:`<button class = "arrow arrow--next"></button>`,
     prevArrow:`<button class = "arrow arrow--prev"></button>`,
     swipe:true,
-    draggable:false  
+    draggable:false ,
+    accessibility: false
 } 
 $(window).on('load', function(){
     var $slider = $('.js-slider-promo');

@@ -23,7 +23,6 @@ $apartments = $data->apartments;
 //die;
 
 ?>
-
 <div class="object">
     <div class="object__title">
         <h1 class="text"><?= $data->adres; ?></h1>
@@ -73,13 +72,7 @@ $apartments = $data->apartments;
                 </div>
                 <?php endif; ?>
 
-                <?php if (!empty($data->type)): ?>
-                <div class="row">
-                    <div class="row__cell">Тип</div>
-                    <div class="row__cell row__cell--right"><?= $data->getBuildingType()->value; ?></div>
-                </div>
-                <?php endif; ?>
-
+                
                 <?php if (!empty($data->floor)): ?>
                 <div class="row">
                     <div class="row__cell">Этажей</div>

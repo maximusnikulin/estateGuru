@@ -28,10 +28,17 @@
  */
 class Apartment extends yupe\models\YModel
 {
+    use TraitSeoTitle;
 
-    public function getPageTitle()
+
+    public function getPropertiesForSeoTemplater()
     {
-        return [$this->getTitle(), Yii::app()->getModule('yupe')->siteName];
+        $properties = [];
+        $properties['rooms'] = $this->getRoomsAsString();
+        $properties['studio'] = $this->isStudio ? 'квартира-студия' : 'квартира';
+        $properties['floor'] = $this->getFloorAsString();
+        $properties['adres'] = $this->building->adres;
+        return $properties;
     }
 
     public function getPageDescription()
@@ -261,12 +268,6 @@ class Apartment extends yupe\models\YModel
         return RealtyImage::model()->findAll($criteria);
     }
 
-
-    public function getTitle()
-    {
-        return $this->getRoomsAsString()." на ".$this->getFloorAsString()." по адресу ".$this->building->adres;
-    }
-    
     public function getGeo()
     {
         return $this->$building->lattitude . " " . $this->$building->longitude;

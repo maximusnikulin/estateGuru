@@ -7,8 +7,9 @@ Yii::import("application.modules.dictionary.models.*");
 <section class = "section-search-cards" >
     <div  id = "vue-search-cards"></div>
 </section>
+
 <section class="section-to-map main__link-to-map">
-    <a href="/search/map/apartments" class="link-to-map">
+    <a href="/search/map/<?= $type ?>" class="link-to-map">
         <div class="link-to-map__title">
             <h2 class="name">Поиск по карте</h2>
             <p class="slogan">Уникальная возможность быстро найти квартиру в нужном районе</p>

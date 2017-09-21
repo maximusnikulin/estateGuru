@@ -1,4 +1,7 @@
 <?php
+$this->title = "EstateGuru - Новости";
+$this->description= "EstateGuru - Новости";
+
 $data = $dataProvider->getData();
 $firstElem = array_shift($data)
 
