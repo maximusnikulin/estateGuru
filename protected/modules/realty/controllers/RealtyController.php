@@ -155,7 +155,8 @@ class RealtyController extends \yupe\components\controllers\FrontController
                 'rayon' => $item->building->getRayon()->value,
                 'image' => empty($images) ? '/images/plug.png' : reset($images)->getImageUrl(200, 200),
                 'rooms' => $item->rooms,
-                'size' => $item->size
+                'size' => $item->size,
+                'isPromo' => $item->getisPromo()
             ];
         }, $apartments);
         
@@ -204,6 +205,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
                 'rayon' => $item->getRayon()->value,
             ];
             //COTTAGE
+            
             if ($status == 2) {
                 // var_dump($item);
                 $result["square"] = $item->square;

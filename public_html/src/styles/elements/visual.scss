@@ -106,9 +106,9 @@
                 path {
                     pointer-events: all;
                     cursor:pointer;
-                    fill:transparent;
+                    fill:rgba(98, 187, 70, 0.2);
                     stroke:#f48220;
-                    stroke-width:1px;
+                    stroke-width:2px;
                     transition:all 1s ease;
                     @include tablet-hl {
                         fill:rgba(98, 187, 70, 0.3);

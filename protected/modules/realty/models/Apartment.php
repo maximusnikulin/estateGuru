@@ -30,7 +30,14 @@ class Apartment extends yupe\models\YModel
 {
     use TraitSeoTitle;
 
-
+    public function getIsPromo()
+    {
+        if (isset($this->building->isPromo)) {
+            return $this->building->isPromo;
+        } else {
+            return null;
+        };
+    }
     public function getPropertiesForSeoTemplater()
     {
         $properties = [];
