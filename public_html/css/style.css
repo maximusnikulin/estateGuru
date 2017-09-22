@@ -3389,6 +3389,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   .section-search--map .section-search__content {
     height: 100%;
     padding-left: 50px; }
+  .section-search--map #js-map {
+    height: 800px; }
 
 .section-search--cards .section-search__content {
   min-height: 800px; }
