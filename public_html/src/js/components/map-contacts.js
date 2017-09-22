@@ -7,9 +7,9 @@
  var myMap;
 
  function init() {
-     const GEO_MARKER = [53.351337351558506,83.7698471411085];
+     const GEO_MARKER = [53.34970357110838,83.7723649999999];
      myMap = new ymaps.Map("map-contacts", {
-         center: [53.351337351558506,83.7698471411085],
+         center: GEO_MARKER,
          zoom: 16,
          controls: []
      });
