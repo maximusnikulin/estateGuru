@@ -21,6 +21,7 @@
                 iconLayout: 'default#image',
                 iconImageHref: '/svg-icons/marker_eg.svg',
                 iconImageSize: [50, 62],
+                iconImageOffset: [-25, -62]
             });
     myMap.geoObjects.add(placemark)
  }
