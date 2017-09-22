@@ -20,9 +20,10 @@
                         <span class="price__title">Цена</span>
                         <span class="price__val">{{item.cost | formatCost }} &nbsp;₽</span>
                     </div>
-                    <!-- <ul class="tags">
-                            <li class="tags__item tags__item--sale">Скидка -10%</li>
-                        </ul>-->
+                    
+                   <ul class="tags" v-show = "item.isPromo">
+                            <li class="tags__item tags__item--sale">Скидка</li>
+                    </ul>
                 </div>
                 <div class="card-estate__name">
                     <h2 class="address">{{item.adres}}</h2>

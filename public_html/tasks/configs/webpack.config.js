@@ -13,7 +13,8 @@ let pluginsProd = [
     new webpack.optimize.UglifyJsPlugin({
         compress: {
             screw_ie8: true,
-            warnings: false
+            warnings: false,
+            drop_console: true
         },
         output: {
             comments: false
@@ -28,7 +29,7 @@ let pluginsDev = [
 ];
 
 let  plugins = isDevelopment ? pluginsProd : pluginsDev;
-
+console.log(isDevelopment);
 module.exports = {
     watch:isDevelopment,
     entry:config.paths.entry,

@@ -149,8 +149,3 @@
         }
     }
 </script>
-<style>
-    #js-map {
-        min-height:800px;
-    }
-</style>
