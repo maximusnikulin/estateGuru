@@ -38,7 +38,7 @@
         getCaption:function(value) {
             switch (value) {
                 case 'cottage':
-                    return 'Поиск Коттеджей';
+                    return 'Поиск Частных домов';
                 case 'apartments':
                     return 'Поиск Квартир';
                 case 'second':

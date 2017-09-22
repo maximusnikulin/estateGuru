@@ -18,7 +18,7 @@ $firstElem = array_shift($data)
             <?= $this->renderPartial('/news/_item', ['data' => $item]); ?>
         <?php endforeach; ?>
     </ul>
-    <div class="section-cards__button">
+    <!-- <div class="section-cards__button">
         <a href="#" class="button button--empty button--blue">Все новости</a>
-    </div>
+    </div> -->
 </section>

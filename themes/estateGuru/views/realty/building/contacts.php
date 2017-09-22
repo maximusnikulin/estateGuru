@@ -11,6 +11,8 @@
             <li class = "shedule__item ">
                 <h2 class="title">Телефон</h2>
                 <a href = "phone:<?= Yii::app()->getModule("realty")->phone; ?>" class="link"><?= Yii::app()->getModule("realty")->phone; ?></a>                
+                <a href = "phone:(3852)55-65-65" class="link">(3852)55-65-65</a>                
+                
             </li>
             <li class = "shedule__item ">
                 <h2 class="title">E-mail</h2>

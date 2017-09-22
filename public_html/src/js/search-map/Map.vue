@@ -45,7 +45,7 @@
                     },
                     {
                         minZoom:10,
-                        maxZoom:14,
+                        maxZoom:17,
                     });
                 this.map.controls.add(new ymaps.control.ZoomControl({options: { position: { right: 10, top: 50 }}}));
                 this.map.behaviors.disable('scrollZoom');

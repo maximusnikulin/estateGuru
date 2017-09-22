@@ -61,8 +61,8 @@
         </div>
         <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu']); ?>
         <div class="header__callback">
-          <div class="header__callback-phone">
-            <a href="tel:+79635009600">+7 963 500 9600</a>
+          <div class="header__callback-phone">            
+            <a href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>"><?= Yii::app()->getModule("realty")->phone; ?></a>
           </div>
           <div class="header__callback-button-mb">
             <a href="javascript:;" class="button button--callback-mb js-callback"></a>
@@ -118,7 +118,7 @@
         <li class="link"><a href="/search/cards/second">Вторичная недвижимость</a></li>        
         <li class="link"><a href="/search/cards/commercial">Коммерческая недвижимость</a></li>
         <li class="link"><a href="/search/cards/earth">Земельные участки</a></li>        
-        <li class="link"><a href="/search/cards/cotage">Коттеджи</a></li>
+        <li class="link"><a href="/search/cards/cottage">Коттеджи</a></li>
         <li class="link"><a href="javascript:;" class="button button--callback js-callback">Обратный звонок</a></li>  
 </ul>  
         
