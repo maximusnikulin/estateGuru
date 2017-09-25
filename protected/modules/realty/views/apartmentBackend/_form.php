@@ -99,6 +99,20 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-sm-7">
+                <?=  $form->checkboxGroup($model, 'isPromo', [
+                    'widgetOptions' => [
+                        'htmlOptions' => [
+                            'class' => 'popover-help',
+                            'data-original-title' => $model->getAttributeLabel('isPromo'),
+                            'data-content' => $model->getAttributeDescription('isPromo')
+                        ]
+                    ]
+                ]); ?>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-sm-7">

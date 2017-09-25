@@ -68,14 +68,21 @@
     }
     &__callback {
         display: flex;
-        align-items: baseline;
+        align-items: center;
         margin-left: auto;
+        .phone {
+            display:block;
+            &:not(:last-child) {
+                margin-bottom:10px;
+            }
+        }
         @include tablet-hl {
             margin-left: 0;
         }
         &-phone {
-            font: 500 18px / 21px "Roboto";
+            font: 500 16px / 18px "Roboto";
             margin-right: 30px;
+            display: block;
             // @include custom(1280px) {
             //     margin-right:10px;
             //     font: 500 16px / 21px "Roboto";

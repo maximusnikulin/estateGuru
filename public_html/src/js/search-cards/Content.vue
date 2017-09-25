@@ -54,7 +54,7 @@
                     </div>                    
                     <div class="cell" v-show = "item.squareGa">
                         <p class="cell__title">Площадь</p>
-                        <p class="cell__val">{{item.squareGa}} Га</p>
+                        <p class="cell__val">{{item.squareGa}} Сот</p>
                     </div>
                     <div class="cell" v-show = "item.size">
                         <p class="cell__title">Площадь</p>
@@ -83,7 +83,6 @@
         name: 'vue-content',
         props: ["typeEstate"],
         created: function () {
-            this.getData(null);
             
             bus.$on('CHANGE_FILTER', function (query) {
                 this.getData(query)

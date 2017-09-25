@@ -19,10 +19,10 @@ if (!empty($images)) {
 }
 $apartments = $data->apartments;
 
-//var_dump($data->longDescription);
-//die;
-
+//die($data->id);
+$type = "building"
 ?>
+
 <div class="object">
     <div class="object__title">
         <h1 class="text"><?= $data->adres; ?></h1>
@@ -115,10 +115,13 @@ $apartments = $data->apartments;
 
     </div>
 </div>
+<section class = "section-search-cards" >
+    <div  id = "vue-search-cards"></div>
+</section>
 <?php if ($data->svgBackground): ?>
 <section class="section-switcher">
     <h2 class="section-switcher__title">
-        Наличие квартир
+        Планировки квартир
     </h2>
     <!-- <nav class="section-switcher__nav">
       <div class="slider-nav js-slider-nav">
@@ -146,7 +149,7 @@ $apartments = $data->apartments;
                                 Комнат: <?= $apartment->rooms; ?>
                             </p>
                             <p class="row">
-                                Площадь: <?= $apartment->size; ?> м<sup>2</sup>
+                                Площадь: <?= rtrim(rtrim($apartment->size, 0), '.'); ?>м<sup>2</sup>
                             </p>
                             <p class="row">
                                 Цена: <?= number_format($apartment->cost, 0, '', ' '); ?> руб.
@@ -186,4 +189,30 @@ $apartments = $data->apartments;
     </div>
 </section>
 <?php endif; ?>
+
+<script type = "text/javascript">
+    window.settingsFilter = {
+        typeEstate: "<?= $type ?>",
+        cost: [
+            <?=Yii::app()->realty->getMinimumAvailableCost($type); ?>,
+            <?=Yii::app()->request->getParam("maximalCost", Yii::app()->realty->getMaximumAvailableCost($type)); ?>
+        ],
+        size: [
+            <?=Yii::app()->request->getParam("minimalSize", Yii::app()->realty->getMinimumAvailableSize($type)); ?>,
+            <?=Yii::app()->request->getParam("maximalSize", Yii::app()->realty->getMaximumAvailableSize($type)); ?>
+        ],
+        building:[
+            {
+                id: "<?= $data->id ?>",
+                label: "<?= $data->adres?>"
+            }
+        ],
+        rayon: [
+            {
+                id:"",
+                label:"Любой"
+            }
+        ]
+    }
+</script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>

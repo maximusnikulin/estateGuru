@@ -216,9 +216,9 @@ class Building extends yupe\models\YModel
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('usefulSquare, idDistrict, idBuilder, isPublished, isShowedOnMap, status', 'numerical', 'integerOnly' => true),
+            array('idDistrict, idBuilder, isPublished, isShowedOnMap, status', 'numerical', 'integerOnly' => true),
             array('slug, image, adres', 'length', 'max' => 200),
-            array('longitude, latitude', 'length', 'max' => 14),
+            array('usefulSquare, square, longitude, latitude', 'length', 'max' => 14),
             array('readyTime', 'length', 'max' => 45),
             array('shortDescription, longDescription', 'safe'),
             array('rayon, seo_title', 'length', 'max' => 100),

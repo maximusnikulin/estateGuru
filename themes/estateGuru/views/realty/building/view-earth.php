@@ -56,7 +56,7 @@ if (!empty($images)) {
                 <?php if (!empty($data->square)): ?>
                     <div class="row">
                         <div class="row__cell">Площадь</div>
-                        <div class="row__cell row__cell--right"><?= $data->square; ?> Гa</div>
+                        <div class="row__cell row__cell--right"><?= rtrim(rtrim($data->square, 0), '.'); ?> Гa</div>
                     </div>
                 <?php endif; ?>
 

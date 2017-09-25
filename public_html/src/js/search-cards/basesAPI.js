@@ -3,5 +3,6 @@ export default {
     'second':'/api/apartments?type=5&',
     'cottage':'/api/objects?type=2&',
     'earth':'/api/objects?type=3&',
-    'commercial':'/api/objects?type=4&',    
-}
+    'commercial':'/api/objects?type=4&',
+    'building':'/api/apartments?type=1&'
+};

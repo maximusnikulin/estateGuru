@@ -333,7 +333,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row js-item js-item-commercial js-item-cottage js-item-earth">
         <div class="col-sm-7">
             <?=  $form->checkboxGroup($model, 'isPromo', [
                 'widgetOptions' => [

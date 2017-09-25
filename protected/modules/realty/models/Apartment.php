@@ -18,6 +18,7 @@
  * @property string $number
  * @property bool   $showOnIndex
  * @property bool   $isStudio
+ * @property bool   $isPromo
 
  * @property string $seo_title
  * @property string $seo_description
@@ -32,11 +33,7 @@ class Apartment extends yupe\models\YModel
 
     public function getIsPromo()
     {
-        if (isset($this->building->isPromo)) {
-            return $this->building->isPromo;
-        } else {
-            return null;
-        };
+        return $this->isPromo;
     }
     public function getPropertiesForSeoTemplater()
     {
@@ -130,15 +127,15 @@ class Apartment extends yupe\models\YModel
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idBuilding, maxFloor, floor, rooms, size, cost', 'numerical', 'integerOnly'=>true),
+			array('idBuilding, maxFloor, floor, rooms, cost', 'numerical', 'integerOnly'=>true),
             array('image', 'length', 'max'=>200),
             array('seo_title', 'length', 'max'=>100),
             array('seo_description, seo_keywords', 'length', 'max'=>300),
-            array('isStudio, seo_title, seo_description, seo_keywords','safe'),
-            array('showOnIndex, svgPoints, shortDescription, longDescription', 'safe'),
+            array('size, isStudio, seo_title, seo_description, seo_keywords','safe'),
+            array('isPromo, showOnIndex, svgPoints, shortDescription, longDescription', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('isStudio, showOnIndex, svgPoints, image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
+			array('isPromo, isStudio, showOnIndex, svgPoints, image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -176,6 +173,7 @@ class Apartment extends yupe\models\YModel
             'seo_description' => 'Description',
             'seo_keywords' => 'Keywords',
             'isStudio' => 'Является студией',
+            'isPromo' => 'Акция',
 		);
 	}
 

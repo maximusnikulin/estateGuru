@@ -28,6 +28,7 @@ Yii::import("application.modules.dictionary.models.*");
             <?=Yii::app()->request->getParam("minimalSize", Yii::app()->realty->getMinimumAvailableSize($type)); ?>,
             <?=Yii::app()->request->getParam("maximalSize", Yii::app()->realty->getMaximumAvailableSize($type)); ?>
         ],
+        building: <?= json_encode(Yii::app()->realty->getHousesForCards()); ?>,
         rayon: [
             {
                 id:"",
@@ -42,4 +43,3 @@ Yii::import("application.modules.dictionary.models.*");
         ]
     }
 </script>
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&mode=debug" type="text/javascript"></script>

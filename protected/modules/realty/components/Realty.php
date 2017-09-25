@@ -26,6 +26,19 @@ class Realty extends CApplicationComponent
         return $instance;
     }
 
+    public function getHousesForCards() {
+        $criteria = new CDbCriteria();
+        $criteria->compare("isPublished", 1);
+        $criteria->compare('status', STATUS_HOME);
+        $buildings = Building::model()->findAll($criteria);
+        $any = ['id'=> '', 'label' => "Любой"];
+        $result = array_map(function($item) {
+            return ['id' => $item->id, 'label' => $item->adres];
+        }, $buildings);
+        array_unshift($result, $any);
+        return $result;
+    }
+
 
     public function getMinimumAvailableCost($type)
     {

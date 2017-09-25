@@ -35,7 +35,7 @@ abstract class AbstractGetAggregate {
         $criteria->limit = 1;
 
         $modelInstance = $this->getModel()->find($criteria);
-        return intval($modelInstance->$field);
+        return floatval($modelInstance->$field);
     }
 
     abstract public function getCriteria();

@@ -102,8 +102,8 @@ class RealtyController extends \yupe\components\controllers\FrontController
         if (Yii::app()->request->getParam("type") != null) {
             $criteria->compare("status", Yii::app()->request->getParam("type"));
         }
-        if (Yii::app()->request->getParam("time") != null) {
-            $criteria->compare("readyTime",Yii::app()->request->getParam("time"));
+        if (!is_null(Yii::app()->request->getParam('building'))) {
+            $criteria->compare("id", Yii::app()->request->getParam('building'));
         }
 
         $buildings = Building::model()->findAll($criteria);
@@ -137,6 +137,10 @@ class RealtyController extends \yupe\components\controllers\FrontController
         if (!is_null(Yii::app()->request->getParam('limit'))) {
             $criteria->limit = Yii::app()->request->getParam('limit');
         }
+        $sortParam = Yii::app()->request->getParam('sort', 'cost');
+        $sortDir = Yii::app()->request->getParam('sortDir', 'asc');
+        $criteria->order = $sortParam." ".strtoupper($sortDir);
+
         $apartments = Apartment::model()->findAll($criteria);
 
         $result = array_map(function ($item) {
@@ -156,7 +160,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
                 'image' => empty($images) ? '/images/plug.png' : reset($images)->getImageUrl(200, 200),
                 'rooms' => $item->rooms,
                 'size' => $item->size,
-                'isPromo' => $item->getisPromo()
+                'isPromo' => $item->getIsPromo()
             ];
         }, $apartments);
         
@@ -175,6 +179,9 @@ class RealtyController extends \yupe\components\controllers\FrontController
         if (!is_null(Yii::app()->request->getParam("type"))) {
             $criteria->compare("status", Yii::app()->request->getParam("type"));
         }
+        if (!is_null(Yii::app()->request->getParam('building'))) {
+            $criteria->compare("id", Yii::app()->request->getParam('building'));
+        }
         if (!is_null(Yii::app()->request->getParam('offset'))) {
             $criteria->offset = Yii::app()->request->getParam('offset');
         }
@@ -189,6 +196,11 @@ class RealtyController extends \yupe\components\controllers\FrontController
             $squareFieldName = 'square';
             $criteria->addInCondition($squareFieldName, Yii::app()->request->getParam("size"));
         }
+        $sortParam = Yii::app()->request->getParam('sort', 'cost');
+        $sortParam = str_replace(['cost', 'size'], ['price', 'square'], $sortParam);
+        $sortDir = Yii::app()->request->getParam('sortDir', 'asc');
+        $criteria->order = $sortParam." ".strtoupper($sortDir);
+
         $buildings = Building::model()->findAll($criteria);
         $result = array_map(function ($item) {
             $image = $item->getMainImage();            

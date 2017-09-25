@@ -1,6 +1,9 @@
 <template>
     <section class = "section-search section-search--cards" >
-        <h1 class="section-search__title">
+        <h1 v-bind:class= "{
+            'section-search__title' : true,
+            'section-search__subtitle' : typeEstate == 'building'
+        }">
             {{typeEstate | getCaption}}
         </h1>
         <div class="section-search__content">
@@ -41,6 +44,8 @@ export default {
                     return 'Поиск Земельных участков';
                 case 'commercial':
                     return 'Поиск Коммерческой недвижимости';
+                case 'building':
+                    return 'Поиск Квартир в доме';
             }
         }
     }

@@ -21,7 +21,7 @@ if (!empty($images)) {
                 <span class="price__title">Цена</span>
                 <span class="price__val"><?= number_format($item->cost, 0, '', ' '); ?> &nbsp;&#8381;</span>
             </div>
-            <? if ($item->building->isPromo): ?>
+            <? if ($item->getIsPromo()): ?>
                 <ul class="tags">
                     <li class="tags__item tags__item--sale">Скидка</li>
                 </ul>
@@ -63,7 +63,7 @@ if (!empty($images)) {
             </div>
             <div class="cell">
                 <p class="cell__title">Площадь</p>
-                <p class="cell__val"><?= $item->size; ?> м²</p>
+                <p class="cell__val"><?= rtrim(rtrim($item->size, 0), "."); ?> м²</p>
             </div>
             <div class="cell">
                 <p class="cell__title">Комнат</p>

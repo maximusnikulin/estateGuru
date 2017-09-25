@@ -10,9 +10,7 @@
 }
 .section-search--cards {      
     @extend .container;
-    .section-search__content {
-      min-height:800px;      
-    } 
+
     .section-cards__content {
         padding:0 20px 20px 70px;        
         @include mobile {
@@ -31,6 +29,10 @@
     @extend .container;
     @extend .object__title;
     margin-bottom:40px;
+  }
+  &__subtitle {
+    @extend .section-switcher__title;
+    padding:0;
   }
   &__content {
     position: relative;

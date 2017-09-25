@@ -2,31 +2,53 @@
 
     <div v-bind:class="{filter:true, 'filter--close': !this.open, 'filter--sticky' : this.sticky}" ref="filter">
         <div class="filter__icon filter__icon--top" v-on:click="toggleFilter"></div>
-
-        <div class="filter__content">
+        <div class="filter__content" ref = "filter__content" >
             <div class="filter__title">Выберите параметры</div>
-            <div class="filter__group">
+            <div class="filter__group" v-show = "typeEstate !== 'building'">
                 <div class="filter__group-label">
                     <h2 class="title">Район</h2>
                     <p class="caption">
-                        Выберите район
+                        Выберите район в котором хотите найти недвижимость
                     </p>
                 </div>
                 <div class="filter__group-input">
                     <vue-select
                             placeholder="Найти"
                             open-direction="below"
-                            @input="onInput"
+                            @input="(value) => onInput(value, 'rayon')"
                             :options="settings.rayon"
                             :allow-empty="false"
                             :searchable="true"
                             :show-labels="false"
                             :track-by="id"
-                            :value="selectedValue"
-                            :custom-label="customLabel"
+                            :value="selectedValueRayon"
+                            :custom-label = "customLabel"
                     ></vue-select>
                 </div>
             </div>
+            <div class="filter__group" v-show = "typeEstate == 'apartments'">
+                <div class="filter__group-label">
+                    <h2 class="title">Объект</h2>
+                    <p class="caption">
+                        Выберите новостройку в которой хотите посмотреть квартиры
+                    </p>
+                </div>
+                <div class="filter__group-input">
+                    <vue-select
+                            placeholder="Найти"
+                            open-direction="below"
+                            @input="(value) => onInput(value, 'building')"
+                            :options="settings.building"
+                            :allow-empty="false"
+                            :searchable="true"
+                            :show-labels="false"
+                            :track-by="id"
+                            :value="selectedValueBuilding"
+                            :custom-label = "customLabel"
+                    ></vue-select>
+                </div>
+            </div>
+
             <div class="filter__group">
                 <div class="filter__group-label">
                     <h2 class="title">Цена ₽</h2>
@@ -43,8 +65,8 @@
                                 :dot-size="30"
                                 :disabled = "settings.cost[0] == settings.cost[1]"
                                 :process-style="{
-        background:'#f48220',
-        }"></vue-slider>
+                                    background:'#f48220',
+                                 }"></vue-slider>
                 </div>
             </div>
             <div class="filter__group">
@@ -63,8 +85,8 @@
                                 :dot-size="30"
                                 :disabled = "settings.size[0] == settings.size[1]"
                                 :process-style="{
-        background:'#f48220',
-        }"></vue-slider>
+                                background:'#f48220'}">
+                    </vue-slider>
                 </div>
             </div>
             <div class="filter__group"  v-show = "typeEstate == 'apartments' || typeEstate == 'second'">
@@ -93,10 +115,50 @@
                     </label>
                 </div>
             </div>
-        <div class="filter__group">
-            <button class="button button--orange button--filter" v-on:click="makeQuery">Найти</button>
+            <div class="filter__group">
+                <div class="filter__group-label">
+                    <h2 class="title">Сортировать по:</h2>
+                </div>
+                 <div class="filter__group-input">
+                    <div v-bind:class = "{
+                            'filter__group-tag':true,
+                            'filter__group-tag--active':this.values.sort == 'cost',
+                    }" v-on:click = "() => this.changeSort('cost')">
+                        Цене
+                    </div>
+                     <div v-bind:class = "{
+                            'filter__group-tag':true,
+                            'filter__group-tag--active':this.values.sort == 'size',
+                    }" v-on:click = "() => this.changeSort('size')">
+                        Площади
+                    </div>
+                </div>
+            </div>
+            <div class="filter__group">
+                <div class="filter__group-label">
+                    <h2 class="title">Упорядочить по:</h2>
+                </div>
+                 <div class="filter__group-input">
+                     <div v-bind:class = "{
+                            'filter__group-tag':true,
+                            'filter__group-tag--active':this.values.sortDir == 'asc',
+                    }" v-on:click = "() => this.changeSortDir('asc')">
+                        Возрастанию
+                    </div>
+                     <div v-bind:class = "{
+                            'filter__group-tag':true,
+                            'filter__group-tag--active':this.values.sortDir == 'desc',
+                    }" v-on:click = "() => this.changeSortDir('desc')">
+                        Убыванию
+                    </div>
+                </div>
+            </div>
+            <div class="filter__group">
+                <button class="button button--orange button--filter" v-on:click="makeQuery">Найти</button>
+            </div>
         </div>
-        </div>
+
+       
         <div class="filter__icon filter__icon--bottom" v-on:click="toggleFilter"></div>
     </div>
 
@@ -119,11 +181,23 @@
         },
         updated: function (e) {
 
+            var content = document.querySelector('.section-search__content');
+            content.style.minHeight = getComputedStyle(this.$refs['filter__content']).height;
         },
-        created: function () {
-            window.addEventListener('scroll', function () {
+        mounted: function() {
 
-                var content = document.querySelector('.section-search__content');
+            //Get data
+            this.makeQuery();
+            //Click out filter close it
+            var filter = this.$refs['filter'];
+            filter.addEventListener('click', (e) => e.stopPropagation());
+
+            var cards = document.querySelector('.section-search--cards');
+            cards.addEventListener('click', (e) => this.open ? this.toggleFilter() : true)
+
+            //Scroll sticky
+            var content = document.querySelector('.section-search__content');
+            window.addEventListener('scroll', function () {
                 var pos = content.getBoundingClientRect();
                 var top = pos.top;
                 var bottom = pos.bottom;
@@ -144,13 +218,23 @@
                     cost: window.settingsFilter.cost,
                     size: window.settingsFilter.size,
                     rayon: "",
-                    rooms: []
+                    rooms: [],
+                    sortDir:'asc',
+                    sort:'cost',
+                    building: this.typeEstate == "building" ? window.settingsFilter.building[0].id : ""
                 },
             }
         },
         methods: {
+            changeSortDir: function(sortDir) {
+                this.values.sortDir = sortDir;
+            },
+            changeSort: function(sort) {
+                this.values.sort = sort;
+            },
             makeQuery: function () {
                 var query = queryString.stringify(this.values, {arrayFormat: 'bracket'})
+
                 bus.$emit("CHANGE_FILTER", query);
                 this.open = false;
             },
@@ -169,14 +253,24 @@
             customLabel: function (value) {
                 return value.label
             },
-            onInput: function (value) {
-                this.values.rayon = value.id
+            onInput: function (value, type) {
+                if (type == "rayon") {
+                    this.values.building = '';
+                    this.values.rayon = value.id
+                } else if (type == "building") {
+                    this.values.rayon = ""
+                    this.values.building = value.id
+                }
+
             },
 
         },
         computed: {
-            selectedValue: function () {
+            selectedValueRayon: function () {
                 return this.settings.rayon.find(o => o.id == this.values.rayon)
+            },
+            selectedValueBuilding: function () {
+                return this.settings.building.find(o => o.id == this.values.building)
             }
         },
         filters: {

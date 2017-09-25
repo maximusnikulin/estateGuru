@@ -44,6 +44,9 @@
             color:#000000;
             font:500 18px/21px "Roboto";            
             display:block;
+            &:not(:last-child) {
+                margin-bottom:20px;
+            }
         }
         .adress {
             color:#767676;

@@ -68,7 +68,7 @@ if (!empty($images)) {
                 <?php if (!empty($data->size)): ?>
                     <div class="row">
                         <div class="row__cell">Площадь</div>
-                        <div class="row__cell row__cell--right"><?= $data->size; ?> м²</div>
+                        <div class="row__cell row__cell--right"><?= rtrim(rtrim($data->size, 0), '.'); ?> м²</div>
                     </div>
                 <?php endif; ?>
             </div>

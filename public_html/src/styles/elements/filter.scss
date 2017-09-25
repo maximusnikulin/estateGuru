@@ -15,7 +15,7 @@
   height:100%;  
   &__content {
     padding:60px 55px 60px 20px;   
-    height:100%;    
+    height:auto;
   }
   &--sticky {    
     &:not(.filter--close) {
@@ -62,16 +62,36 @@
   &__group {
     width:100%;
     margin-top:30px;
+    &:last-child {
+      margin-top:50px;
+    }
+    &-tag {
+      display: inline-block;
+      font:14px/18px "Roboto";
+      padding:5px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0.5px 0.5px 2px 1px rgba(0,0,0,.32);
+      &:not(:last-child) {
+        margin-right:10px;
+      }
+      &--active {
+        background-color: #f48220;
+        box-shadow:none;
+        color:#fff;
+        box-shadow: 0.2px 0.2px 2px 0px rgba(0,0,0,.2);
+      }
+    }
     &--full {
       flex-basis:100%;
     }
     &-label {
+      margin-bottom:16px;
       .title {
         font: 500 18px / 24px "Roboto";
       }
       .caption {
         font: 400 14px / 20px "Roboto";
-        min-height:40px;
       }
     }
     &-input {
