@@ -67,10 +67,10 @@ $text_color:#4e4d4d;
                 flex-basis: calc(100% / 3);
                 flex-grow: 0;
                 @include tablet-vl {
-                    flex-basis: calc(100% / 4);
+                    flex-basis: calc(100% / 2);
                 }
                 @include mobile {
-                        flex-basis: calc(100% / 2);
+                    flex-basis: calc(100% / 3);
                 }
                 img {
                     max-width: 100%;

@@ -18,7 +18,7 @@
         position: relative;
         margin-bottom:48px;        
         overflow:hidden;        
-        // padding: 0 40px 40px;
+        //padding: 0 40px 40px;
         @include tablet-hl {
             -webkit-overflow-scrolling: touch;
             overflow-x:scroll;
@@ -39,7 +39,7 @@
 
         .visual {            
             width: 900px;
-            padding:0 20px;            
+            padding:0 20px;
             visibility:hidden;
             opacity:0;
             position: absolute;

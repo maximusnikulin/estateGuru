@@ -1,21 +1,14 @@
-     .tooltip {        
-            top:0;
-            left:0;    
+     .tooltip {
             position: absolute;
             width: 200px;
-            height:156px;
+            height:auto;
             box-shadow:0 1px 20px 1px rgba(0,0,0,.2);
             border-radius:10px;
             z-index:11;
-            // transform: translate(-50%, -100%);
-            margin-top:-200px;
-            margin-left:-100px;
+            transform: translate(-50%, -120%);
             transition: 
                 opacity .5s ease,
                 visibility .5s ease;
-            @include tablet-hl {
-                display:none;
-            }
             &.show {
                 opacity:1;
                 visibility:visible;
@@ -28,24 +21,37 @@
                 padding:20px 25px;                      
                 border-radius:10px;
                 background:#fff;
-                position: absolute;
+                position: relative;
                 z-index: 10;
                 height:100%;
                 width:100%;
                 left:0;
                 top:0;
+                @include tablet-hl {
+                  padding:10px 15px;
+                }
                 .row {
-                    font:100 13px/26px "Roboto";                    
+                    font:100 13px/26px "Roboto";
+                    &:last-child {
+                      margin-top:10px;
+                      margin-bottom:10px;
+                      font:100 15px/15px "Roboto";
+                      color:#a54686;
+                      display:none;
+                      @include tablet-hl {
+                        display:block;
+                      }
+                    }
                 }
             }
             &:after {
                 content:'';
-                bottom:-10px;  
+                bottom:-9px;
                 border-width: 10px;                
                 border-style: solid;
                 box-shadow:0 1px 20px 1px rgba(0,0,0,.2);
                 left:50%;
-                margin-left:-20px;
+                margin-left:-14px;
                 position:absolute;
                 transform: rotate(-45deg);
                 border-color: transparent transparent #fff #fff;              
