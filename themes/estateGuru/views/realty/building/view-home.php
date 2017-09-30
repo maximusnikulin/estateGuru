@@ -138,26 +138,8 @@ $type = "building"
                 </figure>
             </div>
             <div class="visual__polygons-lr">
-                <?php foreach ($apartments as $apartment): ?>
-                    <div class="polygon">
-                        <div class="polygon__toggler-mb "><span>Подробнее</span></div>
-                        <div class="polygon__card-mb ">
-                            <p class="row">
-                                Этаж: <?= $apartment->getFloor()?>
-                            </p>
-                            <p class="row">
-                                Комнат: <?= $apartment->rooms; ?>
-                            </p>
-                            <p class="row">
-                                Площадь: <?= rtrim(rtrim($apartment->size, 0), '.'); ?>м<sup>2</sup>
-                            </p>
-                            <p class="row">
-                                Цена: <?= number_format($apartment->cost, 0, '', ' '); ?> руб.
-                            </p>
-                            <a class = "link" href = "<?= $apartment->getUrl();?>"> Перейти </a>
-                        </div>
-                        <?= $apartment->getSvg(); ?>
-                    </div>
+                <?php foreach ($apartments as $apartment): ?>                    
+                    <?= $apartment->getSvg(); ?>                    
                 <?php endforeach; ?>
             </div>
             <div class="visual__tooltips-lr">
@@ -176,6 +158,8 @@ $type = "building"
                             <p class="row">
                                 Цена: <?= number_format($apartment->cost, 0, '', ' '); ?> руб.
                             </p>
+                            <p class="row">
+                                <a class = "link-to" href = "<?= $apartment->getUrl() ?>"> Перейти </a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -185,7 +169,7 @@ $type = "building"
     </div>
     <div class="section-switcher__legend">
         <i class="cube"></i>
-        <p class="caption">&nbsp;&nbsp;* Кликните на зеленую область для просмотра планировок</p>
+        <p class="caption">&nbsp;&nbsp;* Кликните на зеленую область для перехода к квартире</p>
     </div>
 </section>
 <?php endif; ?>
