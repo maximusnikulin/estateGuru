@@ -179,8 +179,7 @@
             'vue-slider': vueSlider,
             'vue-select': Multiselect
         },
-        updated: function (e) {
-
+        updated: function (e) {            
             var content = document.querySelector('.section-search__content');
             content.style.minHeight = getComputedStyle(this.$refs['filter__content']).height;
         },
@@ -195,19 +194,6 @@
             var cards = document.querySelector('.section-search--cards');
             cards.addEventListener('click', (e) => this.open ? this.toggleFilter() : true)
 
-            //Scroll sticky
-            var content = document.querySelector('.section-search__content');
-            window.addEventListener('scroll', function () {
-                var pos = content.getBoundingClientRect();
-                var top = pos.top;
-                var bottom = pos.bottom;
-                this.sticky = (top <= 0 && bottom >= window.innerHeight);
-
-                // if (bottom <= window.innerHeight) {
-                //     this.open = false;
-                // }
-
-            }.bind(this));
         },
         data: function () {
             return {

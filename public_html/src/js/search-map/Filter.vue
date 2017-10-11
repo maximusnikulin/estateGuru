@@ -127,7 +127,7 @@
                 var pos = content.getBoundingClientRect();
                 var top = pos.top;
                 var bottom = pos.bottom;
-                this.sticky = (top <= 0 && bottom >= window.innerHeight);
+                // this.sticky = (top <= 0 && bottom >= window.innerHeight);
 
                 // if (bottom <= window.innerHeight) {
                 //     this.open = false;

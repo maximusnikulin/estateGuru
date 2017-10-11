@@ -13,9 +13,8 @@ if (!empty($images)) {
     $mainImage = array_shift($images);
 } else {
     $mainImage = false;
-}
-//$apartments = $data->apartments;
-
+};
+ $isNewAppartment = $data->building->getStatusAsString() !== "Вторичная продажа";
 ?>
 
 
@@ -83,10 +82,12 @@ if (!empty($images)) {
             </div> -->
             <div class="object__desc-on-map" data-geo = 
                 "<?=$data->building->latitude . ',' . $data->building->longitude;?>">
-            </div>
-            <a class="object__desc-to-map" href = "<?= $data->getBuildingUrl()?>">
-                <span class="text">Показать еще квартиры в доме</span>
-            </a>
+            </div>            
+            <? if ($isNewAppartment): ?>
+                <a class="object__desc-to-map" href = "<?= $data->getBuildingUrl()?>">
+                    <span class="text">Показать еще квартиры в доме</span>
+                </a>
+            <? endif; ?>
             <h2 class="object__desc-title">Описание</h2>
             <article class="object__desc-text">
                 <?= $data->longDescription; ?>
