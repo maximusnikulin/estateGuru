@@ -54,6 +54,14 @@ return [
             'class' => 'application.modules.yupe.YupeModule',
             'cache' => true
         ],
+        'gii' => [ // you can access gii by following url http://site.com/gii/default/login
+          'class' => 'system.gii.GiiModule',
+          'password' => 'giiYupe',
+          'generatorPaths' => [
+              'application.modules.yupe.extensions.yupe.gii',
+          ],
+          'ipFilters' => [],
+      ],
     ],
     'behaviors' => [
         'languageBehavior' => [
