@@ -32,12 +32,12 @@ $type = "building"
         <div class="object__photo js-gallery-photos">
             <?php if ($mainImage !== false): ?>
                 <div class="object__photo-main">
-                    <figure class="photo" href="<?= $mainImage->getImageUrl(); ?>"><img src="<?= $mainImage->getImageUrl(468,480); ?>" alt=""></figure>
+                    <figure class="photo" href="<?= $mainImage->getImageUrl(); ?>"><img src="<?= $mainImage->getImageUrl(); ?>" alt=""></figure>
                 </div>
             <?php endif; ?>
             <div class="object__photo-grid ">
                 <?php foreach ($images as $image): ?>
-                    <figure class="photo" href="<?= $image->getImageUrl(); ?>"><img src="<?= $image->getImageUrl(468,480); ?>" alt=""></figure>
+                    <figure class="photo" href="<?= $image->getImageUrl(); ?>"><img src="<?= $image->getImageUrl(170,170); ?>" alt=""></figure>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -105,7 +105,7 @@ $type = "building"
             <div class="object__desc-concl">
                 <div class="price">
                     <span class="caption">Цены от</span> <span class="value"><?=number_format($data->getMinimalPrice(), 0, '', ' ');  ?>&nbsp;&#8381;</span>
-                    <span class = 'warning'>* - об актуальных ценах уточняйте по телефону</span>
+                    <span class = 'warning'>* - об актуальных ценах уточняйте по <span class = "inner-link js-callback">телефону</span></span>
                 </div>
                 <div class="callback">
                     <div class="button button--action js-callback">Узнать больше</div>
@@ -119,17 +119,10 @@ $type = "building"
     <div  id = "vue-search-cards"></div>
 </section>
 <?php if ($data->svgBackground): ?>
-<section class="section-switcher">
+<!-- <section class="section-switcher">
     <h2 class="section-switcher__title">
         Планировки квартир
     </h2>
-    <!-- <nav class="section-switcher__nav">
-      <div class="slider-nav js-slider-nav">
-        <div data-number="1" class="slider-nav__item active">
-          <div class="button button--nav-link">Секция 1</div>
-        </div>
-      </div>
-    </nav> -->
     <div class="section-switcher__content">
         <div class="visual js-visual active" data-number="1">
             <div class="visual__image-lr">
@@ -172,7 +165,7 @@ $type = "building"
         <p class="caption">&nbsp;&nbsp;* Кликните на зеленую область для перехода к квартире</p>
     </div>
 </section>
-<?php endif; ?>
+<?php endif; ?> -->
 
 <script type = "text/javascript">
     window.settingsFilter = {
@@ -188,7 +181,7 @@ $type = "building"
         building:[
             {
                 id: "<?= $data->id ?>",
-                label: "<?= $data->adres?>"
+                label: "<?= preg_replace('/"/', '\"', $data->adres)?>"
             }
         ],
         rayon: [

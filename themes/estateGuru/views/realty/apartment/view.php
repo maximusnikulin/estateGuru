@@ -27,13 +27,12 @@ if (!empty($images)) {
         <div class="object__photo js-gallery-photos">
             <?php if ($mainImage !== false): ?>
                 <div class="object__photo-main">
-                    <figure class="photo" href="<?= $mainImage->getImageUrl(1000, 1000); ?>"><img
-                                src="<?= $mainImage->getImageUrl(1000, 1000); ?>" alt=""></figure>
+                    <figure class="photo" href="<?= $mainImage->getImageUrl(); ?>"><img src="<?= $mainImage->getImageUrl(); ?>" alt=""></figure>
                 </div>
             <?php endif; ?>
             <div class="object__photo-grid ">
                 <?php foreach ($images as $image): ?>
-                    <figure class="photo" href="<?= $image->getImageUrl(1000,1000); ?>"><img src="<?= $image->getImageUrl(1000,1000); ?>" alt=""></figure>
+                    <figure class="photo" href="<?= $image->getImageUrl(); ?>"><img src="<?= $image->getImageUrl(170,170); ?>" alt=""></figure>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -95,7 +94,7 @@ if (!empty($images)) {
             <div class="object__desc-concl">
                 <div class="price">
                     <span class="caption">Цена </span> <span class = "value"><?= number_format($data->cost, 0, ".", " "); ?> &#8381;</span>
-                    <span class = 'warning'>* - об актуальных ценах уточняйте по телефону</span>
+                    <span class = 'warning'>* - об актуальных ценах уточняйте по <span class = "inner-link js-callback">телефону</span></span>
                 </div>
                 <div class="callback">
                     <div class="button button--action js-callback">Узнать больше</div>
