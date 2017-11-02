@@ -28,7 +28,8 @@
             border-radius: 20px;
             cursor: pointer;
             white-space: nowrap;
-            display: block;            
+            display: block; 
+            text-align: center;           
             @include mobile {
                 white-space: normal;
                 padding: 8px 20px;

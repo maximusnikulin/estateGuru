@@ -33,7 +33,7 @@ if (!empty($images)) {
             <?php endif; ?>
             <div class="object__photo-grid ">
                 <?php foreach ($images as $image): ?>
-                    <figure class="photo" href="<?= $image->getImageUrl(); ?>"><img src="<?= $image->getImageUrl(468,480); ?>" alt=""></figure>
+                    <figure class="photo" href="<?= $image->getImageUrl(); ?>"><img src="<?= $image->getImageUrl(170,170); ?>" alt=""></figure>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -71,7 +71,7 @@ if (!empty($images)) {
             <div class="object__desc-concl">
                 <div class="price">
                     <span class="caption">Цена</span> <span class="value"><?= number_format($data->price, 0, '', ' '); ?>&nbsp;&#8381;</span>
-                    <span class = 'warning'>* - об актуальных ценах уточняйте по телефону</span>
+                    <span class = 'warning'>* - об актуальных ценах уточняйте по <span class = "inner-link js-callback">телефону</span></span>
                 </div>
                 <div class="callback">
                     <div class="button button--action js-callback">Узнать больше</div>

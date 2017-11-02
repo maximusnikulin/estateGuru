@@ -65,9 +65,10 @@
         left: 50%;
         transform: translate(-50%, -50%);
         text-transform: uppercase;
-        opacity: .04;
+        opacity: .03;
         cursor: default;
         text-align:center;
+        width: 100%;
         @include desktop {
             //  font: bold 120px/21px "Roboto";
         }
@@ -169,34 +170,35 @@
         }
     }
     .review {
-        max-width: 250px;
+        max-width: 280px;
         position: absolute;
-        left: 17%;
+        left: 15%;
         top: 50%;
         transform: translate3d(0, -50%, 0);
         @include tablet-hl {
-            left: 15%;
-            max-width: 278px;
+            // left: 15%;
+            // max-width: 278px;
         }
         @include tablet-vl {
             position: relative;            
             transform:none;
             top:0;
             left:0;
-            max-width: 320px;
-            margin:0 auto;
+            max-width: calc(100% - 40px);
+            margin: 0 auto;
+            text-align: center;            
         }
         @include mobile {
-            max-width:278px;
+            // max-width:278px;
         }
         &__title {
             .title {
-                font: bold 36px/42px "Roboto";
+                font: bold 36px/48px "Roboto";
                 text-transform: uppercase;
                 margin-bottom:16px;
                 // white-space: nowrap;
                 @include mobile {
-                        font: bold 32px/36px "Roboto";                        
+                        font: bold 32px/38px "Roboto";                        
                 }
             }
             .caption {

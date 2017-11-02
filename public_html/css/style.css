@@ -1289,6 +1289,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   .wrapper-index .list__item {
     font-size: 15px; }
 
+.inner-link {
+  color: #a54686; }
+
 .slick-slide {
   outline: none; }
 
@@ -1456,7 +1459,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       border-radius: 20px;
       cursor: pointer;
       white-space: nowrap;
-      display: block; }
+      display: block;
+      text-align: center; }
       @media (max-width: 560px) {
         .navbar__menu .link {
           white-space: normal;
@@ -1535,9 +1539,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     left: 50%;
     transform: translate(-50%, -50%);
     text-transform: uppercase;
-    opacity: .04;
+    opacity: .03;
     cursor: default;
-    text-align: center; }
+    text-align: center;
+    width: 100%; }
   .slider-promo__item-content .poster {
     position: absolute;
     left: 38%;
@@ -1628,35 +1633,29 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
             top: -15px;
             right: -15px; } }
   .slider-promo__item-content .review {
-    max-width: 250px;
+    max-width: 280px;
     position: absolute;
-    left: 17%;
+    left: 15%;
     top: 50%;
     transform: translate3d(0, -50%, 0); }
-    @media (max-width: 1024px) {
-      .slider-promo__item-content .review {
-        left: 15%;
-        max-width: 278px; } }
     @media (max-width: 768px) {
       .slider-promo__item-content .review {
         position: relative;
         transform: none;
         top: 0;
         left: 0;
-        max-width: 320px;
-        margin: 0 auto; } }
-    @media (max-width: 560px) {
-      .slider-promo__item-content .review {
-        max-width: 278px; } }
+        max-width: calc(100% - 40px);
+        margin: 0 auto;
+        text-align: center; } }
     .slider-promo__item-content .review__title {
       margin-bottom: 32px; }
       .slider-promo__item-content .review__title .title {
-        font: bold 36px/42px "Roboto";
+        font: bold 36px/48px "Roboto";
         text-transform: uppercase;
         margin-bottom: 16px; }
         @media (max-width: 560px) {
           .slider-promo__item-content .review__title .title {
-            font: bold 32px/36px "Roboto"; } }
+            font: bold 32px/38px "Roboto"; } }
       .slider-promo__item-content .review__title .caption {
         font: 100 13px/21px "Roboto";
         color: #606060; }
@@ -2130,7 +2129,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
         flex-wrap: wrap;
     -ms-flex-direction: column;
         flex-direction: column;
-    max-height: 200px; }
+    max-height: 250px; }
     @media (max-width: 768px) {
       .footer__content-list {
         max-height: 300px; } }
@@ -2160,6 +2159,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     @media (max-width: 560px) {
       .footer .link:not(:last-child):not(:first-child):not(:nth-child(2)) {
         display: none; } }
+    @media (max-width: 560px) {
+      .footer .link {
+        margin-right: 0; } }
 
 .object {
   margin-bottom: 50px; }

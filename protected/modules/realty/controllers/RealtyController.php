@@ -157,7 +157,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
                 'type' => $item->getStudioAsString(),
                 'deadline' => is_null($item->building->readyTimeObj) ? "Дом сдан" : $item->building->readyTimeObj->text,
                 'rayon' => $item->building->getRayon()->value,
-                'image' => empty($images) ? '/images/plug.png' : reset($images)->getImageUrl(200, 200),
+                'image' => empty($images) ? '/images/plug.png' : reset($images)->getImageUrl(402, 200),
                 'rooms' => $item->rooms,
                 'size' => $item->size,
                 'isPromo' => $item->getIsPromo()
