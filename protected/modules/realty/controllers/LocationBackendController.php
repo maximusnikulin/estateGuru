@@ -1,6 +1,6 @@
 <?php
 /**
-* Класс ApartmentBackendController:
+* Класс LocationBackendController:
 *
 *   @category Yupe\yupe\components\controllers\BackController
 *   @package  yupe
@@ -8,14 +8,12 @@
 *   @license  https://github.com/yupe/yupe/blob/master/LICENSE BSD
 *   @link     http://yupe.ru
 **/
-class ApartmentBackendController extends \yupe\components\controllers\BackController
+class LocationBackendController extends \yupe\components\controllers\BackController
 {
-
-
     /**
-    * Отображает Квартиру по указанному идентификатору
+    * Отображает Местоположение по указанному идентификатору
     *
-    * @param integer $id Идинтификатор Квартиру для отображения
+    * @param integer $id Идинтификатор Местоположение для отображения
     *
     * @return void
     */
@@ -25,18 +23,18 @@ class ApartmentBackendController extends \yupe\components\controllers\BackContro
     }
     
     /**
-    * Создает новую модель Квартиры.
+    * Создает новую модель Местоположения.
     * Если создание прошло успешно - перенаправляет на просмотр.
     *
     * @return void
     */
-    public function actionCreate($idBuilding)
+    public function actionCreate($idBlockSection)
     {
-        $model = new Apartment;
-        $model->idBuilding = $idBuilding;
+        $model = new Location;
+        $model->idBlockSection = $idBlockSection;
 
-        if (Yii::app()->getRequest()->getPost('Apartment') !== null) {
-            $model->setAttributes(Yii::app()->getRequest()->getPost('Apartment'));
+        if (Yii::app()->getRequest()->getPost('Location') !== null) {
+            $model->setAttributes(Yii::app()->getRequest()->getPost('Location'));
         
             if ($model->save()) {
                 Yii::app()->user->setFlash(
@@ -45,29 +43,28 @@ class ApartmentBackendController extends \yupe\components\controllers\BackContro
                 );
 
                 $this->rightRedirect($model);
-
             }
         }
         $this->render('create', ['model' => $model]);
     }
 
+
     public function rightRedirect($model)
     {
         if (Yii::app()->getRequest()->getPost("submit-type") !== null)
             $this->redirect(
-                $this->createUrl("/backend/realty/building/update?id=".$model->idBuilding)
+                $this->createUrl("/backend/realty/blockSection/update?id=" . $model->idBlockSection)
             );
         else
             $this->redirect(
-                $this->createUrl("/backend/realty/apartment/update?id=".$model->id)
+                $this->createUrl("/backend/realty/location/update?id=" . $model->id)
             );
-
     }
-    
+
     /**
-    * Редактирование Квартиры.
+    * Редактирование Местоположения.
     *
-    * @param integer $id Идинтификатор Квартиру для редактирования
+    * @param integer $id Идинтификатор Местоположение для редактирования
     *
     * @return void
     */
@@ -75,9 +72,8 @@ class ApartmentBackendController extends \yupe\components\controllers\BackContro
     {
         $model = $this->loadModel($id);
 
-        if (Yii::app()->getRequest()->getPost('Apartment') !== null) {
-            $model->setAttributes(Yii::app()->getRequest()->getPost('Apartment'));
-//            $model->image = Yii::app()->getRequest()->getPost('Apartment')["image"];
+        if (Yii::app()->getRequest()->getPost('Location') !== null) {
+            $model->setAttributes(Yii::app()->getRequest()->getPost('Location'));
 
             if ($model->save()) {
                 Yii::app()->user->setFlash(
@@ -92,10 +88,10 @@ class ApartmentBackendController extends \yupe\components\controllers\BackContro
     }
     
     /**
-    * Удаляет модель Квартиры из базы.
+    * Удаляет модель Местоположения из базы.
     * Если удаление прошло успешно - возвращется в index
     *
-    * @param integer $id идентификатор Квартиры, который нужно удалить
+    * @param integer $id идентификатор Местоположения, который нужно удалить
     *
     * @return void
     */
@@ -119,16 +115,16 @@ class ApartmentBackendController extends \yupe\components\controllers\BackContro
     }
     
     /**
-    * Управление Квартирами.
+    * Управление Местоположениями.
     *
     * @return void
     */
     public function actionIndex()
     {
-        $model = new Apartment('search');
+        $model = new Location('search');
         $model->unsetAttributes(); // clear any default values
-        if (Yii::app()->getRequest()->getParam('Apartment') !== null)
-            $model->setAttributes(Yii::app()->getRequest()->getParam('Apartment'));
+        if (Yii::app()->getRequest()->getParam('Location') !== null)
+            $model->setAttributes(Yii::app()->getRequest()->getParam('Location'));
         $this->render('index', ['model' => $model]);
     }
     
@@ -142,7 +138,7 @@ class ApartmentBackendController extends \yupe\components\controllers\BackContro
     */
     public function loadModel($id)
     {
-        $model = Apartment::model()->findByPk($id);
+        $model = Location::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, Yii::t('RealtyModule.realty', 'Запрошенная страница не найдена.'));
 

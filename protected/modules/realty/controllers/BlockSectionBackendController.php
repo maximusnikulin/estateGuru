@@ -28,9 +28,10 @@ class BlockSectionBackendController extends \yupe\components\controllers\BackCon
     *
     * @return void
     */
-    public function actionCreate()
+    public function actionCreate($idBuilding)
     {
-        $model = new BlockSection;
+        $model = new BlockSection();
+        $model->idBuilding = $idBuilding;
 
         if (Yii::app()->getRequest()->getPost('BlockSection') !== null) {
             $model->setAttributes(Yii::app()->getRequest()->getPost('BlockSection'));
@@ -41,20 +42,25 @@ class BlockSectionBackendController extends \yupe\components\controllers\BackCon
                     Yii::t('RealtyModule.realty', 'Запись добавлена!')
                 );
 
-                $this->redirect(
-                    (array)Yii::app()->getRequest()->getPost(
-                        'submit-type',
-                        [
-                            'update',
-                            'id' => $model->id
-                        ]
-                    )
-                );
+                $this->rightRedirect($model);
             }
         }
         $this->render('create', ['model' => $model]);
     }
-    
+
+    public function rightRedirect($model)
+    {
+        if (Yii::app()->getRequest()->getPost("submit-type") !== null)
+            $this->redirect(
+                $this->createUrl("/backend/realty/building/update?id=".$model->idBuilding)
+            );
+        else
+            $this->redirect(
+                $this->createUrl("/backend/realty/blockSection/update?id=".$model->id)
+            );
+    }
+
+
     /**
     * Редактирование Блок-секции.
     *
@@ -75,15 +81,7 @@ class BlockSectionBackendController extends \yupe\components\controllers\BackCon
                     Yii::t('RealtyModule.realty', 'Запись обновлена!')
                 );
 
-                $this->redirect(
-                    (array)Yii::app()->getRequest()->getPost(
-                        'submit-type',
-                        [
-                            'update',
-                            'id' => $model->id
-                        ]
-                    )
-                );
+                $this->rightRedirect($model);
             }
         }
         $this->render('update', ['model' => $model]);
