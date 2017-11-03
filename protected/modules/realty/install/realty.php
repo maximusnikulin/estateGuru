@@ -1,10 +1,4 @@
 <?php
-define("STATUS_HOME", 1);
-define("STATUS_COTTAGE", 2);
-define("STATUS_EARTH", 3);
-define("STATUS_COMMERCIAL", 4);
-define("STATUS_SECOND", 5);
-
 /**
  * Файл настроек для модуля realty
  *

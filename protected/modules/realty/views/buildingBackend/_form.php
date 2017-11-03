@@ -17,6 +17,7 @@
 <ul class="nav nav-tabs">
     <li class="active"><a href="#common" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Common"); ?></a></li>
     <li class="js-item js-item-home js-item-second"><a href="#apartments" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Apartments"); ?></a></li>
+    <li class="js-item js-item-home js-item-second"><a href="#block-sections" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Blocksections"); ?></a></li>
     <li class="js-item js-item-cottage js-item-earth js-item-commercial js-item-home"><a href="#images" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Images"); ?></a></li>
     <li class="js-item js-item-cottage"><a href="#planning" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Planning"); ?></a></li>
 </ul>
@@ -572,6 +573,44 @@
                         "deleteButtonUrl" => function($data)
                         {
                             return $this->createUrl("/backend/realty/apartment/delete?id=".$data->id);
+                        },
+                    ],
+                ],
+            ]
+        ); ?>
+    <?php endif; ?>
+</div>
+<div class="tab-pane" id="block-sections">
+    <?php if ($model->isNewRecord):?>
+        <h2>Сначала сохраните основную информацию об объекте недвижимости</h2>
+    <?php else:?>
+        <?php
+        $this->widget(
+            'yupe\widgets\CustomGridView',
+            [
+                'actionsButtons' => [
+                    CHtml::link(
+                        Yii::t('YupeModule.yupe', 'Add'),
+                        $this->createUrl("/backend/realty/blockSection/create?idBuilding=".$model->id),
+                        ['class' => 'btn btn-success pull-right btn-sm']
+                    ),
+                ],
+                'ajaxUpdate' => false,
+                'id'           => 'block-section-grid',
+                'type'         => 'striped condensed',
+                'dataProvider' => $model->getBlockSection()->search(),
+                'filter'       => $model->getBlockSection(),
+                'columns'      => [
+                    'name',
+                    [
+                        'class' => 'yupe\widgets\CustomButtonColumn',
+                        "updateButtonUrl" => function($data)
+                        {
+                            return $this->createUrl("/backend/realty/blockSection/update?id=".$data->id);
+                        },
+                        "deleteButtonUrl" => function($data)
+                        {
+                            return $this->createUrl("/backend/realty/blockSection/delete?id=".$data->id);
                         },
                     ],
                 ],

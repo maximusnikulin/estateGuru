@@ -35,5 +35,6 @@ return [
     "Apartments" => "Квартиры",
     "Images" => "Изображения",
     "Planning" => "Планировки",
-
+    'Blocksections' => 'Блок-секции',
+    'Locations' => 'Расположения',
 ];

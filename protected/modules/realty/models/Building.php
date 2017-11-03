@@ -1,4 +1,10 @@
 <?php
+define("STATUS_HOME", 1);
+define("STATUS_COTTAGE", 2);
+define("STATUS_EARTH", 3);
+define("STATUS_COMMERCIAL", 4);
+define("STATUS_SECOND", 5);
+
 Yii::import('application.modules.dictionary.models.*');
 
 /**
@@ -48,6 +54,7 @@ class Building extends yupe\models\YModel
     const STATUS_SECOND = STATUS_SECOND;
 
     const HOUSE_WAS_BUILDED = 1;
+    private $_blockSection;
 
     public function getPageTitle()
     {
@@ -198,6 +205,15 @@ class Building extends yupe\models\YModel
             $this->_apartment->idBuilding = $this->id;
         }
         return $this->_apartment;
+    }
+
+    public function getBlockSection()
+    {
+        if ($this->_blockSection == null) {
+            $this->_blockSection = new BlockSection();
+            $this->_blockSection->idBuilding = $this->id;
+        }
+        return $this->_blockSection;
     }
 
     /**

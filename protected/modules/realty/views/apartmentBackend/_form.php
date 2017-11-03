@@ -33,6 +33,17 @@
         );
         ?>
 
+
+        <?
+            $blockSections = $model->building->getBlockSection()->search()->getData();
+            $ids = array_map(function($item) {
+                return $item->id;
+            }, $blockSections);
+            $criteria = new CDbCriteria();
+            $criteria->addInCondition('idBlockSection', $ids);
+
+            $locations = Location::model()->findAll($criteria);
+        ?>
         <div class="alert alert-info">
             <?=  Yii::t('RealtyModule.realty', 'Поля, отмеченные'); ?>
             <span class="required">*</span>
