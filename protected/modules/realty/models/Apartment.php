@@ -9,6 +9,8 @@
  * @property integer $floor
  * @property integer $maxFloor
  * @property integer $rooms
+ * @property integer $idBlockSection
+ * @property integer $idFloor
  * @property integer $size
  * @property integer $cost
  * @property string $image
@@ -127,7 +129,7 @@ class Apartment extends yupe\models\YModel
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idBuilding, maxFloor, floor, rooms, cost', 'numerical', 'integerOnly'=>true),
+			array('idBlockSection, idFloor, idBuilding, maxFloor, floor, rooms, cost', 'numerical', 'integerOnly'=>true),
             array('image', 'length', 'max'=>200),
             array('seo_title', 'length', 'max'=>100),
             array('seo_description, seo_keywords', 'length', 'max'=>300),
@@ -135,7 +137,7 @@ class Apartment extends yupe\models\YModel
             array('isPromo, showOnIndex, svgPoints, shortDescription, longDescription', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('isPromo, isStudio, showOnIndex, svgPoints, image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
+			array('idBlockSection, idFloor, isPromo, isStudio, showOnIndex, svgPoints, image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
 		);
 	}
 
