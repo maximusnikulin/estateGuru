@@ -22,6 +22,7 @@ let config = {
     entry:{
       'bundle': './src/js/index.js',
       'svg-maker': './src/js/svg-maker/index.js',
+      'map-admin': './src/js/map-admin/index.js',
     },
     js: './js/**/*.{js,jsx}',        
     //SVG

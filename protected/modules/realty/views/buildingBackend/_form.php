@@ -157,12 +157,12 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" >
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'longitude', [
                 'widgetOptions' => [
                     'htmlOptions' => [
-                        'class' => 'popover-help',
+                        'class' => 'popover-help js-map-long',
                         'data-original-title' => $model->getAttributeLabel('longitude'),
                         'data-content' => $model->getAttributeDescription('longitude')
                     ]
@@ -170,20 +170,27 @@
             ]); ?>
         </div>
     </div>
-
     <div class="row">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'latitude', [
                 'widgetOptions' => [
                     'htmlOptions' => [
-                        'class' => 'popover-help',
+                        'class' => 'popover-help js-map-lat',
                         'data-original-title' => $model->getAttributeLabel('latitude'),
-                        'data-content' => $model->getAttributeDescription('latitude')
+                        'data-content' => $model->getAttributeDescription('latitude'),                        
                     ]
                 ]
             ]); ?>
         </div>
     </div>
+    <div class = "row" style = "margin-bottom:20px">
+        <div class="col-sm-7">
+            <div class="js-map-admin" id = "js-map-admin" style = "min-height:400px">
+            </div>
+        </div>               
+    </div>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&mode=debug" type="text/javascript"></script>
+    <script src = "/js/map-admin.js" ></script>
 
     <div class="row js-item js-item-earth js-item-cottage js-item-commercial">
         <div class="col-sm-7">
