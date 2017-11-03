@@ -23,8 +23,8 @@ if (document.getElementById('vue-svg-maker')) {
                 },
                 result:''
         },
-        mounted: function () {
-
+        mounted: function () {   
+            
             this.$refs['image'].addEventListener('load', function(){
                 this.widthMaker = this.$refs['svg-maker'].offsetWidth;    
                 this.heightMaker = this.$refs['svg-maker'].offsetHeight;
@@ -43,7 +43,9 @@ if (document.getElementById('vue-svg-maker')) {
                     
                 }
             }.bind(this));
-            this.checkOnInitValues()
+            this.checkOnInitValues();
+            
+            $(window).trigger('INIT_SVG_MAKER');
         },
         updated: function(){
             if (!this.closePath & this.points.length > 1) {

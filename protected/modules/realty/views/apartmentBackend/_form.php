@@ -39,11 +39,23 @@
             $ids = array_map(function($item) {
                 return $item->id;
             }, $blockSections);
+            $bs = [];
+            foreach ($blockSections as $item) {
+                $bs[$item->id] = $item->name;
+            }
             $criteria = new CDbCriteria();
             $criteria->addInCondition('idBlockSection', $ids);
-
             $locations = Location::model()->findAll($criteria);
+            $locs = array_map(function($item) {
+                return [
+                    'idBlockSection' => $item->idBlockSection, 
+                    'name' => $item->name, 
+                    'id' => $item->id,
+                    'image' => $item->getImageUrl()
+                ];
+            }, $locations);
         ?>
+        <!-- var_dump($locs); -->
         <div class="alert alert-info">
             <?=  Yii::t('RealtyModule.realty', 'Поля, отмеченные'); ?>
             <span class="required">*</span>
@@ -67,7 +79,74 @@
                 ]); ?>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-7">
+                <?=  $form->dropDownListGroup($model, 'idBlockSection', [                    
+                    'widgetOptions' => [
+                        'data' => $bs,
+                        'htmlOptions' => [
+                            'class' => 'popover-help',                            
+                            'id' => 'js-bs',
+                            'data-original-title' => $model->getAttributeLabel('idBlockSection'),
+                            'data-content' => $model->getAttributeDescription('idBlockSection')
+                        ]
+                    ]
+                ]); ?>
+            </div>
+        </div>
+        <div class="row">                
+        <div class="col-sm-7">
+                <?=  $form->dropDownListGroup($model, 'idFloor', [                    
+                    'widgetOptions' => [
+                        'data' => [],
+                        'htmlOptions' => [
+                            'class' => 'popover-help',
+                            'id' => 'js-loc',
+                            'data-value' => $model->idFloor,
+                            'data-locations' => json_encode($locs),
+                            'data-original-title' => $model->getAttributeLabel('idFloor'),
+                            'data-content' => $model->getAttributeDescription('idFloor')
+                        ]
+                    ]
+                ]); ?>
+            </div>
+        </div>  
+        <script>
+            var bsSelect = $("#js-bs");
+            var locSelect = $("#js-loc");   
+            var locations = locSelect.data('locations');
+            
+            console.log(bsSelect)
+            bsSelect.change(function(e) {                
+                console.log('asdasd')
+                var curVal = $(this).val();
+                locSelect.empty();
+                locations
+                    .filter(function(el, i) {                    
+                        return curVal == el.idBlockSection;
+                    })
+                    .forEach(function(el,i) {                                            
+                        locSelect.append('<option value = "' + el.id + '" ' + (el.id == locSelect.data('value') ? 'selected' : '') + '>' + el.name + '</option>');                        
+                    })
+            }).change();    
 
+            $(window).on('load', function() {
+             
+             locSelect.change(function(e) {
+                var curValue = $(this).val();
+                var imgSrc = null;
+                locations.forEach(function(el) {
+                    if (curValue == el.id) {
+                        imgSrc = el.image
+                    }
+                });                
+                console.log(imgSrc)
+                $('.svg-maker__image img').attr('src', imgSrc);
+             }).change();
+            });
+            
+            
+        </script>                   
         <div class="row">
             <div class="col-sm-7">
                 <?=  $form->textFieldGroup($model, 'floor', [
@@ -268,19 +347,19 @@
                 top:0;
             }
             </style>             
-        <?php if (!IS_NULL($model->building->getImageUrl())):?>
+       <?php if (!IS_NULL($model->building->getImageUrl())):?>
             <div class="row">
                 <section id = "vue-svg-maker">
                     <div class="svg-maker" ref = "svg-maker" >
                         <div class="svg-maker__image">
-                            <img src="<?= $model->building->getImageUrl(); ?>" alt="" width="100%" ref = "image">
+                            <img src="#" alt="" width="100%" ref = "image">
                         </div>
                         <div class="svg-maker__svg" v-on="{ mousemove: mouseMove, mousedown:mouseDown}"> 
                             <svg width = "100%" height = "100%" >                
                                 <path v-bind:d = "pathPoints" v-bind:fill = "fill" v-bind:stroke = "constants.COLOR_LINE" stroke-width = "1"/>
                                 <line v-bind:x1 = "lineNext[0][0]" v-bind:y1 = "lineNext[0][1]" v-bind:x2 = "lineNext[1][0]" v-bind:y2 = "lineNext[1][1]" stroke = "violet" stroke-width = "1"></line>            
                                 <circle v-for = "point in points" v-bind:cx = "point[0]" v-bind:cy = "point[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>
-                                <circle  v-show = "!closePath" v-bind:cx = "pointNext[0]" v-bind:cy = "pointNext[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>                 
+                                 <circle  v-show = "!closePath" v-bind:cx = "pointNext[0]" v-bind:cy = "pointNext[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>                 
                             </svg>
                         </div>
                     </div>
