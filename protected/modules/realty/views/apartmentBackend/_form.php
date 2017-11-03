@@ -330,7 +330,7 @@
     <style>
             .svg-maker  {
                 width:840px;
-                margin:100px auto 100px;
+                margin:100px 10px 100px;
                 border:1px solid red;
                 position: relative;
             }
