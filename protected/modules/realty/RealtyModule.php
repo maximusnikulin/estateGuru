@@ -29,10 +29,17 @@ class RealtyModule  extends yupe\components\WebModule
      */
     public $phone;
 
+    /**
+     * @var string
+     */
+    public $phone2;
 
-    public function getPhoneForLink()
+    public function getPhoneForLink($phone = null)
     {
-        $phoneLink = preg_replace('~\D~','',$this->phone);
+        if (is_null($phone)) {
+            $phone = $this->phone;
+        }
+        $phoneLink = preg_replace('~\D~','',$phone);
         if (strlen($phoneLink) >= 10) {
             $phoneLink = substr($phoneLink, strlen($phoneLink) - 10);
         }
@@ -108,7 +115,8 @@ class RealtyModule  extends yupe\components\WebModule
     {
         return [
             "itemsPerPage" => "Кол-во элементов на странице",
-            "phone" => "Номер телефона",
+            "phone" => "Номер телефона №1",
+            'phone2' => 'Номер телефона №2',
             "adres" => "Адрес",
             "seo" => "Адрес",
             'seoTemplateForHome' => 'Шаблон SEO для новостроек',
@@ -132,6 +140,7 @@ class RealtyModule  extends yupe\components\WebModule
     {
         return [
             'phone',
+            'phone2',
             'adres',
             'itemsPerPage',
             'uploadPath',
@@ -192,23 +201,7 @@ class RealtyModule  extends yupe\components\WebModule
     public function getNavigation()
     {
         return [
-            // [
-            //     'icon' => 'fa fa-fw fa-map-o',
-            //     'label' => Yii::t('RealtyModule.realty', 'Districts'),
-            //     'url' => ['/backend/realty/district/index'],
-            //     'items' => [
-            //         [
-            //             'icon' => 'fa fa-fw fa-list-alt',
-            //             'label' => Yii::t('RealtyModule.realty', 'Districts list'),
-            //             'url' => ['/backend/realty/district/index'],
-            //         ],
-            //         [
-            //             'icon' => 'fa fa-fw fa-plus-square',
-            //             'label' => Yii::t('RealtyModule.realty', 'Create district'),
-            //             'url' => ['/backend/realty/district/create'],
-            //         ],
-            //     ],
-            // ],
+           
             [
                 'icon' => 'fa fa-fw fa-male',
                 'label' => Yii::t('RealtyModule.realty', 'Builders'),

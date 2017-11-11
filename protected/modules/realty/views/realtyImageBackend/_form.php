@@ -111,6 +111,8 @@ $images = RealtyImage::model()->findAll($criteria);
         <?php foreach ($images as $image): ?>
             <tr>
                 <td>
+                    <input type="radio" class="js-main" name="is-main" value="<?= $image->id; ?>" data-href="<?= $this->createUrl(
+                        '/backend/realty/realtyImage/check?id='.$image->id); ?>" <?= ($image->isMain) ? 'checked' : ''; ?>>Является основным
                     <img src="<?= $image->getImageUrl(100, 100); ?>" alt="" class="img-responsive"/>
                 </td>
                 <td class="text-center">
@@ -129,3 +131,9 @@ $images = RealtyImage::model()->findAll($criteria);
     </table>
 
 <?php $this->endWidget(); ?>
+
+<script>
+    $('.js-main').click(function() {
+        $.get($(this).data('href'));
+    });
+</script>

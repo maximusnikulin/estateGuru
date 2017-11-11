@@ -10,9 +10,15 @@
             </li>
             <li class = "shedule__item ">
                 <h2 class="title">Телефон</h2>
-                <a href = "<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>" class="link"><?= Yii::app()->getModule("realty")->phone; ?></a>
-                <a href = "tel:3852556565" class="link">(3852) 55-65-65</a>
-                
+                <?
+                    $phone = Yii::app()->getModule("realty")->phone;
+                ?>
+                <a href = "<?= Yii::app()->getModule("realty")->getPhoneForLink($phone); ?>" class="link"><?= $phone; ?></a>
+
+                <?
+                $phone = Yii::app()->getModule("realty")->phone2;
+                ?>
+                <a href = "<?= Yii::app()->getModule("realty")->getPhoneForLink($phone); ?>" class="link"><?= $phone; ?></a>
             </li>
             <li class = "shedule__item ">
                 <h2 class="title">E-mail</h2>

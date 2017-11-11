@@ -92,7 +92,23 @@ class RealtyImageBackendController extends \yupe\components\controllers\BackCont
         }
         $this->render('update', ['model' => $model]);
     }
-    
+
+    public function actionCheck($id) {
+       $model = $this->loadModel($id);
+       $criteria = new CDbCriteria();
+       $criteria->compare('idRecord', $model->idRecord);
+       $criteria->compare('idTable', $model->idTable);
+       $criteria->addNotInCondition('id', [$model->id]);
+       $anotherModels = RealtyImage::model()->findAll($criteria);
+       foreach ($anotherModels as $curModel) {
+           $curModel->isMain = false;
+           $curModel->save();
+       }
+       $model->isMain = true;
+       $model->save();
+    }
+
+
     /**
     * Удаляет модель Изображения из базы.
     * Если удаление прошло успешно - возвращется в index

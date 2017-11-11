@@ -1,4 +1,4 @@
-/<?php
+<?php
 /**
  * Отображение для _form:
  *
@@ -29,26 +29,13 @@ $form = $this->beginWidget(
 </div>
 
 <?=  $form->errorSummary($model); ?>
-
-    <div class="row">
-        <div class="col-sm-7">
-            <?=  $form->textFieldGroup($model, 'name', [
-                'widgetOptions' => [
-                    'htmlOptions' => [
-                        'class' => 'popover-help',
-                        'data-original-title' => $model->getAttributeLabel('name'),
-                        'data-content' => $model->getAttributeDescription('name')
-                    ]
-                ]
-            ]); ?>
-        </div>
-    </div>
+    <?= $form->hiddenField($model, 'name', ['class' => 'js-name']); ?>
     <div class="row">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'minFloor', [
                 'widgetOptions' => [
                     'htmlOptions' => [
-                        'class' => 'popover-help',
+                        'class' => 'popover-help js-min-floor js-floor',
                         'data-original-title' => $model->getAttributeLabel('minFloor'),
                         'data-content' => $model->getAttributeDescription('minFloor')
                     ]
@@ -61,7 +48,7 @@ $form = $this->beginWidget(
             <?=  $form->textFieldGroup($model, 'maxFloor', [
                 'widgetOptions' => [
                     'htmlOptions' => [
-                        'class' => 'popover-help',
+                        'class' => 'popover-help js-max-floor js-floor',
                         'data-original-title' => $model->getAttributeLabel('maxFloor'),
                         'data-content' => $model->getAttributeDescription('maxFloor')
                     ]
@@ -127,3 +114,9 @@ $form = $this->beginWidget(
     ); ?>
 
 <?php $this->endWidget(); ?>
+
+<script>
+    $('.js-floor').keyup(function() {
+        $('.js-name').val($('.js-min-floor').val() + '-' + $('.js-max-floor').val());
+    });
+</script>

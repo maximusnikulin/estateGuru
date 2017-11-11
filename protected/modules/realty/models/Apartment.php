@@ -57,8 +57,6 @@ class Apartment extends yupe\models\YModel
         return "";
     }
 
-
-
     static public function getRoomsArray()
     {
         return [
@@ -71,6 +69,14 @@ class Apartment extends yupe\models\YModel
             "Пятикомнтаная",
             "Шестикомнатная",
         ];
+    }
+
+    public function getLocationAsString() {
+        $location = Location::model()->findByPk($this->idFloor);
+        if (is_null($location)) {
+            return '';
+        }
+        return $location->name;
     }
 
     public function getPriceAsString()
@@ -263,6 +269,7 @@ class Apartment extends yupe\models\YModel
         $criteria = new CDbCriteria();
         $criteria->compare("idTable",RealtyImage::$TABLE_APARTMENT);
         $criteria->compare("idRecord",$this->id);
+        $criteria->order = 'isMain DESC';
         $images = RealtyImage::model()->findAll($criteria);
         return $images;
     }

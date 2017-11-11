@@ -175,7 +175,7 @@
         </div>
 
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-7">
                 <?=  $form->checkboxGroup($model, 'isStudio', [
                     'widgetOptions' => [
@@ -187,7 +187,7 @@
                     ]
                 ]); ?>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-sm-7">

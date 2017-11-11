@@ -1756,7 +1756,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
         .card-estate__head .tags__item--action, .card-news__head .tags__item--action, .section-search .placemark__balloon .card-map__head .tags__item--action, .section-search .cluster__baloon .card-map__head .tags__item--action {
           background: rgba(241, 149, 71, 0.9); }
   .card-estate__name, .section-search .placemark__balloon .card-map__name, .section-search .cluster__baloon .card-map__name {
-    padding: 20px;
+    padding: 20px 10px 20px 20px;
     min-height: 80px; }
     .card-estate__name .address, .section-search .placemark__balloon .card-map__name .address, .section-search .cluster__baloon .card-map__name .address {
       font: 700 18px/21px "Roboto";
@@ -1785,6 +1785,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
         font: 400 13px/21px "Roboto";
         max-width: 150px;
         text-align: right; }
+      .card-estate__more .row__link, .section-search .placemark__balloon .card-map__more .row__link, .section-search .cluster__baloon .card-map__more .row__link {
+        font: 500 13px/21px "Roboto"; }
   .card-estate__info, .section-search .placemark__balloon .card-map__info, .section-search .cluster__baloon .card-map__info {
     display: -ms-flexbox;
     display: flex;
@@ -3139,8 +3141,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       flex-direction: row;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  width: calc(100% + 20px);
-  margin-left: -10px;
+  width: 100%;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -ms-flex-align: stretch;
@@ -3350,10 +3351,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     height: 800px; }
 
 .section-search--cards .section-cards__content {
-  padding: 0 20px 20px 70px; }
+  padding: 0 0 0 50px; }
   @media (max-width: 560px) {
     .section-search--cards .section-cards__content {
-      padding: 0 10px 20px 60px; } }
+      padding: 0 0 0 50px; } }
 
 @media (max-width: 1024px) {
   .section-search {

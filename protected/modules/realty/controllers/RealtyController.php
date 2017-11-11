@@ -12,6 +12,10 @@
 
 class RealtyController extends \yupe\components\controllers\FrontController
 {
+    public function __construct($id, $module = null) {
+        parent::__construct($id, $module);
+        $building = new Building();
+    }
 
     protected $menuWithMapLinks = false;
 
@@ -33,7 +37,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
         $this->menuWithMapLinks = true;
         $this->render('/search/map', ['type' => $type]);
     }
-    public function actionSearchCards($type) {
+    public function actionSearchCards($type) {                
         $this->title = 'EstateGuru - Поиск недвижимости ';
         $this->description = 'Поиск недвижимости';
 

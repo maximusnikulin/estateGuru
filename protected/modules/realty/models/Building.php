@@ -266,6 +266,7 @@ class Building extends yupe\models\YModel
         $criteria = new CDbCriteria();
         $criteria->compare("idRecord", $this->id);
         $criteria->compare("idTable", RealtyImage::$TABLE_BUILDING);
+        $criteria->order = 'isMain DESC';
         return RealtyImage::model()->findAll($criteria);
     }
 
@@ -282,6 +283,7 @@ class Building extends yupe\models\YModel
         $criteria = new CDbCriteria();
         $criteria->compare("idRecord", $this->id);
         $criteria->compare("idTable", RealtyImage::$TABLE_BUILDING);
+        $criteria->order = 'isMain DESC';
         return RealtyImage::model()->find($criteria);
     }
 

@@ -33,10 +33,10 @@ if (!empty($images)) {
 <!--            <span class="type">--><?//= $item->getRoomsAsString(); ?><!--</span>-->
         </div>
         <div class="card-estate__more">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="row__name">Тип</div>
                 <div class="row__val"><?= $item->getStudioAsString(); ?></div>
-            </div>
+            </div> -->
             <?php if (!is_null($item->building->getRayon())):?>
                 <div class="row">
                     <div class="row__name">Район</div>

@@ -62,8 +62,11 @@
         <?php $this->widget('application.modules.menu.widgets.MenuWidget', ['name' => 'top-menu']); ?>
         <div class="header__callback">
           <div class="header__callback-phone">
-            <a class = "phone" href="tel:3852556565">(3852) 55-65-65</a>
-            <a class = "phone"  href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>"><?= Yii::app()->getModule("realty")->phone; ?></a>
+              <?
+              $phone = Yii::app()->getModule("realty")->phone2;
+              ?>
+              <a href = "<?= Yii::app()->getModule("realty")->getPhoneForLink($phone); ?>" class="phone"><?= $phone; ?></a>
+              <a class = "phone"  href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>"><?= Yii::app()->getModule("realty")->phone; ?></a>
           </div>
           <div class="header__callback-button-mb">
             <a href="javascript:;" class="button button--callback-mb js-callback"></a>
@@ -106,8 +109,11 @@
         </div>       
         <ul class="footer__content-list">
         <li class="link">
-          <a href = "tel:3852556565" class="phone">(3852) 55-65-65</a>
-          <a href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>" class="phone"><?= Yii::app()->getModule("realty")->phone; ?></a>
+            <?
+            $phone = Yii::app()->getModule("realty")->phone2;
+            ?>
+            <a href = "<?= Yii::app()->getModule("realty")->getPhoneForLink($phone); ?>" class="phone"><?= $phone; ?></a>
+            <a href="<?= Yii::app()->getModule("realty")->getPhoneForLink(); ?>" class="phone"><?= Yii::app()->getModule("realty")->phone; ?></a>
         </li>
         <li class="link">
           <p href="" class="adress"><?= Yii::app()->getModule("realty")->adres; ?></p>

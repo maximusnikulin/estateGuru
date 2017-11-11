@@ -97,7 +97,7 @@ return [
     'Show dictionary items' => 'Просмотр значения справочника',
     'Show dictionary' => 'Просмотреть справочник',
     'Showing dictionary' => 'Просмотр справочника',
-    'Structure' => 'Структура',
+    'Structure' => 'Контент',
     'team@yupe.ru' => 'team@yupe.ru',
     'This section describes dictionary items management' => 'В данном разделе представлены средства управления значениями справочников',
     'This section describes dictionary management' => 'В данном разделе представлены средства управления справочниками',
