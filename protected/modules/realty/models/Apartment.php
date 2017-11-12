@@ -166,7 +166,9 @@ class Apartment extends yupe\models\YModel
 	{
 		return array(
             'id' => 'ID',
-            'idBuilding' => 'Id Building',
+            'idBuilding' => 'Строение',
+            'idBlockSection' => 'Блок-секция',
+            'idFloor' => 'Местоположение',
             'floor' => 'Этаж',
             'maxFloor' => 'Конечный этаж',
             'rooms' => 'Количество комнат',

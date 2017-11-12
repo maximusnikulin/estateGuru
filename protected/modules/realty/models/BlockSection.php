@@ -52,9 +52,9 @@ class BlockSection extends \yupe\models\YModel
     public function attributeLabels()
     {
         return array(
-            'id' => 'ID',
-            'name' => 'Name',
-            'idBuilding' => 'Id Building',
+            'id' => 'Код',
+            'name' => 'Наименование',
+            'idBuilding' => 'Объект',
         );
     }
 
@@ -83,6 +83,11 @@ class BlockSection extends \yupe\models\YModel
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
         ));
+    }
+
+    public function getBuilding()
+    {
+        return Building::model()->findByPk($this->idBuilding);
     }
 
 

@@ -10,8 +10,9 @@
  **/
 $this->breadcrumbs = [
     $this->getModule()->getCategory() => [],
-    Yii::t('RealtyModule.realty', 'Блок-секции') => ['/realty/blockSectionBackend/index'],
-    Yii::t('RealtyModule.realty', 'Добавление'),
+    Yii::t('RealtyModule.realty', 'Дома') => ['/backend/realty/building/index'],
+    "Дом ".$model->getBuilding()->adres => ['/backend/realty/building/update/'.$model->idBuilding],
+    Yii::t('RealtyModule.realty', 'Добавление блок-секции'),
 ];
 
 $this->pageTitle = Yii::t('RealtyModule.realty', 'Блок-секции - добавление');
