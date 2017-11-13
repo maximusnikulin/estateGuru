@@ -26,7 +26,7 @@ $form = $this->beginWidget(
                     'htmlOptions' => [
                         'class' => 'popover-help',
                         'data-original-title' => $model->getAttributeLabel('id'),
-                        'data-content' => $model->getAttributeDescription('id')
+                        'data-content' => $model->getAttributeDescription('id'),                        
                     ]
                 ]
             ]); ?>
@@ -37,7 +37,7 @@ $form = $this->beginWidget(
                     'htmlOptions' => [
                         'class' => 'popover-help',
                         'data-original-title' => $model->getAttributeLabel('name'),
-                        'data-content' => $model->getAttributeDescription('name')
+                        'data-content' => $model->getAttributeDescription('name'),                        
                     ]
                 ]
             ]); ?>

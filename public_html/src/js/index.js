@@ -2,7 +2,7 @@ import './components/slider-promo';
 import './components/slider-logos';
 // // import './components/slider-nav';
 import './components/slider-layouts';
-import './components/visual';
+// import './components/visual';
 import './components/feedback';
 // // import './components/gallery-polygons';
 import './components/gallery-photos';
@@ -14,6 +14,9 @@ import './components/menu';
 import './components/subscribe.js';
 import './components/map-desc.js';
 import './components/tilt.js';
+if (window.visualModel) {
+    require('./components/visual/index.js');
+}
 
 
 // // VUE SEARCH

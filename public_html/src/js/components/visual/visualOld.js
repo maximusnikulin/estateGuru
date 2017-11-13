@@ -3,10 +3,14 @@ function getIsMobile() {
 }
 
 function Visual(elem) {
-    this.root = elem;        
+    this.root = elem;    
+
     this.init = function(){
         this.positionTooltip();
     };
+    this.injectSelects = function() {
+        
+    }
     this.positionTooltip = function() {
         let paths = this.root.find('.visual__polygons-lr > .polygon-svg path');
         let that = this;
@@ -23,7 +27,8 @@ function Visual(elem) {
                           left:e.offsetX + "px"
                       });
                   }
-              })
+              });
+
               $(el).on('mousemove', function(e) {
                   if (getIsMobile()) {
                       return;

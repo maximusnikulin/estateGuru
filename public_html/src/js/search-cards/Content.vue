@@ -83,7 +83,7 @@
         name: 'vue-content',
         props: ["typeEstate"],
         created: function () {
-            
+            console.log();
             bus.$on('CHANGE_FILTER', function (query) {
                 this.getData(query)
             }.bind(this))

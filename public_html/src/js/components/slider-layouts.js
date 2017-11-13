@@ -5,7 +5,7 @@ const SETTINGS = {
     infinite:false,
     swipe:true,
     draggable:true,
-
+    adaptiveHeight:true
 }
 
 $(window).on('load', function () {

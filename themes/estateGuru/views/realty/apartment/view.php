@@ -15,6 +15,7 @@ if (!empty($images)) {
     $mainImage = false;
 };
  $isNewAppartment = $data->building->getStatusAsString() !== "Вторичная продажа";
+ 
 ?>
 
 
@@ -105,15 +106,46 @@ if (!empty($images)) {
 </div>
 
 <?php
-    $images = $data->getPlannings();
+    $images = $data->getPlannings();    
+    $criteria = new CDbCriteria();
+    $criteria->addInCondition('idBlockSection', [$data->idBlockSection]);
+    $criteria->addInCondition('id', [$data->idFloor]);
+    $location = Location::model()->findAll($criteria)[0];        
 ?>
-<?php if (!empty($images)): ?>
-    <div class="slider-layouts js-slider-layouts js-gallery-layouts">
-        <?php foreach ($images as $image): ?>
-            <div class="slider-layouts__item" href = "<?= $image->getImageUrl(840, 480); ?>">
-                <img class = "layout"  src="<?= $image->getImageUrl(840, 480); ?>" alt="<?= $image->label; ?>">
+
+<?php if (!is_null($location->getImageUrl())): ?>
+<section class = "section-switcher">   
+    <div class="section-switcher__title">Положение на этаже</div>
+    <div class = "section-switcher__content">
+        <div class="visual ">                            
+                <div class="visual__content">
+                    <figure class="visual__content-image">                                    
+                        <img src="<?= $location->getImageUrl(); ?>" alt=""/>
+                    </figure>
+                    <div class="visual__content-svgs">                                                                        
+                        <svg>
+                            <path d= "<?= $data->getSvgPath()?>"/>
+                        </svg>
+                    </div>                
+                </div>                    
             </div>
-        <?php endforeach; ?>
-    </div>
+    </div>       
+</section>
 <?php endif; ?>
+
+<?php if (!empty($images)): ?>
+    <section class = "section-switcher">   
+        <div class="section-switcher__title">Планировки</div> 
+        <div class = "section-switcher__content">   
+            <div class="slider-layouts js-slider-layouts js-gallery-layouts">
+                <?php foreach ($images as $image): ?>
+                    <div class="slider-layouts__item" href = "<?= $image->getImageUrl(); ?>">
+                        <img class = "layout"  src="<?= $image->getImageUrl(); ?>" alt="<?= $image->label; ?>">
+                    </div>
+                <?php endforeach; ?>           
+            </div>    
+        </div>    
+    </section>
+<?php endif; ?>
+
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>

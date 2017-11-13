@@ -16,10 +16,10 @@
 
 <ul class="nav nav-tabs">
     <li class="active"><a href="#common" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Common"); ?></a></li>
-    <li class="js-item js-item-home js-item-second"><a href="#apartments" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Apartments"); ?></a></li>
-    <li class="js-item js-item-home js-item-second"><a href="#block-sections" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Blocksections"); ?></a></li>
     <li class="js-item js-item-cottage js-item-earth js-item-commercial js-item-home"><a href="#images" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Images"); ?></a></li>
     <li class="js-item js-item-cottage"><a href="#planning" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Planning"); ?></a></li>
+    <li class="js-item js-item-home js-item-second"><a href="#block-sections" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Blocksections"); ?></a></li>
+    <li class="js-item js-item-home js-item-second"><a href="#apartments" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Apartments"); ?></a></li>
 </ul>
 
 <div class="tab-content">
@@ -184,7 +184,7 @@
             ]); ?>
         </div>
     </div>
-    <div class = "row" style = "margin-bottom:20px">
+    <div class = "row" style = "margin-bottom:20px" >
         <div class="col-sm-7">
             <div class="js-map-admin" id = "js-map-admin" style = "min-height:400px">
             </div>
@@ -426,7 +426,7 @@
         </div>
     </div>
 
-    <div class='row js-item js-item-home'>
+   <div class='row js-item js-item-home hidden'>
         <div class="col-sm-7">
             <div class="preview-image-wrapper<?= !$model->getIsNewRecord() && $model->svgBackground ? '' : ' hidden' ?>">
                 <?=
@@ -463,49 +463,7 @@
                 ]
             ); ?>
         </div>
-    </div>
-
-  <!--  <div class="row">
-        <div class="col-sm-7">
-            <?/*=  $form->textFieldGroup($model, 'seo_title', [
-                'widgetOptions' => [
-                    'htmlOptions' => [
-                        'class' => 'popover-help',
-                        'data-original-title' => $model->getAttributeLabel('seo_title'),
-                        'data-content' => $model->getAttributeDescription('seo_title')
-                    ]
-                ]
-            ]); */?>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-7">
-            <?/*=  $form->textFieldGroup($model, 'seo_description', [
-                'widgetOptions' => [
-                    'htmlOptions' => [
-                        'class' => 'popover-help',
-                        'data-original-title' => $model->getAttributeLabel('seo_description'),
-                        'data-content' => $model->getAttributeDescription('seo_description')
-                    ]
-                ]
-            ]); */?>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-7">
-            <?/*=  $form->textFieldGroup($model, 'seo_keywords', [
-                'widgetOptions' => [
-                    'htmlOptions' => [
-                        'class' => 'popover-help',
-                        'data-original-title' => $model->getAttributeLabel('seo_keywords'),
-                        'data-content' => $model->getAttributeDescription('seo_keywords')
-                    ]
-                ]
-            ]); */?>
-        </div>
-    </div>-->
+    </div> 
 
 
     <?php $this->widget(

@@ -1,9 +1,44 @@
 .section-switcher {
-    margin-bottom:86px;
+    margin-bottom:48px;
     &__title {
         @extend .container;
         font: bold 21px/24px 'Open Sans';
         margin-bottom:32px;
+    }
+    &__tabs {
+        @extend .container;
+        text-align: center;
+        margin-bottom:24px;
+        &-title {
+            font: bold 16px/22px 'Open Sans';
+            margin-bottom:16px;
+        }
+        &-content {
+            font-size:0;
+            text-align: center;
+        }
+        &-tab {
+            $dim:40px;
+            $br:2px;
+            $lh:$dim - $br * 2;
+            font: bold 16px/22px 'Open Sans';           
+            border-radius: 50%;
+            border:$br solid #a54686;
+            display: inline-block;
+            width:$dim;
+            height:$dim;
+            text-align: center;
+            line-height:$lh;           
+            cursor:pointer;            
+            color:#a54686;
+            &.active {
+                background:#a54686;
+                color:#fff;
+            }
+            &:not(:last-child) {
+                margin-right:20px;
+            }
+        }
     }
     &__nav {
         width:100%;
@@ -33,26 +68,6 @@
             background-image: linear-gradient(to left,#fff,rgba(255,255,255,0));
             @include tablet-hl {
                 visibility: visible
-            }
-        }
-        
-
-        .visual {            
-            width: 900px;
-            padding:0 20px;
-            visibility:hidden;
-            opacity:0;
-            position: absolute;
-            top:0;
-            left:50%;
-            transform: translateX(-50%);            
-            &.active {
-                visibility:visible;
-                opacity:1;
-                position: relative;
-                left:0;
-                margin:0 auto;
-                transform:none;
             }
         }
     }

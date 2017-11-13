@@ -11,44 +11,32 @@
   <title>Страница дома</title>
 </head>
 <style>
-  .svg-maker  {
-    width:840px;
-    margin:100px auto 100px;    
-    position: relative;
+  .visual {
+    max-width:840px;
+    margin:0 auto;        
+    position: relative;;
   }
-  .svg-maker__image img{
+  .visual__image img {
     max-width:100%;
   }
-  .svg-maker{
-     
-  }
-  .svg-maker__svg {
+  .visual__svg {
     position: absolute;
-    width:100%;
-    height:100%;
+    overflow: visible;
     top:0;
+    
   }
 </style> 
-<!-- INITIAL M 225.5,184L 213.5,330L 304.5,330L 389.5,261L 225.5,184 Z -->
-<body class="">
-  <section id = "vue-svg-maker">
-    <div class="svg-maker" ref = "svg-maker" >
-        <div class="svg-maker__image">
-            <img src="/images/svg-layout.png" alt="" width="100%" ref = "image">
-        </div>
-        <div class="svg-maker__svg" v-on="{ mousemove: mouseMove, mousedown:mouseDown}"> 
-            <svg width = "100%" height = "100%" >                
-                 <path v-bind:d = "pathPoints" v-bind:fill = "fill" v-bind:stroke = "constants.COLOR_LINE" stroke-width = "1"/>
-                 <line v-bind:x1 = "lineNext[0][0]" v-bind:y1 = "lineNext[0][1]" v-bind:x2 = "lineNext[1][0]" v-bind:y2 = "lineNext[1][1]" stroke = "violet" stroke-width = "1"></line>            
-                 <circle v-for = "point in points" v-bind:cx = "point[0]" v-bind:cy = "point[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>
-                 <circle  v-show = "!closePath" v-bind:cx = "pointNext[0]" v-bind:cy = "pointNext[1]" v-bind:r = "constants.RADIUS_CIRCLE" v-bind:fill = "constants.COLOR_CIRCLE" ></circle>                 
-            </svg>
-        </div>
-    </div>
-    <input type="hidden" ref = "svg-input" v-model:value = "result" initValue = "M 225.5,184L 213.5,330L 304.5,330L 389.5,261L 225.5,184 Z" >
-  </section>
+
+<body >
+  <div class="visual">
+    <div class="visual__image">
+      <img src="http://localhost:8888/uploads/realty/buildings/svgBackground/e4c7c963dd756f2898c22c6527eda52a.png" alt="">
+    </div>    
+    <svg class="visual__svg" viewBox="0 0 840 1000" preserveAspectRatio="none">
+      <path fill="#195463" d="M 386,273L 387,421L 452,421L 452,274L 386,273 Z"></path>
+    </svg>
+  </div>
  
 </body>
-<script src="./js/svg-maker.js"></script>
 
 </html>

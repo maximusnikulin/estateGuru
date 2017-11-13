@@ -108,12 +108,14 @@ $images = RealtyImage::model()->findAll($criteria);
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($images as $image): ?>
+        <?php foreach ($images as $index=>$image): ?>
             <tr>
                 <td>
-                    <input type="radio" class="js-main" name="is-main" value="<?= $image->id; ?>" data-href="<?= $this->createUrl(
-                        '/backend/realty/realtyImage/check?id='.$image->id); ?>" <?= ($image->isMain) ? 'checked' : ''; ?>>Является основным
-                    <img src="<?= $image->getImageUrl(100, 100); ?>" alt="" class="img-responsive"/>
+                    
+                    <img src="<?= $image->getImageUrl(100, 100); ?>" alt="" class="img-responsive" style = "display: inline-block;margin-right: 20px;"/>
+                    <input type="radio" class="js-main" name="is-main" id = "is-main-<?= $index ?>" value="<?= $image->id; ?>" data-href="<?= $this->createUrl(
+                        '/backend/realty/realtyImage/check?id='.$image->id); ?>" <?= ($image->isMain) ? 'checked' : ''; ?>>
+                    <label for="is-main-<?= $index ?>">Является основным</label>
                 </td>
                 <td class="text-center">
                     <br>
@@ -136,4 +138,7 @@ $images = RealtyImage::model()->findAll($criteria);
     $('.js-main').click(function() {
         $.get($(this).data('href'));
     });
+    if ($('.js-main').length == 1) {
+        $('.js-main').trigger('click')
+    }
 </script>

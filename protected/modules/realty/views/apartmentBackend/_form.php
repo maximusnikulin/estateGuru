@@ -79,7 +79,7 @@
                 ]); ?>
             </div>
         </div>
-        <div class="row">
+        <div class="row ">
             <div class="col-sm-7">
                 <?=  $form->dropDownListGroup($model, 'idBlockSection', [                    
                     'widgetOptions' => [
@@ -115,39 +115,36 @@
             var bsSelect = $("#js-bs");
             var locSelect = $("#js-loc");   
             var locations = locSelect.data('locations');
-            
-            console.log(bsSelect)
-            bsSelect.change(function(e) {                
-                console.log('asdasd')
-                var curVal = $(this).val();
-                locSelect.empty();
-                locations
-                    .filter(function(el, i) {                    
-                        return curVal == el.idBlockSection;
-                    })
-                    .forEach(function(el,i) {                                            
-                        locSelect.append('<option value = "' + el.id + '" ' + (el.id == locSelect.data('value') ? 'selected' : '') + '>' + el.name + '</option>');                        
-                    })
-            }).change();    
-
-            $(window).on('load', function() {
-             
-             locSelect.change(function(e) {
-                var curValue = $(this).val();
-                var imgSrc = null;
-                locations.forEach(function(el) {
-                    if (curValue == el.id) {
-                        imgSrc = el.image
-                    }
-                });                
-                console.log(imgSrc)
-                $('.svg-maker__image img').attr('src', imgSrc);
-             }).change();
+            $(window).on('load', function() {            
+                bsSelect.change(function(e) {                
+                        console.log('asdasd')
+                        var curVal = $(this).val();
+                        locSelect.empty();
+                        locations
+                            .filter(function(el, i) {                    
+                                return curVal == el.idBlockSection;
+                            })
+                            .forEach(function(el,i) {                                            
+                                locSelect.append('<option value = "' + el.id + '" ' + (el.id == locSelect.data('value') ? 'selected' : '') + '>' + el.name + '</option>');                        
+                            });
+                            locSelect.change();                    
+                }).change();                 
+                locSelect.change(function(e) {
+                    var curValue = $(this).val();
+                    var imgSrc = null;
+                    locations.forEach(function(el) {
+                        if (curValue == el.id) {
+                            imgSrc = el.image
+                        }
+                    });                
+                    console.log(imgSrc)
+                    $('.svg-maker__image img').attr('src', imgSrc);
+                }).change();
             });
             
             
         </script>                   
-        <div class="row">
+        <div class="row hidden">
             <div class="col-sm-7">
                 <?=  $form->textFieldGroup($model, 'floor', [
                     'widgetOptions' => [
@@ -160,7 +157,7 @@
                 ]); ?>
             </div>
         </div>
-        <div class="row">
+        <div class="row hidden">
             <div class="col-sm-7">
                 <?=  $form->textFieldGroup($model, 'maxFloor', [
                     'widgetOptions' => [
@@ -272,61 +269,7 @@
             </div>
         </div>
 
-        <!-- <div class="row">
-            <div class="col-sm-7">
-                <?=  $form->textFieldGroup($model, 'seo_title', [
-                    'widgetOptions' => [
-                        'htmlOptions' => [
-                            'class' => 'popover-help',
-                            'data-original-title' => $model->getAttributeLabel('seo_title'),
-                            'data-content' => $model->getAttributeDescription('seo_title')
-                        ]
-                    ]
-                ]); ?>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-7">
-                <?=  $form->textFieldGroup($model, 'seo_description', [
-                    'widgetOptions' => [
-                        'htmlOptions' => [
-                            'class' => 'popover-help',
-                            'data-original-title' => $model->getAttributeLabel('seo_description'),
-                            'data-content' => $model->getAttributeDescription('seo_description')
-                        ]
-                    ]
-                ]); ?>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-7">
-                <?=  $form->textFieldGroup($model, 'seo_keywords', [
-                    'widgetOptions' => [
-                        'htmlOptions' => [
-                            'class' => 'popover-help',
-                            'data-original-title' => $model->getAttributeLabel('seo_keywords'),
-                            'data-content' => $model->getAttributeDescription('seo_keywords')
-                        ]
-                    ]
-                ]); ?>
-            </div>
-        </div> -->
-
-        <!-- <div class="row">
-            <div class="col-sm-7">
-                <?=  $form->textFieldGroup($model, 'number', [
-                    'widgetOptions' => [
-                        'htmlOptions' => [
-                            'class' => 'popover-help',
-                            'data-original-title' => $model->getAttributeLabel('number'),
-                            'data-content' => $model->getAttributeDescription('number')
-                        ]
-                    ]
-                ]); ?>
-            </div>
-        </div> -->
     <style>
             .svg-maker  {
                 width:840px;
@@ -347,7 +290,7 @@
                 top:0;
             }
             </style>             
-       <?php if (!IS_NULL($model->building->getImageUrl())):?>
+       
             <div class="row">
                 <section id = "vue-svg-maker">
                     <div class="svg-maker" ref = "svg-maker" >
@@ -368,7 +311,7 @@
             </div>      
 
             <script type = "text/javascript" src = "/js/svg-maker.js"></script>
-        <?php endif; ?> 
+      
 
 
         <?php $this->widget(

@@ -78,7 +78,9 @@ class Apartment extends yupe\models\YModel
         }
         return $location->name;
     }
-
+    public function getIdFloor() {
+        return $this->idFloor;
+    }
     public function getPriceAsString()
     {
         return number_format($this->cost,0,","," ").'<span class="rubl"> руб.</span>';
@@ -113,7 +115,9 @@ class Apartment extends yupe\models\YModel
 	{
 		return 'apartments';
 	}
-
+    public function getSvgPath() {
+        return $this->svgPoints;
+    }
     public function getSvg()
     {
 
@@ -255,7 +259,9 @@ class Apartment extends yupe\models\YModel
         else
             return $this->floor;
     }
-
+    public function getIdBlockSection() {
+        return $this->idBlockSection;
+    }
     public function getFloorAsString()
     {
         if ($this->maxFloor > 0)

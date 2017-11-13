@@ -149,7 +149,8 @@ class RealtyController extends \yupe\components\controllers\FrontController
 
         $result = array_map(function ($item) {
             $images = $item->getImages();
-            return [
+            
+            $result = [
                 'id' => $item->id,
                 'adres' => $item->building->adres,
                 'idBuilding' => $item->idBuilding,
@@ -157,15 +158,18 @@ class RealtyController extends \yupe\components\controllers\FrontController
                 'longitude' => $item->building->longitude,
                 'url' => $item->getUrl(),
                 'cost' => $item->cost,
-                'floor' => $item->getFloor(),
-                'type' => $item->getStudioAsString(),
-                'deadline' => is_null($item->building->readyTimeObj) ? "Дом сдан" : $item->building->readyTimeObj->text,
+                'floor' => $item->getLocationAsString(),
+                'type' => $item->getStudioAsString(),                
                 'rayon' => $item->building->getRayon()->value,
                 'image' => empty($images) ? '/images/plug.png' : reset($images)->getImageUrl(402, 200),
                 'rooms' => $item->rooms,
                 'size' => $item->size,
                 'isPromo' => $item->getIsPromo()
             ];
+            if ($item->building->status == Building::STATUS_HOME) {
+                $result['deadline'] = is_null($item->building->readyTimeObj) ? "Дом сдан" : $item->building->readyTimeObj->text;
+            }
+            return $result;
         }, $apartments);
         
         echo json_encode($result, JSON_NUMERIC_CHECK);
@@ -208,7 +212,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
         $buildings = Building::model()->findAll($criteria);
         $result = array_map(function ($item) {
             $image = $item->getMainImage();            
-            $status= $item->status;
+            $status= $item->status;            
             $result = [
                 'id' => $item->id,
                 'adres' => $item->adres,

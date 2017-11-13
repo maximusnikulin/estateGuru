@@ -20,7 +20,42 @@ if (!empty($images)) {
 $apartments = $data->apartments;
 
 //die($data->id);
-$type = "building"
+$type = "building";
+$blockSections = $data->getBlockSection()->search()->getData();
+
+$ids = array_map(function($item) {
+    return $item->id;
+}, $blockSections);
+$blocks = [];
+foreach ($blockSections as $item) {
+    $blocks[$item->id] = $item->name;
+}
+$criteria = new CDbCriteria();
+$criteria->addInCondition('idBlockSection', $ids);
+$locations = Location::model()->findAll($criteria);
+$locs = array_map(function($item) {
+    return [
+        'idBlockSection' => $item->idBlockSection, 
+        'name' => $item->name, 
+        'id' => $item->id,
+        'image' => $item->getImageUrl()
+    ];
+}, $locations);
+$apts = [];
+$apts = array_map(function($item) {
+    return array(
+        'idLocation' => $item->getIdFloor(),
+        'svgPath' => $item->getSvgPath(),
+        'floor' => $item->getLocationAsString(),
+        'rooms' => $item->getRoomsAsString(),
+        'link' => $item->getUrl(),
+        'price' => $item->cost,
+        'size' => $item->size
+    );
+},$apartments);
+// var_dump($blocks)
+var_dump($locs)
+// var_dump($apartments)
 ?>
 
 <div class="object">
@@ -115,57 +150,31 @@ $type = "building"
 
     </div>
 </div>
-<section class = "section-search-cards" >
+<!-- <section class = "section-search-cards" >
     <div  id = "vue-search-cards"></div>
-</section>
-<?php if ($data->svgBackground): ?>
-<!-- <section class="section-switcher">
+</section> -->
+
+<section class="section-switcher js-visual-container">
     <h2 class="section-switcher__title">
         Планировки квартир
     </h2>
-    <div class="section-switcher__content">
-        <div class="visual js-visual active" data-number="1">
-            <div class="visual__image-lr">
-                <figure class="image">
-                    <img src="<?= $data->getImageUrl(1000, 1000); ?>" alt="">
-                </figure>
-            </div>
-            <div class="visual__polygons-lr">
-                <?php foreach ($apartments as $apartment): ?>                    
-                    <?= $apartment->getSvg(); ?>                    
-                <?php endforeach; ?>
-            </div>
-            <div class="visual__tooltips-lr">
-                <?php foreach ($apartments as $apartment): ?>
-                    <div class="tooltip hidden" data-id="<?= $apartment->id; ?>">
-                        <div class="tooltip__content">
-                            <p class="row">
-                                Этаж: <?= $apartment->getFloor()?>
-                            </p>
-                            <p class="row">
-                                Комнат: <?= $apartment->rooms; ?>
-                            </p>
-                            <p class="row">
-                                Площадь: <?= $apartment->size; ?> м<sup>2</sup>
-                            </p>
-                            <p class="row">
-                                Цена: <?= number_format($apartment->cost, 0, '', ' '); ?> руб.
-                            </p>
-                            <p class="row">
-                                <a class = "link-to" href = "<?= $apartment->getUrl() ?>"> Перейти </a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+    <div class="section-switcher__tabs">
+        <h2 class = "section-switcher__tabs-title">Выберите блок секцию</h2>
+        <div class = "section-switcher__tabs-content">
+            <ul class="js-visual-tabs">            
+            </ul>        
         </div>
-
-    </div>
+    </div> 
+    <div class="section-switcher__content">
+        <ul class="js-visual-contents">            
+            
+        </ul>        
+    </div>      
     <div class="section-switcher__legend">
         <i class="cube"></i>
         <p class="caption">&nbsp;&nbsp;* Кликните на зеленую область для перехода к квартире</p>
     </div>
 </section>
-<?php endif; ?> -->
 
 <script type = "text/javascript">
     window.settingsFilter = {
@@ -190,6 +199,11 @@ $type = "building"
                 label:"Любой"
             }
         ]
+    }
+    window.visualModel = {        
+        apartments: <?= json_encode($apts )  ?>,
+        blocks: <?= json_encode($blocks)  ?>,
+        locations: <?= json_encode($locs)  ?>
     }
 </script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
