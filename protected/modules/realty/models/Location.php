@@ -67,7 +67,16 @@ class Location extends yupe\models\YModel
     {
         return BlockSection::model()->findByPk($this->idBlockSection);
 	}
-
+	public function getNameAsString() {					
+			if (is_null($this)) {
+				return '';
+			}
+			$parts = explode("-", $this->name);
+			if ($parts[0] == $parts[1]) {
+				return $parts[0];
+			}
+			return $this->name;		
+	}
     public function behaviors()
     {
         return [

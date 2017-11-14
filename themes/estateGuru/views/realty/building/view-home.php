@@ -41,9 +41,9 @@ $locations = Location::model()->findAll($criteria);
 $locs = array_map(function($item) {
     return [
         'idBlockSection' => $item->idBlockSection, 
-        'name' => $item->name, 
+        'name' => $item->getNameAsString(), 
         'id' => $item->id,
-        'image' => $item->getImageUrl()
+        'image' => $item->getImageUrl()        
     ];
 }, $locations);
 $apts = [];
@@ -52,10 +52,10 @@ $apts = array_map(function($item) {
         'idLocation' => $item->getIdFloor(),
         'svgPath' => $item->getSvgPath(),
         'floor' => $item->getLocationAsString(),
-        'rooms' => $item->getRoomsAsString(),
+        'rooms' => $item->rooms,
         'link' => $item->getUrl(),
-        'price' => $item->cost,
-        'size' => $item->size
+        'price' => $item->getPriceAsString(),
+        'size' => $item->getSizeAsString()
     );
 },$apartments);
 // var_dump($blocks)

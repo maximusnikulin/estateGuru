@@ -111,7 +111,9 @@ class Apartment extends yupe\models\YModel
     {
         return Apartment::getRoomsArray()[$this->rooms];
     }
-
+    public function getSizeAsString() {
+        return $this->size." м²";
+    }
     /**
 	 * @return string the associated database table name
 	 */
