@@ -1770,7 +1770,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       font: 400 13px/21px "Roboto";
       color: #606060; }
   .card-estate__more, .section-search .placemark__balloon .card-map__more, .section-search .cluster__baloon .card-map__more {
-    padding: 0px 20px 10px; }
+    padding: 0px 20px 10px;
+    margin-top: auto; }
     .card-estate__more .row, .section-search .placemark__balloon .card-map__more .row, .section-search .cluster__baloon .card-map__more .row {
       color: #606060;
       display: -ms-flexbox;
@@ -1795,8 +1796,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
         justify-content: space-between;
     border-top: 1px solid #e8e6e6;
     padding: 10px 20px 10px;
-    width: 100%;
-    margin-top: auto; }
+    width: 100%; }
     .card-estate__info .cell, .section-search .placemark__balloon .card-map__info .cell, .section-search .cluster__baloon .card-map__info .cell {
       max-width: 80px;
       display: -ms-flexbox;
