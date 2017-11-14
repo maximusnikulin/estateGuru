@@ -19,6 +19,11 @@ if (!empty($images)) {
 }
 $apartments = $data->apartments;
 
+function filterAdress($adr) {
+    return preg_replace('/<\/br>/', ",&nbsp", $adr);
+}
+
+$adr = filterAdress($data->adres);
 //die($data->id);
 $type = "building";
 $blockSections = $data->getBlockSection()->search()->getData();
@@ -54,7 +59,7 @@ $apts = array_map(function($item) {
     );
 },$apartments);
 // var_dump($blocks)
-var_dump($locs)
+// var_dump($locs)
 // var_dump($apartments)
 ?>
 
@@ -89,7 +94,7 @@ var_dump($locs)
                 <?php if (!empty($data->adres)): ?>
                 <div class="row">
                     <div class="row__cell">Адрес</div>
-                    <div class="row__cell row__cell--right"><?= $data->adres; ?></div>
+                    <div class="row__cell row__cell--right"><?= $adr ?></div>
                 </div>
                 <?php endif; ?>
 
@@ -150,9 +155,9 @@ var_dump($locs)
 
     </div>
 </div>
-<!-- <section class = "section-search-cards" >
+<section class = "section-search-cards" >
     <div  id = "vue-search-cards"></div>
-</section> -->
+</section>
 
 <section class="section-switcher js-visual-container">
     <h2 class="section-switcher__title">
@@ -180,12 +185,12 @@ var_dump($locs)
     window.settingsFilter = {
         typeEstate: "<?= $type ?>",
         cost: [
-            <?=Yii::app()->realty->getMinimumAvailableCost($type); ?>,
-            <?=Yii::app()->request->getParam("maximalCost", Yii::app()->realty->getMaximumAvailableCost($type)); ?>
+            <?=Yii::app()->realty->getMinimumAvailableCost("apartments"); ?>,
+            <?=Yii::app()->request->getParam("maximalCost", Yii::app()->realty->getMaximumAvailableCost("apartments")); ?>
         ],
         size: [
-            <?=Yii::app()->request->getParam("minimalSize", Yii::app()->realty->getMinimumAvailableSize($type)); ?>,
-            <?=Yii::app()->request->getParam("maximalSize", Yii::app()->realty->getMaximumAvailableSize($type)); ?>
+            <?=Yii::app()->request->getParam("minimalSize", Yii::app()->realty->getMinimumAvailableSize("apartments")); ?>,
+            <?=Yii::app()->request->getParam("maximalSize", Yii::app()->realty->getMaximumAvailableSize("apartments")); ?>
         ],
         building:[
             {

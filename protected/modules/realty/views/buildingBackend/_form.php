@@ -382,7 +382,7 @@
             ]); ?>
         </div>
     </div>
-    <div class="row">
+    <div class="row js-item js-item-home">
         <div class="col-sm-12" <?= $model->hasErrors('shortDescription') ? 'has-error' : ''; ?>">
         <?= $form->labelEx($model, 'shortDescription'); ?>
         <?php $this->widget(
@@ -576,7 +576,12 @@
         ); ?>
     <?php endif; ?>
 </div>
-<div class="tab-pane" id="images">
+<style>
+    .no-captions .row-for-caption{         
+            display:none !important;
+        }    
+</style>
+<div class="tab-pane no-captions" id="images">
     <?php if ($model->isNewRecord):?>
         <h2>Сначала сохраните основную информацию об объекте недвижимости</h2>
     <?php else:?>
@@ -584,11 +589,13 @@
         $imageModel = new RealtyImage();
         $imageModel->idTable = RealtyImage::$TABLE_BUILDING;
         $imageModel->idRecord = $model->id;
-        $this->renderPartial("/realtyImageBackend/_form",["model" => $imageModel]);
+        $this->renderPartial("/realtyImageBackend/_form",[
+                "model" => $imageModel               
+        ]);
         ?>
     <?php endif; ?>
 </div>
-<div class="tab-pane" id="planning">
+<div class="tab-pane no-main" id="planning ">
     <?php if ($model->isNewRecord):?>
         <h2>Сначала сохраните основную информацию об объекте недвижимости</h2>
     <?php else:?>
@@ -596,7 +603,10 @@
         $imageModel = new RealtyImage();
         $imageModel->idTable = RealtyImage::$TABLE_BUILDING_PLANNING;
         $imageModel->idRecord = $model->id;
-        $this->renderPartial("/realtyImageBackend/_form",["model" => $imageModel]);
+        $this->renderPartial("/realtyImageBackend/_form",[
+                "model" => $imageModel,
+                "nomain" => true
+        ]);
         ?>
     <?php endif; ?>
 </div>

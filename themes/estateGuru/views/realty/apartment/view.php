@@ -15,7 +15,11 @@ if (!empty($images)) {
     $mainImage = false;
 };
  $isNewAppartment = $data->building->getStatusAsString() !== "Вторичная продажа";
- 
+ function filterAdress($adr) {
+    return preg_replace('/<\/br>/', ",&nbsp", $adr);
+ }
+
+    $adr = filterAdress($data->building->adres);
 ?>
 
 
@@ -55,15 +59,15 @@ if (!empty($images)) {
                 <?php if (!empty($data->building->adres)): ?>
                     <div class="row">
                         <div class="row__cell">Адрес</div>
-                        <div class="row__cell row__cell--right"><?= $data->building->adres; ?></div>
+                        <div class="row__cell row__cell--right"><?= $adr ?></div>
                     </div>
                 <?php endif; ?>
-                <?php if (!empty($data->floor)): ?>
+                <?php if (!empty($data->getLocationAsString())): ?>
                     <div class="row">
                         <div class="row__cell">Этаж</div>
-                        <div class="row__cell row__cell--right"><?= $data->floor; ?></div>
+                        <div class="row__cell row__cell--right"><?= $data->getLocationAsString(); ?></div>
                     </div>
-                <?php endif; ?>
+                <?php endif; ?>                
                 <?php if (!empty($data->size)): ?>
                     <div class="row">
                         <div class="row__cell">Площадь</div>
@@ -71,15 +75,7 @@ if (!empty($images)) {
                     </div>
                 <?php endif; ?>
             </div>
-            <!-- <h2 class="object__desc-title">Дополнительная информация</h2>
-            <div class="object__desc-common">
-                <?php if (!empty($data->building->rayon)): ?>
-                    <div class="row">
-                        <div class="row__cell">Район</div>
-                        <div class="row__cell row__cell--right"><?= $data->building->getRayon()->value; ?></div>
-                    </div>
-                <?php endif; ?>
-            </div> -->
+            <!-- <h2 class="object__desc-title">Дополнительная информация</h2> -->            
             <div class="object__desc-on-map" data-geo = 
                 "<?=$data->building->latitude . ',' . $data->building->longitude;?>">
             </div>            
@@ -94,7 +90,7 @@ if (!empty($images)) {
             </article>
             <div class="object__desc-concl">
                 <div class="price">
-                    <span class="caption">Цена </span> <span class = "value"><?= number_format($data->cost, 0, ".", " "); ?> &#8381;</span>
+                    <span class="caption">Цена от</span> <span class = "value"><?= number_format($data->cost, 0, ".", " "); ?> &#8381;</span>
                     <span class = 'warning'>* - об актуальных ценах уточняйте по <span class = "inner-link js-callback">телефону</span></span>
                 </div>
                 <div class="callback">
@@ -123,7 +119,7 @@ if (!empty($images)) {
                         <img src="<?= $location->getImageUrl(); ?>" alt=""/>
                     </figure>
                     <div class="visual__content-svgs">                                                                        
-                        <svg>
+                        <svg class = "freeze">
                             <path d= "<?= $data->getSvgPath()?>"/>
                         </svg>
                     </div>                

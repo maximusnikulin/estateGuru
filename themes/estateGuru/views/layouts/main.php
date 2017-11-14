@@ -128,10 +128,12 @@
         <li class="link"><a href="/search/cards/earth">Земельные участки</a></li>        
         <li class="link"><a href="/search/cards/cottage">Коттеджи</a></li>
         <li class="link"><a href="javascript:;" class="button button--callback js-callback">Обратный звонок</a></li>  
-</ul>  
-        
+  </ul>
+    <p class="footer__content-warning">
+    Данный cайт носит исключительно информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями статьи 437(2) Гражданского кодекса Российской Федерации. Полную информацию о ценах и площадях можно получить в отделе продаж.
+    </p>
 </div>
-    </footer>
+</footer>
   </div>
 </body>
 </html>

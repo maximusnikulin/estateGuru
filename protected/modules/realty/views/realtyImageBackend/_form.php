@@ -12,6 +12,7 @@
  *   @var $form TbActiveForm
  *   @var $this RealtyImageBackendController
  **/
+
 $form = $this->beginWidget(
     'bootstrap.widgets.TbActiveForm', [
         'action' => $this->createUrl("/backend/realty/realtyImage/create"),
@@ -26,7 +27,7 @@ $form = $this->beginWidget(
      <?=  $form->hiddenField($model, 'idRecord') ;?>
      <?=  $form->hiddenField($model, 'idTable'); ?>
 
-    <div class="row">
+    <div class="row row-for-caption">
         <div class="col-sm-7">
             <?=  $form->textFieldGroup($model, 'label', [
                 'widgetOptions' => [
@@ -57,7 +58,7 @@ $form = $this->beginWidget(
                     ]
                 ); ?>
             </div>
-
+            
             <?php if (!$model->getIsNewRecord() && $model->path): ?>
                 <div class="checkbox">
                     <label>
@@ -113,9 +114,9 @@ $images = RealtyImage::model()->findAll($criteria);
                 <td>
                     
                     <img src="<?= $image->getImageUrl(100, 100); ?>" alt="" class="img-responsive" style = "display: inline-block;margin-right: 20px;"/>
-                    <input type="radio" class="js-main" name="is-main" id = "is-main-<?= $index ?>" value="<?= $image->id; ?>" data-href="<?= $this->createUrl(
+                    <input type="radio" class="js-main row-for-main" name="is-main" id = "is-main-<?= $index ?>" value="<?= $image->id; ?>" data-href="<?= $this->createUrl(
                         '/backend/realty/realtyImage/check?id='.$image->id); ?>" <?= ($image->isMain) ? 'checked' : ''; ?>>
-                    <label for="is-main-<?= $index ?>">Является основным</label>
+                    <label class = "row-for-main" for="is-main-<?= $index ?>">Является основным</label>
                 </td>
                 <td class="text-center">
                     <br>

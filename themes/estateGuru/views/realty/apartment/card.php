@@ -50,12 +50,17 @@ if (!empty($images)) {
                     <div class="row__val"><?= $item->building->builder->name; ?></div>
                 </div>
             <?php endif;?>
-            <!-- <?php if ($item->building->status != Building::STATUS_SECOND) :?> -->
+            <?php if ($item->building->status != Building::STATUS_SECOND) :?> 
                 <div class="row">
                     <div class="row__name">Срок сдачи</div>
                     <div class="row__val"><?= $item->building->readyTimeObj->text; ?></div>
                 </div>
-            <!-- <?php endif;?> -->
+            <?php endif;?>                               
+                <div class="row">
+                    <div class="row__name">Тип стен</div>
+                    <div class="row__val"><?= $item->building->getWallsType()->value ?></div>
+                </div>
+            
         </div>
         <div class="card-estate__info">
             <div class="cell">

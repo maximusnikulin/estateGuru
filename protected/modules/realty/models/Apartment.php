@@ -72,9 +72,13 @@ class Apartment extends yupe\models\YModel
     }
 
     public function getLocationAsString() {
-        $location = Location::model()->findByPk($this->idFloor);
+        $location = Location::model()->findByPk($this->idFloor);        
         if (is_null($location)) {
             return '';
+        }
+        $parts = explode("-", $location->name);
+        if ($parts[0] == $parts[1]) {
+            return $parts[0];
         }
         return $location->name;
     }
