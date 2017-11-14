@@ -35,11 +35,12 @@ class VisualView {
                 var location = model[keyBS][keyLOC];
                 let $blockSliderItem = $(`
                     <div class = "js-slider-visual__item">
+                        <div class= "visual__title">
+                            <h2 class = "visual__title-main">Этажность</h2>
+                            <span class = "visual__title-caption">${keyLOC}</span>
+                        </div>
                         <div class="visual">                            
-                            <div class= "visual__title">
-                                <h2 class = "visual__title-main">Этажность</h2>
-                                <span class = "visual__title-caption">${keyLOC}</span>
-                            </div>
+                            
                             <div class="visual__content">
                                 <figure class="visual__content-image">                                                                        
                                     <img src="${location.image}" alt=""/>

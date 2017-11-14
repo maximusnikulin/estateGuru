@@ -14,6 +14,7 @@ if (!empty($images)) {
 } else {
     $mainImage = false;
 };
+
  $isNewAppartment = $data->building->getStatusAsString() !== "Вторичная продажа";
  function filterAdress($adr) {
     return preg_replace('/<\/br>/', ",&nbsp", $adr);
@@ -67,15 +68,29 @@ if (!empty($images)) {
                         <div class="row__cell">Этаж</div>
                         <div class="row__cell row__cell--right"><?= $data->getLocationAsString(); ?></div>
                     </div>
-                <?php endif; ?>                
+                <?php endif; ?>  
                 <?php if (!empty($data->size)): ?>
+                        <div class="row">
+                            <div class="row__cell">Площадь</div>
+                            <div class="row__cell row__cell--right"><?= rtrim(rtrim($data->size, 0), '.'); ?> м²</div>
+                        </div>
+                <?php endif; ?>                          
+            </div>
+            <h2 class="object__desc-title">Дополнительная информация</h2>            
+            <div class="object__desc-common">               
+                <?php if (!empty($data->squareKitchen)): ?>
+                        <div class="row">
+                            <div class="row__cell">Площадь Кухни</div>
+                            <div class="row__cell row__cell--right"><?= rtrim(rtrim($data->squareKitchen, 0), '.'); ?> м²</div>
+                        </div>
+                    <?php endif; ?>
+                <?php if (!empty($data->squareLive)): ?>
                     <div class="row">
-                        <div class="row__cell">Площадь</div>
-                        <div class="row__cell row__cell--right"><?= rtrim(rtrim($data->size, 0), '.'); ?> м²</div>
+                        <div class="row__cell">Площадь жилая</div>
+                        <div class="row__cell row__cell--right"><?= rtrim(rtrim($data->squareLive, 0), '.'); ?> м²</div>
                     </div>
                 <?php endif; ?>
-            </div>
-            <!-- <h2 class="object__desc-title">Дополнительная информация</h2> -->            
+                </div>
             <div class="object__desc-on-map" data-geo = 
                 "<?=$data->building->latitude . ',' . $data->building->longitude;?>">
             </div>            
@@ -109,7 +124,7 @@ if (!empty($images)) {
     $location = Location::model()->findAll($criteria)[0];        
 ?>
 
-<?php if (!is_null($location->getImageUrl())): ?>
+<?php if (!is_null($location)): ?>
 <section class = "section-switcher">   
     <div class="section-switcher__title">Положение на этаже</div>
     <div class = "section-switcher__content">
