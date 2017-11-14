@@ -203,6 +203,32 @@
 
         <div class="row">
             <div class="col-sm-7">
+                <?=  $form->textFieldGroup($model, 'squareLive', [
+                    'widgetOptions' => [
+                        'htmlOptions' => [
+                            'class' => 'popover-help',
+                            'data-original-title' => $model->getAttributeLabel('squareLive'),
+                            'data-content' => $model->getAttributeDescription('squareLive')
+                        ]
+                    ]
+                ]); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7">
+                <?=  $form->textFieldGroup($model, 'squareKitchen', [
+                    'widgetOptions' => [
+                        'htmlOptions' => [
+                            'class' => 'popover-help',
+                            'data-original-title' => $model->getAttributeLabel('squareKitchen'),
+                            'data-content' => $model->getAttributeDescription('squareKitchen')
+                        ]
+                    ]
+                ]); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7">
                 <?=  $form->textFieldGroup($model, 'rooms', [
                     'widgetOptions' => [
                         'htmlOptions' => [

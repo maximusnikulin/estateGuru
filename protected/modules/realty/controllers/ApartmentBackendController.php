@@ -53,7 +53,7 @@ class ApartmentBackendController extends \yupe\components\controllers\BackContro
 
     public function rightRedirect($model)
     {
-        if (Yii::app()->getRequest()->getPost("submit-type") !== null)
+        if (Yii::app()->getRequest()->getPost("submit-type") == null)
             $this->redirect(
                 $this->createUrl("/backend/realty/building/update?id=".$model->idBuilding)
             );

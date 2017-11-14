@@ -21,6 +21,8 @@
  * @property bool   $showOnIndex
  * @property bool   $isStudio
  * @property bool   $isPromo
+ * @property integer $squareLive
+ * @property integer $squareKitchen
 
  * @property string $seo_title
  * @property string $seo_description
@@ -146,14 +148,14 @@ class Apartment extends yupe\models\YModel
 		// will receive user inputs.
 		return array(
 			array('idBlockSection, idFloor, idBuilding, maxFloor, floor, rooms, cost', 'numerical', 'integerOnly'=>true),
-            array('image', 'length', 'max'=>200),
+            array('squareLive, squareKitchen, image', 'length', 'max'=>200),
             array('seo_title', 'length', 'max'=>100),
             array('seo_description, seo_keywords', 'length', 'max'=>300),
             array('size, isStudio, seo_title, seo_description, seo_keywords','safe'),
-            array('isPromo, showOnIndex, svgPoints, shortDescription, longDescription', 'safe'),
+            array('squareLive, squareKitchen, isPromo, showOnIndex, svgPoints, shortDescription, longDescription', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idBlockSection, idFloor, isPromo, isStudio, showOnIndex, svgPoints, image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
+			array('squareLive, squareKitchen, idBlockSection, idFloor, isPromo, isStudio, showOnIndex, svgPoints, image, maxFloor, id, idBuilding, floor, rooms, size, cost, shortDescription, longDescription', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -194,6 +196,8 @@ class Apartment extends yupe\models\YModel
             'seo_keywords' => 'Keywords',
             'isStudio' => 'Является студией',
             'isPromo' => 'Акция',
+            'squareLive' => 'Жилая площадь',
+            'squareKitchen' => 'Площадь кухни',
 		);
 	}
 
