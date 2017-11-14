@@ -73,10 +73,10 @@ class VisualView {
                                     Комнат: ${apart.rooms}
                                 </p>
                                 <p class="row">
-                                    Площадь: ${apart.size}
+                                    Площадь от : ${apart.size}
                                 </p>
                                 <p class="row">
-                                    Цена: ${apart.price} руб.
+                                    Цена от: ${apart.price} 
                                 </p>
                                 <p class="row">
                                     <a class = "link-to" href = "${apart.link}"> Перейти </a>
