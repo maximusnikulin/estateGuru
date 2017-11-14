@@ -54,13 +54,18 @@ class Location extends yupe\models\YModel
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'name' => 'Name',
-			'minFloor' => 'Min Floor',
-			'maxFloor' => 'Max Floor',
-			'idBlockSection' => 'Id Block Section',
-			'image' => 'Image',
+			'id' => 'Код',
+			'name' => 'Наименование',
+			'minFloor' => 'Начальный этаж',
+			'maxFloor' => 'Конечный этаж',
+			'idBlockSection' => 'Блок-секция',
+			'image' => 'Изображение',
 		);
+	}
+
+    public function getBlockSection()
+    {
+        return BlockSection::model()->findByPk($this->idBlockSection);
 	}
 
     public function behaviors()

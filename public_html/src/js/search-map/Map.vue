@@ -15,8 +15,7 @@
         name: 'root',
         props:['typeEstate'],
         created: function () {
-
-            this.getData(null, ymaps.ready(this.initMap));
+            ymaps.ready(() => this.getData(null, this.initMap))            
             bus.$on('CHANGE_FILTER', function(query) {
                 this.getData(query, this.updatePlacemarks);
             }.bind(this))
@@ -25,8 +24,7 @@
         methods: {
             getData:function(query, callback){
                 var API_BASE = basesAPI[this.$props.typeEstate];
-                var url = `${API_HOST}${API_BASE}` + (query || '');
-                console.log(url)
+                var url = `${API_HOST}${API_BASE}` + (query || '');                
                 fetch(url)
                     .then(res => res.json())
                     .then(res => {
@@ -80,7 +78,7 @@
                 });
                 this.objects.forEach((el,index,arr) => {
                     geoCluster.add(new ymaps.Placemark(
-                        [el.longitude, el.latitude],
+                        [el.latitude, el.longitude],
                         {
                             clusterCaption: formatPrice(el.cost),                            
                             cost: el.cost,

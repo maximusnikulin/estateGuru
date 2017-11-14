@@ -2041,30 +2041,30 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       font: 12px/21px "Roboto";
       color: #959595; }
 
-.card-news--full .card-news__head {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; }
-
-.card-news--full .card-news__name {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  padding: 20px 30px; }
-  .card-news--full .card-news__name .title {
-    color: #fff;
-    font: bold 24px/24px 'Open Sans';
-    max-width: 315px; }
-  .card-news--full .card-news__name .preview {
-    color: #fff; }
-
-.card-news--full .card-news__info {
-  position: absolute;
-  padding: 20px 30px; }
-  .card-news--full .card-news__info .date {
-    color: #fff; }
+.card-news--full {
+  min-height: 400px; }
+  .card-news--full .card-news__head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+  .card-news--full .card-news__name {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    padding: 20px 30px; }
+    .card-news--full .card-news__name .title {
+      color: #fff;
+      font: bold 24px/24px 'Open Sans';
+      max-width: 315px; }
+    .card-news--full .card-news__name .preview {
+      color: #fff; }
+  .card-news--full .card-news__info {
+    position: absolute;
+    padding: 20px 30px; }
+    .card-news--full .card-news__info .date {
+      color: #fff; }
 
 .slider-logos {
   display: none; }
@@ -2115,7 +2115,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   margin-top: auto; }
   .footer__content {
     padding-top: 120px;
-    padding-bottom: 120px; }
+    padding-bottom: 10px; }
     @media (max-width: 768px) {
       .footer__content {
         padding-bottom: 70px;
@@ -2136,6 +2136,13 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     @media (max-width: 768px) {
       .footer__content-list {
         max-height: 300px; } }
+  .footer__content-warning {
+    margin-top: 40px;
+    font: 10px/14px "Open Sans";
+    color: #606060;
+    max-width: 80%;
+    text-align: center;
+    margin: 80px auto 20px; }
   .footer__content-logo {
     margin-bottom: 30px; }
   .footer .phone {
@@ -2324,7 +2331,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
           color: black;
           display: inline-block;
           vertical-align: top;
-          display: block; }
+          display: block;
+          margin-bottom: 16px; }
         .object__desc-concl .price .warning {
           font: 10px/12px 'Open Sans';
           color: black;
@@ -2366,6 +2374,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       top: 0;
       left: 0;
       pointer-events: none; }
+      .visual__content-svgs svg.freeze path {
+        fill: rgba(49, 187, 29, 0.5);
+        pointer-events: none; }
       .visual__content-svgs svg path {
         pointer-events: all;
         cursor: pointer;

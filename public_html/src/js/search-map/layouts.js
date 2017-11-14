@@ -10,7 +10,7 @@ export const PM_BALOON_LT = `<div class="placemark__balloon" >
                                   </div>                  
                                 </div>
                                 <div class="card-map__name">
-                                  <h2 class="address">{{properties.adres}}</h2>                                  
+                                  <h2 class="address">$[properties.adres]</h2>                                  
                                 </div> 
                                 <div class="card-map__more">
                                   <div class="row">

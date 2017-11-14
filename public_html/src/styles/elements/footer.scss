@@ -6,7 +6,7 @@
         @extend .container;
         // display:flex;   
        padding-top:120px;
-       padding-bottom:120px;
+       padding-bottom:10px;
         // position: relative; 
         // column-count: 4;
         // column-width: 200px;
@@ -31,6 +31,14 @@
             max-height:300px;
         }
 
+    }
+    &__content-warning {
+        margin-top: 40px;
+        font: 10px/14px "Open Sans";
+        color: #606060;
+        max-width: 80%;
+        text-align: center;
+        margin: 80px auto 20px;
     }
     &__content-logo {
         margin-bottom:30px;

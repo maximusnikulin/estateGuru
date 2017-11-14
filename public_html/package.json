@@ -41,6 +41,7 @@
     "gulp-svg-sprite": "^1.2.19",
     "gulp-util": "^3.0.7",
     "gulplog": "^1.0.0",
+    "ismobilejs": "^0.4.1",
     "jquery": "^3.1.1",
     "postcss-assets": "^4.1.0",
     "postcss-flexbugs-fixes": "^2.0.0",

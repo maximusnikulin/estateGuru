@@ -46,7 +46,8 @@
        }
     }
 }
-.card-news--full {
+.card-news--full {   
+    min-height:400px; 
     .card-news {
         &__head {
             position: absolute;

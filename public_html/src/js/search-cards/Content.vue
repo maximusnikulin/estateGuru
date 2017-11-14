@@ -26,21 +26,21 @@
                     </ul>
                 </div>
                 <div class="card-estate__name">
-                    <h2 class="address">{{item.adres}}</h2>
+                    <h2 class="address" v-html = "item.adres"></h2>
 
                 </div>
-                <div class="card-estate__more">
-                    <div class="row">
-                        <div class="row__name">Тип</div>
-                        <div class="row__val">{{item.type}}</div>
-                    </div>
+                <div class="card-estate__more">                 
                     <div class="row">
                         <div class="row__name">Район</div>
                         <div class="row__val">{{item.rayon}}</div>
                     </div>
+                    <div class="row" v-show = "item.walls">
+                        <div class="row__name">Тип стен</div>
+                        <div class="row__val">{{item.walls}}</div>
+                    </div>
                     <div class="row" v-show = "item.builder">
                         <div class="row__name">Застройщик</div>
-                        <div class="row__val">ПСК</div>
+                        <div class="row__val">{item.builder}</div>
                     </div>
                     <div class="row" v-show = "item.deadline">
                         <div class="row__name">Срок сдачи</div>

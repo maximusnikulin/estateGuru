@@ -106,6 +106,14 @@ class VisualView {
                     $tooltips.addClass("hidden")
                 }
             })
+            .on("click", function(e) {
+                if (window.innerWidth < 1024) {
+                    if (e.target.nodeName == "path") { 
+                        console.log('asdasd')                     
+                        e.preventDefault();
+                    }
+                }
+            })
         return this;
     }
     renderLayouts(state) {
