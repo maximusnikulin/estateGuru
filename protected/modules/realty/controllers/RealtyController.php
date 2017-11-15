@@ -254,7 +254,7 @@ class RealtyController extends \yupe\components\controllers\FrontController
         if ($model == null || !$model->isPublished || $model->status == Building::STATUS_SECOND) {
             throw new CHttpException(404, 'К сожалению, данные об этом доме были удалены с сайта. Но у нас есть много других отличных предложений');
         }
-        $seoTemplate = Yii::app()->getModule('realty')->getSeoTemplateForBuilding($model);
+        $seoTemplate = Yii::app()->getModule('realty')->getSeoTemplateForBuilding($model);        
         $this->title = $model->getTitle($seoTemplate);
         $this->description = strip_tags($model->longDescription);
         $this->render("/building/view",["data" => $model]);

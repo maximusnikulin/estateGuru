@@ -8,6 +8,7 @@ $title = $data->adres;
 // }
 
 // $this->title = [$data->seo_title, Yii::app()->getModule('yupe')->siteName];
+var_dump($data);
 $this->description = $data->seo_description;
 $this->keywords = $data->seo_keywords;
 

@@ -93,7 +93,7 @@
             <label for="email" class="section-subscribe__message">Вы успешно подписались на рассылку акций и спецпредложений от Estate Guru.</br> Спасибо за подписку!</label>
             <form class="section-subscribe__form-group">
               <input class="input" type="text" placeholder="Укажите ваш e-mail" id="email">
-              <button class="button button--action" type="text">Подписаться</button>
+              <button class="button button--subscribe" type="text">Подписаться</button>
             </form>
             <ul class="section-subscribe__social">
               <li class="vk"><a href="#"></a></li>
