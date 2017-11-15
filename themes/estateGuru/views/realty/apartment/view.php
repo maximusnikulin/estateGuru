@@ -20,7 +20,7 @@ if (!empty($images)) {
     return preg_replace('/<\/br>/', ",&nbsp", $adr);
  }
 
-    $adr = filterAdress($data->building->adres);
+$adr = filterAdress($data->building->adres);    
 ?>
 
 
