@@ -77,14 +77,15 @@ $adr = filterAdress($data->building->adres);
                 <?php endif; ?>                          
             </div>
             <h2 class="object__desc-title">Дополнительная информация</h2>            
-            <div class="object__desc-common">               
-                <?php if (!empty($data->squareKitchen)): ?>
+            <div class="object__desc-common">       
+            
+                <?php if ($data->squareKitchen !== '0.00'): ?>
                         <div class="row">
                             <div class="row__cell">Площадь Кухни</div>
                             <div class="row__cell row__cell--right"><?= rtrim(rtrim($data->squareKitchen, 0), '.'); ?> м²</div>
                         </div>
                     <?php endif; ?>
-                <?php if (!empty($data->squareLive)): ?>
+                <?php if ($data->squareLive !== '0.00'): ?>
                     <div class="row">
                         <div class="row__cell">Площадь жилая</div>
                         <div class="row__cell row__cell--right"><?= rtrim(rtrim($data->squareLive, 0), '.'); ?> м²</div>
