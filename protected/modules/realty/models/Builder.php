@@ -88,7 +88,9 @@ class Builder extends \yupe\models\YModel
                 'class' => 'yupe\components\behaviors\ImageUploadBehavior',
                 'attributeName' => 'image',
                 'uploadPath' => 'realty/builders/',
-                'resizeOnUpload' => true,
+                'resizeOnUpload' => false,
+                'types' => 'jpg, jpeg, png, gif, svg',
+
                 'resizeOptions' => [
                     'maxWidth' => 700,
                     'maxHeight' => 700,
