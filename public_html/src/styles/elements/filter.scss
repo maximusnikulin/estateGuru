@@ -126,5 +126,10 @@
   .multiselect__option--highlight{
     background: #f48220;
   }
-
+  .multiselect--disabled {
+    background: transparent;
+    .multiselect__select {
+      background:transparent
+    }
+  }
 }

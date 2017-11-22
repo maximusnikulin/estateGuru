@@ -35,7 +35,7 @@
                 </div>
                 <div class="filter__group-input">
                     <vue-select
-                            ref = "building"
+                            ref = "select-building"
                             placeholder="Найти"
                             open-direction="below"
                             @input="(value) => onInput(value, 'building')"
@@ -46,6 +46,7 @@
                             :track-by="id"
                             :value="selectedValueBuilding"
                             :custom-label = "customLabel"
+                            :disabled = "this.disableBuildings"
                     ></vue-select>
                 </div>
             </div>
@@ -200,6 +201,7 @@
                 open: false,
                 sticky: false,
                 settings: window.settingsFilter,
+                disableBuildings:false,
                 values: {
                     cost: window.settingsFilter.cost,
                     size: window.settingsFilter.size,
@@ -259,6 +261,7 @@
                 return this.settings.building.find(o => o.id == this.values.building)
             },
             computedOptions: function() {                     
+                
                 if (this.values.rayon == "") {
                     return [ { id: "", label: "Любой" }, ...this.settings.building];
                 }
@@ -267,11 +270,13 @@
                 });                
                 if (result.length == 0) {
                     this.values.building = null;
+                    this.disableBuildings = true;
                 } else {
                     if (result.length > 1){
                         result.unshift({id:"", label:"Любой"});                  
                     } 
                     this.values.building = result[0].id;
+                    this.disableBuildings =false;
                 }
                 return result                
             }

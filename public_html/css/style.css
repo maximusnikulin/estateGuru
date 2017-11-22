@@ -3080,6 +3080,11 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .filter .multiselect__option--highlight {
   background: #f48220; }
 
+.filter .multiselect--disabled {
+  background: transparent; }
+  .filter .multiselect--disabled .multiselect__select {
+    background: transparent; }
+
 .checkbox {
   display: block;
   width: auto;
