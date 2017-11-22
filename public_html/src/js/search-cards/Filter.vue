@@ -26,7 +26,7 @@
                     ></vue-select>
                 </div>
             </div>
-            <div class="filter__group" v-show = "typeEstate == 'apartments'">
+            <div class="filter__group" v-if = "typeEstate == 'apartments'">
                 <div class="filter__group-label">
                     <h2 class="title">Объект</h2>
                     <p class="caption">
@@ -259,7 +259,6 @@
                 return this.settings.building.find(o => o.id == this.values.building)
             },
             computedOptions: function() {                     
-
                 if (this.values.rayon == "") {
                     return [ { id: "", label: "Любой" }, ...this.settings.building];
                 }
