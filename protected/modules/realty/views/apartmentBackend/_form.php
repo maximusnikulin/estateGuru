@@ -12,7 +12,9 @@
  *   @var $form TbActiveForm
  *   @var $this ApartmentBackendController
  **/
+    
 ?>
+
 <ul class="nav nav-tabs">
     <li class="active"><a href="#common" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Common"); ?></a></li>
     <li><a href="#images" data-toggle="tab"><?= Yii::t("RealtyModule.realty", "Images"); ?></a></li>
@@ -317,8 +319,8 @@
             }
             </style>             
        
-            <div class="row">
-                <section id = "vue-svg-maker">
+            <div class="row <?= $model->building->status == Building::STATUS_HOME ? "" : "hidden"?>">
+                <section id = "vue-svg-maker ">
                     <div class="svg-maker" ref = "svg-maker" >
                         <div class="svg-maker__image">
                             <img src="#" alt="" width="100%" ref = "image">

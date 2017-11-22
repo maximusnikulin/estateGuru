@@ -11,6 +11,7 @@ if (document.getElementById('vue-svg-maker')) {
         el: '#vue-svg-maker',           
         data: {
                 points:[],
+                mouseIsOver:false,
                 widthMaker:null,
                 currentPos:[],
                 fill: "transparent",
@@ -29,8 +30,21 @@ if (document.getElementById('vue-svg-maker')) {
                 this.widthMaker = this.$refs['svg-maker'].offsetWidth;    
                 this.heightMaker = this.$refs['svg-maker'].offsetHeight;
             }.bind(this));
-            window.addEventListener('keypress', function(e){
-                if(e.charCode == 32) {       
+            let container = document.getElementById("vue-svg-maker")
+            container.addEventListener('mouseenter', () => {
+                console.log('enter');
+                this.mouseIsOver = true;
+            })
+            container.addEventListener('mouseleave', () => {
+                console.log('leave')
+                this.mouseIsOver = false;
+            })
+            window.addEventListener('keypress', (e) => { 
+                console.log(this.mouseIsOver)
+                if (!this.mouseIsOver) return;
+
+                if(e.keyCode == 32) {       
+                    e.preventDefault();
                     if (this.closePath) {
                            this.points.pop()
                            this.closePath = false;
@@ -42,7 +56,7 @@ if (document.getElementById('vue-svg-maker')) {
                     }    
                     
                 }
-            }.bind(this));
+            });
             this.checkOnInitValues();
             
             $(window).trigger('INIT_SVG_MAKER');

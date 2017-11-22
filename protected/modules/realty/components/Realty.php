@@ -30,12 +30,10 @@ class Realty extends CApplicationComponent
         $criteria = new CDbCriteria();
         $criteria->compare("isPublished", 1);
         $criteria->compare('status', STATUS_HOME);
-        $buildings = Building::model()->findAll($criteria);
-        $any = ['id'=> '', 'label' => "Любой"];
-        $result = array_map(function($item) {
-            return ['id' => $item->id, 'label' => $item->adres];
-        }, $buildings);
-        array_unshift($result, $any);
+        $buildings = Building::model()->findAll($criteria);        
+        $result = array_map(function($item) {            
+            return ['id' => $item->id, 'label' => preg_replace('/<\/br>/',' ', $item->adres), 'idRayon' => $item->rayon ];
+        }, $buildings);        
         return $result;
     }
 

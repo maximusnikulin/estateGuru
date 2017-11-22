@@ -1,5 +1,4 @@
-
-$(function(){
+$(function(){    
     var latInput = document.querySelector(".js-map-lat");                       
     var longInput = document.querySelector(".js-map-long");                           
     var settings =  {
@@ -24,29 +23,38 @@ $(function(){
     }
 
     ymaps.ready(function() { 
-        console.log(settings.placemark)
+        
         var map = new ymaps.Map("js-map-admin", {
             center: settings.placemark,
             zoom:17,
             controls: ['searchControl', "zoomControl"]
         }); 
-        
-        var resGeoObject;
-        
+                
+        var handleDragEnd = function(e) {
+            changeLatLong(getGeoCoords(e.originalEvent.target))
+        }
+        var getGeoCoords = function(target) {
+            return target.geometry
+                    .getCoordinates()
+                    .map(el => el.toFixed(8))
+        }
         var searchControl = map.controls.get('searchControl'); 
-        searchControl.events.add("resultselect", function (e) {                        
+        searchControl.events.add("resultselect", function (e) {                           
             map.geoObjects.removeAll();
-            resGeoObject = searchControl.getResultsArray()[0];                       
-            changeLatLong(resGeoObject.geometry.getCoordinates());
-        });        
+            var geoObject = searchControl.getResultsArray()[0];                       
+            geoObject.options.set('draggable', true);            
+            geoObject.events.add('dragend',handleDragEnd);
+            changeLatLong(getGeoCoords(geoObject))
+        }); 
+                       
         if (settings.alreadySet) {                        
             var myGeocoder = ymaps.geocode(settings.placemark);
             myGeocoder.then(function(res) {
-                var geoObject = res.geoObjects.get(0);
-                var request = geoObject.getAddressLine()                
-                searchControl.search(request);
-                
-                map.geoObjects.add(new ymaps.Placemark(settings.placemark));
+                var pm = new ymaps.Placemark(settings.placemark, {}, {                    
+                    draggable:true                    
+                });
+                pm.events.add('dragend', handleDragEnd);
+                map.geoObjects.add(pm);
             })
         }
     });

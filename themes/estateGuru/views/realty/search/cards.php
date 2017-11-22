@@ -17,6 +17,7 @@ Yii::import("application.modules.dictionary.models.*");
         <i class="link-to-map__icon"></i>
     </a>
 </section>
+
 <script type = "text/javascript">
     window.settingsFilter = {
         typeEstate: "<?= $type ?>",
@@ -27,8 +28,8 @@ Yii::import("application.modules.dictionary.models.*");
         size: [
             <?=Yii::app()->request->getParam("minimalSize", Yii::app()->realty->getMinimumAvailableSize($type)); ?>,
             <?=Yii::app()->request->getParam("maximalSize", Yii::app()->realty->getMaximumAvailableSize($type)); ?>
-        ],
-        building: <?= json_encode(Yii::app()->realty->getHousesForCards()); ?>,
+        ],        
+        building: <?= json_encode(Yii::app()->realty->getHousesForCards(), JSON_UNESCAPED_UNICODE)?>,
         rayon: [
             {
                 id:"",

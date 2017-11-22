@@ -22,11 +22,11 @@
                             :show-labels="false"
                             :track-by="id"
                             :value="selectedValueRayon"
-                            :custom-label = "customLabel"
+                            :custom-label = "customLabel"                            
                     ></vue-select>
                 </div>
             </div>
-            <div class="filter__group" v-show = "typeEstate == 'apartments'">
+            <div class="filter__group" v-if = "typeEstate == 'apartments'">
                 <div class="filter__group-label">
                     <h2 class="title">Объект</h2>
                     <p class="caption">
@@ -35,16 +35,18 @@
                 </div>
                 <div class="filter__group-input">
                     <vue-select
+                            ref = "select-building"
                             placeholder="Найти"
                             open-direction="below"
                             @input="(value) => onInput(value, 'building')"
-                            :options="settings.building"
+                            :options="computedOptions"
                             :allow-empty="false"
                             :searchable="true"
                             :show-labels="false"
                             :track-by="id"
                             :value="selectedValueBuilding"
                             :custom-label = "customLabel"
+                            :disabled = "this.disableBuildings"
                     ></vue-select>
                 </div>
             </div>
@@ -183,8 +185,7 @@
             var content = document.querySelector('.section-search__content');
             content.style.minHeight = getComputedStyle(this.$refs['filter__content']).height;
         },
-        mounted: function() {
-
+        mounted: function() {            
             //Get data
             this.makeQuery();
             //Click out filter close it
@@ -200,6 +201,7 @@
                 open: false,
                 sticky: false,
                 settings: window.settingsFilter,
+                disableBuildings:false,
                 values: {
                     cost: window.settingsFilter.cost,
                     size: window.settingsFilter.size,
@@ -211,7 +213,7 @@
                 },
             }
         },
-        methods: {
+        methods: {            
             changeSortDir: function(sortDir) {
                 this.values.sortDir = sortDir;
             },
@@ -239,15 +241,12 @@
             customLabel: function (value) {
                 return value.label
             },
-            onInput: function (value, type) {
+            onInput: function (value, type) {                
                 if (type == "rayon") {
-                    this.values.building = '';
-                    this.values.rayon = value.id
-                } else if (type == "building") {
-                    this.values.rayon = ""
+                    this.values.rayon = value.id;                                                            
+                } else if (type == "building") {                    
                     this.values.building = value.id
                 }
-
             },
 
         },
@@ -256,7 +255,30 @@
                 return this.settings.rayon.find(o => o.id == this.values.rayon)
             },
             selectedValueBuilding: function () {
+                if (this.values.rayon == "") {
+                    return { id: "", label: "Любой" }
+                }
                 return this.settings.building.find(o => o.id == this.values.building)
+            },
+            computedOptions: function() {                     
+                
+                if (this.values.rayon == "") {
+                    return [ { id: "", label: "Любой" }, ...this.settings.building];
+                }
+                let result = this.settings.building.filter(b => {                   
+                    return b.idRayon == this.values.rayon;                    
+                });                
+                if (result.length == 0) {
+                    this.values.building = null;
+                    this.disableBuildings = true;
+                } else {
+                    if (result.length > 1){
+                        result.unshift({id:"", label:"Любой"});                  
+                    } 
+                    this.values.building = result[0].id;
+                    this.disableBuildings =false;
+                }
+                return result                
             }
         },
         filters: {
