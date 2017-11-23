@@ -320,7 +320,7 @@
             </style>             
        
             <div class="row <?= $model->building->status == Building::STATUS_HOME ? "" : "hidden"?>">
-                <section id = "vue-svg-maker ">
+                <section id = "vue-svg-maker">
                     <div class="svg-maker" ref = "svg-maker" >
                         <div class="svg-maker__image">
                             <img src="#" alt="" width="100%" ref = "image">
