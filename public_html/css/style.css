@@ -2101,17 +2101,32 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .slider-logos {
   width: calc(100% + 20px);
   margin-left: -10px; }
+  .slider-logos .slick-track {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: stretch;
+        align-items: stretch; }
+  .slider-logos .slick-slide {
+    float: none;
+    min-height: 100%;
+    height: auto; }
   .slider-logos__item {
     padding: 10px; }
     .slider-logos__item .logo {
-      height: 90px;
       border: 1px solid #e8e6e6;
       text-align: center;
-      line-height: 90px; }
+      padding: 5px 15px;
+      height: 100%;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+          align-items: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
       .slider-logos__item .logo img {
         display: inline-block;
         vertical-align: middle;
-        max-width: 160px; }
+        max-width: 100%; }
 
 .footer {
   background-color: #f6f6f6;
@@ -3065,6 +3080,11 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .filter .multiselect__option--highlight {
   background: #f48220; }
 
+.filter .multiselect--disabled {
+  background: transparent; }
+  .filter .multiselect--disabled .multiselect__select {
+    background: transparent; }
+
 .checkbox {
   display: block;
   width: auto;
@@ -3315,6 +3335,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
       position: absolute;
       right: 0;
       top: 0;
+      bottom: 0;
       box-shadow: none; }
       @media (max-width: 560px) {
         .section-subscribe__form-group .button {

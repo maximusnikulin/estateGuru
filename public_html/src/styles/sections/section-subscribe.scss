@@ -57,7 +57,8 @@
         .button {
             position: absolute;
             right:0;
-            top:0;            
+            top:0;   
+            bottom: 0;         
             box-shadow: none;
              @include mobile {
                 padding:10px 20px;
